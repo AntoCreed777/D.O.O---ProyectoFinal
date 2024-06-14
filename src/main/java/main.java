@@ -1,6 +1,7 @@
-package main.java.Interfaz.PanelPrincipal;
-public class main {
+import Interfaz.Ventana;
+
+public class Main {
     public static void main(String[] args) {
-        new PanelPrincipal();
+        new Ventana();
     }
 }
