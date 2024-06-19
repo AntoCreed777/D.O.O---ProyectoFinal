@@ -12,16 +12,16 @@ import java.util.ArrayList;
 import static Logica.TipoHabitat.*;
 
 /*
-* Clase para graficar el habitat
-*/
+ * Clase para graficar el habitat
+ */
 public class HabitatGrafico extends JFrame implements GeneradorImagen{
 
     private TipoHabitat tipoHabitat = null;
     private HabitatGrafico habitat;
     private JToggleButton editBtn = null;
-    private JPanel panelEdicion = null;
+    private PanelEditar panelEditar = null;
     private ArrayList<AnimalGrafico> listaAnimales = null;
-    JPanel panelHabitat = null;
+    private JPanel panelHabitat = null;
     private JLabel imgLabel = null;
 
     public HabitatGrafico(TipoHabitat tipo) {
@@ -36,10 +36,6 @@ public class HabitatGrafico extends JFrame implements GeneradorImagen{
         this.setSize(1100, 670); // tamaño de la ventana
 
 
-        panelHabitat = new JPanel();
-        panelHabitat.setBounds(0, 0, 1100, 670);
-
-
         String img = "";
         switch(tipo){
             case POLAR -> img = "src/main/java/Interfaz/Imagenes/habitat_polar_1.jpg";
@@ -47,7 +43,10 @@ public class HabitatGrafico extends JFrame implements GeneradorImagen{
             case DESERTICO -> img = "src/main/java/Interfaz/Imagenes/habitat_desertico_1.png";
         }
 
-        imgLabel = GeneradorImagen.ImageLabel(img, 120, 0, this.getSize().width - 100, this.getSize().height);
+        imgLabel = GeneradorImagen.ImageLabel(img, 55, 0, 900, 630);
+
+        panelHabitat = new JPanel();
+        panelHabitat.setBounds(0, 0, 1100, 670);
 
         panelHabitat.add(imgLabel);
         this.add(panelHabitat);
@@ -55,12 +54,11 @@ public class HabitatGrafico extends JFrame implements GeneradorImagen{
 
         // boton de edicion
         editBtn = new JToggleButton("edit");
-        editBtn.setBounds(1000,0,60,30);
-
+        editBtn.setBounds(1020,0,60,30);
         editBtn.addMouseListener(new MouseListener() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                mostrarPanelEdicion();
+                mostrarPanelEditar();
             }
 
             @Override
@@ -76,23 +74,17 @@ public class HabitatGrafico extends JFrame implements GeneradorImagen{
         this.add(editBtn);
 
 
-
         // panel de edicion
-        panelEdicion = new JPanel();
-        panelEdicion.setBackground(new Color(0xD7B4FF));
-        panelEdicion.setBounds(0, this.getSize().height - 250, this.getSize().width, 250);
-        panelEdicion.setVisible(false);
-
-        this.add(panelEdicion);
-
+        panelEditar = new PanelEditar();
+        this.add(panelEditar);
 
         this.setVisible(true);
     }
 
 
     /*
-    * Funcion para añadir accesorios decorativos al habitat
-    */
+     * Funcion para añadir accesorios decorativos al habitat
+     */
     public void agregarAccesorio(Accesorios accesorio, int posX, int posY){
 
         String img = "";
@@ -121,7 +113,7 @@ public class HabitatGrafico extends JFrame implements GeneradorImagen{
         ARBOL, ROCA,
     }
 
-    public void mostrarPanelEdicion(){
+    public void mostrarPanelEditar(){
 
         String img = "";
         switch(tipoHabitat){
@@ -134,23 +126,29 @@ public class HabitatGrafico extends JFrame implements GeneradorImagen{
 
             panelHabitat.remove(imgLabel);
             panelHabitat.setBounds(200, 0, 1100 - 300 - 100,670 - 250);
-            imgLabel = GeneradorImagen.ImageLabel("src/main/java/Interfaz/Imagenes/habitat_polar_1.jpg", 150, 0, 1100 - 300 - 100, 670 - 250 );
-
+            imgLabel = GeneradorImagen.ImageLabel(img, 150, 0, 1100 - 300 - 100, 670 - 250 );
             panelHabitat.add(imgLabel);
 
-            panelEdicion.setVisible(true);
+            panelEditar.setVisible(true);
 
         } else {
-            panelHabitat.remove(imgLabel);
-            panelHabitat.setBounds(0, 0, 1100, 670);
-            imgLabel = GeneradorImagen.ImageLabel("src/main/java/Interfaz/Imagenes/habitat_polar_1.jpg", 120, 0, 1000, 670);
 
+            panelHabitat.remove(imgLabel);
+            imgLabel = GeneradorImagen.ImageLabel(img, 55, 0, 900, 630);
+
+            panelHabitat.setBounds(0, 0, 1100, 670);
             panelHabitat.add(imgLabel);
 
-            panelEdicion.setVisible(false);
+            panelEditar.setVisible(false);
         }
 
+        panelHabitat.repaint();
         this.repaint();
     }
 
 }
+
+
+
+
+
