@@ -6,27 +6,37 @@ import javax.swing.*;
 
 public class AnimalGrafico implements GeneradorImagen{
     private JLabel label = null;
+    private int width;
+    private int height;
     private final Animal animal;
 
     public AnimalGrafico(Animal animal){
         this.animal = animal;
 
         if(animal instanceof Leon){
-            label = GeneradorImagen.ImageLabel("leonPNG",0,0,0,0);
+            width = 0;
+            height = 0;
+            label = GeneradorImagen.ImageLabel("leonPNG",0,0,width,height);
         }
 
         else if(animal instanceof Pinguino){
-            label = GeneradorImagen.ImageLabel("pinguinoPNG",0,0,0,0);
+            width = 0;
+            height = 0;
+            label = GeneradorImagen.ImageLabel("pinguinoPNG",0,0,width,height);
         }
 
         else if(animal instanceof Vaca){
-            label = GeneradorImagen.ImageLabel("vacaPNG",0,0,0,0);
+            width = 100;
+            height = 100;
+            label = GeneradorImagen.ImageLabel("src/main/java/Interfaz/imagenes/Vaca.png",animal.getPosicionX(),animal.getPosicionY(),width,height);
         }
     }
 
     public void Moverse(){
         this.animal.Moverse();
-        label.setBounds(animal.getPosicionX(),animal.getPosicionY(),0,0);
-        label.repaint();
+        label.setBounds(animal.getPosicionX(),animal.getPosicionY(),width,height);
+        this.animal.getPanelHabitat().repaint();
     }
+
+    public JLabel getLabel(){return this.label;}
 }
