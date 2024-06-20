@@ -1,5 +1,6 @@
 package Logica.Animales;
 
+import Interfaz.PanelPrincipal;
 import Logica.Comida;
 
 import javax.swing.*;
@@ -8,7 +9,7 @@ public class Vaca extends Animal{
     public final static String familiaTaxonomica = "Ave";
     public final static int temperaturaAdecuada = 24; //Grados Celcius
 
-    public Vaca(int posicionXinicial, int posicionYinicial, JPanel panelHabitat) {
+    public Vaca(int posicionXinicial, int posicionYinicial, PanelPrincipal panelHabitat) {
         super(posicionXinicial, posicionYinicial, panelHabitat);
     }
 

@@ -38,6 +38,9 @@ public class ComidaGrafica implements GeneradorImagen, Runnable{
             catch (InterruptedException e) {throw new RuntimeException(e);}
 
         }
-        panelHabitat.getContenidoComida().add(this);    //Cuando llega al suelo se agrega a la lista
+        synchronized (panelHabitat.getContenidoComida()) {
+            panelHabitat.getContenidoComida().add(this);    //Cuando llega al suelo se agrega a la lista
+        }
+
     }
 }

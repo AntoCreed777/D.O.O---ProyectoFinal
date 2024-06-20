@@ -3,6 +3,7 @@ package Logica.Animales;
 import javax.swing.*;
 import java.util.Random;
 
+import Interfaz.PanelPrincipal;
 import Logica.Comida;
 
 public abstract class Animal {
@@ -10,10 +11,10 @@ public abstract class Animal {
     private int posicionY;
     private final int pantallaLimiteInferior;
     private final int pantallaLimiteDerecho;
-    private final JPanel panelHabitat;      //Panel del habitat al que pertenece el animal
+    private final PanelPrincipal panelHabitat;      //Panel del habitat al que pertenece el animal
 
 
-    public Animal(int posicionXinicial, int posicionYinicial, JPanel panelHabitat) {
+    public Animal(int posicionXinicial, int posicionYinicial, PanelPrincipal panelHabitat) {
         this.pantallaLimiteInferior = panelHabitat.getPreferredSize().height - 1;
         this.pantallaLimiteDerecho = panelHabitat.getPreferredSize().width - 1;
         this.posicionX = posicionXinicial;
@@ -49,7 +50,7 @@ public abstract class Animal {
         }
     }
 
-    public JPanel getPanelHabitat() {return panelHabitat;}
+    public PanelPrincipal getPanelHabitat() {return panelHabitat;}
 
     public int getPosicionX() {return posicionX;}
     public int getPosicionY() {return posicionY;}

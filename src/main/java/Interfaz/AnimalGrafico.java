@@ -3,6 +3,9 @@ package Interfaz;
 import Logica.Animales.*;
 
 import javax.swing.*;
+import java.awt.*;
+import java.util.Iterator;
+import java.util.List;
 
 public class AnimalGrafico implements GeneradorImagen, Runnable{
     private JLabel label = null;
@@ -36,9 +39,31 @@ public class AnimalGrafico implements GeneradorImagen, Runnable{
     public void run() {
         try {
             while (true) {
+                //Proceso de movimiento del Animal
                 this.animal.Moverse();
                 label.setBounds(animal.getPosicionX(),animal.getPosicionY(),width,height);
                 this.animal.getPanelHabitat().repaint();
+
+                //Zona en que alcanza la comida el animal (Su hitbox)
+                Rectangle rectangleA = this.label.getBounds();
+
+
+                List<ComidaGrafica> comidas = this.animal.getPanelHabitat().getContenidoComida();
+
+                synchronized(comidas){
+                    Iterator<ComidaGrafica> iterator = comidas.iterator();
+                    while(iterator.hasNext()){
+                        ComidaGrafica comida = iterator.next();
+                        Rectangle rectangleC = comida.getLabel().getBounds();
+                        if(rectangleC.intersects(rectangleA)){
+                            this.animal.Comer(comida.getComida());  //Come su comida
+                            this.animal.getPanelHabitat().remove(comida.getLabel());
+                            iterator.remove();
+                            this.animal.getPanelHabitat().repaint();
+                            break;
+                        }
+                    }
+                }
 
                 Thread.sleep(0);
             }

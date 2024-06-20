@@ -12,10 +12,12 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Collections;
 
 public class PanelPrincipal extends JPanel implements MouseListener {
     private BufferedImage imagen;
-    private final ArrayList<ComidaGrafica> contenidoComida;
+    private final List<ComidaGrafica> contenidoComida;
     private final ArrayList<AnimalGrafico> contenidoAnimal;
 
     public PanelPrincipal() {
@@ -24,10 +26,10 @@ public class PanelPrincipal extends JPanel implements MouseListener {
 
         this.addMouseListener(this);
 
-        this.contenidoComida = new ArrayList<>();
+        this.contenidoComida = Collections.synchronizedList(new ArrayList<>());
         this.contenidoAnimal = new ArrayList<>();
 
-        for (int i = 0; i<50; i++){
+        for (int i = 0; i<10; i++){
             Animal animal = new Vaca(100,100,this);
             AnimalGrafico animalG = new AnimalGrafico(animal);
 
@@ -70,5 +72,5 @@ public class PanelPrincipal extends JPanel implements MouseListener {
     @Override
     public void mouseExited(MouseEvent e) {}
 
-    public ArrayList<ComidaGrafica> getContenidoComida() {return contenidoComida;}
+    public synchronized List<ComidaGrafica> getContenidoComida() {return contenidoComida;}
 }

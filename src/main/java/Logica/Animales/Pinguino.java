@@ -1,5 +1,6 @@
 package Logica.Animales;
 
+import Interfaz.PanelPrincipal;
 import Logica.Comida;
 
 import javax.swing.*;
@@ -8,7 +9,7 @@ public class Pinguino extends Animal{
     public final static String familiaTaxonomica = "Ave";
     public final static int temperaturaAdecuada = -5; //Grados Celcius
 
-    public Pinguino(int posicionXinicial, int posicionYinicial, JPanel panelHabitat){
+    public Pinguino(int posicionXinicial, int posicionYinicial, PanelPrincipal panelHabitat){
         super(posicionXinicial, posicionYinicial, panelHabitat);
     }
 
