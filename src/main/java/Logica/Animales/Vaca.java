@@ -1,7 +1,6 @@
 package Logica.Animales;
 
-import Logica.Comidas.Comida;
-import Logica.Comidas.Trigo;
+import Logica.Comida;
 
 import javax.swing.*;
 
@@ -15,7 +14,7 @@ public class Vaca extends Animal{
 
     @Override
     public void Comer(Comida comida) {
-        if(comida instanceof Trigo){
+        if(comida == Comida.Pasto){
             System.out.println("Que rico, pasto amarillo");
         }
         else{

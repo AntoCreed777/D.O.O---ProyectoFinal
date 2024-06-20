@@ -3,7 +3,7 @@ package Logica.Animales;
 import javax.swing.*;
 import java.util.Random;
 
-import Logica.Comidas.*;
+import Logica.Comida;
 
 public abstract class Animal {
     private int posicionX;

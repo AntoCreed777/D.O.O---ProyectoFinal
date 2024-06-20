@@ -1,6 +1,6 @@
 package Logica.Animales;
 
-import Logica.Comidas.*;
+import Logica.Comida;
 
 import javax.swing.*;
 
@@ -14,7 +14,7 @@ public class Leon extends Animal{
 
     @Override
     public void Comer(Comida comida){
-        if(comida instanceof Carne){
+        if(comida == Comida.Carne){
             System.out.println("Comiendo la carne, YAM YAM :)");
         }
         else{

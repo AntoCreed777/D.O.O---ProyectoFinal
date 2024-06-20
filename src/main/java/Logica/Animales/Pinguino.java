@@ -1,7 +1,6 @@
 package Logica.Animales;
 
-import Logica.Comidas.Comida;
-import Logica.Comidas.Pescado;
+import Logica.Comida;
 
 import javax.swing.*;
 
@@ -15,7 +14,7 @@ public class Pinguino extends Animal{
 
     @Override
     public void Comer(Comida comida) {
-        if(comida instanceof Pescado){
+        if(comida == Comida.Pescado){
             System.out.println("Comiendome mi Pescadito :)");
         }
         else{

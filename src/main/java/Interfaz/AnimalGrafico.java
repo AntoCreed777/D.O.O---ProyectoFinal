@@ -4,7 +4,7 @@ import Logica.Animales.*;
 
 import javax.swing.*;
 
-public class AnimalGrafico implements GeneradorImagen{
+public class AnimalGrafico implements GeneradorImagen, Runnable{
     private JLabel label = null;
     private int width;
     private int height;
@@ -32,10 +32,18 @@ public class AnimalGrafico implements GeneradorImagen{
         }
     }
 
-    public void Moverse(){
-        this.animal.Moverse();
-        label.setBounds(animal.getPosicionX(),animal.getPosicionY(),width,height);
-        this.animal.getPanelHabitat().repaint();
+    @Override
+    public void run() {
+        try {
+            while (true) {
+                this.animal.Moverse();
+                label.setBounds(animal.getPosicionX(),animal.getPosicionY(),width,height);
+                this.animal.getPanelHabitat().repaint();
+
+                Thread.sleep(0);
+            }
+        }
+        catch (InterruptedException e) {e.printStackTrace();}
     }
 
     public JLabel getLabel(){return this.label;}
