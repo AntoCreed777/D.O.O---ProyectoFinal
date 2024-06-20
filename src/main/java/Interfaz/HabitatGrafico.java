@@ -54,6 +54,7 @@ public class HabitatGrafico extends JFrame implements GeneradorImagen{
 
         // boton de edicion
         editBtn = new JToggleButton("edit");
+        editBtn.setBackground(new Color(0xFFCBF4FA, true));
         editBtn.setBounds(1020,0,60,30);
         editBtn.addMouseListener(new MouseListener() {
             @Override
@@ -77,6 +78,7 @@ public class HabitatGrafico extends JFrame implements GeneradorImagen{
         // panel de edicion
         panelEditar = new PanelEditar();
         this.add(panelEditar);
+
 
         this.setVisible(true);
     }
@@ -125,8 +127,8 @@ public class HabitatGrafico extends JFrame implements GeneradorImagen{
         if(editBtn.isSelected()){
 
             panelHabitat.remove(imgLabel);
-            panelHabitat.setBounds(200, 0, 1100 - 300 - 100,670 - 250);
-            imgLabel = GeneradorImagen.ImageLabel(img, 150, 0, 1100 - 300 - 100, 670 - 250 );
+            panelHabitat.setBounds(200, 0, 700,420);
+            imgLabel = GeneradorImagen.ImageLabel(img, 0, 0, 700, 670 - 250 );
             panelHabitat.add(imgLabel);
 
             panelEditar.setVisible(true);
@@ -140,12 +142,13 @@ public class HabitatGrafico extends JFrame implements GeneradorImagen{
             panelHabitat.add(imgLabel);
 
             panelEditar.setVisible(false);
+            panelEditar.mostrarPanelAgregarAnimal(false);
+            panelEditar.mostrarPanelSeleccion(true);
         }
 
         panelHabitat.repaint();
         this.repaint();
     }
-
 }
 
 
