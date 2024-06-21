@@ -38,6 +38,5 @@ public class Ventana extends  JFrame {
 
     public void apretarHabitat(){
         HabitatGrafico habitat = new HabitatGrafico(TipoHabitat.POLAR);
-
     }
 }

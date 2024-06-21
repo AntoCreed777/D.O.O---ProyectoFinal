@@ -9,13 +9,13 @@ import java.lang.Boolean;
 public class PanelEditar extends JPanel{
     private JPanel panelSeleccion;
     private JPanel panelAgregarAnimal = null;
-    private final int btnColor = 0xFAF3DD;
-    private final int backgroundColor = 0x68B0AB;
+    private final Color btnColor = new Color(0xFAF3DD);
+    private final Color backgroundColor = new Color(0x68B0AB);
 
 
     public PanelEditar() {
 
-        this.setBackground(new Color(backgroundColor));
+        this.setBackground(backgroundColor);
         this.setBounds(0, 420, 1085, 220);
         this.setLayout(null);
 
@@ -30,11 +30,11 @@ public class PanelEditar extends JPanel{
 
         panelSeleccion = new JPanel(new GridLayout(1, 0, 10,0));
         panelSeleccion.setBounds(50,10,985, 190);
-        panelSeleccion.setBackground(new Color(backgroundColor));
+        panelSeleccion.setBackground(backgroundColor);
 
 
         JButton btnAnimal = new JButton("Agregar animal");
-        btnAnimal.setBackground(new Color(btnColor));
+        btnAnimal.setBackground(btnColor);
 
         btnAnimal.addMouseListener(new MouseListener() {
             @Override
@@ -52,10 +52,10 @@ public class PanelEditar extends JPanel{
         });
 
         JButton btnAccesorio = new JButton("Agregar accesorio");
-        btnAccesorio.setBackground(new Color(btnColor));
+        btnAccesorio.setBackground(btnColor);
 
         JButton btnEliminar = new JButton("Eliminar habitat");
-        btnEliminar.setBackground(new Color(btnColor));
+        btnEliminar.setBackground(btnColor);
 
         panelSeleccion.add(btnAnimal);
         panelSeleccion.add(btnAccesorio);
@@ -68,17 +68,18 @@ public class PanelEditar extends JPanel{
 
         panelAgregarAnimal = new JPanel(new GridLayout(1, 0, 10,0));
         panelAgregarAnimal.setBounds(50, 10, 985, 190);
-        panelAgregarAnimal.setBackground(new Color(backgroundColor));
+        panelAgregarAnimal.setBackground(backgroundColor);
 
         String[] animalstr = {"vaca", "leon", "pinguino"};
         for (String s : animalstr) {
             JButton btn = new JButton(s);
-            btn.setBackground(new Color(btnColor));
+            btn.setBackground(btnColor);
 
 
             panelAgregarAnimal.add(btn);
         }
     }
+
 
     public void mostrarPanelSeleccion(Boolean val){
 
