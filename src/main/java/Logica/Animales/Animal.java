@@ -1,9 +1,9 @@
 package Logica.Animales;
 
-import javax.swing.*;
 import java.util.Random;
 
-import Interfaz.PanelPrincipal;
+import Interfaz.Habitat.HabitatGrafico;
+import Interfaz.Habitat.PanelHabitat;
 import Logica.Comida;
 
 public abstract class Animal {
@@ -11,10 +11,10 @@ public abstract class Animal {
     private int posicionY;
     private final int pantallaLimiteInferior;
     private final int pantallaLimiteDerecho;
-    private final PanelPrincipal panelHabitat;      //Panel del habitat al que pertenece el animal
+    private final PanelHabitat panelHabitat;      //Panel del habitat al que pertenece el animal
 
 
-    public Animal(int posicionXinicial, int posicionYinicial, PanelPrincipal panelHabitat) {
+    public Animal(int posicionXinicial, int posicionYinicial, PanelHabitat panelHabitat) {
         this.pantallaLimiteInferior = panelHabitat.getPreferredSize().height - 1;
         this.pantallaLimiteDerecho = panelHabitat.getPreferredSize().width - 1;
         this.posicionX = posicionXinicial;
@@ -50,7 +50,7 @@ public abstract class Animal {
         }
     }
 
-    public PanelPrincipal getPanelHabitat() {return panelHabitat;}
+    public PanelHabitat getPanelHabitat() {return panelHabitat;}
 
     public int getPosicionX() {return posicionX;}
     public int getPosicionY() {return posicionY;}

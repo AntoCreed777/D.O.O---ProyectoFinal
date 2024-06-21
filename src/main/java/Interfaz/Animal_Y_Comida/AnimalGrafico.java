@@ -1,5 +1,6 @@
-package Interfaz;
+package Interfaz.Animal_Y_Comida;
 
+import Interfaz.GeneradorImagen;
 import Logica.Animales.*;
 
 import javax.swing.*;
