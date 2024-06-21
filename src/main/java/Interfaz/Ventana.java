@@ -1,7 +1,7 @@
 package Interfaz;
-import Logica.Animales.Animal;
-import Logica.Animales.Vaca;
-import Logica.Comida;
+
+import Logica.*;
+import Logica.Animales.*;
 
 import javax.swing.*;
 import java.awt.*;
@@ -24,5 +24,10 @@ public class Ventana extends  JFrame{
         this.setContentPane(panel);
 
         this.setVisible(true);
+    }
+
+    public void apretarHabitat(){
+        HabitatGrafico habitat = new HabitatGrafico(TipoHabitat.POLAR);
+
     }
 }
