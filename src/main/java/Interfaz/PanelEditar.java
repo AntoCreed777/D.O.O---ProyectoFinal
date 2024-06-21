@@ -8,9 +8,9 @@ import java.lang.Boolean;
 
 public class PanelEditar extends JPanel{
     private JPanel panelSeleccion;
-    private JPanel panelAgregarAnimal = null;
-    private int btnColor = 0xFAF3DD;
-    private int backgroundColor = 0x68B0AB;
+    private JPanel panelAgregarAnimal;
+    private final int btnColor = 0xFAF3DD;
+    private final int backgroundColor = 0x68B0AB;
 
 
     public PanelEditar() {
@@ -63,7 +63,6 @@ public class PanelEditar extends JPanel{
 
     }
 
-
     public void crearPanelAgregarAnimal(){
 
         panelAgregarAnimal = new JPanel(new GridLayout(1, 0, 10,0));
@@ -80,26 +79,20 @@ public class PanelEditar extends JPanel{
         }
     }
 
-    public void mostrarPanelSeleccion(Boolean val){
-
-        if(val){this.add(panelSeleccion);}
+    public void mostrarPanelSeleccion(Boolean mostrar){
+        if(mostrar){this.add(panelSeleccion);}
         else {this.remove(panelSeleccion);}
-
         this.repaint();
     }
 
-
     /*
     * Funcion para mostrar o esconder el panel para elegir cual animal agregar
-    * @param Boolean val
+    * @param Boolean mostrar
     * */
 
-    public void mostrarPanelAgregarAnimal(Boolean val){
-
-        this.repaint();
-        if(val){this.add(panelAgregarAnimal);}
+    public void mostrarPanelAgregarAnimal(Boolean mostrar){
+        if(mostrar){this.add(panelAgregarAnimal);}
         else {this.remove(panelAgregarAnimal);}
-        
         this.repaint();
     }
 }
