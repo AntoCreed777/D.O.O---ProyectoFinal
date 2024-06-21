@@ -23,6 +23,7 @@ public class HabitatGrafico extends JFrame implements GeneradorImagen{
     private ArrayList<AnimalGrafico> listaAnimales = null;
     private JPanel panelHabitat = null;
     private JLabel imgLabel = null;
+    private final int backgroundColor = 0xF6FFEC;
 
     public HabitatGrafico(TipoHabitat tipo) {
 
@@ -30,10 +31,11 @@ public class HabitatGrafico extends JFrame implements GeneradorImagen{
         habitat = this;
         listaAnimales = new ArrayList<AnimalGrafico>();
 
-        this.setBackground(Color.blue);
+        this.setSize(new Dimension(1100, 670));
+        this.getContentPane().setBackground(new Color(backgroundColor));
         this.setLayout(null);
         this.setTitle("habitat");
-        this.setSize(1100, 670); // tamaño de la ventana
+        this.setResizable(true);
 
 
         String img = "";
@@ -43,10 +45,11 @@ public class HabitatGrafico extends JFrame implements GeneradorImagen{
             case DESERTICO -> img = "src/main/java/Interfaz/Imagenes/habitat_desertico_1.png";
         }
 
-        imgLabel = GeneradorImagen.ImageLabel(img, 55, 0, 900, 630);
+        imgLabel = GeneradorImagen.ImageLabel(img, 0, 0, 900, 630);
 
         panelHabitat = new JPanel();
-        panelHabitat.setBounds(0, 0, 1100, 670);
+        panelHabitat.setBounds(100, 0, 900, 630);
+        panelHabitat.setBackground(new Color(backgroundColor));
 
         panelHabitat.add(imgLabel);
         this.add(panelHabitat);
@@ -77,8 +80,8 @@ public class HabitatGrafico extends JFrame implements GeneradorImagen{
 
         // panel de edicion
         panelEditar = new PanelEditar();
+        panelEditar.setVisible(false);
         this.add(panelEditar);
-
 
         this.setVisible(true);
     }
@@ -127,27 +130,30 @@ public class HabitatGrafico extends JFrame implements GeneradorImagen{
         if(editBtn.isSelected()){
 
             panelHabitat.remove(imgLabel);
-            panelHabitat.setBounds(200, 0, 700,420);
-            imgLabel = GeneradorImagen.ImageLabel(img, 0, 0, 700, 670 - 250 );
+            panelHabitat.setBounds(190, 0, 700,420);
+            imgLabel = GeneradorImagen.ImageLabel(img, 0, 0, 700, 420 );
             panelHabitat.add(imgLabel);
 
             panelEditar.setVisible(true);
 
+
         } else {
 
             panelHabitat.remove(imgLabel);
-            imgLabel = GeneradorImagen.ImageLabel(img, 55, 0, 900, 630);
+            panelHabitat.setBounds(100, 0, 900, 630);
 
-            panelHabitat.setBounds(0, 0, 1100, 670);
+            imgLabel = GeneradorImagen.ImageLabel(img, 0, 0, 900, 630);
             panelHabitat.add(imgLabel);
 
-            panelEditar.setVisible(false);
             panelEditar.mostrarPanelAgregarAnimal(false);
             panelEditar.mostrarPanelSeleccion(true);
+            panelEditar.setVisible(false);
         }
 
-        panelHabitat.repaint();
         this.repaint();
+        panelHabitat.repaint();
+        panelEditar.repaint();
+
     }
 }
 
