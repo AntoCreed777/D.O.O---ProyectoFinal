@@ -34,6 +34,9 @@ public class AnimalGrafico implements GeneradorImagen, Runnable{
             height = 100;
             label = GeneradorImagen.ImageLabel("src/main/java/Interfaz/imagenes/Vaca.png",animal.getPosicionX(),animal.getPosicionY(),width,height);
         }
+
+        animal.setAltoImg(height);
+        animal.setAnchoImg(width);
     }
 
     @Override
@@ -48,7 +51,7 @@ public class AnimalGrafico implements GeneradorImagen, Runnable{
                 //Zona en que alcanza la comida el animal (Su hitbox)
                 Rectangle rectangleA = this.label.getBounds();
 
-
+                //Lista de la comida disponible dentro del habitat
                 List<ComidaGrafica> comidas = this.animal.getPanelHabitat().getContenidoComida();
 
                 synchronized(comidas){

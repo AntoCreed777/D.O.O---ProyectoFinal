@@ -23,14 +23,21 @@ public class PanelAgregarAnimal extends JPanel {
         this.setBackground(new Color(backgroundColor));
 
         String[] animalstr = {"vaca", "leon", "pinguino"};
-        this.setLayout(new GridLayout(1, animalstr.length, 10, 0));
+        //this.setLayout(new GridLayout(1, animalstr.length, 10, 0));
+        this.setLayout(null);
 
-        for (String s : animalstr) {
-            agregarBotones(s);
+        int padding = 10;
+        int ancho = 200;
+        int margen = (985 - (ancho + padding)*animalstr.length)/2 ;
+        for (int i = 0; i < animalstr.length; i++) {
+            JButton btn = agregarBotones(animalstr[i]);
+            btn.setBounds(margen + padding*i + ancho*i, 10, ancho,200);
+
+            this.add(btn);
         }
     }
 
-    private void agregarBotones(String animal){
+    private JButton agregarBotones(String animal){
         JButton btn = new JButton(animal);
         btn.setBackground(new Color(btnColor));
 
@@ -38,16 +45,15 @@ public class PanelAgregarAnimal extends JPanel {
             @Override
             public void mouseClicked(MouseEvent e) {
                 AnimalGrafico animalGrafico = switch (animal) {
-                    case "vaca" -> new AnimalGrafico(new Vaca(0, 0, habitatGrafico.getPanelHabitat()));
-                    case "leon" -> new AnimalGrafico(new Leon(0, 0, habitatGrafico.getPanelHabitat()));
-                    case "pinguino" -> new AnimalGrafico(new Pinguino(0, 0, habitatGrafico.getPanelHabitat()));
+                    case "vaca" -> new AnimalGrafico(new Vaca(100, 100, habitatGrafico.getPanelHabitat()));
+                    case "leon" -> new AnimalGrafico(new Leon(100, 100, habitatGrafico.getPanelHabitat()));
+                    case "pinguino" -> new AnimalGrafico(new Pinguino(100, 100, habitatGrafico.getPanelHabitat()));
                     default -> null;
                 };
 
                 if (animalGrafico != null) {
                     habitatGrafico.getPanelHabitat().agregarAnimal(animalGrafico);
                 }
-
             }
 
             @Override
@@ -63,6 +69,6 @@ public class PanelAgregarAnimal extends JPanel {
             public void mouseExited(MouseEvent e) {}
         });
 
-        this.add(btn);
+        return btn;
     }
 }

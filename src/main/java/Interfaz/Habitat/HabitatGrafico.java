@@ -1,7 +1,5 @@
 package Interfaz.Habitat;
 
-import Interfaz.Animal_Y_Comida.AnimalGrafico;
-import Interfaz.Animal_Y_Comida.ComidaGrafica;
 import Interfaz.GeneradorImagen;
 import Logica.TipoHabitat;
 
@@ -9,9 +7,6 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
 
 /*
  * Clase para graficar el habitat

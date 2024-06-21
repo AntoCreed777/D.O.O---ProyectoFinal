@@ -4,16 +4,18 @@ import Interfaz.Animal_Y_Comida.*;
 import Interfaz.GeneradorImagen;
 import Logica.TipoHabitat;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
 public class PanelHabitat extends JPanel {
-    private final String img;
-    private JLabel imgLabel;
-
+    private BufferedImage imagen;
     private final ArrayList<AnimalGrafico> listaAnimales;
     private final List<ComidaGrafica> contenidoComida;
 
@@ -24,14 +26,22 @@ public class PanelHabitat extends JPanel {
         listaAnimales = new ArrayList<AnimalGrafico>();
         this.contenidoComida = Collections.synchronizedList(new ArrayList<>());
 
-        img = switch(tipo){
+        String img = switch(tipo){
             case POLAR -> "src/main/java/Interfaz/Imagenes/habitat_polar_1.jpg";
             case JUNGLA -> "src/main/java/Interfaz/Imagenes/habitat_jungla_1.png";
             case DESERTICO -> "src/main/java/Interfaz/Imagenes/habitat_desertico_1.png";
         };
 
-        imgLabel = GeneradorImagen.ImageLabel(img, 0, 0, 900, 630);
-        this.add(imgLabel);
+        try {imagen = ImageIO.read(new File(img));}
+        catch (IOException e) {e.printStackTrace();}
+    }
+
+    @Override
+    protected void paintComponent(Graphics g) {
+        super.paintComponent(g);
+        if (imagen != null) {
+            g.drawImage(imagen, 0, 0, getWidth(), getHeight(), this);
+        }
     }
 
     /*
@@ -61,18 +71,12 @@ public class PanelHabitat extends JPanel {
     }
 
     public void maximizarPanel(){
-        this.remove(imgLabel);
         this.setBounds(100, 0, 900, 630);
-        imgLabel = GeneradorImagen.ImageLabel(img, 0, 0, 900, 630);
-        this.add(imgLabel);
         this.repaint();
     }
 
     public void minimizarPanel(){
-        this.remove(imgLabel);
         this.setBounds(190, 0, 700,420);
-        imgLabel = GeneradorImagen.ImageLabel(img, 0, 0, 700, 420 );
-        this.add(imgLabel);
         this.repaint();
     }
 
@@ -83,4 +87,5 @@ public class PanelHabitat extends JPanel {
     }
 
     public synchronized List<ComidaGrafica> getContenidoComida() {return contenidoComida;}
+
 }

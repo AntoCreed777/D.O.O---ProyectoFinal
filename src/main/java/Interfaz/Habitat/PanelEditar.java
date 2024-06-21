@@ -17,7 +17,7 @@ public class PanelEditar extends JPanel{
 
     public PanelEditar(HabitatGrafico habitatGrafico) {
         this.setBackground(new Color(backgroundColor));
-        this.setBounds(0, 420, 1100, 220);
+        this.setBounds(0, 420, 1100, 250);
         this.setLayout(null);
 
         this.habitatGrafico = habitatGrafico;
