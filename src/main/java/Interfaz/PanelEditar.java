@@ -9,6 +9,7 @@ import java.lang.Boolean;
 public class PanelEditar extends JPanel{
     private JPanel panelSeleccion;
     private JPanel panelAgregarAnimal = null;
+    private JPanel panelAgregarAccesorio = null;
     private final Color btnColor = new Color(0xFAF3DD);
     private final Color backgroundColor = new Color(0x68B0AB);
 
@@ -21,6 +22,7 @@ public class PanelEditar extends JPanel{
 
         crearPanelSeleccion();
         crearPanelAgregarAnimal();
+        crearPanelAgregarAccesorio();
 
         mostrarPanelSeleccion(true);
 
@@ -53,6 +55,20 @@ public class PanelEditar extends JPanel{
 
         JButton btnAccesorio = new JButton("Agregar accesorio");
         btnAccesorio.setBackground(btnColor);
+        btnAccesorio.addMouseListener(new MouseListener() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                mostrarPanelSeleccion(false);
+                mostrarPanelAgregarAccesorio(true);}
+            @Override
+            public void mousePressed(MouseEvent e) {}
+            @Override
+            public void mouseReleased(MouseEvent e) {}
+            @Override
+            public void mouseEntered(MouseEvent e) {}
+            @Override
+            public void mouseExited(MouseEvent e) {}
+        });
 
         JButton btnEliminar = new JButton("Eliminar habitat");
         btnEliminar.setBackground(btnColor);
@@ -66,20 +82,42 @@ public class PanelEditar extends JPanel{
 
     public void crearPanelAgregarAnimal(){
 
-        panelAgregarAnimal = new JPanel(new GridLayout(1, 0, 10,0));
+        panelAgregarAnimal = new JPanel();
         panelAgregarAnimal.setBounds(50, 10, 985, 190);
         panelAgregarAnimal.setBackground(backgroundColor);
 
         String[] animalstr = {"vaca", "leon", "pinguino"};
-        for (String s : animalstr) {
-            JButton btn = new JButton(s);
+        int padding = 10;
+        int ancho = 200;
+        int margen = (985 - (ancho + padding)*animalstr.length)/2 ;
+        for (int i = 0; i < animalstr.length; i++) {
+            JButton btn = new JButton(animalstr[i]);
+            btn.setBounds(margen + padding*i + ancho*i, 10, ancho,200);
             btn.setBackground(btnColor);
-
 
             panelAgregarAnimal.add(btn);
         }
     }
 
+
+    public void crearPanelAgregarAccesorio(){
+
+        panelAgregarAccesorio = new JPanel();
+        panelAgregarAccesorio.setBounds(50, 10, 985, 190);
+        panelAgregarAccesorio.setBackground(backgroundColor);
+
+        String[] animalstr = {"roca", "arbol", "nave", "planta"};
+        int padding = 10;
+        int ancho = 200;
+        int margen = (985 - (ancho + padding)*animalstr.length)/2 ;
+        for (int i = 0; i < animalstr.length; i++) {
+            JButton btn = new JButton(animalstr[i]);
+            btn.setBounds(margen + padding*i + ancho*i, 10, ancho,200);
+            btn.setBackground(btnColor);
+
+            panelAgregarAccesorio.add(btn);
+        }
+    }
 
     public void mostrarPanelSeleccion(Boolean val){
 
@@ -100,7 +138,17 @@ public class PanelEditar extends JPanel{
         this.repaint();
         if(val){this.add(panelAgregarAnimal);}
         else {this.remove(panelAgregarAnimal);}
-        
+
+
+        this.repaint();
+    }
+
+    public void mostrarPanelAgregarAccesorio(Boolean val){
+
+        this.repaint();
+        if(val){this.add(panelAgregarAccesorio);}
+        else {this.remove(panelAgregarAccesorio);}
+
         this.repaint();
     }
 }
