@@ -1,4 +1,6 @@
 package Interfaz;
+import Logica.TipoHabitat;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.image.*;
@@ -31,6 +33,11 @@ public class Ventana extends  JFrame {
         };
         this.setContentPane(panel);
         this.setVisible(true);
+
+    }
+
+    public void apretarHabitat(){
+        HabitatGrafico habitat = new HabitatGrafico(TipoHabitat.POLAR);
 
     }
 }
