@@ -1,17 +1,20 @@
-package Interfaz;
+package Interfaz.Animal_Y_Comida;
 
+import Interfaz.GeneradorImagen;
+import Interfaz.Habitat.HabitatGrafico;
+import Interfaz.Habitat.PanelHabitat;
 import Logica.Comida;
 
 import javax.swing.*;
 
 public class ComidaGrafica implements GeneradorImagen, Runnable{
-    private final PanelPrincipal panelHabitat;
+    private final PanelHabitat panelHabitat;
     private final JLabel label;
     private final Comida comida;
     private int posicionX;
     private int posicionY;
 
-    public ComidaGrafica(Comida comida, int posicionX, int posicionY, PanelPrincipal panelHabitat){
+    public ComidaGrafica(Comida comida, int posicionX, int posicionY, PanelHabitat panelHabitat){
         this.panelHabitat = panelHabitat;
         this.comida = comida;
         this.posicionX = posicionX - 50;
@@ -23,7 +26,7 @@ public class ComidaGrafica implements GeneradorImagen, Runnable{
     public Comida getComida() {return this.comida;}
     public int getPosicionX() {return this.posicionX;}
     public int getPosicionY() {return this.posicionY;}
-    public JPanel getPanelHabitat() {return panelHabitat;}
+    public PanelHabitat getPanelHabitat() {return panelHabitat;}
 
     @Override
     public void run() {
