@@ -1,7 +1,7 @@
 package Logica.Animales;
 
-import Logica.Comidas.Comida;
-import Logica.Comidas.Trigo;
+import Interfaz.PanelPrincipal;
+import Logica.Comida;
 
 import javax.swing.*;
 
@@ -9,13 +9,13 @@ public class Vaca extends Animal{
     public final static String familiaTaxonomica = "Ave";
     public final static int temperaturaAdecuada = 24; //Grados Celcius
 
-    public Vaca(int posicionXinicial, int posicionYinicial, JPanel panelHabitat) {
+    public Vaca(int posicionXinicial, int posicionYinicial, PanelPrincipal panelHabitat) {
         super(posicionXinicial, posicionYinicial, panelHabitat);
     }
 
     @Override
     public void Comer(Comida comida) {
-        if(comida instanceof Trigo){
+        if(comida == Comida.Pasto){
             System.out.println("Que rico, pasto amarillo");
         }
         else{

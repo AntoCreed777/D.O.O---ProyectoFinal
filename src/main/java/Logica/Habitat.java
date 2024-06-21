@@ -1,7 +1,7 @@
 package Logica;
 
 import Logica.Animales.Animal;
-import Logica.Comidas.Comida;
+import Logica.Comida;
 
 import java.util.ArrayList;
 import java.util.List;

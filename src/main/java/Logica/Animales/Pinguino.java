@@ -1,7 +1,7 @@
 package Logica.Animales;
 
-import Logica.Comidas.Comida;
-import Logica.Comidas.Pescado;
+import Interfaz.PanelPrincipal;
+import Logica.Comida;
 
 import javax.swing.*;
 
@@ -9,13 +9,13 @@ public class Pinguino extends Animal{
     public final static String familiaTaxonomica = "Ave";
     public final static int temperaturaAdecuada = -5; //Grados Celcius
 
-    public Pinguino(int posicionXinicial, int posicionYinicial, JPanel panelHabitat){
+    public Pinguino(int posicionXinicial, int posicionYinicial, PanelPrincipal panelHabitat){
         super(posicionXinicial, posicionYinicial, panelHabitat);
     }
 
     @Override
     public void Comer(Comida comida) {
-        if(comida instanceof Pescado){
+        if(comida == Comida.Pescado){
             System.out.println("Comiendome mi Pescadito :)");
         }
         else{
