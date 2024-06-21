@@ -1,22 +1,20 @@
 package Logica.Animales;
 
-import javax.swing.*;
+import java.awt.*;
 import java.util.Random;
 
-import Interfaz.PanelPrincipal;
+import Interfaz.Habitat.PanelHabitat;
 import Logica.Comida;
 
 public abstract class Animal {
     private int posicionX;
     private int posicionY;
-    private final int pantallaLimiteInferior;
-    private final int pantallaLimiteDerecho;
-    private final PanelPrincipal panelHabitat;      //Panel del habitat al que pertenece el animal
+    private int anchoImg;
+    private int altoImg;
+    private final PanelHabitat panelHabitat;      //Panel del habitat al que pertenece el animal
 
 
-    public Animal(int posicionXinicial, int posicionYinicial, PanelPrincipal panelHabitat) {
-        this.pantallaLimiteInferior = panelHabitat.getPreferredSize().height - 1;
-        this.pantallaLimiteDerecho = panelHabitat.getPreferredSize().width - 1;
+    public Animal(int posicionXinicial, int posicionYinicial, PanelHabitat panelHabitat) {
         this.posicionX = posicionXinicial;
         this.posicionY = posicionYinicial;
         this.panelHabitat = panelHabitat;
@@ -33,12 +31,12 @@ public abstract class Animal {
                 }
                 break;
             case 1: //Sur
-                if(posicionY < pantallaLimiteInferior){
+                if(posicionY + altoImg < panelHabitat.getHeight()){
                     posicionY+=1;
                 }
                 break;
             case 2: //Este
-                if(posicionX < pantallaLimiteDerecho){
+                if(posicionX + anchoImg < panelHabitat.getWidth()){
                     posicionX+=1;
                 }
                 break;
@@ -50,10 +48,13 @@ public abstract class Animal {
         }
     }
 
-    public PanelPrincipal getPanelHabitat() {return panelHabitat;}
+    public PanelHabitat getPanelHabitat() {return panelHabitat;}
 
     public int getPosicionX() {return posicionX;}
     public int getPosicionY() {return posicionY;}
+
+    public void setAnchoImg(int anchoImg){this.anchoImg = anchoImg;}
+    public void setAltoImg(int altoImg){this.altoImg = altoImg;}
 
     public abstract void MeterSonido();
 

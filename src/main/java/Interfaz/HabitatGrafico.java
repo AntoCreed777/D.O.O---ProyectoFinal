@@ -1,5 +1,6 @@
 package Interfaz;
 
+import Interfaz.Animal_Y_Comida.AnimalGrafico;
 import Logica.Animales.Animal;
 import Logica.TipoHabitat;
 

@@ -1,16 +1,9 @@
 package Interfaz;
 
+import Interfaz.Habitat.HabitatGrafico;
 import Logica.*;
-import Logica.Animales.*;
 
 import javax.swing.*;
-import java.awt.*;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
-import java.awt.image.*;
-import java.io.*;
-import java.util.ArrayList;
-import javax.imageio.ImageIO;
 
 
 public class Ventana extends  JFrame{
