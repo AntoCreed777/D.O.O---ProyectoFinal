@@ -9,14 +9,14 @@ import java.lang.Boolean;
 public class PanelEditar extends JPanel{
     private JPanel panelSeleccion;
     private JPanel panelAgregarAnimal = null;
-    private int btnColor = 0xFAF3DD;
-    private int backgroundColor = 0x68B0AB;
+    private final int btnColor = 0xFAF3DD;
+    private final int backgroundColor = 0x68B0AB;
 
 
     public PanelEditar() {
 
         this.setBackground(new Color(backgroundColor));
-        this.setBounds(0, 420, 1100, 220);
+        this.setBounds(0, 420, 1085, 220);
         this.setLayout(null);
 
         crearPanelSeleccion();
@@ -28,8 +28,8 @@ public class PanelEditar extends JPanel{
 
     public void crearPanelSeleccion(){
 
-        panelSeleccion = new JPanel(new GridLayout(1, 0, 10,0 ));
-        panelSeleccion.setBounds(50,10,1000, 190);
+        panelSeleccion = new JPanel(new GridLayout(1, 0, 10,0));
+        panelSeleccion.setBounds(50,10,985, 190);
         panelSeleccion.setBackground(new Color(backgroundColor));
 
 
@@ -67,7 +67,7 @@ public class PanelEditar extends JPanel{
     public void crearPanelAgregarAnimal(){
 
         panelAgregarAnimal = new JPanel(new GridLayout(1, 0, 10,0));
-        panelAgregarAnimal.setBounds(50, 10, 1000, 190);
+        panelAgregarAnimal.setBounds(50, 10, 985, 190);
         panelAgregarAnimal.setBackground(new Color(backgroundColor));
 
         String[] animalstr = {"vaca", "leon", "pinguino"};
