@@ -73,6 +73,7 @@ public class HabitatGrafico extends JFrame implements GeneradorImagen {
             panelHabitat.maximizarPanel();
 
             panelEditar.mostrarPanelAgregarAccesorio(false);
+            panelEditar.mostrarPanelAgregarComida(false);
             panelEditar.mostrarPanelAgregarAnimal(false);
             panelEditar.mostrarPanelSeleccion(true);
             panelEditar.setVisible(false);

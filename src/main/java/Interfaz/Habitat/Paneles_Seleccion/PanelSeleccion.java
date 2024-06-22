@@ -19,6 +19,7 @@ public class PanelSeleccion extends JPanel {
         this.panelEditar = panelEditar;
         this.btnColor = btnColor;
 
+        this.add(btnComida());
         this.add(btnAnimal());
         this.add(btnAccesorio());
         this.add(btnEliminar());
@@ -64,6 +65,27 @@ public class PanelSeleccion extends JPanel {
             public void mouseExited(MouseEvent e) {}
         });
         return btnAccesorio;
+    }
+
+    private JButton btnComida(){
+        JButton btnComida = new JButton("Comida");
+        btnComida.setBackground(this.btnColor);
+        btnComida.addMouseListener(new MouseListener() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                panelEditar.mostrarPanelSeleccion(false);
+                panelEditar.mostrarPanelAgregarComida(true);}
+            @Override
+            public void mousePressed(MouseEvent e) {}
+            @Override
+            public void mouseReleased(MouseEvent e) {}
+            @Override
+            public void mouseEntered(MouseEvent e) {}
+            @Override
+            public void mouseExited(MouseEvent e) {}
+        });
+
+        return btnComida;
     }
 
     private JButton btnEliminar(){

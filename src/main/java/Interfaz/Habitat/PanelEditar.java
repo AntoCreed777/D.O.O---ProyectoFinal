@@ -2,6 +2,7 @@ package Interfaz.Habitat;
 
 import Interfaz.Habitat.Paneles_Seleccion.PanelAgregarAccesorio;
 import Interfaz.Habitat.Paneles_Seleccion.PanelAgregarAnimal;
+import Interfaz.Habitat.Paneles_Seleccion.PanelAgregarComida;
 import Interfaz.Habitat.Paneles_Seleccion.PanelSeleccion;
 
 import javax.swing.*;
@@ -12,6 +13,7 @@ public class PanelEditar extends JPanel{
     private JPanel panelSeleccion;
     private final PanelAgregarAnimal panelAgregarAnimal;
     private final PanelAgregarAccesorio panelAgregarAccesorio;
+    private final PanelAgregarComida panelAgregarComida;
     private final Color btnColor = new Color(0xFAF3DD);
     private final Color backgroundColor = new Color(0x68B0AB);
     private final HabitatGrafico habitatGrafico;
@@ -26,6 +28,7 @@ public class PanelEditar extends JPanel{
 
         panelAgregarAnimal = new PanelAgregarAnimal(backgroundColor, btnColor, habitatGrafico);
         panelAgregarAccesorio = new PanelAgregarAccesorio();
+        panelAgregarComida = new PanelAgregarComida(backgroundColor, btnColor, habitatGrafico);
         panelSeleccion = new PanelSeleccion(backgroundColor,btnColor, this);
 
         mostrarPanelSeleccion(true);
@@ -51,6 +54,12 @@ public class PanelEditar extends JPanel{
     public void mostrarPanelAgregarAccesorio(Boolean mostrar){
         if(mostrar){this.add(panelAgregarAccesorio);}
         else {this.remove(panelAgregarAccesorio);}
+        this.repaint();
+    }
+
+    public void mostrarPanelAgregarComida(Boolean mostrar){
+        if(mostrar){this.add(panelAgregarComida);}
+        else {this.remove(panelAgregarComida);}
         this.repaint();
     }
 
