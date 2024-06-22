@@ -1,12 +1,13 @@
 package Logica.Animales;
 
+import java.awt.*;
 import java.util.Random;
 
 import Interfaz.Habitat.PanelHabitat;
 import Logica.Comida;
 
 ////PENDIENTE////
-//Redimencionar la imagen, posicion del mouse//
+//posicion del mouse//
 
 public abstract class Animal {
     private int posicionX;
@@ -138,6 +139,19 @@ public abstract class Animal {
 
     public int getPosicionX() {return posicionX;}
     public int getPosicionY() {return posicionY;}
+
+    public void rePosicionar(Rectangle maximizado, Rectangle minimizado) {
+        if (maximizado.width == panelHabitat.getWidth()) { // Si se maximizó
+            posicionX = (int)(((double) posicionX / (double) minimizado.width) * maximizado.width);
+            posicionY = (int)(((double) posicionY / (double) minimizado.height) * maximizado.height);
+        }
+        else { // Si se minimizó
+            posicionX = (int)(((double) posicionX / (double) maximizado.width) * minimizado.width);
+            posicionY = (int)(((double) posicionY / (double) maximizado.height) * minimizado.height);
+            if(posicionX + anchoImg > minimizado.width){posicionX = minimizado.width - anchoImg;}
+            if(posicionY + altoImg > minimizado.height){posicionY = minimizado.height - altoImg;}
+        }
+    }
 
     public void setAnchoImg(int anchoImg){this.anchoImg = anchoImg;}
     public void setAltoImg(int altoImg){this.altoImg = altoImg;}

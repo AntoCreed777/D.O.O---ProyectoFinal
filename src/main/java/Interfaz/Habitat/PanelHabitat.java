@@ -18,9 +18,11 @@ public class PanelHabitat extends JPanel {
     private BufferedImage imagen;
     private final ArrayList<AnimalGrafico> listaAnimales;
     private final List<ComidaGrafica> contenidoComida;
+    private final Rectangle maximizado = new Rectangle(100, 0, 900, 630);
+    private final Rectangle minimizado = new Rectangle(190, 0, 700,420);
 
     public PanelHabitat(int backgroundColor, TipoHabitat tipo) {
-        this.setBounds(100, 0, 900, 630);
+        this.setBounds(maximizado);
         this.setBackground(new Color(backgroundColor));
 
         listaAnimales = new ArrayList<AnimalGrafico>();
@@ -71,12 +73,20 @@ public class PanelHabitat extends JPanel {
     }
 
     public void maximizarPanel(){
-        this.setBounds(100, 0, 900, 630);
+        this.setBounds(maximizado);
+        for(AnimalGrafico animal : listaAnimales){
+            animal.rePosicionar(maximizado,minimizado);
+            animal.reDimencionar(maximizado);
+        }
         this.repaint();
     }
 
     public void minimizarPanel(){
-        this.setBounds(190, 0, 700,420);
+        this.setBounds(minimizado);
+        for(AnimalGrafico animal : listaAnimales){
+            animal.rePosicionar(maximizado,minimizado);
+            animal.reDimencionar(maximizado);
+        }
         this.repaint();
     }
 
