@@ -6,9 +6,6 @@ import java.util.Random;
 import Interfaz.Habitat.PanelHabitat;
 import Logica.Comida;
 
-////PENDIENTE////
-//posicion del mouse//
-
 public abstract class Animal {
     private int posicionX;
     private int posicionY;
