@@ -11,13 +11,13 @@ public class PanelSeleccion extends JPanel {
     private final PanelEditar panelEditar;
     private final Color btnColor;
 
-    public PanelSeleccion(int backgroundColor, int btnColor, PanelEditar panelEditar) {
+    public PanelSeleccion(Color backgroundColor, Color btnColor, PanelEditar panelEditar) {
         this.setBounds(50,10,1000, 190);
-        this.setBackground(new Color(backgroundColor));
+        this.setBackground(backgroundColor);
         this.setLayout(new GridLayout(1, 3, 10, 0));
 
         this.panelEditar = panelEditar;
-        this.btnColor = new Color(btnColor);
+        this.btnColor = btnColor;
 
         this.add(btnAnimal());
         this.add(btnAccesorio());

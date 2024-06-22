@@ -12,13 +12,13 @@ public class PanelEditar extends JPanel{
     private JPanel panelSeleccion;
     private final PanelAgregarAnimal panelAgregarAnimal;
     private final PanelAgregarAccesorio panelAgregarAccesorio;
-    private final int btnColor = 0xFAF3DD;
-    private final int backgroundColor = 0x68B0AB;
+    private final Color btnColor = new Color(0xFAF3DD);
+    private final Color backgroundColor = new Color(0x68B0AB);
     private final HabitatGrafico habitatGrafico;
 
 
     public PanelEditar(HabitatGrafico habitatGrafico) {
-        this.setBackground(new Color(backgroundColor));
+        this.setBackground(backgroundColor);
         this.setBounds(0, 420, 1100, 250);
         this.setLayout(null);
 

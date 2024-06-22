@@ -10,17 +10,17 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
 public class PanelAgregarAnimal extends JPanel {
-    private final int backgroundColor;
-    private final int btnColor;
+    private final Color backgroundColor;
+    private final Color btnColor;
     private final HabitatGrafico habitatGrafico;
 
-    public PanelAgregarAnimal(int backgroundColor, int btnColor, HabitatGrafico habitatGrafico) {
+    public PanelAgregarAnimal(Color backgroundColor, Color btnColor, HabitatGrafico habitatGrafico) {
         this.backgroundColor = backgroundColor;
         this.btnColor = btnColor;
         this.habitatGrafico = habitatGrafico;
 
         this.setBounds(50, 10, 1000, 190);
-        this.setBackground(new Color(backgroundColor));
+        this.setBackground(backgroundColor);
 
         String[] animalstr = {"vaca", "leon", "pinguino"};
         //this.setLayout(new GridLayout(1, animalstr.length, 10, 0));
@@ -39,7 +39,7 @@ public class PanelAgregarAnimal extends JPanel {
 
     private JButton agregarBotones(String animal){
         JButton btn = new JButton(animal);
-        btn.setBackground(new Color(btnColor));
+        btn.setBackground(btnColor);
 
         btn.addMouseListener(new MouseListener() {
             @Override
