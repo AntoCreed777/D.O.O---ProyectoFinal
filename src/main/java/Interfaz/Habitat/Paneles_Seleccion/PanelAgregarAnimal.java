@@ -45,15 +45,13 @@ public class PanelAgregarAnimal extends JPanel {
             @Override
             public void mouseClicked(MouseEvent e) {
                 AnimalGrafico animalGrafico = switch (animal) {
-                    case "vaca" -> new AnimalGrafico(new Vaca(100, 100, habitatGrafico.getPanelHabitat()));
-                    case "leon" -> new AnimalGrafico(new Leon(100, 100, habitatGrafico.getPanelHabitat()));
-                    case "pinguino" -> new AnimalGrafico(new Pinguino(100, 100, habitatGrafico.getPanelHabitat()));
+                    case "vaca" -> new AnimalGrafico(new Vaca(habitatGrafico.getPanelHabitat().clickMouse.x, habitatGrafico.getPanelHabitat().clickMouse.y, habitatGrafico.getPanelHabitat()));
+                    case "leon" -> new AnimalGrafico(new Leon(habitatGrafico.getPanelHabitat().clickMouse.x, habitatGrafico.getPanelHabitat().clickMouse.y, habitatGrafico.getPanelHabitat()));
+                    case "pinguino" -> new AnimalGrafico(new Pinguino(habitatGrafico.getPanelHabitat().clickMouse.x, habitatGrafico.getPanelHabitat().clickMouse.y, habitatGrafico.getPanelHabitat()));
                     default -> null;
                 };
 
-                if (animalGrafico != null) {
-                    habitatGrafico.getPanelHabitat().agregarAnimal(animalGrafico);
-                }
+                if (animalGrafico != null) {habitatGrafico.getPanelHabitat().agregarAnimal(animalGrafico);}
             }
 
             @Override

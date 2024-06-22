@@ -20,9 +20,9 @@ public abstract class Animal {
     //Sur=4, SurEste=5, Este=6, NorEste=7
 
     public Animal(int posicionXinicial, int posicionYinicial, PanelHabitat panelHabitat) {
+        this.panelHabitat = panelHabitat;
         this.posicionX = posicionXinicial;
         this.posicionY = posicionYinicial;
-        this.panelHabitat = panelHabitat;
     }
 
     public void Moverse(){
@@ -155,6 +155,15 @@ public abstract class Animal {
 
     public void setAnchoImg(int anchoImg){this.anchoImg = anchoImg;}
     public void setAltoImg(int altoImg){this.altoImg = altoImg;}
+
+    public void validarPosicion(){
+        if(posicionX + anchoImg > panelHabitat.getWidth()){
+            posicionX = panelHabitat.getWidth() - anchoImg;
+        }
+        if(posicionY + altoImg > panelHabitat.getHeight()){
+            posicionY = panelHabitat.getHeight() - altoImg;
+        }
+    }
 
     public abstract void MeterSonido();
 

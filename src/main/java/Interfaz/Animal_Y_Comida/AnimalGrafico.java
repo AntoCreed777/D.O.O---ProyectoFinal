@@ -112,4 +112,6 @@ public class AnimalGrafico implements GeneradorImagen, Runnable{
         }
 
     }
+
+    public void validarPosicion(){animal.validarPosicion();}
 }
