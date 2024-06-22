@@ -25,7 +25,7 @@ public class HabitatGrafico extends JFrame implements GeneradorImagen {
         this.setSize(new Dimension(1100, 670));
         this.getContentPane().setBackground(new Color(backgroundColor));
         this.setLayout(null);
-        this.setTitle("habitat");
+        this.setTitle("Hábitat");
         this.setResizable(true);
 
         panelHabitat = new PanelHabitat(backgroundColor, tipoHabitat);
@@ -71,6 +71,7 @@ public class HabitatGrafico extends JFrame implements GeneradorImagen {
         else {
             panelHabitat.maximizarPanel();
 
+            panelEditar.mostrarPanelAgregarAccesorio(false);
             panelEditar.mostrarPanelAgregarAnimal(false);
             panelEditar.mostrarPanelSeleccion(true);
             panelEditar.setVisible(false);
