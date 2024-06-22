@@ -9,34 +9,52 @@ import java.util.Iterator;
 import java.util.List;
 
 public class AnimalGrafico implements GeneradorImagen, Runnable{
-    private JLabel label = null;
-    private int width;
-    private int height;
+    private final String imagen;
+    private JLabel label;
+    private final int widthMax;
+    private final int heightMax;
+    private final  int widthMin;
+    private final int heightMin;
     private final Animal animal;
 
     public AnimalGrafico(Animal animal){
         this.animal = animal;
 
-        if(animal instanceof Leon){
-            width = 0;
-            height = 0;
-            label = GeneradorImagen.ImageLabel("leonPNG",0,0,width,height);
+        switch (animal) {
+            case Leon leon -> {
+                widthMax = 0;
+                heightMax = 0;
+                widthMin = 0;
+                heightMin = 0;
+                imagen = "leonPNG";
+            }
+            case Pinguino pinguino -> {
+                widthMax = 0;
+                heightMax = 0;
+                widthMin = 0;
+                heightMin = 0;
+                imagen = "pinguinoPNG";
+            }
+            case Vaca vaca -> {
+                widthMax = 100;
+                heightMax = 100;
+                widthMin = 80;
+                heightMin = 80;
+                imagen = "src/main/java/Interfaz/imagenes/Vaca.png";
+            }
+            case null, default -> {
+                widthMax = 0;
+                heightMax = 0;
+                widthMin = 0;
+                heightMin = 0;
+                imagen = null;
+            }
         }
 
-        else if(animal instanceof Pinguino){
-            width = 0;
-            height = 0;
-            label = GeneradorImagen.ImageLabel("pinguinoPNG",0,0,width,height);
-        }
+        label = GeneradorImagen.ImageLabel(imagen,animal.getPosicionX(),animal.getPosicionY(), widthMin, heightMin);
 
-        else if(animal instanceof Vaca){
-            width = 100;
-            height = 100;
-            label = GeneradorImagen.ImageLabel("src/main/java/Interfaz/imagenes/Vaca.png",animal.getPosicionX(),animal.getPosicionY(),width,height);
-        }
-
-        animal.setAltoImg(height);
-        animal.setAnchoImg(width);
+        animal.setAltoImg(heightMax);
+        animal.setAnchoImg(widthMax);
     }
 
     @Override
@@ -45,7 +63,7 @@ public class AnimalGrafico implements GeneradorImagen, Runnable{
             while (true) {
                 //Proceso de movimiento del Animal
                 this.animal.Moverse();
-                label.setBounds(animal.getPosicionX(),animal.getPosicionY(),width,height);
+                label.setBounds(animal.getPosicionX(),animal.getPosicionY(), widthMax, heightMax);
                 this.animal.getPanelHabitat().repaint();
 
                 //Zona en que alcanza la comida el animal (Su hitbox)
@@ -69,11 +87,31 @@ public class AnimalGrafico implements GeneradorImagen, Runnable{
                     }
                 }
 
-                Thread.sleep(0);
+                Thread.sleep(10);
             }
         }
         catch (InterruptedException e) {e.printStackTrace();}
     }
 
     public JLabel getLabel(){return this.label;}
+
+    public void rePosicionar(Rectangle maximizado, Rectangle minimizado){animal.rePosicionar(maximizado, minimizado);}
+
+    public void reDimencionar(Rectangle maximizado){
+        if(maximizado.width == animal.getPanelHabitat().getWidth()) {    //Si se maximizo
+            animal.getPanelHabitat().remove(label);
+            label = GeneradorImagen.ImageLabel(imagen, animal.getPosicionX(), animal.getPosicionY(), widthMax, heightMax);
+            animal.getPanelHabitat().add(label);
+            animal.getPanelHabitat().repaint();
+        }
+        else{   //Si se minimizo
+            animal.getPanelHabitat().remove(label);
+            label = GeneradorImagen.ImageLabel(imagen, animal.getPosicionX(), animal.getPosicionY(), widthMin, heightMin);
+            animal.getPanelHabitat().add(label);
+            animal.getPanelHabitat().repaint();
+        }
+
+    }
+
+    public void validarPosicion(){animal.validarPosicion();}
 }
