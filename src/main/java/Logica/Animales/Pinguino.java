@@ -12,12 +12,14 @@ public class Pinguino extends Animal{
     }
 
     @Override
-    public void Comer(Comida comida) {
+    public boolean Comer(Comida comida) {
         if(comida == Comida.Pescado){
             System.out.println("Comiendome mi Pescadito :)");
+            return true;
         }
         else{
             System.out.println("NO ME GUSTAA");
+            return false;
         }
     }
 

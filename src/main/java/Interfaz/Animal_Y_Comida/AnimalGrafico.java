@@ -22,18 +22,18 @@ public class AnimalGrafico implements GeneradorImagen, Runnable{
 
         switch (animal) {
             case Leon leon -> {
-                widthMax = 0;
-                heightMax = 0;
-                widthMin = 0;
-                heightMin = 0;
-                imagen = "leonPNG";
+                widthMax = 100;
+                heightMax = 100;
+                widthMin = 80;
+                heightMin = 80;
+                imagen = "src/main/java/Interfaz/imagenes/Leon.png";
             }
             case Pinguino pinguino -> {
-                widthMax = 0;
-                heightMax = 0;
-                widthMin = 0;
-                heightMin = 0;
-                imagen = "pinguinoPNG";
+                widthMax = 100;
+                heightMax = 100;
+                widthMin = 80;
+                heightMin = 80;
+                imagen = "src/main/java/Interfaz/imagenes/Pinguino.png";
             }
             case Vaca vaca -> {
                 widthMax = 100;
@@ -70,7 +70,7 @@ public class AnimalGrafico implements GeneradorImagen, Runnable{
                 Rectangle rectangleA = this.label.getBounds();
 
                 //Lista de la comida disponible dentro del habitat
-                List<ComidaGrafica> comidas = this.animal.getPanelHabitat().getContenidoComida();
+                List<ComidaGrafica> comidas = this.animal.getPanelHabitat().getListaComida();
 
                 synchronized(comidas){
                     Iterator<ComidaGrafica> iterator = comidas.iterator();
@@ -78,9 +78,11 @@ public class AnimalGrafico implements GeneradorImagen, Runnable{
                         ComidaGrafica comida = iterator.next();
                         Rectangle rectangleC = comida.getLabel().getBounds();
                         if(rectangleC.intersects(rectangleA)){
-                            this.animal.Comer(comida.getComida());  //Come su comida
-                            this.animal.getPanelHabitat().remove(comida.getLabel());
-                            iterator.remove();
+                            //Come su comida
+                            if(this.animal.Comer(comida.getComida())){
+                                this.animal.getPanelHabitat().remove(comida.getLabel());
+                                iterator.remove();
+                            }
                             this.animal.getPanelHabitat().repaint();
                             break;
                         }
