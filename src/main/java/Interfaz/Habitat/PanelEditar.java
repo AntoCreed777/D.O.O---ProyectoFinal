@@ -1,5 +1,6 @@
 package Interfaz.Habitat;
 
+import Interfaz.Habitat.Paneles_Seleccion.PanelAgregarAccesorio;
 import Interfaz.Habitat.Paneles_Seleccion.PanelAgregarAnimal;
 import Interfaz.Habitat.Paneles_Seleccion.PanelSeleccion;
 
@@ -10,6 +11,7 @@ import java.lang.Boolean;
 public class PanelEditar extends JPanel{
     private JPanel panelSeleccion;
     private final PanelAgregarAnimal panelAgregarAnimal;
+    private final PanelAgregarAccesorio panelAgregarAccesorio;
     private final int btnColor = 0xFAF3DD;
     private final int backgroundColor = 0x68B0AB;
     private final HabitatGrafico habitatGrafico;
@@ -23,6 +25,7 @@ public class PanelEditar extends JPanel{
         this.habitatGrafico = habitatGrafico;
 
         panelAgregarAnimal = new PanelAgregarAnimal(backgroundColor, btnColor, habitatGrafico);
+        panelAgregarAccesorio = new PanelAgregarAccesorio();
         panelSeleccion = new PanelSeleccion(backgroundColor,btnColor, this);
 
         mostrarPanelSeleccion(true);
@@ -44,6 +47,13 @@ public class PanelEditar extends JPanel{
         else {this.remove(panelAgregarAnimal);}
         this.repaint();
     }
+
+    public void mostrarPanelAgregarAccesorio(Boolean mostrar){
+        if(mostrar){this.add(panelAgregarAccesorio);}
+        else {this.remove(panelAgregarAccesorio);}
+        this.repaint();
+    }
+
 
     public HabitatGrafico getHabitatGrafico(){return habitatGrafico;}
 }
