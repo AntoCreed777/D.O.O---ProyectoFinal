@@ -4,11 +4,10 @@ import Interfaz.Habitat.PanelHabitat;
 import Logica.Comida;
 
 public class Pinguino extends Animal{
-    public final static String familiaTaxonomica = "Ave";
     public final static int temperaturaAdecuada = -5; //Grados Celcius
 
     public Pinguino(int posicionXinicial, int posicionYinicial, PanelHabitat panelHabitat){
-        super(posicionXinicial, posicionYinicial, panelHabitat);
+        super(posicionXinicial, posicionYinicial, panelHabitat, "Ave");
     }
 
     @Override
