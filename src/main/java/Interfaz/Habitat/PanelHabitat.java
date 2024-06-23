@@ -2,6 +2,7 @@ package Interfaz.Habitat;
 
 import Interfaz.Animal_Y_Comida.*;
 import Interfaz.GeneradorImagen;
+import Logica.Excepciones.NoMezclarAnimales;
 import Logica.TipoHabitat;
 
 import javax.imageio.ImageIO;
@@ -101,7 +102,8 @@ public class PanelHabitat extends JPanel implements MouseListener {
             new Thread(animal).start();     //Se inicia el movimiento de los animales
         }
         else{
-            System.out.println("No se pueden mezclar familias");
+            Exception e = new NoMezclarAnimales(familia);
+            JOptionPane.showMessageDialog(null, e.getMessage());
         }
 
 
