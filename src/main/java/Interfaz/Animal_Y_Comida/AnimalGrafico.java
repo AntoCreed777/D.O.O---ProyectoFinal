@@ -100,18 +100,14 @@ public class AnimalGrafico implements GeneradorImagen, Runnable{
     public void rePosicionar(Rectangle maximizado, Rectangle minimizado){animal.rePosicionar(maximizado, minimizado);}
 
     public void reDimencionar(Rectangle maximizado){
+        animal.getPanelHabitat().remove(label);
         if(maximizado.width == animal.getPanelHabitat().getWidth()) {    //Si se maximizo
-            animal.getPanelHabitat().remove(label);
             label = GeneradorImagen.ImageLabel(imagen, animal.getPosicionX(), animal.getPosicionY(), widthMax, heightMax);
-            animal.getPanelHabitat().add(label);
-            animal.getPanelHabitat().repaint();
         }
         else{   //Si se minimizo
-            animal.getPanelHabitat().remove(label);
             label = GeneradorImagen.ImageLabel(imagen, animal.getPosicionX(), animal.getPosicionY(), widthMin, heightMin);
-            animal.getPanelHabitat().add(label);
-            animal.getPanelHabitat().repaint();
         }
+        animal.getPanelHabitat().add(label);
 
     }
 

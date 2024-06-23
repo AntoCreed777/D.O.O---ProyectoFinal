@@ -34,7 +34,7 @@ public class ComidaGrafica implements GeneradorImagen, Runnable{
     public void run() {
         int posicionY = this.posicionY - 100;   //Lo muevo 100 pixeles arriba de donde debe aparecer
 
-        while(this.posicionY != posicionY){
+        while(this.posicionY > posicionY){
             this.label.setBounds(this.posicionX, posicionY, 100, 100);
             panelHabitat.repaint();
             posicionY++;
@@ -47,6 +47,13 @@ public class ComidaGrafica implements GeneradorImagen, Runnable{
             panelHabitat.getListaComida().add(this);    //Cuando llega al suelo se agrega a la lista
         }
 
+        while(true){
+            label.setBounds(this.posicionX,this.posicionY,Max,Max);
+            try{
+                Thread.sleep(1);
+            }
+            catch (InterruptedException e) {throw new RuntimeException(e);}
+        }
     }
 
     public void rePosicionarDimencionar(Rectangle maximizado, Rectangle minimizado) {
@@ -58,6 +65,7 @@ public class ComidaGrafica implements GeneradorImagen, Runnable{
             posicionY = (int)(((double) posicionY / (double) minimizado.height) * maximizado.height);
 
             label = GeneradorImagen.ImageLabel(comida.getImagen(), posicionX, posicionY,Max,Max);
+
         }
         else { // Si se minimizó
             posicionX = (int)(((double) posicionX / (double) maximizado.width) * minimizado.width);
@@ -68,7 +76,6 @@ public class ComidaGrafica implements GeneradorImagen, Runnable{
             label = GeneradorImagen.ImageLabel(comida.getImagen(), posicionX, posicionY,Min,Min);
         }
         panelHabitat.add(label);
-        panelHabitat.repaint();
         System.out.println("Despues" + posicionX + " " + posicionY);
     }
 
