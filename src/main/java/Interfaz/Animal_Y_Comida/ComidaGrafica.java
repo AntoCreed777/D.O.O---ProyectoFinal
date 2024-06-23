@@ -1,25 +1,27 @@
 package Interfaz.Animal_Y_Comida;
 
 import Interfaz.GeneradorImagen;
-import Interfaz.Habitat.HabitatGrafico;
 import Interfaz.Habitat.PanelHabitat;
 import Logica.Comida;
 
 import javax.swing.*;
+import java.awt.*;
 
 public class ComidaGrafica implements GeneradorImagen, Runnable{
     private final PanelHabitat panelHabitat;
-    private final JLabel label;
+    private JLabel label;
     private final Comida comida;
     private int posicionX;
     private int posicionY;
+    private final int Max = 100;
+    private final int Min = 80;
 
     public ComidaGrafica(Comida comida, int posicionX, int posicionY, PanelHabitat panelHabitat){
         this.panelHabitat = panelHabitat;
         this.comida = comida;
-        this.posicionX = posicionX - 50;
-        this.posicionY = posicionY - 50;
-        this.label = GeneradorImagen.ImageLabel(comida.getImagen(), posicionX, posicionY,100,100);
+        this.posicionX = posicionX;
+        this.posicionY = posicionY;
+        this.label = GeneradorImagen.ImageLabel(comida.getImagen(), posicionX, posicionY,Min,Min);
     }
 
     public JLabel getLabel() {return this.label;}
@@ -32,7 +34,7 @@ public class ComidaGrafica implements GeneradorImagen, Runnable{
     public void run() {
         int posicionY = this.posicionY - 100;   //Lo muevo 100 pixeles arriba de donde debe aparecer
 
-        while(this.posicionY != posicionY){
+        while(this.posicionY > posicionY){
             this.label.setBounds(this.posicionX, posicionY, 100, 100);
             panelHabitat.repaint();
             posicionY++;
@@ -41,9 +43,48 @@ public class ComidaGrafica implements GeneradorImagen, Runnable{
             catch (InterruptedException e) {throw new RuntimeException(e);}
 
         }
-        synchronized (panelHabitat.getContenidoComida()) {
-            panelHabitat.getContenidoComida().add(this);    //Cuando llega al suelo se agrega a la lista
+        synchronized (panelHabitat.getListaComida()) {
+            panelHabitat.getListaComida().add(this);    //Cuando llega al suelo se agrega a la lista
         }
 
+        while(true){
+            label.setBounds(this.posicionX,this.posicionY,Max,Max);
+            try{
+                Thread.sleep(1);
+            }
+            catch (InterruptedException e) {throw new RuntimeException(e);}
+        }
+    }
+
+    public void rePosicionarDimencionar(Rectangle maximizado, Rectangle minimizado) {
+        System.out.println("Antes" + posicionX + " " + posicionY);
+
+        panelHabitat.remove(label);
+        if (maximizado.width == panelHabitat.getWidth()) { // Si se maximizó
+            posicionX = (int)(((double) posicionX / (double) minimizado.width) * maximizado.width);
+            posicionY = (int)(((double) posicionY / (double) minimizado.height) * maximizado.height);
+
+            label = GeneradorImagen.ImageLabel(comida.getImagen(), posicionX, posicionY,Max,Max);
+
+        }
+        else { // Si se minimizó
+            posicionX = (int)(((double) posicionX / (double) maximizado.width) * minimizado.width);
+            posicionY = (int)(((double) posicionY / (double) maximizado.height) * minimizado.height);
+            if(posicionX + Max > minimizado.width){posicionX = minimizado.width - Max;}
+            if(posicionY + Max > minimizado.height){posicionY = minimizado.height - Max;}
+
+            label = GeneradorImagen.ImageLabel(comida.getImagen(), posicionX, posicionY,Min,Min);
+        }
+        panelHabitat.add(label);
+        System.out.println("Despues" + posicionX + " " + posicionY);
+    }
+
+    public void validarPosicion(){
+        if(posicionX + 100 > panelHabitat.getWidth()){
+            posicionX = panelHabitat.getWidth() - 100;
+        }
+        if(posicionY + 100 > panelHabitat.getHeight()){
+            posicionY = panelHabitat.getHeight() - 100;
+        }
     }
 }

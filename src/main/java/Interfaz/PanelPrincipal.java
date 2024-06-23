@@ -22,15 +22,4 @@ public class PanelPrincipal extends JPanel{
             g.drawImage(imagen, 0, 0, getWidth(), getHeight(), this);
         }
     }
-
-    //@Override
-    //public void mousePressed(MouseEvent e) {
-    //    Point point = e.getPoint();
-    //
-    //    ComidaGrafica comida = new ComidaGrafica(Comida.Pasto, point.x, point.y, this);
-    //    this.add(comida.getLabel());
-    //
-    //    new Thread(comida).start(); //Animacion de caer de la comida
-    //}
-
 }

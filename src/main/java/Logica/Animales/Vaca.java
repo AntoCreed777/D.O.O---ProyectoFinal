@@ -12,12 +12,14 @@ public class Vaca extends Animal{
     }
 
     @Override
-    public void Comer(Comida comida) {
+    public boolean Comer(Comida comida) {
         if(comida == Comida.Pasto){
             System.out.println("Que rico, pasto amarillo");
+            return true;
         }
         else{
             System.out.println("Qeu rico, aire, na mentira, esto apesta :(");
+            return false;
         }
     }
 

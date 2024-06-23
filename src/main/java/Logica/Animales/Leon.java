@@ -12,12 +12,14 @@ public class Leon extends Animal{
     }
 
     @Override
-    public void Comer(Comida comida){
+    public boolean Comer(Comida comida){
         if(comida == Comida.Carne){
             System.out.println("Comiendo la carne, YAM YAM :)");
+            return true;
         }
         else{
             System.out.println("Que asco, no me gusta");
+            return false;
         }
     }
 

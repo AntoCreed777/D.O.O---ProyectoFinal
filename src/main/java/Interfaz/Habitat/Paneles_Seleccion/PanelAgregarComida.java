@@ -1,10 +1,7 @@
 package Interfaz.Habitat.Paneles_Seleccion;
 
-import Interfaz.Animal_Y_Comida.AnimalGrafico;
+import Interfaz.Animal_Y_Comida.ComidaGrafica;
 import Interfaz.Habitat.HabitatGrafico;
-import Logica.Animales.Leon;
-import Logica.Animales.Pinguino;
-import Logica.Animales.Vaca;
 import Logica.Comida;
 
 import javax.swing.*;
@@ -35,20 +32,22 @@ public class PanelAgregarComida extends JPanel {
         int ancho = 200;
         int margen = (985 - (ancho + padding)*comidaStr.length)/2 ;
         for (int i = 0; i < comidaStr.length; i++) {
-            JButton btn = agregarBotones(comidaStr[i].name());
+            JButton btn = agregarBotones(comidaStr[i]);
             btn.setBounds(margen + padding*i + ancho*i, 10, ancho,200);
 
             this.add(btn);
         }
     }
 
-    private JButton agregarBotones(String animal){
-        JButton btn = new JButton(animal);
+    private JButton agregarBotones(Comida comida){
+        JButton btn = new JButton(comida.name());
         btn.setBackground(btnColor);
 
         btn.addMouseListener(new MouseListener() {
             @Override
             public void mouseClicked(MouseEvent e) {
+                ComidaGrafica comidaG = new ComidaGrafica(comida,habitatGrafico.getPanelHabitat().clickMouse.x, habitatGrafico.getPanelHabitat().clickMouse.y,habitatGrafico.getPanelHabitat());
+                habitatGrafico.getPanelHabitat().agregarComida(comidaG);
             }
 
             @Override

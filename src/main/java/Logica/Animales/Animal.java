@@ -164,5 +164,5 @@ public abstract class Animal {
 
     public abstract void MeterSonido();
 
-    public abstract void Comer(Comida comida);
+    public abstract boolean Comer(Comida comida);
 }
