@@ -2,6 +2,7 @@ package Interfaz.Habitat;
 
 import Interfaz.Animal_Y_Comida.*;
 import Interfaz.GeneradorImagen;
+import Logica.Excepciones.NoMezclarAnimales;
 import Logica.TipoHabitat;
 
 import javax.imageio.ImageIO;
@@ -22,6 +23,7 @@ public class PanelHabitat extends JPanel implements MouseListener {
     private final List<ComidaGrafica> listaComida;
     private final Rectangle maximizado = new Rectangle(100, 0, 900, 630);
     private final Rectangle minimizado = new Rectangle(190, 0, 700,420);
+    private String familia = null;
     public Point clickMouse = new Point(0, 0);
 
     public PanelHabitat(int backgroundColor, TipoHabitat tipo) {
@@ -92,10 +94,19 @@ public class PanelHabitat extends JPanel implements MouseListener {
     }
 
     public void agregarAnimal(AnimalGrafico animal){
-        listaAnimales.add(animal);      //Se agrega a la lista de los animales internos
-        animal.validarPosicion();       //Verifica que se encuentre dentro del panel la imagen
-        this.add(animal.getLabel());    //Se agrega al Habitat (JPanel)
-        new Thread(animal).start();     //Se inicia el movimiento de los animales
+        if(familia == null || familia.equals(animal.getFamiliaTaxonomica())){
+            familia = animal.getFamiliaTaxonomica();
+            listaAnimales.add(animal);      //Se agrega a la lista de los animales internos
+            animal.validarPosicion();       //Verifica que se encuentre dentro del panel la imagen
+            this.add(animal.getLabel());    //Se agrega al Habitat (JPanel)
+            new Thread(animal).start();     //Se inicia el movimiento de los animales
+        }
+        else{
+            Exception e = new NoMezclarAnimales(familia);
+            JOptionPane.showMessageDialog(null, e.getMessage());
+        }
+
+
     }
 
     public void agregarComida(ComidaGrafica comida){

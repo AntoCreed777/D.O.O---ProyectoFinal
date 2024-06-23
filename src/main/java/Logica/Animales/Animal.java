@@ -7,6 +7,7 @@ import Interfaz.Habitat.PanelHabitat;
 import Logica.Comida;
 
 public abstract class Animal {
+    private final String familiaTaxonomica;
     private int posicionX;
     private int posicionY;
     private int anchoImg;
@@ -16,10 +17,11 @@ public abstract class Animal {
     //Norte=0, NorOeste=1, Oeste=2, SurOeste=3,
     //Sur=4, SurEste=5, Este=6, NorEste=7
 
-    public Animal(int posicionXinicial, int posicionYinicial, PanelHabitat panelHabitat) {
+    public Animal(int posicionXinicial, int posicionYinicial, PanelHabitat panelHabitat, String familiaTaxonomica) {
         this.panelHabitat = panelHabitat;
         this.posicionX = posicionXinicial;
         this.posicionY = posicionYinicial;
+        this.familiaTaxonomica = familiaTaxonomica;
     }
 
     public void Moverse(){
@@ -165,4 +167,6 @@ public abstract class Animal {
     public abstract void MeterSonido();
 
     public abstract boolean Comer(Comida comida);
+
+    public String getFamiliaTaxonomica(){return familiaTaxonomica;}
 }

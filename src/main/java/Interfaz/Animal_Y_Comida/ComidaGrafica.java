@@ -57,8 +57,6 @@ public class ComidaGrafica implements GeneradorImagen, Runnable{
     }
 
     public void rePosicionarDimencionar(Rectangle maximizado, Rectangle minimizado) {
-        System.out.println("Antes" + posicionX + " " + posicionY);
-
         panelHabitat.remove(label);
         if (maximizado.width == panelHabitat.getWidth()) { // Si se maximizó
             posicionX = (int)(((double) posicionX / (double) minimizado.width) * maximizado.width);
@@ -76,7 +74,6 @@ public class ComidaGrafica implements GeneradorImagen, Runnable{
             label = GeneradorImagen.ImageLabel(comida.getImagen(), posicionX, posicionY,Min,Min);
         }
         panelHabitat.add(label);
-        System.out.println("Despues" + posicionX + " " + posicionY);
     }
 
     public void validarPosicion(){
