@@ -32,27 +32,32 @@ public class PanelAgregarAnimal extends JPanel {
         int margen = (985 - (ancho + padding)*animalstr.length)/2 ;
         for (int i = 0; i < animalstr.length; i++) {
 
-            ImageIcon img = switch (animalstr[i]) {
-                case "Vaca" -> GeneradorImagen.scaledProducto("src/main/java/interfaz/Imagenes/Vaca.png", ancho - 100,120);
-                case "Leon" -> GeneradorImagen.scaledProducto("src/main/java/interfaz/Imagenes/Leon.png", ancho - 100,120);
-                case "Pinguino" -> GeneradorImagen.scaledProducto("src/main/java/interfaz/Imagenes/Pinguino.png", ancho - 100 ,120);
-                default -> null;
-            };
 
-            JButton btn = agregarBotones(animalstr[i]);
-            btn.setIcon(img);
-            btn.setMargin(new Insets(10,5,5, 10));
-            btn.setHorizontalTextPosition(JButton.CENTER);
-            btn.setVerticalTextPosition(JButton.BOTTOM);
+
+            JButton btn = agregarBotones(animalstr[i], ancho);
+
             btn.setBounds(margen + padding*i + ancho*i, 10, ancho,200);
 
             this.add(btn);
         }
     }
 
-    private JButton agregarBotones(String animal){
+    private JButton agregarBotones(String animal, int ancho){
         JButton btn = new JButton(animal);
+
         btn.setBackground(btnColor);
+        btn.setHorizontalTextPosition(JButton.CENTER);
+        btn.setVerticalTextPosition(JButton.BOTTOM);
+        btn.setMargin(new Insets(10,5,5, 10));
+
+        ImageIcon img = switch (animal) {
+            case "Vaca" -> GeneradorImagen.scaledProducto("src/main/java/interfaz/Imagenes/Vaca.png", ancho - 100,120);
+            case "Leon" -> GeneradorImagen.scaledProducto("src/main/java/interfaz/Imagenes/Leon.png", ancho - 100,120);
+            case "Pinguino" -> GeneradorImagen.scaledProducto("src/main/java/interfaz/Imagenes/Pinguino.png", ancho - 100 ,120);
+            default -> null;
+        };
+
+        btn.setIcon(img);
 
         btn.addMouseListener(new MouseListener() {
             @Override
