@@ -1,8 +1,15 @@
 import Interfaz.Ventana;
 
+import javax.swing.*;
+
 public class Main {
     public static void main(String[] args) {
-        Ventana ventana = new Ventana();
-        ventana.apretarHabitat();
+
+        SwingUtilities.invokeLater(new Runnable() {
+            public void run() {
+                Ventana ventana = new Ventana();
+                ventana.apretarHabitat();
+            }
+        });
     }
 }

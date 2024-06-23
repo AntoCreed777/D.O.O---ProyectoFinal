@@ -1,9 +1,9 @@
 package Logica;
 
 public enum Comida {
-    Carne(""),
+    Carne("src/main/java/Interfaz/imagenes/Carne.png"),
     Pasto("src/main/java/Interfaz/imagenes/pasto.png"),
-    Pescado("");
+    Pescado("src/main/java/Interfaz/imagenes/Pescado.png");
 
     private final String imagen;
 
