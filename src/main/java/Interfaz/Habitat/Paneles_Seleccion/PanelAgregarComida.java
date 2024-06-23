@@ -2,9 +2,7 @@ package Interfaz.Habitat.Paneles_Seleccion;
 
 import Interfaz.Animal_Y_Comida.AnimalGrafico;
 import Interfaz.Habitat.HabitatGrafico;
-import Logica.Animales.Leon;
-import Logica.Animales.Pinguino;
-import Logica.Animales.Vaca;
+import Logica.Animales.*;
 import Logica.Comida;
 
 import javax.swing.*;
@@ -26,7 +24,7 @@ public class PanelAgregarComida extends JPanel {
 
         this.setBounds(50, 10, 1000, 190);
         this.setBackground(backgroundColor);
-
+    
         Comida[] comidaStr = Comida.values();
 
         this.setLayout(null);

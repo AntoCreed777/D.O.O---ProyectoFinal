@@ -1,6 +1,7 @@
 package Interfaz.Habitat.Paneles_Seleccion;
 
 import Interfaz.Animal_Y_Comida.AnimalGrafico;
+import Interfaz.GeneradorImagen;
 import Interfaz.Habitat.HabitatGrafico;
 import Logica.Animales.*;
 
@@ -22,7 +23,7 @@ public class PanelAgregarAnimal extends JPanel {
         this.setBounds(50, 10, 1000, 190);
         this.setBackground(backgroundColor);
 
-        String[] animalstr = {"vaca", "leon", "pinguino"};
+        String[] animalstr = {"Vaca", "Leon", "Pinguino"};
         //this.setLayout(new GridLayout(1, animalstr.length, 10, 0));
         this.setLayout(null);
 
@@ -30,7 +31,19 @@ public class PanelAgregarAnimal extends JPanel {
         int ancho = 200;
         int margen = (985 - (ancho + padding)*animalstr.length)/2 ;
         for (int i = 0; i < animalstr.length; i++) {
+
+            ImageIcon img = switch (animalstr[i]) {
+                case "Vaca" -> GeneradorImagen.scaledProducto("src/main/java/interfaz/Imagenes/Vaca.png", ancho - 100,120);
+                case "Leon" -> GeneradorImagen.scaledProducto("src/main/java/interfaz/Imagenes/Leon.png", ancho - 100,120);
+                case "Pinguino" -> GeneradorImagen.scaledProducto("src/main/java/interfaz/Imagenes/Pinguino.png", ancho - 100 ,120);
+                default -> null;
+            };
+
             JButton btn = agregarBotones(animalstr[i]);
+            btn.setIcon(img);
+            btn.setMargin(new Insets(10,5,5, 10));
+            btn.setHorizontalTextPosition(JButton.CENTER);
+            btn.setVerticalTextPosition(JButton.BOTTOM);
             btn.setBounds(margen + padding*i + ancho*i, 10, ancho,200);
 
             this.add(btn);
