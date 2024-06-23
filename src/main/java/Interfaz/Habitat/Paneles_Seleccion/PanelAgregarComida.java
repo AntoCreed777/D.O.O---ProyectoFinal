@@ -2,6 +2,7 @@ package Interfaz.Habitat.Paneles_Seleccion;
 
 import Interfaz.Animal_Y_Comida.AnimalGrafico;
 import Interfaz.Animal_Y_Comida.ComidaGrafica;
+import Interfaz.GeneradorImagen;
 import Interfaz.Habitat.HabitatGrafico;
 import Logica.Animales.Leon;
 import Logica.Animales.Pinguino;
@@ -36,16 +37,20 @@ public class PanelAgregarComida extends JPanel {
         int ancho = 200;
         int margen = (985 - (ancho + padding)*comidaStr.length)/2 ;
         for (int i = 0; i < comidaStr.length; i++) {
-            JButton btn = agregarBotones(comidaStr[i]);
+            JButton btn = agregarBotones(comidaStr[i], ancho);
             btn.setBounds(margen + padding*i + ancho*i, 10, ancho,200);
-
             this.add(btn);
         }
     }
 
-    private JButton agregarBotones(Comida comida){
+    private JButton agregarBotones(Comida comida, int  ancho){
         JButton btn = new JButton(comida.name());
         btn.setBackground(btnColor);
+        btn.setHorizontalTextPosition(JButton.CENTER);
+        btn.setVerticalTextPosition(JButton.BOTTOM);
+
+        ImageIcon img = GeneradorImagen.scaledProducto(comida.getImagen(), ancho - 100, 120);
+        btn.setIcon(img);
 
         btn.addMouseListener(new MouseListener() {
             @Override
