@@ -27,7 +27,7 @@ public class PanelEditar extends JPanel{
         this.habitatGrafico = habitatGrafico;
 
         panelAgregarAnimal = new PanelAgregarAnimal(backgroundColor, btnColor, habitatGrafico);
-        panelAgregarAccesorio = new PanelAgregarAccesorio();
+        panelAgregarAccesorio = new PanelAgregarAccesorio(backgroundColor, btnColor, habitatGrafico);
         panelAgregarComida = new PanelAgregarComida(backgroundColor, btnColor, habitatGrafico);
         panelSeleccion = new PanelSeleccion(backgroundColor,btnColor, this);
 
