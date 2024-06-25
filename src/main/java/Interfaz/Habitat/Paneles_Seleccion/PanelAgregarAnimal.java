@@ -6,6 +6,8 @@ import Interfaz.Habitat.HabitatGrafico;
 import Logica.Animales.*;
 
 import javax.swing.*;
+import javax.swing.border.Border;
+import javax.swing.border.MatteBorder;
 import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
@@ -24,7 +26,7 @@ public class PanelAgregarAnimal extends JPanel {
         this.setBackground(backgroundColor);
 
         String[] animalstr = {"Vaca", "Leon", "Pinguino"};
-        //this.setLayout(new GridLayout(1, animalstr.length, 10, 0));
+
         this.setLayout(null);
 
         int padding = 10;
@@ -32,11 +34,9 @@ public class PanelAgregarAnimal extends JPanel {
         int margen = (985 - (ancho + padding)*animalstr.length)/2 ;
         for (int i = 0; i < animalstr.length; i++) {
 
-
-
             JButton btn = agregarBotones(animalstr[i], ancho);
 
-            btn.setBounds(margen + padding*i + ancho*i, 10, ancho,200);
+            btn.setBounds(margen + padding*i + ancho*i, 10, ancho,180);
 
             this.add(btn);
         }
@@ -48,12 +48,13 @@ public class PanelAgregarAnimal extends JPanel {
         btn.setBackground(btnColor);
         btn.setHorizontalTextPosition(JButton.CENTER);
         btn.setVerticalTextPosition(JButton.BOTTOM);
-        btn.setMargin(new Insets(10,5,5, 10));
+        btn.setBorder(new MatteBorder(10,5,10,5, new Color(0xBABABA)));
+        btn.setBorderPainted(true);
 
         ImageIcon img = switch (animal) {
-            case "Vaca" -> GeneradorImagen.scaledProducto("src/main/java/interfaz/Imagenes/Vaca.png", ancho - 100,120);
-            case "Leon" -> GeneradorImagen.scaledProducto("src/main/java/interfaz/Imagenes/Leon.png", ancho - 100,120);
-            case "Pinguino" -> GeneradorImagen.scaledProducto("src/main/java/interfaz/Imagenes/Pinguino.png", ancho - 100 ,120);
+            case "Vaca" -> GeneradorImagen.scaledProducto("src/main/java/interfaz/Imagenes/Vaca.png", ancho - 100,100);
+            case "Leon" -> GeneradorImagen.scaledProducto("src/main/java/interfaz/Imagenes/Leon.png", ancho - 100,100);
+            case "Pinguino" -> GeneradorImagen.scaledProducto("src/main/java/interfaz/Imagenes/Pinguino.png", ancho - 100 ,100);
             default -> null;
         };
 
