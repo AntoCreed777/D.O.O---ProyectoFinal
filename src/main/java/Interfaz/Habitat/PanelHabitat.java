@@ -21,6 +21,7 @@ public class PanelHabitat extends JPanel implements MouseListener {
     private BufferedImage imagen;
     private final ArrayList<AnimalGrafico> listaAnimales;
     private final List<ComidaGrafica> listaComida;
+    private final List<AccesorioGrafico> listaAccesorios;
     private final Rectangle maximizado = new Rectangle(100, 0, 900, 630);
     private final Rectangle minimizado = new Rectangle(190, 0, 700,420);
     private String familia = null;
@@ -32,6 +33,7 @@ public class PanelHabitat extends JPanel implements MouseListener {
 
         listaAnimales = new ArrayList<AnimalGrafico>();
         this.listaComida = Collections.synchronizedList(new ArrayList<>());
+        this.listaAccesorios = Collections.synchronizedList(new ArrayList<>());
 
         this.addMouseListener(this);
 
@@ -115,7 +117,16 @@ public class PanelHabitat extends JPanel implements MouseListener {
         new Thread(comida).start();     //Animacion de caer de la comida
     }
 
+    public void agregarAccesorio(AccesorioGrafico accesorioGrafico){
+        accesorioGrafico.validarPosicion();       //Verifica que se encuentre dentro del panel la imagen
+        this.add(accesorioGrafico.getLabel());    //Se agrega al Habitat (JPanel)
+        new Thread(accesorioGrafico).start();     //Animacion de caer de la comida
+    }
+
+
     public synchronized List<ComidaGrafica> getListaComida() {return listaComida;}
+
+    public synchronized List<AccesorioGrafico> getListaAccesorios() { return listaAccesorios;}
 
     @Override
     public void mouseClicked(MouseEvent e) {

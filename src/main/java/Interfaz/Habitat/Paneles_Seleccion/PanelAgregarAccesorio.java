@@ -1,5 +1,6 @@
 package Interfaz.Habitat.Paneles_Seleccion;
 
+import Interfaz.Animal_Y_Comida.AccesorioGrafico;
 import Interfaz.Animal_Y_Comida.ComidaGrafica;
 import Interfaz.GeneradorImagen;
 import Interfaz.Habitat.HabitatGrafico;
@@ -53,8 +54,8 @@ public class PanelAgregarAccesorio extends JPanel {
         btn.addMouseListener(new MouseListener() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                //ComidaGrafica comidaG = new ComidaGrafica(accesorio,habitatGrafico.getPanelHabitat().clickMouse.x, habitatGrafico.getPanelHabitat().clickMouse.y,habitatGrafico.getPanelHabitat());
-                // habitatGrafico.getPanelHabitat().agregarComida(comidaG);
+                AccesorioGrafico accesorioG = new AccesorioGrafico(accesorio,habitatGrafico.getPanelHabitat().clickMouse.x, habitatGrafico.getPanelHabitat().clickMouse.y,habitatGrafico.getPanelHabitat());
+                habitatGrafico.getPanelHabitat().agregarAccesorio(accesorioG);
             }
 
             @Override
