@@ -14,18 +14,20 @@ import java.awt.event.MouseListener;
 
 public class PanelAgregarComida extends JPanel {
 
-    private final Color backgroundColor;
+
     private final Color btnColor;
+    private final Color btnMarginColor;
     private final HabitatGrafico habitatGrafico;
 
-    public PanelAgregarComida(Color backgroundColor, Color btnColor, HabitatGrafico habitatGrafico) {
+    public PanelAgregarComida(HabitatGrafico habitatGrafico) {
 
-        this.backgroundColor = backgroundColor;
-        this.btnColor = btnColor;
+
+        this.btnColor = habitatGrafico.getPlaneta().getBtnColor();
+        this.btnMarginColor = habitatGrafico.getPlaneta().getBtnMarginColor();
         this.habitatGrafico = habitatGrafico;
 
         this.setBounds(50, 10, 1000, 190);
-        this.setBackground(backgroundColor);
+        this.setBackground(habitatGrafico.getPlaneta().getEditPanelColor());
 
         Comida[] comidaStr = Comida.values();
 
@@ -50,7 +52,7 @@ public class PanelAgregarComida extends JPanel {
         ImageIcon img = GeneradorImagen.scaledProducto(comida.getImagen(), ancho - 100, 120);
         btn.setIcon(img);
 
-        btn.setBorder(new MatteBorder(10,5,10,5, new Color(0xBABABA)));
+        btn.setBorder(new MatteBorder(10,5,10,5, btnMarginColor));
         btn.setBorderPainted(true);
 
         btn.addMouseListener(new MouseListener() {

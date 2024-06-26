@@ -1,39 +1,45 @@
 package Logica;
 
+import Interfaz.Animal_Y_Comida.AccesorioGrafico;
+import Interfaz.Animal_Y_Comida.AnimalGrafico;
+import Interfaz.Animal_Y_Comida.ComidaGrafica;
 import Logica.Animales.Animal;
 import Logica.Comida;
 
+import java.awt.*;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class Habitat {
 
-    private final TipoHabitat tipoHabitat;
-    private int[] temperatura;
-    private ArrayList<Animal> animalesResidentes;
-    private ArrayList<Comida> depositoComida;
+    protected Color backgroundColor;
+    protected Color editPanelColor;
+    protected Color btnColor ;
+    protected Color btnMarginColor;
+    protected String backgroundImg;
 
+    protected final ArrayList<AnimalGrafico> listaAnimales;
+    protected final List<ComidaGrafica> listaComida;
+    protected final List<AccesorioGrafico> listaAccesorios;
 
-    public Habitat(TipoHabitat tipo){
-        tipoHabitat = tipo;
-        animalesResidentes = new ArrayList<Animal>();
+    public Habitat(){
+
+        listaAnimales = new ArrayList<AnimalGrafico>();
+        this.listaComida = Collections.synchronizedList(new ArrayList<>());
+        this.listaAccesorios = Collections.synchronizedList(new ArrayList<>());
     }
 
-    public void agregarAnimales(Animal animales){
-        animalesResidentes.add(animales);
-    }
-    public Object sacarAnimales(Animal animal){
-        int index = animalesResidentes.indexOf(animal); // requiere un equals bien definido en animal
-        return animalesResidentes.get(index);
-    }
 
-    public List<Animal> getAnimalesResidentes(){
-        return animalesResidentes;
-    }
 
-    public Comida comer(Comida comida){
+    public Color getBackgroundColor() {return backgroundColor;}
+    public Color getEditPanelColor(){return editPanelColor;}
+    public Color getBtnColor(){return btnColor;}
+    public Color getBtnMarginColor(){return btnMarginColor;}
+    public String getBackgroundImg(){return backgroundImg;}
+    public List<AnimalGrafico> getListaAnimales(){return listaAnimales;}
 
-        int index = depositoComida.indexOf(comida); // requiere un equals bien definido en animal
-        return depositoComida.get(index);
-    }
+    public synchronized List<ComidaGrafica> getListaComida() {return listaComida;}
+    public synchronized List<AccesorioGrafico> getListaAccesorios() { return listaAccesorios;}
+
 }

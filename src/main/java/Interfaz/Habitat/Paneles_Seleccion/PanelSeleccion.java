@@ -1,6 +1,7 @@
 package Interfaz.Habitat.Paneles_Seleccion;
 
 import Interfaz.Habitat.PanelEditar;
+import Logica.Habitat;
 
 import javax.swing.*;
 import java.awt.*;
@@ -11,13 +12,13 @@ public class PanelSeleccion extends JPanel {
     private final PanelEditar panelEditar;
     private final Color btnColor;
 
-    public PanelSeleccion(Color backgroundColor, Color btnColor, PanelEditar panelEditar) {
+    public PanelSeleccion(Habitat planeta, PanelEditar panelEditar) {
         this.setBounds(50,10,1000, 190);
-        this.setBackground(backgroundColor);
+        this.setBackground(planeta.getEditPanelColor());
         this.setLayout(new GridLayout(1, 3, 10, 0));
 
         this.panelEditar = panelEditar;
-        this.btnColor = btnColor;
+        this.btnColor = planeta.getBtnColor();
 
         this.add(btnComida());
         this.add(btnAnimal());

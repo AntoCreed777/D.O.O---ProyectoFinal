@@ -15,12 +15,14 @@ import java.awt.event.MouseListener;
 public class PanelAgregarAnimal extends JPanel {
     private final Color backgroundColor;
     private final Color btnColor;
+    private final Color btnMarginColor;
     private final HabitatGrafico habitatGrafico;
 
-    public PanelAgregarAnimal(Color backgroundColor, Color btnColor, HabitatGrafico habitatGrafico) {
-        this.backgroundColor = backgroundColor;
-        this.btnColor = btnColor;
+    public PanelAgregarAnimal(HabitatGrafico habitatGrafico) {
         this.habitatGrafico = habitatGrafico;
+        this.backgroundColor = habitatGrafico.getPlaneta().getEditPanelColor();
+        this.btnColor = habitatGrafico.getPlaneta().getBtnColor();
+        this.btnMarginColor = habitatGrafico.getPlaneta().getBtnMarginColor();
 
         this.setBounds(50, 10, 1000, 190);
         this.setBackground(backgroundColor);
@@ -48,7 +50,7 @@ public class PanelAgregarAnimal extends JPanel {
         btn.setBackground(btnColor);
         btn.setHorizontalTextPosition(JButton.CENTER);
         btn.setVerticalTextPosition(JButton.BOTTOM);
-        btn.setBorder(new MatteBorder(10,5,10,5, new Color(0xBABABA)));
+        btn.setBorder(new MatteBorder(10,5,10,5, btnMarginColor));
         btn.setBorderPainted(true);
 
         ImageIcon img = switch (animal) {

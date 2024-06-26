@@ -2,6 +2,8 @@ package Interfaz;
 
 import Interfaz.Habitat.HabitatGrafico;
 import Logica.*;
+import Logica.TipoHabitats.HabitatMarte;
+import Logica.TipoHabitats.HabitatTierra;
 
 import javax.swing.*;
 
@@ -20,6 +22,8 @@ public class Ventana extends  JFrame{
     }
 
     public void apretarHabitat(){
-        HabitatGrafico habitat = new HabitatGrafico(TipoHabitat.POLAR);
+
+        Habitat tierra = new HabitatMarte();
+        HabitatGrafico habitat = new HabitatGrafico(tierra);
     }
 }
