@@ -22,12 +22,12 @@ public class PanelAgregarComida extends JPanel {
     public PanelAgregarComida(HabitatGrafico habitatGrafico) {
 
 
-        this.btnColor = habitatGrafico.getPlaneta().getBtnColor();
-        this.btnMarginColor = habitatGrafico.getPlaneta().getBtnMarginColor();
+        this.btnColor = habitatGrafico.getHabitat().getBtnColor();
+        this.btnMarginColor = habitatGrafico.getHabitat().getBtnMarginColor();
         this.habitatGrafico = habitatGrafico;
 
         this.setBounds(50, 10, 1000, 190);
-        this.setBackground(habitatGrafico.getPlaneta().getEditPanelColor());
+        this.setBackground(habitatGrafico.getHabitat().getEditPanelColor());
 
         Comida[] comidaStr = Comida.values();
 

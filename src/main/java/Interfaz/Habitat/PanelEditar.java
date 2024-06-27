@@ -20,7 +20,7 @@ public class PanelEditar extends JPanel{
 
     public PanelEditar(HabitatGrafico habitatGrafico) {
 
-        Color backgroundColor = habitatGrafico.getPlaneta().getEditPanelColor();
+        Color backgroundColor = habitatGrafico.getHabitat().getEditPanelColor();
 
         this.setBackground(backgroundColor);
         this.setBounds(0, 420, 1100, 250);
@@ -31,7 +31,7 @@ public class PanelEditar extends JPanel{
         panelAgregarAnimal = new PanelAgregarAnimal(habitatGrafico);
         panelAgregarAccesorio = new PanelAgregarAccesorio(habitatGrafico);
         panelAgregarComida = new PanelAgregarComida(habitatGrafico);
-        panelSeleccion = new PanelSeleccion(habitatGrafico.getPlaneta(), this);
+        panelSeleccion = new PanelSeleccion(habitatGrafico.getHabitat(), this);
 
         mostrarPanelSeleccion(true);
     }

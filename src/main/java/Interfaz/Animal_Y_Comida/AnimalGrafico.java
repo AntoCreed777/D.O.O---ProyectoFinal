@@ -77,7 +77,7 @@ public class AnimalGrafico implements GeneradorImagen, Runnable, Sonido {
                 Rectangle rectangleA = this.label.getBounds();
 
                 //Lista de la comida disponible dentro del habitat
-                List<ComidaGrafica> comidas = this.animal.getPanelHabitat().getPlaneta().getListaComida();
+                List<ComidaGrafica> comidas = this.animal.getPanelHabitat().getHabitat().getListaComida();
 
                 synchronized(comidas){
                     Iterator<ComidaGrafica> iterator = comidas.iterator();

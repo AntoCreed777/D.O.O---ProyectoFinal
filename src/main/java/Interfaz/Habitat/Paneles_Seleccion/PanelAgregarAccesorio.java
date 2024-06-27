@@ -24,12 +24,12 @@ public class PanelAgregarAccesorio extends JPanel {
     public PanelAgregarAccesorio(HabitatGrafico habitatGrafico){
 
         this.habitatGrafico = habitatGrafico;
-        this.btnColor = habitatGrafico.getPlaneta().getBtnColor();
-        this.btnMarginColor = habitatGrafico.getPlaneta().getBtnMarginColor();
+        this.btnColor = habitatGrafico.getHabitat().getBtnColor();
+        this.btnMarginColor = habitatGrafico.getHabitat().getBtnMarginColor();
 
 
         this.setBounds(50, 10, 985, 190);
-        this.setBackground(habitatGrafico.getPlaneta().getEditPanelColor());
+        this.setBackground(habitatGrafico.getHabitat().getEditPanelColor());
 
         Accesorios[] accesorios = Accesorios.values();
         int padding = 10;

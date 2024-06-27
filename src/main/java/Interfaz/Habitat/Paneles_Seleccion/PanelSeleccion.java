@@ -12,13 +12,13 @@ public class PanelSeleccion extends JPanel {
     private final PanelEditar panelEditar;
     private final Color btnColor;
 
-    public PanelSeleccion(Habitat planeta, PanelEditar panelEditar) {
+    public PanelSeleccion(Habitat habitat, PanelEditar panelEditar) {
         this.setBounds(50,10,1000, 190);
-        this.setBackground(planeta.getEditPanelColor());
+        this.setBackground(habitat.getEditPanelColor());
         this.setLayout(new GridLayout(1, 3, 10, 0));
 
         this.panelEditar = panelEditar;
-        this.btnColor = planeta.getBtnColor();
+        this.btnColor = habitat.getBtnColor();
 
         this.add(btnComida());
         this.add(btnAnimal());

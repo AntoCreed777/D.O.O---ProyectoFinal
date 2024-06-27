@@ -14,15 +14,15 @@ import java.awt.event.MouseListener;
  */
 public class HabitatGrafico extends JFrame implements GeneradorImagen {
 
-    private final Habitat planeta;
+    private final Habitat habitat;
     private final JToggleButton editBtn;
     private final PanelEditar panelEditar;
     private final PanelHabitat panelHabitat;
     private final Color backgroundColor;
 
-    public HabitatGrafico(Habitat planeta) {
-        this.planeta = planeta;
-        backgroundColor = planeta.getBackgroundColor();
+    public HabitatGrafico(Habitat habitat) {
+        this.habitat = habitat;
+        backgroundColor = habitat.getBackgroundColor();
 
         this.setSize(new Dimension(1100, 670));
         this.getContentPane().setBackground(backgroundColor);
@@ -30,7 +30,7 @@ public class HabitatGrafico extends JFrame implements GeneradorImagen {
         this.setTitle("Hábitat");
         this.setResizable(false);
 
-        panelHabitat = new PanelHabitat(planeta);
+        panelHabitat = new PanelHabitat(habitat);
         this.add(panelHabitat);
 
 
@@ -65,6 +65,7 @@ public class HabitatGrafico extends JFrame implements GeneradorImagen {
         panelEditar.setVisible(false);
         this.add(panelEditar);
 
+
         this.setVisible(true);
     }
 
@@ -87,7 +88,7 @@ public class HabitatGrafico extends JFrame implements GeneradorImagen {
     }
 
     public PanelHabitat getPanelHabitat(){return panelHabitat;}
-    public Habitat getPlaneta(){return planeta;}
+    public Habitat getHabitat(){return habitat;}
 }
 
 

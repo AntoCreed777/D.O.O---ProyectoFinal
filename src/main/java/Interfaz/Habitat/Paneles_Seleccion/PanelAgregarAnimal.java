@@ -20,9 +20,9 @@ public class PanelAgregarAnimal extends JPanel {
 
     public PanelAgregarAnimal(HabitatGrafico habitatGrafico) {
         this.habitatGrafico = habitatGrafico;
-        this.backgroundColor = habitatGrafico.getPlaneta().getEditPanelColor();
-        this.btnColor = habitatGrafico.getPlaneta().getBtnColor();
-        this.btnMarginColor = habitatGrafico.getPlaneta().getBtnMarginColor();
+        this.backgroundColor = habitatGrafico.getHabitat().getEditPanelColor();
+        this.btnColor = habitatGrafico.getHabitat().getBtnColor();
+        this.btnMarginColor = habitatGrafico.getHabitat().getBtnMarginColor();
 
         this.setBounds(50, 10, 1000, 190);
         this.setBackground(backgroundColor);
