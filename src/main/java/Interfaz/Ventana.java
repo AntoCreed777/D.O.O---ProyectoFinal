@@ -6,6 +6,7 @@ import Logica.TipoHabitats.HabitatMarte;
 import Logica.TipoHabitats.HabitatTierra;
 
 import javax.swing.*;
+import java.awt.*;
 
 
 public class Ventana extends  JFrame{
@@ -18,12 +19,8 @@ public class Ventana extends  JFrame{
         PanelPrincipal panel = new PanelPrincipal();
         this.setContentPane(panel);
 
+
         this.setVisible(true);
     }
 
-    public void apretarHabitat(){
-
-        Habitat tierra = new HabitatMarte();
-        HabitatGrafico habitat = new HabitatGrafico(tierra);
-    }
 }
