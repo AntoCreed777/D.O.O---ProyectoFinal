@@ -1,6 +1,7 @@
 package Interfaz.Habitat;
 
 import Interfaz.GeneradorImagen;
+import Logica.Habitat;
 import Logica.TipoHabitat;
 
 import javax.swing.*;
@@ -13,30 +14,33 @@ import java.awt.event.MouseListener;
  */
 public class HabitatGrafico extends JFrame implements GeneradorImagen {
 
-    private final TipoHabitat tipoHabitat;
+    private final Habitat habitat;
     private final JToggleButton editBtn;
     private final PanelEditar panelEditar;
     private final PanelHabitat panelHabitat;
-    private final int backgroundColor = 0xF6FFEC;
+    private final Color backgroundColor;
 
-    public HabitatGrafico(TipoHabitat tipo) {
-        tipoHabitat = tipo;
+    public HabitatGrafico(Habitat habitat) {
+        this.habitat = habitat;
+        backgroundColor = habitat.getBackgroundColor();
 
         this.setSize(new Dimension(1100, 670));
-        this.getContentPane().setBackground(new Color(backgroundColor));
+        this.getContentPane().setBackground(backgroundColor);
         this.setLayout(null);
         this.setTitle("Hábitat");
         this.setResizable(false);
 
-        panelHabitat = new PanelHabitat(backgroundColor, tipoHabitat);
+        panelHabitat = new PanelHabitat(habitat);
         this.add(panelHabitat);
 
 
         // boton de edicion
         editBtn = new JToggleButton("MENU");
-        editBtn.setFont(new Font("monospaced",Font.PLAIN, 12));
-        editBtn.setBackground(new Color(0xFFCBF4FA, true));
-        editBtn.setBounds(1015,0,70,40);
+        editBtn.setFont(new Font("monospaced", Font.BOLD, 16));
+        editBtn.setBackground(new Color(0xFFFFFF));
+        editBtn.setBorderPainted(false);
+        editBtn.setMargin(new Insets(0,0,0,0));
+        editBtn.setBounds(1010,5,70,40);
         editBtn.addMouseListener(new MouseListener() {
             @Override
             public void mouseClicked(MouseEvent e) {
@@ -61,6 +65,7 @@ public class HabitatGrafico extends JFrame implements GeneradorImagen {
         panelEditar.setVisible(false);
         this.add(panelEditar);
 
+
         this.setVisible(true);
     }
 
@@ -83,6 +88,7 @@ public class HabitatGrafico extends JFrame implements GeneradorImagen {
     }
 
     public PanelHabitat getPanelHabitat(){return panelHabitat;}
+    public Habitat getHabitat(){return habitat;}
 }
 
 

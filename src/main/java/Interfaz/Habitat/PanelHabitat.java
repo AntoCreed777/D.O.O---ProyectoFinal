@@ -2,8 +2,10 @@ package Interfaz.Habitat;
 
 import Interfaz.Animal_Y_Comida.*;
 import Interfaz.GeneradorImagen;
+import Logica.Comida;
 import Logica.Excepciones.NoMezclarAnimales;
-import Logica.TipoHabitat;
+import Logica.Habitat;
+
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -13,38 +15,37 @@ import java.awt.event.MouseListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+
 
 public class PanelHabitat extends JPanel implements MouseListener {
     private BufferedImage imagen;
-    private final ArrayList<AnimalGrafico> listaAnimales;
-    private final List<ComidaGrafica> listaComida;
-    private final List<AccesorioGrafico> listaAccesorios;
+
+    private final Habitat habitat;
     private final Rectangle maximizado = new Rectangle(100, 0, 900, 630);
     private final Rectangle minimizado = new Rectangle(190, 0, 700,420);
     private String familia = null;
     public Point clickMouse = new Point(0, 0);
 
-    public PanelHabitat(int backgroundColor, TipoHabitat tipo) {
+    public PanelHabitat(Habitat habitat) {
+        this.habitat = habitat;
         this.setBounds(maximizado);
-        this.setBackground(new Color(backgroundColor));
-
-        listaAnimales = new ArrayList<AnimalGrafico>();
-        this.listaComida = Collections.synchronizedList(new ArrayList<>());
-        this.listaAccesorios = Collections.synchronizedList(new ArrayList<>());
-
+        this.setBackground(habitat.getBackgroundColor());
         this.addMouseListener(this);
 
-        String img = switch(tipo){
-            case POLAR -> "src/main/java/Interfaz/Imagenes/habitat_polar_1.jpg";
-            case JUNGLA -> "src/main/java/Interfaz/Imagenes/habitat_jungla_1.png";
-            case DESERTICO -> "src/main/java/Interfaz/Imagenes/habitat_desertico_1.png";
-        };
-
-        try {imagen = ImageIO.read(new File(img));}
+        try {imagen = ImageIO.read(new File(habitat.getBackgroundImg()));}
         catch (IOException e) {e.printStackTrace();}
+
+        for(ComidaGrafica comida : habitat.getListaComida()){
+            agregarComida(comida);
+        }
+
+        for(AccesorioGrafico accesorio : habitat.getListaAccesorios()){
+            agregarAccesorio(accesorio);
+        }
+
+        for(AnimalGrafico animal : habitat.getListaAnimales()){
+            agregarAnimal(animal);
+        }
     }
 
     @Override
@@ -55,41 +56,15 @@ public class PanelHabitat extends JPanel implements MouseListener {
         }
     }
 
-    /*
-     * Funcion para añadir accesorios decorativos al habitat
-     */
-    public void agregarAccesorio(Accesorios accesorio, int posX, int posY){
-
-        String img = switch(accesorio){
-            case ROCA -> "src/main/java/Interfaz/Imagenes/accesorio_roca_1.jpg";
-            case ARBOL -> "src/main/java/Interfaz/Imagenes/accesorio_arbol_1.png";
-        };
-
-        JLabel accesorioLabel = GeneradorImagen.ImageLabel(img, posX, posY, 100, 100);
-        accesorioLabel.setVerticalAlignment(JLabel.CENTER);
-        accesorioLabel.setHorizontalAlignment(JLabel.LEFT);
-        this.add(accesorioLabel);
-    }
-
-    //???????
-    public AnimalGrafico sacarAnimal(AnimalGrafico animal){
-        int index = listaAnimales.indexOf(animal); // requiere un equals bien definido en animal
-        return listaAnimales.get(index);
-    }
-
-    public enum Accesorios{
-        ARBOL, ROCA,
-    }
-
     public void ajustarPanel(String ajuste){
         if(ajuste.equals("maximizar")){this.setBounds(maximizado);}
         else{this.setBounds(minimizado);}
 
-        for(AnimalGrafico animal : listaAnimales){
+        for(AnimalGrafico animal : habitat.getListaAnimales()){
             animal.rePosicionar(maximizado,minimizado);
             animal.reDimencionar(maximizado);
         }
-        for(ComidaGrafica comida : listaComida){
+        for(ComidaGrafica comida : habitat.getListaComida()){
             comida.rePosicionarDimencionar(maximizado,minimizado);
         }
         this.repaint();
@@ -98,7 +73,7 @@ public class PanelHabitat extends JPanel implements MouseListener {
     public void agregarAnimal(AnimalGrafico animal){
         if(familia == null || familia.equals(animal.getFamiliaTaxonomica())){
             familia = animal.getFamiliaTaxonomica();
-            listaAnimales.add(animal);      //Se agrega a la lista de los animales internos
+            habitat.getListaAnimales().add(animal);      //Se agrega a la lista de los animales internos
             animal.validarPosicion();       //Verifica que se encuentre dentro del panel la imagen
             this.add(animal.getLabel());    //Se agrega al Habitat (JPanel)
             new Thread(animal).start();     //Se inicia el movimiento de los animales
@@ -107,8 +82,6 @@ public class PanelHabitat extends JPanel implements MouseListener {
             Exception e = new NoMezclarAnimales(familia);
             JOptionPane.showMessageDialog(null, e.getMessage());
         }
-
-
     }
 
     public void agregarComida(ComidaGrafica comida){
@@ -123,10 +96,9 @@ public class PanelHabitat extends JPanel implements MouseListener {
         new Thread(accesorioGrafico).start();     //Animacion de caer de la comida
     }
 
+    public Habitat getHabitat(){return habitat;}
 
-    public synchronized List<ComidaGrafica> getListaComida() {return listaComida;}
 
-    public synchronized List<AccesorioGrafico> getListaAccesorios() { return listaAccesorios;}
 
     @Override
     public void mouseClicked(MouseEvent e) {
@@ -144,4 +116,5 @@ public class PanelHabitat extends JPanel implements MouseListener {
 
     @Override
     public void mouseExited(MouseEvent e) {}
+
 }

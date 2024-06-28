@@ -14,22 +14,24 @@ public class PanelEditar extends JPanel{
     private final PanelAgregarAnimal panelAgregarAnimal;
     private final PanelAgregarAccesorio panelAgregarAccesorio;
     private final PanelAgregarComida panelAgregarComida;
-    private final Color btnColor = new Color(0xFAF3DD);
-    private final Color backgroundColor = new Color(0x68B0AB);
+
     private final HabitatGrafico habitatGrafico;
 
 
     public PanelEditar(HabitatGrafico habitatGrafico) {
+
+        Color backgroundColor = habitatGrafico.getHabitat().getEditPanelColor();
+
         this.setBackground(backgroundColor);
         this.setBounds(0, 420, 1100, 250);
         this.setLayout(null);
 
         this.habitatGrafico = habitatGrafico;
 
-        panelAgregarAnimal = new PanelAgregarAnimal(backgroundColor, btnColor, habitatGrafico);
-        panelAgregarAccesorio = new PanelAgregarAccesorio(backgroundColor, btnColor, habitatGrafico);
-        panelAgregarComida = new PanelAgregarComida(backgroundColor, btnColor, habitatGrafico);
-        panelSeleccion = new PanelSeleccion(backgroundColor,btnColor, this);
+        panelAgregarAnimal = new PanelAgregarAnimal(habitatGrafico);
+        panelAgregarAccesorio = new PanelAgregarAccesorio(habitatGrafico);
+        panelAgregarComida = new PanelAgregarComida(habitatGrafico);
+        panelSeleccion = new PanelSeleccion(habitatGrafico.getHabitat(), this);
 
         mostrarPanelSeleccion(true);
     }

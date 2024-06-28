@@ -44,8 +44,8 @@ public class AccesorioGrafico implements GeneradorImagen, Runnable{
             catch (InterruptedException e) {throw new RuntimeException(e);}
 
         }
-        synchronized (panelHabitat.getListaAccesorios()) {
-            panelHabitat.getListaAccesorios().add(this);    //Cuando llega al suelo se agrega a la lista
+        synchronized (panelHabitat.getHabitat().getListaAccesorios()) {
+            panelHabitat.getHabitat().getListaAccesorios().add(this);    //Cuando llega al suelo se agrega a la lista
         }
 
         while(true){

@@ -16,15 +16,20 @@ import java.awt.event.MouseListener;
 
 public class PanelAgregarAccesorio extends JPanel {
 
-    private final Color btnColor = new Color(0xFAF3DD);
-    private final Color backgroundColor = new Color(0x68B0AB);
+    private final Color btnColor;
+    private final Color btnMarginColor;
+
     private final HabitatGrafico habitatGrafico;
 
-    public PanelAgregarAccesorio(Color backgroundColor, Color btnColor, HabitatGrafico habitat){
+    public PanelAgregarAccesorio(HabitatGrafico habitatGrafico){
 
-        habitatGrafico = habitat;
+        this.habitatGrafico = habitatGrafico;
+        this.btnColor = habitatGrafico.getHabitat().getBtnColor();
+        this.btnMarginColor = habitatGrafico.getHabitat().getBtnMarginColor();
+
+
         this.setBounds(50, 10, 985, 190);
-        this.setBackground(backgroundColor);
+        this.setBackground(habitatGrafico.getHabitat().getEditPanelColor());
 
         Accesorios[] accesorios = Accesorios.values();
         int padding = 10;
@@ -45,7 +50,7 @@ public class PanelAgregarAccesorio extends JPanel {
         btn.setHorizontalTextPosition(JButton.CENTER);
         btn.setVerticalTextPosition(JButton.BOTTOM);
 
-        btn.setBorder(new MatteBorder(10,5,10,5, new Color(0xBABABA)));
+        btn.setBorder(new MatteBorder(10,5,10,5, btnMarginColor));
         btn.setBorderPainted(true);
 
         ImageIcon img = GeneradorImagen.scaledProducto(accesorio.getImagen(), ancho - 100, 120);
