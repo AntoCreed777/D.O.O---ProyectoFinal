@@ -2,7 +2,7 @@ package Interfaz.Habitat;
 
 import Interfaz.GeneradorImagen;
 import Logica.Habitat;
-import Logica.TipoHabitat;
+
 
 import javax.swing.*;
 import java.awt.*;
