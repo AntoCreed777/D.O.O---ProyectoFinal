@@ -24,6 +24,8 @@ public class Habitat {
     protected final List<ComidaGrafica> listaComida;
     protected final List<AccesorioGrafico> listaAccesorios;
 
+    private int[] temperatura;
+
     /**
      * Constructor que inicializa las listas de elementos que contiene el habitat
      */
@@ -31,6 +33,7 @@ public class Habitat {
         listaAnimales = new ArrayList<AnimalGrafico>();
         this.listaComida = Collections.synchronizedList(new ArrayList<>());
         this.listaAccesorios = Collections.synchronizedList(new ArrayList<>());
+        temperatura = new int[]{0, 100};
     }
 
     /**
@@ -81,4 +84,13 @@ public class Habitat {
      */
     public synchronized List<AccesorioGrafico> getListaAccesorios() { return listaAccesorios;}
 
+    /**
+     * Funcion que establece la Temperatura mminima y maxima dentro del habitat
+     * @param minimo    Temperatura minima dentro del habitat
+     * @param maximo    Temperatura maxima dentro del habitat
+     */
+    public void setTemperatura(int minimo, int maximo){
+        temperatura[0] = minimo;
+        temperatura[1] = maximo;
+    }
 }
