@@ -4,10 +4,15 @@ import Logica.Habitat;
 
 import java.awt.*;
 
+/**
+ * SubClase que representa a un habitat del Planeta Tierra
+ */
 public class HabitatTierra extends Habitat {
-
     private int[] temperatura;
 
+    /**
+     * Constructor que configura las variables
+     */
     public HabitatTierra(){
         super.backgroundColor = new Color(0xF6FFEC);
         super.editPanelColor = new Color(0x68B0AB);
@@ -17,6 +22,11 @@ public class HabitatTierra extends Habitat {
         temperatura = new int[]{0, 100};
     }
 
+    /**
+     * Funcion que establece la Temperatura mminima y maxima dentro del habitat
+     * @param minimo    Temperatura minima dentro del habitat
+     * @param maximo    Temperatura maxima dentro del habitat
+     */
     public void setTemperatura(int minimo, int maximo){
         temperatura[0] = minimo;
         temperatura[1] = maximo;

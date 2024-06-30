@@ -6,6 +6,9 @@ import java.util.Random;
 import Interfaz.Habitat.PanelHabitat;
 import Logica.Comida;
 
+/**
+ * Clase que representa a un Animal
+ */
 public abstract class Animal {
     private final String familiaTaxonomica;
     private int posicionX;
@@ -17,6 +20,13 @@ public abstract class Animal {
     //Norte=0, NorOeste=1, Oeste=2, SurOeste=3,
     //Sur=4, SurEste=5, Este=6, NorEste=7
 
+    /**
+     * Constructor que inicia las variables
+     * @param posicionXinicial  Posicion X en que aparecera el animal
+     * @param posicionYinicial  Posicion Y en que aparecera el animal
+     * @param panelHabitat      Panel al que pertenecera el animal
+     * @param familiaTaxonomica Familia taxonomica a la que pertenece el Animal
+     */
     public Animal(int posicionXinicial, int posicionYinicial, PanelHabitat panelHabitat, String familiaTaxonomica) {
         this.panelHabitat = panelHabitat;
         this.posicionX = posicionXinicial;
@@ -24,6 +34,9 @@ public abstract class Animal {
         this.familiaTaxonomica = familiaTaxonomica;
     }
 
+    /**
+     * Funcion que mueve al animal calculando la posicion en el tiempo t+1
+     */
     public void Moverse(){
         Random rand = new Random();
         if(direccion == -1){direccion = rand.nextInt(8);}
@@ -134,11 +147,11 @@ public abstract class Animal {
         }
     }
 
-    public PanelHabitat getPanelHabitat() {return panelHabitat;}
-
-    public int getPosicionX() {return posicionX;}
-    public int getPosicionY() {return posicionY;}
-
+    /**
+     * Funcion que rePosiciona al Animal dependiendo de los limites del ahbitat al que pertenece
+     * @param maximizado    Limite maximo del habitat
+     * @param minimizado    Limite minimo del habitat
+     */
     public void rePosicionar(Rectangle maximizado, Rectangle minimizado) {
         if (maximizado.width == panelHabitat.getWidth()) { // Si se maximizó
             posicionX = (int)(((double) posicionX / (double) minimizado.width) * maximizado.width);
@@ -152,9 +165,21 @@ public abstract class Animal {
         }
     }
 
+    /**
+     * Setter
+     * @param anchoImg  Ancho de la imagen que representa al animal
+     */
     public void setAnchoImg(int anchoImg){this.anchoImg = anchoImg;}
+
+    /**
+     * Setter
+     * @param altoImg  Alto de la imagen que representa al animal
+     */
     public void setAltoImg(int altoImg){this.altoImg = altoImg;}
 
+    /**
+     * Funcion que valida que el animal no se encuentre fuera del habitat
+     */
     public void validarPosicion(){
         if(posicionX + anchoImg > panelHabitat.getWidth()){
             posicionX = panelHabitat.getWidth() - anchoImg;
@@ -164,9 +189,37 @@ public abstract class Animal {
         }
     }
 
+    /**
+     * Funcion que permite emitir sonidos al animal
+     */
     public abstract void MeterSonido();
 
+    /**
+     * Funcion que permite comer al animal
+     */
     public abstract boolean Comer(Comida comida);
 
+    /**
+     * Getter
+     * @return Retorna la familia Taxonomica a la que pertenece el Animal
+     */
     public String getFamiliaTaxonomica(){return familiaTaxonomica;}
+
+    /**
+     * Getter
+     * @return  Retorna el panelHabitat en que se muestra al animal
+     */
+    public PanelHabitat getPanelHabitat() {return panelHabitat;}
+
+    /**
+     * Getter
+     * @return  Retorna la posicion X en que se encuentra el animal
+     */
+    public int getPosicionX() {return posicionX;}
+
+    /**
+     * Getter
+     * @return  Retorna la posicion Y en que se encuentra el animal
+     */
+    public int getPosicionY() {return posicionY;}
 }
