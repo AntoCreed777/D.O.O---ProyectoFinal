@@ -3,11 +3,13 @@ package Interfaz.Animal_Y_Comida;
 import Interfaz.GeneradorImagen;
 import Interfaz.Habitat.PanelHabitat;
 import Logica.Accesorios;
-import Logica.Comida;
 
 import javax.swing.*;
 import java.awt.*;
 
+/**
+ * Clase que muestra de forma grafica un accesorio
+ */
 public class AccesorioGrafico implements GeneradorImagen, Runnable{
     private final PanelHabitat panelHabitat;
     private JLabel label;
@@ -17,6 +19,13 @@ public class AccesorioGrafico implements GeneradorImagen, Runnable{
     private final int Max = 100;
     private final int Min = 80;
 
+    /**
+     * Contructor en donde se inician variables
+     * @param accesorio Accesorio que representara al instanciarse
+     * @param posicionX Posicion X en donde se mostrara el accesorio
+     * @param posicionY Posicion Y en donde se mostrara el accesorio
+     * @param panelHabitat  Panel en donde se mostrara este accesorio
+     */
     public AccesorioGrafico(Accesorios accesorio, int posicionX, int posicionY, PanelHabitat panelHabitat){
         this.panelHabitat = panelHabitat;
         this.accesorio = accesorio;
@@ -25,12 +34,9 @@ public class AccesorioGrafico implements GeneradorImagen, Runnable{
         this.label = GeneradorImagen.ImageLabel(accesorio.getImagen(), posicionX, posicionY,Min,Min);
     }
 
-    public JLabel getLabel() {return this.label;}
-    public Accesorios getAccesorio() {return this.accesorio;}
-    public int getPosicionX() {return this.posicionX;}
-    public int getPosicionY() {return this.posicionY;}
-    public PanelHabitat getPanelHabitat() {return panelHabitat;}
-
+    /**
+     * Funcion que muestra la caida del accesorio y su posterior muestra estatica en el panel
+     */
     @Override
     public void run() {
         int posicionY = this.posicionY - 100;   //Lo muevo 100 pixeles arriba de donde debe aparecer
@@ -57,6 +63,12 @@ public class AccesorioGrafico implements GeneradorImagen, Runnable{
         }
     }
 
+    /**
+     * Funcion que se encarga de redimensionar y rePosicionar el label segun los limites del panel
+     * al que pertenece
+     * @param maximizado    Limite maximo del panel
+     * @param minimizado    Limite minimo del panel
+     */
     public void rePosicionarDimencionar(Rectangle maximizado, Rectangle minimizado) {
         panelHabitat.remove(label);
         if (maximizado.width == panelHabitat.getWidth()) { // Si se maximizó
@@ -77,6 +89,10 @@ public class AccesorioGrafico implements GeneradorImagen, Runnable{
         panelHabitat.add(label);
     }
 
+    /**
+     * Funcion que valida que el accesorio se encuentre dentro de los limites del panel en que
+     * se muestra
+     */
     public void validarPosicion(){
         if(posicionX + 100 > panelHabitat.getWidth()){
             posicionX = panelHabitat.getWidth() - 100;
@@ -85,4 +101,35 @@ public class AccesorioGrafico implements GeneradorImagen, Runnable{
             posicionY = panelHabitat.getHeight() - 100;
         }
     }
+
+    /**
+     * Getter
+     * @return  Se retorna la label que contiene la clase
+     */
+    public JLabel getLabel() {return this.label;}
+
+    /**
+     * Getter
+     * @return  Retorna el accesorio que contiene
+     */
+    public Accesorios getAccesorio() {return this.accesorio;}
+
+    /**
+     * Getter
+     * @return  Retorna la Posicion X del Label
+     */
+    public int getPosicionX() {return this.posicionX;}
+
+    /**
+     * Getter
+     * @return  Retorna la Posicion Y del Label
+     */
+    public int getPosicionY() {return this.posicionY;}
+
+    /**
+     * Getter
+     * @return  Se retorna el panel en que se muestra/pertenece el accesorio
+     */
+    public PanelHabitat getPanelHabitat() {return panelHabitat;}
+
 }

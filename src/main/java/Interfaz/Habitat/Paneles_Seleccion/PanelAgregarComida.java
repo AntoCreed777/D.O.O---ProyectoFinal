@@ -12,16 +12,19 @@ import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
+/**
+ * Panel que contiene los botones para seleccionar la comida a agregar dentro del habitat
+ */
 public class PanelAgregarComida extends JPanel {
-
-
     private final Color btnColor;
     private final Color btnMarginColor;
     private final HabitatGrafico habitatGrafico;
 
+    /**
+     * Contructor en donde se inician variables , se configura el panel y se agregan los botones
+     * @param habitatGrafico    Habitat al que pertenece este panel y sobre el que puede actuar
+     */
     public PanelAgregarComida(HabitatGrafico habitatGrafico) {
-
-
         this.btnColor = habitatGrafico.getHabitat().getBtnColor();
         this.btnMarginColor = habitatGrafico.getHabitat().getBtnMarginColor();
         this.habitatGrafico = habitatGrafico;
@@ -43,6 +46,12 @@ public class PanelAgregarComida extends JPanel {
         }
     }
 
+    /**
+     * Funcion para crear botones
+     * @param comida    Comida que creara el boton
+     * @param ancho     Ancho del boton
+     * @return          Se retorna el boton que se creo
+     */
     private JButton agregarBotones(Comida comida, int ancho){
         JButton btn = new JButton(comida.name());
         btn.setBackground(btnColor);

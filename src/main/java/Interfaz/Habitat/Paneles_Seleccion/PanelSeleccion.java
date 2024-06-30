@@ -8,10 +8,19 @@ import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
+/**
+ * Panel que contiene los botones para seleccionar la accion que se quiere hacer dentro del habitat
+ */
 public class PanelSeleccion extends JPanel {
     private final PanelEditar panelEditar;
     private final Color btnColor;
 
+    /**
+     *Contructor en donde se inician variables , se configura el panel y se agregan los botones
+     * para seleccionar lo que se desea hacer
+     * @param habitat       Habitat al que pertenece este panel y sobre el que puede actuar
+     * @param panelEditar   Panel en donde se muestran todos los demas paneles para seleccionar acciones
+     */
     public PanelSeleccion(Habitat habitat, PanelEditar panelEditar) {
         this.setBounds(50,10,1000, 190);
         this.setBackground(habitat.getEditPanelColor());
@@ -26,6 +35,10 @@ public class PanelSeleccion extends JPanel {
         this.add(btnEliminar());
     }
 
+    /**
+     * Creacion del boton para agregar animales
+     * @return  Se retorna al boton que se creo
+     */
     private JButton btnAnimal(){
         JButton btnAnimal = new JButton("Agregar animal");
         btnAnimal.setBackground(this.btnColor);
@@ -48,6 +61,10 @@ public class PanelSeleccion extends JPanel {
         return btnAnimal;
     }
 
+    /**
+     * Creacion del boton para agregar accesorios
+     * @return  Se retorna al boton que se creo
+     */
     private JButton btnAccesorio(){
         JButton btnAccesorio = new JButton("Agregar accesorio");
         btnAccesorio.setBackground(this.btnColor);
@@ -68,6 +85,10 @@ public class PanelSeleccion extends JPanel {
         return btnAccesorio;
     }
 
+    /**
+     * Creacion del boton para agregar comida
+     * @return  Se retorna al boton que se creo
+     */
     private JButton btnComida(){
         JButton btnComida = new JButton("Comida");
         btnComida.setBackground(this.btnColor);
@@ -89,10 +110,13 @@ public class PanelSeleccion extends JPanel {
         return btnComida;
     }
 
+    /**
+     * Creacion del boton paraeliminar el habitat
+     * @return  Se retorna al boton que se creo
+     */
     private JButton btnEliminar(){
         JButton btnEliminar = new JButton("Eliminar habitat");
         btnEliminar.setBackground(this.btnColor);
-
         return btnEliminar;
     }
 }

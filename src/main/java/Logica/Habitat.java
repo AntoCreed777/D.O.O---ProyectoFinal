@@ -3,8 +3,6 @@ package Logica;
 import Interfaz.Animal_Y_Comida.AccesorioGrafico;
 import Interfaz.Animal_Y_Comida.AnimalGrafico;
 import Interfaz.Animal_Y_Comida.ComidaGrafica;
-import Logica.Animales.Animal;
-import Logica.Comida;
 
 import java.awt.*;
 import java.util.ArrayList;
@@ -24,7 +22,6 @@ public class Habitat {
     protected final List<AccesorioGrafico> listaAccesorios;
 
     public Habitat(){
-
         listaAnimales = new ArrayList<AnimalGrafico>();
         this.listaComida = Collections.synchronizedList(new ArrayList<>());
         this.listaAccesorios = Collections.synchronizedList(new ArrayList<>());

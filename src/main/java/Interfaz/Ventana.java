@@ -7,9 +7,14 @@ import Logica.TipoHabitats.HabitatTierra;
 
 import javax.swing.*;
 
-
+/**
+ * JFrame principal en donde se muestra al Zoo
+ */
 public class Ventana extends  JFrame{
 
+    /**
+     * Constructor que configura el JFrame y agrega el PanelPrincipal
+     */
     public Ventana(){
         this.setTitle("ventana");
         this.setDefaultCloseOperation(EXIT_ON_CLOSE); // cerrar la aplicacion al apretar x
@@ -21,9 +26,12 @@ public class Ventana extends  JFrame{
         this.setVisible(true);
     }
 
+    /**
+     * Funcion para agregar habitats si se aprieta un boton
+     */
     public void apretarHabitat(){
-
-        Habitat tierra = new HabitatMarte();
-        HabitatGrafico habitat = new HabitatGrafico(tierra);
+        Habitat tierra = new HabitatTierra();
+        Habitat marte = new HabitatMarte();
+        HabitatGrafico habitat = new HabitatGrafico(marte);
     }
 }

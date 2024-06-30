@@ -2,14 +2,13 @@ package Interfaz.Habitat;
 
 import Interfaz.GeneradorImagen;
 import Logica.Habitat;
-import Logica.TipoHabitat;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
-/*
+/**
  * Clase para graficar el habitat
  */
 public class HabitatGrafico extends JFrame implements GeneradorImagen {
@@ -20,6 +19,11 @@ public class HabitatGrafico extends JFrame implements GeneradorImagen {
     private final PanelHabitat panelHabitat;
     private final Color backgroundColor;
 
+    /**
+     * Contructor en donde se inician variables , se configura el Frame y se agregan los elementos
+     * que lo componen
+     * @param habitat   Habitat que representa graficamente
+     */
     public HabitatGrafico(Habitat habitat) {
         this.habitat = habitat;
         backgroundColor = habitat.getBackgroundColor();
@@ -69,6 +73,10 @@ public class HabitatGrafico extends JFrame implements GeneradorImagen {
         this.setVisible(true);
     }
 
+    /**
+     * Funcion que dependiendo si se a pulsado el boton de edicion muestra o oculata, y redimensiona
+     * el panelHabitat
+     */
     public void mostrarPanelEditar(){
         if(editBtn.isSelected()){
             panelHabitat.ajustarPanel("minimizar");
@@ -87,7 +95,16 @@ public class HabitatGrafico extends JFrame implements GeneradorImagen {
         this.repaint();
     }
 
+    /**
+     * Getter
+     * @return  Se retorna el panelHabitat que contiene
+     */
     public PanelHabitat getPanelHabitat(){return panelHabitat;}
+
+    /**
+     * Getter
+     * @return Se retorna el habitat que contiene/representa
+     */
     public Habitat getHabitat(){return habitat;}
 }
 
