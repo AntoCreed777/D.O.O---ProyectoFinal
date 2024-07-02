@@ -10,6 +10,9 @@ import java.awt.*;
 import java.util.Iterator;
 import java.util.List;
 
+/**
+ * Clase que muestra de forma grafica un animal
+ */
 public class AnimalGrafico implements GeneradorImagen, Runnable, Sonido {
     private final String imagen;
     private JLabel label;
@@ -20,6 +23,10 @@ public class AnimalGrafico implements GeneradorImagen, Runnable, Sonido {
     private final Animal animal;
     private final Clip sonido;
 
+    /**
+     * Constructor en donde se carga la imagen que representa al animal y se guarda al animal
+     * @param animal    Animal que representara esta clase
+     */
     public AnimalGrafico(Animal animal){
         this.animal = animal;
 
@@ -64,6 +71,9 @@ public class AnimalGrafico implements GeneradorImagen, Runnable, Sonido {
         animal.setAnchoImg(widthMax);
     }
 
+    /**
+     * Funcion que controla el movimiento del animal y cuando come
+     */
     @Override
     public void run() {
         try {
@@ -103,10 +113,19 @@ public class AnimalGrafico implements GeneradorImagen, Runnable, Sonido {
         catch (InterruptedException e) {e.printStackTrace();}
     }
 
-    public JLabel getLabel(){return this.label;}
-
+    /**
+     * Funcion que se encarga de rePosicionar el label segun los limites del panel
+     * al que pertenece
+     * @param maximizado    Limite maximo del panel
+     * @param minimizado    Limite minimo del panel
+     */
     public void rePosicionar(Rectangle maximizado, Rectangle minimizado){animal.rePosicionar(maximizado, minimizado);}
 
+    /**
+     * Funcion que se encarga de redimensionar el label segun los limites del panel
+     * al que pertenece
+     * @param maximizado    Limite maximo del panel
+     */
     public void reDimencionar(Rectangle maximizado){
         animal.getPanelHabitat().remove(label);
         if(maximizado.width == animal.getPanelHabitat().getWidth()) {    //Si se maximizo
@@ -119,7 +138,21 @@ public class AnimalGrafico implements GeneradorImagen, Runnable, Sonido {
 
     }
 
+    /**
+     * Funcion que valida que el animal se encuentre dentro de los limites del panel en que
+     * se muestra
+     */
     public void validarPosicion(){animal.validarPosicion();}
 
+    /**
+     * getter
+     * @return Retorna la familia taxonomica a la que pertenece el animal
+     */
     public String getFamiliaTaxonomica(){return animal.getFamiliaTaxonomica();}
+
+    /**
+     * Getter
+     * @return  Retorna la label que contiene esta clase
+     */
+    public JLabel getLabel(){return this.label;}
 }

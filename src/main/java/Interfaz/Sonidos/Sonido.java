@@ -6,7 +6,6 @@ import java.io.File;
 /**
  * Esta es la interfaz Sonidos que proporciona métodos estáticos para cargar y
  * reproducir archivos de audio
- *
  */
 public interface Sonido {
     /**

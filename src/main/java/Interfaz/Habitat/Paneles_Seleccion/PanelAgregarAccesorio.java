@@ -1,12 +1,9 @@
 package Interfaz.Habitat.Paneles_Seleccion;
 
 import Interfaz.Animal_Y_Comida.AccesorioGrafico;
-import Interfaz.Animal_Y_Comida.ComidaGrafica;
 import Interfaz.GeneradorImagen;
 import Interfaz.Habitat.HabitatGrafico;
 import Logica.Accesorios;
-import Logica.Comida;
-import Logica.Habitat;
 
 import javax.swing.*;
 import javax.swing.border.MatteBorder;
@@ -14,19 +11,22 @@ import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
+/**
+ * Panel que contiene los botones para seleccionar el accesorio a agregar dentro del habitat
+ */
 public class PanelAgregarAccesorio extends JPanel {
-
     private final Color btnColor;
     private final Color btnMarginColor;
-
     private final HabitatGrafico habitatGrafico;
 
+    /**
+     * Contructor en donde se inician variables , se configura el panel y se agregan los botones
+     * @param habitatGrafico    Habitat al que pertenece este panel y sobre el que puede actuar
+     */
     public PanelAgregarAccesorio(HabitatGrafico habitatGrafico){
-
         this.habitatGrafico = habitatGrafico;
         this.btnColor = habitatGrafico.getHabitat().getBtnColor();
         this.btnMarginColor = habitatGrafico.getHabitat().getBtnMarginColor();
-
 
         this.setBounds(50, 10, 985, 190);
         this.setBackground(habitatGrafico.getHabitat().getEditPanelColor());
@@ -40,10 +40,14 @@ public class PanelAgregarAccesorio extends JPanel {
             btn.setBounds(margen + padding * i + ancho * i, 10, ancho, 180);
             this.add(btn);
         }
-
     }
 
-
+    /**
+     * Funcion para crear botones
+     * @param accesorio    accesorio que creara el boton
+     * @param ancho         Ancho del boton
+     * @return              Se retorna el boton que se creo
+     */
     private JButton agregarBotones(Accesorios accesorio, int ancho){
         JButton btn = new JButton(accesorio.name());
         btn.setBackground(btnColor);

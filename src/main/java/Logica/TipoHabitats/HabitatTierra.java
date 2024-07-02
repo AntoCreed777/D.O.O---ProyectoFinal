@@ -4,11 +4,17 @@ import Logica.Habitat;
 
 import java.awt.*;
 
+/**
+ * SubClase que representa a un habitat del Planeta Tierra
+ */
 public class HabitatTierra extends Habitat {
 
     private int[] temperatura;
-
+    /**
+     * Constructor que configura las variables
+     */
     public HabitatTierra(TipoHabitat tipoHabitat){
+
         super.backgroundColor = new Color(0xF6FFEC);
         super.editPanelColor = new Color(0x68B0AB);
         super.btnColor = new Color(0xFAF3DD);

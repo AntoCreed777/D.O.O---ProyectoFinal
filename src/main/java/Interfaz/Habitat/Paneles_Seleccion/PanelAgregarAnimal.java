@@ -6,18 +6,24 @@ import Interfaz.Habitat.HabitatGrafico;
 import Logica.Animales.*;
 
 import javax.swing.*;
-import javax.swing.border.Border;
 import javax.swing.border.MatteBorder;
 import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
+/**
+ * Panel que contiene los botones para seleccionar el animal a agregar dentro del habitat
+ */
 public class PanelAgregarAnimal extends JPanel {
     private final Color backgroundColor;
     private final Color btnColor;
     private final Color btnMarginColor;
     private final HabitatGrafico habitatGrafico;
 
+    /**
+     * Contructor en donde se inician variables , se configura el panel y se agregan los botones
+     * @param habitatGrafico    Habitat al que pertenece este panel y sobre el que puede actuar
+     */
     public PanelAgregarAnimal(HabitatGrafico habitatGrafico) {
         this.habitatGrafico = habitatGrafico;
         this.backgroundColor = habitatGrafico.getHabitat().getEditPanelColor();
@@ -44,6 +50,12 @@ public class PanelAgregarAnimal extends JPanel {
         }
     }
 
+    /**
+     * Funcion para crear botones
+     * @param animal    Animal que creara el boton
+     * @param ancho     Ancho del boton
+     * @return          Se retorna el boton que se creo
+     */
     private JButton agregarBotones(String animal, int ancho){
         JButton btn = new JButton(animal);
 

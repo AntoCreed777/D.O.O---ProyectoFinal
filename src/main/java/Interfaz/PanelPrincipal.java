@@ -1,16 +1,24 @@
 package Interfaz;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 
 import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 
-
-public class PanelPrincipal extends JPanel {
-    private BufferedImage imagen;
+/**
+ * Panel que representa al zoologico
+ */
+public class PanelPrincipal extends JPanel{
 
     private final Ventana ventana;
     private final PanelPrincipal panel;
+
+    /**
+     * Cpnstructor que carga la imagen de fondo del Panel/Zoo
+     */
 
     public PanelPrincipal(Ventana ventana) {
         this.ventana = ventana;

@@ -4,11 +4,19 @@ import javax.swing.*;
 
 
 public class Ventana extends JFrame{
+/**
+ * JFrame principal en donde se muestra el panel donde se selecciona el planeta
+ */
+
 
     private final JPanel panelPrincipal = new PanelPrincipal(this);
     private final JPanel panelTierra = new PanelTierra(this);
     private JPanel panelMarte;
 
+
+    /**
+     * Constructor que configura el JFrame y agrega el PanelPrincipal
+     */
     public Ventana(){
 
         this.setTitle("ventana");
