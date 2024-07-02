@@ -8,7 +8,7 @@ public class Main {
         SwingUtilities.invokeLater(new Runnable() {
             public void run() {
                 Ventana ventana = new Ventana();
-                ventana.apretarHabitat();
+
             }
         });
     }

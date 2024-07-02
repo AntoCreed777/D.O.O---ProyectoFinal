@@ -3,6 +3,7 @@ package Interfaz;
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
+
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -11,25 +12,30 @@ import java.io.IOException;
  * Panel que representa al zoologico
  */
 public class PanelPrincipal extends JPanel{
-    private BufferedImage imagen;
+
+    private final Ventana ventana;
+    private final PanelPrincipal panel;
 
     /**
      * Cpnstructor que carga la imagen de fondo del Panel/Zoo
      */
-    public PanelPrincipal() {
-        try {imagen = ImageIO.read(new File("src/main/java/Interfaz/imagenes/fondo.png"));}
-        catch (IOException e) {e.printStackTrace();}
+
+    public PanelPrincipal(Ventana ventana) {
+        this.ventana = ventana;
+        this.panel = this;
+        this.setLayout(null);
+        this.setBackground(new Color(0x05072E));
+        JLabel fondo = GeneradorImagen.ImageLabel("src/main/java/Interfaz/imagenes/fondo_espacio.png", 25, 25, 1035, 580);
+
+
+        PanelSelecPlaneta btnTierra = new PanelSelecPlaneta("Tierra", 375, 340, 140, 125, ventana);
+        PanelSelecPlaneta btnMarte = new PanelSelecPlaneta("Marte", 488, 258, 123, 115, ventana);
+        PanelSelecPlaneta btnJupiter = new PanelSelecPlaneta("Jupiter", 630, 295, 170, 155, ventana);
+
+        this.add(fondo);
+        this.add(btnTierra);
+        this.add(btnMarte);
+        this.add(btnJupiter);
     }
 
-    /**
-     * Funcion que pinta el fondo del Panel/Zoo
-     * @param g the <code>Graphics</code> object to protect
-     */
-    @Override
-    protected void paintComponent(Graphics g) {
-        super.paintComponent(g);
-        if (imagen != null) {
-            g.drawImage(imagen, 0, 0, getWidth(), getHeight(), this);
-        }
-    }
 }
