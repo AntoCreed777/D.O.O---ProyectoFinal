@@ -56,4 +56,6 @@ public class Ventana extends JFrame{
         }
         this.repaint();
     }
+
+    public JPanel getPanelPrincipal(){return panelPrincipal;}
 }
