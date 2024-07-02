@@ -6,7 +6,7 @@ import javax.swing.*;
 public class Ventana extends JFrame{
 
     private final JPanel panelPrincipal = new PanelPrincipal(this);
-    private final JPanel panelTierra = new PanelTierra();
+    private final JPanel panelTierra = new PanelTierra(this);
     private JPanel panelMarte;
 
     public Ventana(){
@@ -22,6 +22,11 @@ public class Ventana extends JFrame{
         this.setVisible(true);
     }
 
+    /*
+     * Funcion para mostrar el panel principal de la aplicacion
+     *  @param Boolean mostrar
+     */
+
     public void mostrarPanelPrincipal(Boolean mostrar){
         if(mostrar) {
             this.add(panelPrincipal);
@@ -33,23 +38,34 @@ public class Ventana extends JFrame{
         this.repaint();
     }
 
+    /*
+     * Funcion para mostrar el panel del planeta tierra
+     *  @param Boolean mostrar
+     */
     public void mostrarPanelTierra(Boolean mostrar){
 
         if(mostrar){
             this.add(panelTierra);
             panelTierra.setVisible(true);
+
         } else {
             this.remove(panelTierra);
             panelTierra.setVisible(true);
         }
         this.repaint();
+        panelTierra.repaint();
     }
 
+    /*
+     * Funcion para mostrar el panel del planeta marte
+     *  @param Boolean mostrar
+     */
     public void mostrarPanelMarte(Boolean mostrar){
 
         if(mostrar){
             this.add(panelMarte);
             panelMarte.setVisible(true);
+            panelMarte.repaint();
         } else {
             this.remove(panelMarte);
             panelMarte.setVisible(true);
@@ -57,5 +73,9 @@ public class Ventana extends JFrame{
         this.repaint();
     }
 
+    /*
+     * Funcion para devolver la instancia del panelPrincipal
+     * returns JPanel
+     */
     public JPanel getPanelPrincipal(){return panelPrincipal;}
 }
