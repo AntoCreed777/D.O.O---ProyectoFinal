@@ -3,7 +3,8 @@ package Interfaz.Habitat.Paneles_Seleccion;
 import Interfaz.Animal_Y_Comida.AccesorioGrafico;
 import Interfaz.GeneradorImagen;
 import Interfaz.Habitat.HabitatGrafico;
-import Logica.Accesorios;
+
+import Logica.TipoHabitats.HabitatTierra;
 
 import javax.swing.*;
 import javax.swing.border.MatteBorder;
@@ -31,7 +32,7 @@ public class PanelAgregarAccesorio extends JPanel {
         this.setBounds(50, 10, 985, 190);
         this.setBackground(habitatGrafico.getHabitat().getEditPanelColor());
 
-        Accesorios[] accesorios = Accesorios.values();
+        HabitatTierra.Accesorios[] accesorios = HabitatTierra.Accesorios.values();
         int padding = 10;
         int ancho = 200;
         int margen = (985 - (ancho + padding)*accesorios.length)/2 ;
@@ -48,7 +49,7 @@ public class PanelAgregarAccesorio extends JPanel {
      * @param ancho         Ancho del boton
      * @return              Se retorna el boton que se creo
      */
-    private JButton agregarBotones(Accesorios accesorio, int ancho){
+    private JButton agregarBotones(HabitatTierra.Accesorios accesorio, int ancho){
         JButton btn = new JButton(accesorio.name());
         btn.setBackground(btnColor);
         btn.setHorizontalTextPosition(JButton.CENTER);
@@ -63,7 +64,7 @@ public class PanelAgregarAccesorio extends JPanel {
         btn.addMouseListener(new MouseListener() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                AccesorioGrafico accesorioG = new AccesorioGrafico(accesorio,habitatGrafico.getPanelHabitat().clickMouse.x, habitatGrafico.getPanelHabitat().clickMouse.y,habitatGrafico.getPanelHabitat());
+                AccesorioGrafico accesorioG = new AccesorioGrafico(accesorio ,habitatGrafico.getPanelHabitat().clickMouse.x, habitatGrafico.getPanelHabitat().clickMouse.y,habitatGrafico.getPanelHabitat());
                 habitatGrafico.getPanelHabitat().agregarAccesorio(accesorioG);
             }
 
