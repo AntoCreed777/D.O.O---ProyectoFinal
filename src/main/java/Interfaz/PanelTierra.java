@@ -7,26 +7,26 @@ import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
+/**
+ * Panel que permite navegar entre los zoologicos del planeta tierra
+ */
 public class PanelTierra extends JPanel {
-
     private final Ventana ventana;
 
     public PanelTierra(Ventana ventana) {
-
         this.ventana = ventana;
         this.setLayout(null);
 
-
         crearBotonRetorno();
 
-        BotonHabitat btn1 = new BotonHabitat(178,95,198,217);
-        this.add(btn1);
+        this.add(new BotonHabitat(178,95,198,217));
 
-        JLabel fondo = GeneradorImagen.ImageLabel("src/main/java/Interfaz/imagenes/fondo.png", 0,0,1088,632);
-        this.add(fondo);
+        this.add(GeneradorImagen.ImageLabel("src/main/java/Interfaz/imagenes/fondo.png", 0,0,1088,632));
     }
 
-
+    /**
+     * Funcion que crea y configura el boton para regresar al menu del Espacio con los planetas
+     */
     public void crearBotonRetorno(){
         JButton btnRetorno = new JButton("Volver a espacio");
         btnRetorno.setBounds(20, 20, 150, 70);
@@ -41,24 +41,16 @@ public class PanelTierra extends JPanel {
             }
 
             @Override
-            public void mousePressed(MouseEvent e) {
-
-            }
+            public void mousePressed(MouseEvent e) {}
 
             @Override
-            public void mouseReleased(MouseEvent e) {
-
-            }
+            public void mouseReleased(MouseEvent e) {}
 
             @Override
-            public void mouseEntered(MouseEvent e) {
-
-            }
+            public void mouseEntered(MouseEvent e) {}
 
             @Override
-            public void mouseExited(MouseEvent e) {
-
-            }
+            public void mouseExited(MouseEvent e) {}
         });
         this.add(btnRetorno);
     }
