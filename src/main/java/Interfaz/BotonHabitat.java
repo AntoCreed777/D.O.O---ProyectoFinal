@@ -12,7 +12,7 @@ import java.awt.event.MouseListener;
 
 public class BotonHabitat extends JButton implements MouseListener {
 
-    private Habitat habitat = null;
+    private HabitatGrafico habitat = null;
     private final int width, height;
 
     public BotonHabitat(int posX, int posY, int width, int height) {
@@ -44,11 +44,11 @@ public class BotonHabitat extends JButton implements MouseListener {
         if(habitat == null){
             Habitat aux = elegirHabitat();
             if(aux != null){
-                habitat = aux;
-                this.setIcon(GeneradorImagen.scaledProducto(habitat.getBackgroundImg(),width, height));
+                habitat = new HabitatGrafico(aux);
+                this.setIcon(GeneradorImagen.scaledProducto(aux.getBackgroundImg(),width, height));
             }
         }
-        else{new HabitatGrafico(habitat);}
+        else{habitat.setVisible(true);}
     }
 
     @Override

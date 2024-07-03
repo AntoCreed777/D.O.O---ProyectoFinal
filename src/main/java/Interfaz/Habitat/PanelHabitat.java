@@ -13,6 +13,8 @@ import java.awt.event.MouseListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.util.Iterator;
+import java.util.List;
 
 /**
  * Clase PanelHabitat donde se muestra el habitat en si dentro del JFrame HabitatGrafico,
@@ -41,9 +43,37 @@ public class PanelHabitat extends JPanel implements MouseListener {
         try {imagen = ImageIO.read(new File(habitat.getBackgroundImg()));}
         catch (IOException e) {e.printStackTrace();}
 
-        for(ComidaGrafica comida : habitat.getListaComida()){agregarComida(comida);}
-        for(AccesorioGrafico accesorio : habitat.getListaAccesorios()){agregarAccesorio(accesorio);}
-        for(AnimalGrafico animal : habitat.getListaAnimales()){agregarAnimal(animal);}
+        List<ComidaGrafica> comidas = habitat.getListaComida();
+
+        synchronized (comidas){
+            Iterator<ComidaGrafica> iterator = comidas.iterator();
+            while (iterator.hasNext()){
+                ComidaGrafica comida = iterator.next();
+                agregarComida(comida);
+            }
+        }
+
+        List<AccesorioGrafico> accesorios = habitat.getListaAccesorios();
+        synchronized (accesorios){
+            Iterator<AccesorioGrafico> iterator = accesorios.iterator();
+            while (iterator.hasNext()){
+                AccesorioGrafico accesorio = iterator.next();
+                agregarAccesorio(accesorio);
+            }
+        }
+
+        List<AnimalGrafico> animales = habitat.getListaAnimales();
+        synchronized (animales){
+            Iterator<AnimalGrafico> iterator = animales.iterator();
+            while (iterator.hasNext()){
+                AnimalGrafico animal = iterator.next();
+                agregarAnimal(animal);
+            }
+        }
+
+        //for(ComidaGrafica comida : habitat.getListaComida()){agregarComida(comida);}
+        //for(AccesorioGrafico accesorio : habitat.getListaAccesorios()){agregarAccesorio(accesorio);}
+        //for(AnimalGrafico animal : habitat.getListaAnimales()){agregarAnimal(animal);}
     }
 
     /**
