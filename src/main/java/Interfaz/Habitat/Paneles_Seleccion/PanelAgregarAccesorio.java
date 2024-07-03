@@ -58,7 +58,7 @@ public class PanelAgregarAccesorio extends JPanel {
         btn.setBorder(new MatteBorder(10,5,10,5, btnMarginColor));
         btn.setBorderPainted(true);
 
-        ImageIcon img = GeneradorImagen.scaledProducto(accesorio.getImagen(), ancho - 100, 120);
+        ImageIcon img = GeneradorImagen.scaledProducto(accesorio.getImagen(), ancho - 80, 120);
         btn.setIcon(img);
 
         btn.addMouseListener(new MouseListener() {

@@ -16,8 +16,8 @@ public class AccesorioGrafico implements GeneradorImagen, Runnable{
     private final HabitatTierra.Accesorios accesorio;
     private int posicionX;
     private int posicionY;
-    private final int Max = 100;
-    private final int Min = 80;
+    private int Max = 100;
+    private int Min = 80;
 
     /**
      * Contructor en donde se inician variables
@@ -31,6 +31,12 @@ public class AccesorioGrafico implements GeneradorImagen, Runnable{
         this.accesorio = accesorio;
         this.posicionX = posicionX;
         this.posicionY = posicionY;
+
+        if(accesorio == HabitatTierra.Accesorios.ARBOL){
+            this.Max = 200;
+            this.Min = 180;
+        }
+
         this.label = GeneradorImagen.ImageLabel(accesorio.getImagen(), posicionX, posicionY,Min,Min);
     }
 

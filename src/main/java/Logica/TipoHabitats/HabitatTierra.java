@@ -44,9 +44,9 @@ public class HabitatTierra extends Habitat {
      * Enumeracion que representa todos los tipos de Accesorios y sus respectivas imagenes
      */
     public enum Accesorios {
-        ARBOL(""),
-        ROCA("src/main/java/Interfaz/Imagenes/Accesorios/accesorio_roca.jpg"),
-        PLANTA("");
+        ARBOL("src/main/java/Interfaz/Imagenes/Accesorios/accesorio_tierra_arbol.png"),
+        ROCA("src/main/java/Interfaz/Imagenes/Accesorios/accesorio_tierra_roca.png"),
+        PLANTA("src/main/java/Interfaz/Imagenes/Accesorios/accesorio_tierra_planta.png");
 
         private final String imagen;
 
