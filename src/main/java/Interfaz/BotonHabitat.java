@@ -1,8 +1,8 @@
 package Interfaz;
 
 import Interfaz.Habitat.HabitatGrafico;
+import Interfaz.imagenes.GeneradorImagen;
 import Logica.Habitat;
-import Logica.TipoHabitats.HabitatMarte;
 import Logica.TipoHabitats.HabitatTierra;
 
 import javax.swing.*;

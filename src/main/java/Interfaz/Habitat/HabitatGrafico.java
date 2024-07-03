@@ -1,6 +1,6 @@
 package Interfaz.Habitat;
 
-import Interfaz.GeneradorImagen;
+import Interfaz.imagenes.GeneradorImagen;
 import Logica.Habitat;
 
 

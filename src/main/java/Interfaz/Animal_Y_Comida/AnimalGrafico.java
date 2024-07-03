@@ -1,6 +1,6 @@
 package Interfaz.Animal_Y_Comida;
 
-import Interfaz.GeneradorImagen;
+import Interfaz.imagenes.GeneradorImagen;
 import Interfaz.Sonidos.Sonido;
 import Logica.Animales.*;
 
@@ -36,7 +36,7 @@ public class AnimalGrafico implements GeneradorImagen, Runnable, Sonido {
                 heightMax = 100;
                 widthMin = 80;
                 heightMin = 80;
-                imagen = "src/main/java/Interfaz/imagenes/Leon.png";
+                imagen = "src/main/java/Interfaz/imagenes/Animales/Leon.png";
                 sonido = Sonido.cargarSonido("src/main/java/Interfaz/Sonidos/lion.wav");
             }
             case Pinguino pinguino -> {
@@ -44,7 +44,7 @@ public class AnimalGrafico implements GeneradorImagen, Runnable, Sonido {
                 heightMax = 100;
                 widthMin = 80;
                 heightMin = 80;
-                imagen = "src/main/java/Interfaz/imagenes/Pinguino.png";
+                imagen = "src/main/java/Interfaz/imagenes/Animales/Pinguino.png";
                 sonido = Sonido.cargarSonido("src/main/java/Interfaz/Sonidos/penguin.wav");
             }
             case Vaca vaca -> {
@@ -52,7 +52,7 @@ public class AnimalGrafico implements GeneradorImagen, Runnable, Sonido {
                 heightMax = 100;
                 widthMin = 80;
                 heightMin = 80;
-                imagen = "src/main/java/Interfaz/imagenes/Vaca.png";
+                imagen = "src/main/java/Interfaz/imagenes/Animales/Vaca.png";
                 sonido = Sonido.cargarSonido("src/main/java/Interfaz/Sonidos/cow.wav");
             }
             case null, default -> {

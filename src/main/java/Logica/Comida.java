@@ -4,9 +4,9 @@ package Logica;
  * Enumeracion que representa todos los tipos de Comida y sus respectivas imagenes
  */
 public enum Comida {
-    Carne("src/main/java/Interfaz/imagenes/Carne.png"),
-    Pasto("src/main/java/Interfaz/imagenes/pasto.png"),
-    Pescado("src/main/java/Interfaz/imagenes/Pescado.png");
+    Carne("src/main/java/Interfaz/imagenes/Comida/Carne.png"),
+    Pasto("src/main/java/Interfaz/imagenes/Comida/pasto.png"),
+    Pescado("src/main/java/Interfaz/imagenes/Comida/Pescado.png");
 
     private final String imagen;
 

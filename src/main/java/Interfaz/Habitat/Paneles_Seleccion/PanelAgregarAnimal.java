@@ -1,7 +1,7 @@
 package Interfaz.Habitat.Paneles_Seleccion;
 
 import Interfaz.Animal_Y_Comida.AnimalGrafico;
-import Interfaz.GeneradorImagen;
+import Interfaz.imagenes.GeneradorImagen;
 import Interfaz.Habitat.HabitatGrafico;
 import Logica.Animales.*;
 
@@ -66,9 +66,9 @@ public class PanelAgregarAnimal extends JPanel {
         btn.setBorderPainted(true);
 
         ImageIcon img = switch (animal) {
-            case "Vaca" -> GeneradorImagen.scaledProducto("src/main/java/interfaz/Imagenes/Vaca.png", ancho - 100,100);
-            case "Leon" -> GeneradorImagen.scaledProducto("src/main/java/interfaz/Imagenes/Leon.png", ancho - 100,100);
-            case "Pinguino" -> GeneradorImagen.scaledProducto("src/main/java/interfaz/Imagenes/Pinguino.png", ancho - 100 ,100);
+            case "Vaca" -> GeneradorImagen.scaledProducto("src/main/java/interfaz/Imagenes/Animales/Vaca.png", ancho - 100,100);
+            case "Leon" -> GeneradorImagen.scaledProducto("src/main/java/interfaz/Imagenes/Animales/Leon.png", ancho - 100,100);
+            case "Pinguino" -> GeneradorImagen.scaledProducto("src/main/java/interfaz/Imagenes/Animales/Pinguino.png", ancho - 100 ,100);
             default -> null;
         };
 

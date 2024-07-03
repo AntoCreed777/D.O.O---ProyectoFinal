@@ -1,12 +1,9 @@
 package Interfaz;
 
-import javax.imageio.ImageIO;
+import Interfaz.imagenes.GeneradorImagen;
+
 import javax.swing.*;
 import java.awt.*;
-
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
 
 /**
  * Panel que representa al zoologico

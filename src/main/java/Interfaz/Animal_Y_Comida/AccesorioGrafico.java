@@ -1,6 +1,6 @@
 package Interfaz.Animal_Y_Comida;
 
-import Interfaz.GeneradorImagen;
+import Interfaz.imagenes.GeneradorImagen;
 import Interfaz.Habitat.PanelHabitat;
 import Logica.TipoHabitats.HabitatTierra;
 
