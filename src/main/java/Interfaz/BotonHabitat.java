@@ -13,11 +13,9 @@ import java.awt.event.MouseListener;
 public class BotonHabitat extends JButton implements MouseListener {
 
     private Habitat habitat = null;
-
-    private int width, height;
+    private final int width, height;
 
     public BotonHabitat(int posX, int posY, int width, int height) {
-
         this.width = width;
         this.height = height;
         this.setBounds(posX, posY, width, height);
@@ -28,60 +26,40 @@ public class BotonHabitat extends JButton implements MouseListener {
     }
 
     public Habitat elegirHabitat(){
-
-        Habitat habitatEscogido = null;
-
-        JOptionPane optionPane= new JOptionPane();
-
-        String[] options = new String[3];
-        options[0] = "Polar";
-        options[1] = "Desertico";
-        options[2] = "Jungla";
-
-
+        String[] options = {"Polar", "Desertico", "Jungla"};
 
         Object strTipoHabitat = JOptionPane.showInputDialog(null,"Elegir tipo de habitat", "Seleccion Habitat", JOptionPane.QUESTION_MESSAGE, null, options,  "polar");
+        if (strTipoHabitat == null) {return null;}
 
-
-        switch((String) strTipoHabitat){
-            case "Polar" -> habitatEscogido = new HabitatTierra(HabitatTierra.TipoHabitat.POLAR);
-            case "Desertico" -> habitatEscogido = new HabitatTierra(HabitatTierra.TipoHabitat.DESERTICO);
-            case "Jungla" -> habitatEscogido = new HabitatTierra(HabitatTierra.TipoHabitat.JUNGLA);
-        }
-
-
-        return habitatEscogido;
+        return switch((String) strTipoHabitat){
+            case "Polar" -> new HabitatTierra(HabitatTierra.TipoHabitat.POLAR);
+            case "Desertico" -> new HabitatTierra(HabitatTierra.TipoHabitat.DESERTICO);
+            case "Jungla" -> new HabitatTierra(HabitatTierra.TipoHabitat.JUNGLA);
+            default -> null;
+        };
     }
-
 
     @Override
     public void mouseClicked(MouseEvent e) {
         if(habitat == null){
-            habitat = elegirHabitat();
-            this.setIcon(GeneradorImagen.scaledProducto(habitat.getBackgroundImg(),width, height));
-
-        } else {
-            new HabitatGrafico(habitat);
+            Habitat aux = elegirHabitat();
+            if(aux != null){
+                habitat = aux;
+                this.setIcon(GeneradorImagen.scaledProducto(habitat.getBackgroundImg(),width, height));
+            }
         }
+        else{new HabitatGrafico(habitat);}
     }
 
     @Override
-    public void mousePressed(MouseEvent e) {
-
-    }
+    public void mousePressed(MouseEvent e) {}
 
     @Override
-    public void mouseReleased(MouseEvent e) {
-
-    }
+    public void mouseReleased(MouseEvent e) {}
 
     @Override
-    public void mouseEntered(MouseEvent e) {
-
-    }
+    public void mouseEntered(MouseEvent e) {}
 
     @Override
-    public void mouseExited(MouseEvent e) {
-
-    }
+    public void mouseExited(MouseEvent e) {}
 }
