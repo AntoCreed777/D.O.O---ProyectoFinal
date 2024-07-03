@@ -11,7 +11,7 @@ public class HabitatMarte extends Habitat {
     /**
      * Constructor que configura las variables
      */
-    public HabitatMarte(){
+    public HabitatMarte(HabitatMarte.TipoHabitat tipoHabitat){
         super.backgroundColor = new Color(0xFFB788);
         super.editPanelColor = new Color(0xE18158);
         super.btnColor = new Color(0xFFECC4);
@@ -19,6 +19,16 @@ public class HabitatMarte extends Habitat {
         super.backgroundImg = "src/main/java/Interfaz/Imagenes/habitat_marte.png";
     }
 
+    public enum TipoHabitat {
+        CRATER(""),
+        SUBTERRANEO("");
+
+
+        private final String imagen;
+        private TipoHabitat(String imagen) {this.imagen = imagen;}
+
+        public String getImagen(){return imagen;}
+    }
 
     /**
      * Enumeracion que representa todos los tipos de Accesorios y sus respectivas imagenes
