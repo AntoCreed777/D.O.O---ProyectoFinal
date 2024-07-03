@@ -4,12 +4,15 @@ import java.awt.*;
 import java.util.Random;
 
 import Interfaz.Habitat.PanelHabitat;
+import Interfaz.Sonidos.Sonido;
 import Logica.Comida;
+
+import javax.sound.sampled.Clip;
 
 /**
  * Clase que representa a un Animal
  */
-public abstract class Animal {
+public abstract class Animal implements Sonido {
     private final String familiaTaxonomica;
     private int posicionX;
     private int posicionY;
@@ -19,6 +22,8 @@ public abstract class Animal {
     private int direccion = -1; //Pueden ser 8 direcciones
     //Norte=0, NorOeste=1, Oeste=2, SurOeste=3,
     //Sur=4, SurEste=5, Este=6, NorEste=7
+    private final Clip sonido;
+    private final String imagen;
 
     /**
      * Constructor que inicia las variables
@@ -27,11 +32,41 @@ public abstract class Animal {
      * @param panelHabitat      Panel al que pertenecera el animal
      * @param familiaTaxonomica Familia taxonomica a la que pertenece el Animal
      */
-    public Animal(int posicionXinicial, int posicionYinicial, PanelHabitat panelHabitat, String familiaTaxonomica) {
+    public Animal(int posicionXinicial, int posicionYinicial, PanelHabitat panelHabitat, String familiaTaxonomica,Imagenes imagen ,Sonidos sonido) {
         this.panelHabitat = panelHabitat;
         this.posicionX = posicionXinicial;
         this.posicionY = posicionYinicial;
         this.familiaTaxonomica = familiaTaxonomica;
+        this.imagen = imagen.getImagen();
+        this.sonido = sonido.getSonido();
+    }
+
+    public enum Imagenes{
+        Caballo("src/main/java/Interfaz/imagenes/Animales/Caballo.png"),
+        Leon("src/main/java/Interfaz/imagenes/Animales/Leon.png"),
+        Nutria("src/main/java/Interfaz/imagenes/Animales/Nutria.png"),
+        Pinguino("src/main/java/Interfaz/imagenes/Animales/Pinguino.png"),
+        Tigre("src/main/java/Interfaz/imagenes/Animales/Tigre.png"),
+        Vaca("src/main/java/Interfaz/imagenes/Animales/Vaca.png");
+
+        private final String imagen;
+        private Imagenes(String imagen) {this.imagen = imagen;}
+
+        public String getImagen() {return imagen;}
+    }
+
+    protected enum Sonidos{
+        Caballo("src/main/java/Interfaz/Sonidos/Caballo.wav"),
+        Leon("src/main/java/Interfaz/Sonidos/Leon.wav"),
+        Nutria("src/main/java/Interfaz/Sonidos/Nutria.wav"),
+        Pinguino("src/main/java/Interfaz/Sonidos/Pinguino.wav"),
+        Tigre("src/main/java/Interfaz/Sonidos/Tigre.wav"),
+        Vaca("src/main/java/Interfaz/Sonidos/Vaca.wav");
+
+        private final Clip sonido;
+        private Sonidos(String direccion) {this.sonido = Sonido.cargarSonido(direccion);}
+
+        public Clip getSonido() {return sonido;}
     }
 
     /**
@@ -192,7 +227,7 @@ public abstract class Animal {
     /**
      * Funcion que permite emitir sonidos al animal
      */
-    public abstract void MeterSonido();
+    public void MeterSonido(){Sonido.reproducirSonido(sonido,() -> {});}
 
     /**
      * Funcion que permite comer al animal
@@ -222,4 +257,6 @@ public abstract class Animal {
      * @return  Retorna la posicion Y en que se encuentra el animal
      */
     public int getPosicionY() {return posicionY;}
+
+    public String getImagen(){return imagen;}
 }

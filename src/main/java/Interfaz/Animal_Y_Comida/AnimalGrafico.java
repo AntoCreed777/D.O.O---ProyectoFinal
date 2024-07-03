@@ -4,7 +4,6 @@ import Interfaz.imagenes.GeneradorImagen;
 import Interfaz.Sonidos.Sonido;
 import Logica.Animales.*;
 
-import javax.sound.sampled.Clip;
 import javax.swing.*;
 import java.awt.*;
 import java.util.Iterator;
@@ -13,7 +12,7 @@ import java.util.List;
 /**
  * Clase que muestra de forma grafica un animal
  */
-public class AnimalGrafico implements GeneradorImagen, Runnable, Sonido {
+public class AnimalGrafico implements GeneradorImagen, Runnable {
     private final String imagen;
     private JLabel label;
     private final int widthMax;
@@ -21,7 +20,6 @@ public class AnimalGrafico implements GeneradorImagen, Runnable, Sonido {
     private final  int widthMin;
     private final int heightMin;
     private final Animal animal;
-    private final Clip sonido;
     private Boolean running = true;
 
     /**
@@ -30,6 +28,7 @@ public class AnimalGrafico implements GeneradorImagen, Runnable, Sonido {
      */
     public AnimalGrafico(Animal animal){
         this.animal = animal;
+        this.imagen = animal.getImagen();
 
         switch (animal) {
             case Leon leon -> {
@@ -37,36 +36,29 @@ public class AnimalGrafico implements GeneradorImagen, Runnable, Sonido {
                 heightMax = 100;
                 widthMin = 80;
                 heightMin = 80;
-                imagen = "src/main/java/Interfaz/imagenes/Animales/Leon.png";
-                sonido = Sonido.cargarSonido("src/main/java/Interfaz/Sonidos/lion.wav");
             }
             case Pinguino pinguino -> {
                 widthMax = 100;
                 heightMax = 100;
                 widthMin = 80;
                 heightMin = 80;
-                imagen = "src/main/java/Interfaz/imagenes/Animales/Pinguino.png";
-                sonido = Sonido.cargarSonido("src/main/java/Interfaz/Sonidos/penguin.wav");
             }
             case Vaca vaca -> {
                 widthMax = 100;
                 heightMax = 100;
                 widthMin = 80;
                 heightMin = 80;
-                imagen = "src/main/java/Interfaz/imagenes/Animales/Vaca.png";
-                sonido = Sonido.cargarSonido("src/main/java/Interfaz/Sonidos/cow.wav");
             }
             case null, default -> {
                 widthMax = 0;
                 heightMax = 0;
                 widthMin = 0;
                 heightMin = 0;
-                imagen = null;
-                sonido = Sonido.cargarSonido("");
             }
         }
 
-        label = GeneradorImagen.ImageLabel(imagen,animal.getPosicionX(),animal.getPosicionY(), widthMin, heightMin);
+        label = GeneradorImagen.ImageLabel(imagen,animal.getPosicionX(),animal.getPosicionY(),
+                widthMin, heightMin);
 
         animal.setAltoImg(heightMax);
         animal.setAnchoImg(widthMax);
@@ -98,7 +90,7 @@ public class AnimalGrafico implements GeneradorImagen, Runnable, Sonido {
                         if(rectangleC.intersects(rectangleA)){
                             //Come su comida
                             if(this.animal.Comer(comida.getComida())){
-                                Sonido.reproducirSonido(sonido,() -> {});
+                                this.animal.MeterSonido();
                                 this.animal.getPanelHabitat().remove(comida.getLabel());
                                 iterator.remove();
                             }
@@ -136,7 +128,6 @@ public class AnimalGrafico implements GeneradorImagen, Runnable, Sonido {
             label = GeneradorImagen.ImageLabel(imagen, animal.getPosicionX(), animal.getPosicionY(), widthMin, heightMin);
         }
         animal.getPanelHabitat().add(label);
-
     }
 
     /**

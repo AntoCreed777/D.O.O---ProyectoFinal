@@ -16,7 +16,8 @@ public class Pinguino extends Animal{
      * @param panelHabitat      Panel al que pertenecera el Pinguino
      */
     public Pinguino(int posicionXinicial, int posicionYinicial, PanelHabitat panelHabitat){
-        super(posicionXinicial, posicionYinicial, panelHabitat, "Ave");
+        super(posicionXinicial, posicionYinicial, panelHabitat,"Acuatico",
+                Imagenes.Pinguino, Sonidos.Pinguino);
     }
 
     /**
@@ -35,13 +36,4 @@ public class Pinguino extends Animal{
             return false;
         }
     }
-
-    /**
-     * Funcion que permite meter sonido al animal
-     */
-    @Override
-    public void MeterSonido() {
-        System.out.println("CRIIRIRIIRXIXIIACI NO SE EL SONIDO QUE METE XD");
-    }
-
 }
