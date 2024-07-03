@@ -11,7 +11,7 @@ public class Ventana extends JFrame{
 
     private final JPanel panelPrincipal = new PanelPrincipal(this);
     private final JPanel panelTierra = new PanelTierra(this);
-    private JPanel panelMarte;
+    private JPanel panelMarte = new PanelMarte(this);
 
 
     /**
@@ -25,6 +25,7 @@ public class Ventana extends JFrame{
         this.setResizable(false);
 
         panelTierra.setVisible(false);
+        panelMarte.setVisible(false);
         this.add(panelPrincipal);
 
         this.setVisible(true);
@@ -73,7 +74,6 @@ public class Ventana extends JFrame{
         if(mostrar){
             this.add(panelMarte);
             panelMarte.setVisible(true);
-            panelMarte.repaint();
         } else {
             this.remove(panelMarte);
             panelMarte.setVisible(true);

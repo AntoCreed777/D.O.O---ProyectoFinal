@@ -34,7 +34,7 @@ public class PanelMarte extends JPanel {
         btnRetorno.addMouseListener(new MouseListener() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                ventana.mostrarPanelTierra(false);
+                ventana.mostrarPanelMarte(false);
                 ventana.mostrarPanelPrincipal(true);
             }
 
