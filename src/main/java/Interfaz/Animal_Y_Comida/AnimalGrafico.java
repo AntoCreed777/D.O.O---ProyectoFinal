@@ -22,6 +22,7 @@ public class AnimalGrafico implements GeneradorImagen, Runnable, Sonido {
     private final int heightMin;
     private final Animal animal;
     private final Clip sonido;
+    private Boolean running = true;
 
     /**
      * Constructor en donde se carga la imagen que representa al animal y se guarda al animal
@@ -77,7 +78,7 @@ public class AnimalGrafico implements GeneradorImagen, Runnable, Sonido {
     @Override
     public void run() {
         try {
-            while (true) {
+            while (running) {
                 //Proceso de movimiento del Animal
                 this.animal.Moverse();
                 label.setBounds(animal.getPosicionX(),animal.getPosicionY(), widthMax, heightMax);
@@ -155,4 +156,10 @@ public class AnimalGrafico implements GeneradorImagen, Runnable, Sonido {
      * @return  Retorna la label que contiene esta clase
      */
     public JLabel getLabel(){return this.label;}
+
+    /**
+     * Setter
+     * @param running   Estado que se desea implementar en el hilo
+     */
+    public void setRunning(Boolean running){this.running = running;}
 }

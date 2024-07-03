@@ -18,6 +18,7 @@ public class AccesorioGrafico implements GeneradorImagen, Runnable{
     private int posicionY;
     private final int Max = 100;
     private final int Min = 80;
+    private Boolean running = true;
 
     /**
      * Contructor en donde se inician variables
@@ -54,7 +55,7 @@ public class AccesorioGrafico implements GeneradorImagen, Runnable{
             panelHabitat.getHabitat().getListaAccesorios().add(this);    //Cuando llega al suelo se agrega a la lista
         }
 
-        while(true){
+        while(running){
             label.setBounds(this.posicionX,this.posicionY,Max,Max);
             try{
                 Thread.sleep(1);
@@ -132,4 +133,9 @@ public class AccesorioGrafico implements GeneradorImagen, Runnable{
      */
     public PanelHabitat getPanelHabitat() {return panelHabitat;}
 
+    /**
+     * Setter
+     * @param running   Estado que se desea implementar en el hilo
+     */
+    public void setRunning(Boolean running){this.running = running;}
 }
