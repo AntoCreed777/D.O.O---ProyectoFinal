@@ -2,7 +2,7 @@ package Interfaz.Animal_Y_Comida;
 
 import Interfaz.GeneradorImagen;
 import Interfaz.Habitat.PanelHabitat;
-import Logica.Accesorios;
+import Logica.TipoHabitats.HabitatTierra;
 
 import javax.swing.*;
 import java.awt.*;
@@ -13,7 +13,7 @@ import java.awt.*;
 public class AccesorioGrafico implements GeneradorImagen, Runnable{
     private final PanelHabitat panelHabitat;
     private JLabel label;
-    private final Accesorios accesorio;
+    private final HabitatTierra.Accesorios accesorio;
     private int posicionX;
     private int posicionY;
     private final int Max = 100;
@@ -26,7 +26,7 @@ public class AccesorioGrafico implements GeneradorImagen, Runnable{
      * @param posicionY Posicion Y en donde se mostrara el accesorio
      * @param panelHabitat  Panel en donde se mostrara este accesorio
      */
-    public AccesorioGrafico(Accesorios accesorio, int posicionX, int posicionY, PanelHabitat panelHabitat){
+    public AccesorioGrafico(HabitatTierra.Accesorios accesorio, int posicionX, int posicionY, PanelHabitat panelHabitat){
         this.panelHabitat = panelHabitat;
         this.accesorio = accesorio;
         this.posicionX = posicionX;
@@ -112,7 +112,7 @@ public class AccesorioGrafico implements GeneradorImagen, Runnable{
      * Getter
      * @return  Retorna el accesorio que contiene
      */
-    public Accesorios getAccesorio() {return this.accesorio;}
+    public HabitatTierra.Accesorios  getAccesorio() {return this.accesorio;}
 
     /**
      * Getter
