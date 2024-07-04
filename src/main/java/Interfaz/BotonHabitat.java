@@ -97,11 +97,12 @@ public class BotonHabitat extends JButton implements MouseListener {
         if(habitat == null){
             Habitat aux = elegirHabitat();
             if(aux != null){
-                habitat = new HabitatGrafico(aux);
+                habitat = aux;
                 this.setIcon(GeneradorImagen.scaledProducto(aux.getBackgroundImg(),width, height));
+                new HabitatGrafico(aux);
             }
         }
-        else{habitat.setVisible(true);}
+        else{new HabitatGrafico(habitat);}
     }
 
     @Override
