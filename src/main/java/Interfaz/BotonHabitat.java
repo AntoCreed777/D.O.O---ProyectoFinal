@@ -13,7 +13,7 @@ import java.awt.event.MouseListener;
 
 public class BotonHabitat extends JButton implements MouseListener {
 
-    private Habitat habitat = null;
+    private HabitatGrafico habitat = null;
     private JPanel panel = null;
 
     private int width, height;
@@ -28,68 +28,43 @@ public class BotonHabitat extends JButton implements MouseListener {
         this.setBackground(Color.WHITE);
         this.setFont(new Font("monospace", Font.PLAIN, 20));
         this.addMouseListener(this);
-
-
     }
 
     public Habitat elegirHabitat(){
-
-
         Habitat habitatEscogido = null;
-        JOptionPane optionPane = new JOptionPane();
+        String[] opcionesStr;
+        Enum<?>[] opciones = null;
 
-        if(panel instanceof PanelTierra) {
+        if(panel instanceof PanelTierra){opciones = HabitatTierra.TipoHabitat.values();}
+        else if(panel instanceof PanelMarte){opciones = HabitatMarte.TipoHabitat.values();}
 
-            HabitatTierra.TipoHabitat[] opciones = HabitatTierra.TipoHabitat.values();
-
-            String[] opcionesStr = new String[opciones.length]; // String para elegir la opcion
-
-
-            // Capitalizar la primera letra
+        if(opciones != null){
+            opcionesStr = new String[opciones.length];
             for(int i = 0; i < opciones.length; i++){
-                String name = opciones[i].name();
-                StringBuilder result = new StringBuilder();
-
-                result.append(Character.toUpperCase(name.charAt(0)))
-                        .append(name.substring(1).toLowerCase())
-                        .append(" "); // Add a space between words
-
-                opcionesStr[i] = result.toString().trim();
+                String name =opciones[i].name();
+                opcionesStr[i] = Character.toUpperCase(name.charAt(0)) + name.substring(1).toLowerCase();
             }
 
-            // JOptionPane para que el usuario escoja el habitat
-            Object strTipoHabitat = JOptionPane.showInputDialog(null, "Elegir tipo de habitat", "Seleccion Habitat", JOptionPane.QUESTION_MESSAGE, null, opcionesStr, opcionesStr[0]);
+            Object strTipoHabitat = JOptionPane.showInputDialog(
+                    null,
+                    "Elegir tipo de habitat",
+                    "Seleccion Habitat",
+                    JOptionPane.QUESTION_MESSAGE,
+                    null,
+                    opcionesStr,
+                    opcionesStr[0]
+            );
 
-            habitatEscogido = new HabitatTierra( opciones[encontrarIndex(opcionesStr, (String) strTipoHabitat)]);
+            int selectedIndex = encontrarIndex(opcionesStr, (String)strTipoHabitat);
 
-
-
-        } else if (panel instanceof PanelMarte){
-
-            HabitatMarte.TipoHabitat[] opciones = HabitatMarte.TipoHabitat.values();
-
-            String[] opcionesStr = new String[opciones.length]; // String para elegir la opcion
-
-            // Capitalizar la primera letra
-            for(int i = 0; i < opciones.length; i++){
-                String name = opciones[i].name();
-                StringBuilder result = new StringBuilder();
-
-                result.append(Character.toUpperCase(name.charAt(0)))
-                        .append(name.substring(1).toLowerCase())
-                        .append(" "); // Add a space between words
-
-                opcionesStr[i] = result.toString().trim();
+            if (panel instanceof PanelTierra) {
+                habitatEscogido = new HabitatTierra((HabitatTierra.TipoHabitat) opciones[selectedIndex]);
             }
-
-            // JOptionPane para que el usuario escoja el habitat
-            Object strTipoHabitat = JOptionPane.showInputDialog(null, "Elegir tipo de habitat", "Seleccion Habitat", JOptionPane.QUESTION_MESSAGE, null, opcionesStr, opcionesStr[0]);
-
-            habitatEscogido = new HabitatMarte( opciones[encontrarIndex(opcionesStr, (String) strTipoHabitat)]);
-
+            else if (panel instanceof PanelMarte) {
+                habitatEscogido = new HabitatMarte((HabitatMarte.TipoHabitat) opciones[selectedIndex]);
+            }
         }
-            return habitatEscogido;
-
+        return habitatEscogido;
     }
 
     @Override
@@ -97,12 +72,11 @@ public class BotonHabitat extends JButton implements MouseListener {
         if(habitat == null){
             Habitat aux = elegirHabitat();
             if(aux != null){
-                habitat = aux;
+                habitat = new HabitatGrafico(aux);
                 this.setIcon(GeneradorImagen.scaledProducto(aux.getBackgroundImg(),width, height));
-                new HabitatGrafico(aux);
             }
         }
-        else{new HabitatGrafico(habitat);}
+        else{habitat.setVisible(true);}
     }
 
     @Override
@@ -115,30 +89,13 @@ public class BotonHabitat extends JButton implements MouseListener {
     public void mouseEntered(MouseEvent e) {}
 
     @Override
-    public void mouseExited(MouseEvent e) {
-
-    }
+    public void mouseExited(MouseEvent e) {}
 
     public int encontrarIndex(String[] arr, String t){
+        if (arr == null) {return -1;}
 
-        if (arr == null) {
-            return -1;
-        }
+        for(int i=0;i<arr.length;i++){if (arr[i].equals(t)) {return i;}}
 
-
-        int len = arr.length;
-        int i = 0;
-
-        while (i < len) {
-
-            if (arr[i] == t) {
-                return i;
-            }
-            else {
-                i = i + 1;
-            }
-        }
         return -1;
     }
-
 }

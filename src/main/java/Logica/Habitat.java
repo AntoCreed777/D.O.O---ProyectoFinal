@@ -12,7 +12,7 @@ import java.util.List;
 /**
  * Clase que representa a un habitat
  */
-public class Habitat {
+public abstract class Habitat {
 
     protected Color backgroundColor;
     protected Color editPanelColor;
@@ -93,7 +93,4 @@ public class Habitat {
         temperatura[0] = minimo;
         temperatura[1] = maximo;
     }
-
-    protected enum TipoHabitat{}
-
 }
