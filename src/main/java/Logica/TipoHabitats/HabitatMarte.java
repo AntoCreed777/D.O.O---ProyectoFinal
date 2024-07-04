@@ -16,7 +16,7 @@ public class HabitatMarte extends Habitat {
         super.editPanelColor = new Color(0xE18158);
         super.btnColor = new Color(0xFFECC4);
         super.btnMarginColor = new Color(0xC68888);
-        super.backgroundImg = "src/main/java/Interfaz/Imagenes/habitat_marte.png";
+        super.backgroundImg = "src/main/java/Interfaz/Imagenes/Habitats/Marte/habitat_marte.png";
     }
 
 

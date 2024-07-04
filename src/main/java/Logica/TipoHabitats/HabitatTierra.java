@@ -29,9 +29,9 @@ public class HabitatTierra extends Habitat {
     }
 
     public enum TipoHabitat {
-        DESERTICO("src/main/java/Interfaz/imagenes/habitat_desertico_1.jpg"),
-        POLAR("src/main/java/Interfaz/imagenes/habitat_polar_1.jpg"),
-        JUNGLA("src/main/java/Interfaz/imagenes/habitat_jungla_1.jpg");
+        DESERTICO("src/main/java/Interfaz/imagenes/Habitats/Tierra/habitat_desertico_1.jpg"),
+        POLAR("src/main/java/Interfaz/imagenes/Habitats/Tierra/habitat_polar_1.jpg"),
+        JUNGLA("src/main/java/Interfaz/imagenes/Habitats/Tierra/habitat_jungla_1.jpg");
 
         private final String imagen;
         private TipoHabitat(String imagen) {this.imagen = imagen;}
