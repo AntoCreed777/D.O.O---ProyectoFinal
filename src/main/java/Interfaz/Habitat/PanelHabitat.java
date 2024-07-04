@@ -1,6 +1,6 @@
 package Interfaz.Habitat;
 
-import Interfaz.Animal_Y_Comida.*;
+import Interfaz.ObjetosGraficos.*;
 import Logica.Excepciones.NoMezclarAnimales;
 import Logica.Habitat;
 
@@ -44,7 +44,6 @@ public class PanelHabitat extends JPanel implements MouseListener {
         catch (IOException e) {e.printStackTrace();}
 
         List<ComidaGrafica> comidas = habitat.getListaComida();
-
         synchronized (comidas){
             Iterator<ComidaGrafica> iterator = comidas.iterator();
             while (iterator.hasNext()){
@@ -70,10 +69,6 @@ public class PanelHabitat extends JPanel implements MouseListener {
                 agregarAnimal(animal);
             }
         }
-
-        //for(ComidaGrafica comida : habitat.getListaComida()){agregarComida(comida);}
-        //for(AccesorioGrafico accesorio : habitat.getListaAccesorios()){agregarAccesorio(accesorio);}
-        //for(AnimalGrafico animal : habitat.getListaAnimales()){agregarAnimal(animal);}
     }
 
     /**

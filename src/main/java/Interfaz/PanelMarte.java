@@ -1,27 +1,24 @@
 package Interfaz;
 
-import javax.imageio.ImageIO;
+import Interfaz.imagenes.GeneradorImagen;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
-public class PanelMarte extends JPanel {
-
+public class PanelMarte extends JPanel implements GeneradorImagen {
     private final Ventana ventana;
 
     public PanelMarte(Ventana ventana) {
-
         this.ventana = ventana;
         this.setLayout(null);
 
         crearBotonRetorno();
 
-        BotonHabitat btn1 = new BotonHabitat(this ,178,95,198,217);
-        this.add(btn1);
+        this.add(new BotonHabitat(this ,178,95,198,217));
 
-        JLabel fondo = Interfaz.imagenes.GeneradorImagen.ImageLabel("src/main/java/Interfaz/imagenes/fondo_marte.png", 0,0,1088,632);
-        this.add(fondo);
+        this.add(GeneradorImagen.ImageLabel("src/main/java/Interfaz/imagenes/fondo_marte.png", 0,0,1088,632));
     }
 
 
@@ -39,24 +36,16 @@ public class PanelMarte extends JPanel {
             }
 
             @Override
-            public void mousePressed(MouseEvent e) {
-
-            }
+            public void mousePressed(MouseEvent e) {}
 
             @Override
-            public void mouseReleased(MouseEvent e) {
-
-            }
+            public void mouseReleased(MouseEvent e) {}
 
             @Override
-            public void mouseEntered(MouseEvent e) {
-
-            }
+            public void mouseEntered(MouseEvent e) {}
 
             @Override
-            public void mouseExited(MouseEvent e) {
-
-            }
+            public void mouseExited(MouseEvent e) {}
         });
         this.add(btnRetorno);
     }

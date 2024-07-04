@@ -1,8 +1,8 @@
 package Logica;
 
-import Interfaz.Animal_Y_Comida.AccesorioGrafico;
-import Interfaz.Animal_Y_Comida.AnimalGrafico;
-import Interfaz.Animal_Y_Comida.ComidaGrafica;
+import Interfaz.ObjetosGraficos.AccesorioGrafico;
+import Interfaz.ObjetosGraficos.AnimalGrafico;
+import Interfaz.ObjetosGraficos.ComidaGrafica;
 
 import java.awt.*;
 import java.util.ArrayList;

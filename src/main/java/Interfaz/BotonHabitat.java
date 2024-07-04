@@ -14,9 +14,9 @@ import java.awt.event.MouseListener;
 public class BotonHabitat extends JButton implements MouseListener {
 
     private HabitatGrafico habitat = null;
-    private JPanel panel = null;
+    private final JPanel panel;
 
-    private int width, height;
+    private final int width, height;
 
     public BotonHabitat(JPanel panel, int posX, int posY, int width, int height) {
 

@@ -1,6 +1,6 @@
 package Interfaz.Habitat.Paneles_Seleccion;
 
-import Interfaz.Animal_Y_Comida.AccesorioGrafico;
+import Interfaz.ObjetosGraficos.AccesorioGrafico;
 import Interfaz.imagenes.GeneradorImagen;
 import Interfaz.Habitat.HabitatGrafico;
 

@@ -1,62 +1,42 @@
-package Interfaz.Animal_Y_Comida;
+package Interfaz.ObjetosGraficos;
 
 import Interfaz.imagenes.GeneradorImagen;
 import Interfaz.Habitat.PanelHabitat;
-
-import Logica.TipoHabitats.*;
+import Logica.Comida;
 
 import javax.swing.*;
 import java.awt.*;
 
 /**
- * Clase que muestra de forma grafica un accesorio
+ * Clase que muestra de forma grafica la comida
  */
-public class AccesorioGrafico implements GeneradorImagen, Runnable{
+public class ComidaGrafica implements GeneradorImagen, Runnable{
     private final PanelHabitat panelHabitat;
     private JLabel label;
-
-    private String accesorioImg;
+    private final Comida comida;
     private int posicionX;
     private int posicionY;
-    private int Max = 100;
-    private int Min = 80;
+    private final int Max = 100;
+    private final int Min = 80;
     private Boolean running = true;
-
 
     /**
      * Contructor en donde se inician variables
-     * @param accesorio Accesorio que representara al instanciarse
+     * @param comida    Comida que representara al instanciarse
      * @param posicionX Posicion X en donde se mostrara el accesorio
      * @param posicionY Posicion Y en donde se mostrara el accesorio
      * @param panelHabitat  Panel en donde se mostrara este accesorio
      */
-
-    public AccesorioGrafico(Object accesorio, int posicionX, int posicionY, PanelHabitat panelHabitat){
-      
+    public ComidaGrafica(Comida comida, int posicionX, int posicionY, PanelHabitat panelHabitat){
         this.panelHabitat = panelHabitat;
+        this.comida = comida;
         this.posicionX = posicionX;
         this.posicionY = posicionY;
-
-        if(accesorio == HabitatTierra.Accesorios.ARBOL){
-            this.Max = 200;
-            this.Min = 180;
-        } else if(accesorio == HabitatMarte.Accesorios.ARBOL){
-            this.Max = 200;
-            this.Min = 180;
-        }
-
-
-        if(accesorio instanceof HabitatTierra.Accesorios){
-            this.accesorioImg = ((HabitatTierra.Accesorios) accesorio).getImagen();
-        } else if(accesorio instanceof HabitatMarte.Accesorios){
-            this.accesorioImg = ((HabitatMarte.Accesorios) accesorio).getImagen();
-        }
-
-        this.label = GeneradorImagen.ImageLabel(this.accesorioImg, posicionX, posicionY,Min,Min);
+        this.label = GeneradorImagen.ImageLabel(comida.getImagen(), posicionX, posicionY,Min,Min);
     }
 
     /**
-     * Funcion que muestra la caida del accesorio y su posterior muestra estatica en el panel
+     * Funcion que muestra la caida de la Comida y su posterior muestra estatica en el panel
      */
     @Override
     public void run() {
@@ -71,8 +51,8 @@ public class AccesorioGrafico implements GeneradorImagen, Runnable{
             catch (InterruptedException e) {throw new RuntimeException(e);}
 
         }
-        synchronized (panelHabitat.getHabitat().getListaAccesorios()) {
-            panelHabitat.getHabitat().getListaAccesorios().add(this);    //Cuando llega al suelo se agrega a la lista
+        synchronized (panelHabitat.getHabitat().getListaComida()) {
+            panelHabitat.getHabitat().getListaComida().add(this);    //Cuando llega al suelo se agrega a la lista
         }
 
         while(running){
@@ -96,7 +76,7 @@ public class AccesorioGrafico implements GeneradorImagen, Runnable{
             posicionX = (int)(((double) posicionX / (double) minimizado.width) * maximizado.width);
             posicionY = (int)(((double) posicionY / (double) minimizado.height) * maximizado.height);
 
-            label = GeneradorImagen.ImageLabel(accesorioImg, posicionX, posicionY,Max,Max);
+            label = GeneradorImagen.ImageLabel(comida.getImagen(), posicionX, posicionY,Max,Max);
 
         }
         else { // Si se minimizó
@@ -105,13 +85,13 @@ public class AccesorioGrafico implements GeneradorImagen, Runnable{
             if(posicionX + Max > minimizado.width){posicionX = minimizado.width - Max;}
             if(posicionY + Max > minimizado.height){posicionY = minimizado.height - Max;}
 
-            label = GeneradorImagen.ImageLabel(accesorioImg, posicionX, posicionY,Min,Min);
+            label = GeneradorImagen.ImageLabel(comida.getImagen(), posicionX, posicionY,Min,Min);
         }
         panelHabitat.add(label);
     }
 
     /**
-     * Funcion que valida que el accesorio se encuentre dentro de los limites del panel en que
+     * Funcion que valida que la Comida se encuentre dentro de los limites del panel en que
      * se muestra
      */
     public void validarPosicion(){
@@ -128,6 +108,12 @@ public class AccesorioGrafico implements GeneradorImagen, Runnable{
      * @return  Se retorna la label que contiene la clase
      */
     public JLabel getLabel() {return this.label;}
+
+    /**
+     * Getter
+     * @return  Retorna la Comida que contiene
+     */
+    public Comida getComida() {return this.comida;}
 
     /**
      * Getter
@@ -152,4 +138,5 @@ public class AccesorioGrafico implements GeneradorImagen, Runnable{
      * @param running   Estado que se desea implementar en el hilo
      */
     public void setRunning(Boolean running){this.running = running;}
+
 }

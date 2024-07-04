@@ -19,9 +19,7 @@ public class PanelTierra extends JPanel {
 
         crearBotonRetorno();
 
-
         this.add(new BotonHabitat(this, 178,95,198,217));
-
 
         this.add(GeneradorImagen.ImageLabel("src/main/java/Interfaz/imagenes/fondo_tierra.png", 0,0,1088,632));
     }

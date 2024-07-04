@@ -14,11 +14,10 @@ import java.lang.Boolean;
  * editar el habitat, tambien contiene todos los sub-paneles de edicion
  */
 public class PanelEditar extends JPanel{
-    private JPanel panelSeleccion;
+    private final JPanel panelSeleccion;
     private final PanelAgregarAnimal panelAgregarAnimal;
     private final PanelAgregarAccesorio panelAgregarAccesorio;
     private final PanelAgregarComida panelAgregarComida;
-    private final HabitatGrafico habitatGrafico;
 
     /**
      * Contructor en donde se inician variables , se configura el panel y se agregan los elementos
@@ -31,8 +30,6 @@ public class PanelEditar extends JPanel{
         this.setBackground(backgroundColor);
         this.setBounds(0, 420, 1100, 250);
         this.setLayout(null);
-
-        this.habitatGrafico = habitatGrafico;
 
         panelAgregarAnimal = new PanelAgregarAnimal(habitatGrafico);
         panelAgregarAccesorio = new PanelAgregarAccesorio(habitatGrafico);
@@ -82,10 +79,4 @@ public class PanelEditar extends JPanel{
         else {this.remove(panelAgregarComida);}
         this.repaint();
     }
-
-    /**
-     * Getter
-     * @return  Se retorna el habitatGrafico que contiene/representa
-     */
-    public HabitatGrafico getHabitatGrafico(){return habitatGrafico;}
 }
