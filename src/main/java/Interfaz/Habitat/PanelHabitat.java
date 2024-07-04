@@ -102,8 +102,14 @@ public class PanelHabitat extends JPanel implements MouseListener {
             animal.rePosicionar(maximizado,minimizado);
             animal.reDimencionar(maximizado);
         }
-        for(ComidaGrafica comida : habitat.getListaComida()){
-            comida.rePosicionarDimencionar(maximizado,minimizado);
+
+        List<ComidaGrafica> comidas = habitat.getListaComida();
+        synchronized (comidas){
+            Iterator<ComidaGrafica> iterator = comidas.iterator();
+            while (iterator.hasNext()){
+                ComidaGrafica comida = iterator.next();
+                comida.rePosicionarDimencionar(maximizado,minimizado);
+            }
         }
         this.repaint();
     }
