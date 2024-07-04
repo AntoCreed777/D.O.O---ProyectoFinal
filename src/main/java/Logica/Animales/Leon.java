@@ -16,7 +16,8 @@ public class Leon extends Animal{
      * @param panelHabitat      Panel al que pertenecera el Leon
      */
     public Leon(int posicionXinicial, int posicionYinicial, PanelHabitat panelHabitat){
-        super(posicionXinicial, posicionYinicial, panelHabitat, "Felino");
+        super(posicionXinicial, posicionYinicial, panelHabitat, "Felino",
+                Imagenes.Leon, Sonidos.Leon);
     }
 
     /**
@@ -35,13 +36,4 @@ public class Leon extends Animal{
             return false;
         }
     }
-
-    /**
-     * Funcion que permite meter sonido al animal
-     */
-    @Override
-    public void MeterSonido() {
-        System.out.println("RRRROOOOOOAAAAARRRRR");
-    }
-
 }

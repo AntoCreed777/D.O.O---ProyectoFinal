@@ -1,6 +1,7 @@
 package Interfaz;
 
 import Interfaz.Habitat.HabitatGrafico;
+import Interfaz.imagenes.GeneradorImagen;
 import Logica.Habitat;
 import Logica.TipoHabitats.HabitatTierra;
 import Logica.TipoHabitats.HabitatMarte;
@@ -32,6 +33,7 @@ public class BotonHabitat extends JButton implements MouseListener {
     }
 
     public Habitat elegirHabitat(){
+
 
         Habitat habitatEscogido = null;
         JOptionPane optionPane = new JOptionPane();
@@ -87,34 +89,29 @@ public class BotonHabitat extends JButton implements MouseListener {
 
         }
             return habitatEscogido;
-    }
 
+    }
 
     @Override
     public void mouseClicked(MouseEvent e) {
         if(habitat == null){
-            habitat = elegirHabitat();
-            this.setIcon(GeneradorImagen.scaledProducto(habitat.getBackgroundImg(),width, height));
-
-        } else {
-            new HabitatGrafico(habitat);
+            Habitat aux = elegirHabitat();
+            if(aux != null){
+                habitat = new HabitatGrafico(aux);
+                this.setIcon(GeneradorImagen.scaledProducto(aux.getBackgroundImg(),width, height));
+            }
         }
+        else{habitat.setVisible(true);}
     }
 
     @Override
-    public void mousePressed(MouseEvent e) {
-
-    }
+    public void mousePressed(MouseEvent e) {}
 
     @Override
-    public void mouseReleased(MouseEvent e) {
-
-    }
+    public void mouseReleased(MouseEvent e) {}
 
     @Override
-    public void mouseEntered(MouseEvent e) {
-
-    }
+    public void mouseEntered(MouseEvent e) {}
 
     @Override
     public void mouseExited(MouseEvent e) {
@@ -142,4 +139,5 @@ public class BotonHabitat extends JButton implements MouseListener {
         }
         return -1;
     }
+
 }

@@ -1,6 +1,6 @@
 package Interfaz.Animal_Y_Comida;
 
-import Interfaz.GeneradorImagen;
+import Interfaz.imagenes.GeneradorImagen;
 import Interfaz.Habitat.PanelHabitat;
 import Logica.Comida;
 
@@ -18,6 +18,7 @@ public class ComidaGrafica implements GeneradorImagen, Runnable{
     private int posicionY;
     private final int Max = 100;
     private final int Min = 80;
+    private Boolean running = true;
 
     /**
      * Contructor en donde se inician variables
@@ -54,7 +55,7 @@ public class ComidaGrafica implements GeneradorImagen, Runnable{
             panelHabitat.getHabitat().getListaComida().add(this);    //Cuando llega al suelo se agrega a la lista
         }
 
-        while(true){
+        while(running){
             label.setBounds(this.posicionX,this.posicionY,Max,Max);
             try{
                 Thread.sleep(1);
@@ -131,5 +132,11 @@ public class ComidaGrafica implements GeneradorImagen, Runnable{
      * @return  Se retorna el panel en que se muestra/pertenece el accesorio
      */
     public PanelHabitat getPanelHabitat() {return panelHabitat;}
+
+    /**
+     * Setter
+     * @param running   Estado que se desea implementar en el hilo
+     */
+    public void setRunning(Boolean running){this.running = running;}
 
 }

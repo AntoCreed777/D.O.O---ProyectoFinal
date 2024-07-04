@@ -1,4 +1,4 @@
-package Interfaz;
+package Interfaz.imagenes;
 
 import javax.swing.*;
 import java.awt.*;

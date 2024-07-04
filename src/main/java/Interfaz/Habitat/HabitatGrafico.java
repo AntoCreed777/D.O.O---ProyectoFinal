@@ -1,6 +1,6 @@
 package Interfaz.Habitat;
 
-import Interfaz.GeneradorImagen;
+import Interfaz.imagenes.GeneradorImagen;
 import Logica.Habitat;
 
 
@@ -8,6 +8,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 
 /*
  * Clase para graficar el habitat
@@ -18,17 +20,23 @@ public class HabitatGrafico extends JFrame implements GeneradorImagen {
     private final JToggleButton editBtn;
     private final PanelEditar panelEditar;
     private final PanelHabitat panelHabitat;
-    private final Color backgroundColor;
 
     public HabitatGrafico(Habitat habitat) {
         this.habitat = habitat;
-        backgroundColor = habitat.getBackgroundColor();
 
         this.setSize(new Dimension(1100, 670));
-        this.getContentPane().setBackground(backgroundColor);
+        this.getContentPane().setBackground(habitat.getBackgroundColor());
         this.setLayout(null);
         this.setTitle("Hábitat");
         this.setResizable(false);
+        this.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+
+        addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent e) {
+                setVisible(false);
+            }
+        });
 
         panelHabitat = new PanelHabitat(habitat);
         this.add(panelHabitat);

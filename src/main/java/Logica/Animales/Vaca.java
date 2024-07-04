@@ -16,7 +16,8 @@ public class Vaca extends Animal{
      * @param panelHabitat      Panel al que pertenecera el Vaca
      */
     public Vaca(int posicionXinicial, int posicionYinicial, PanelHabitat panelHabitat) {
-        super(posicionXinicial, posicionYinicial, panelHabitat, "Bovido");
+        super(posicionXinicial, posicionYinicial, panelHabitat, "Campo",
+                Imagenes.Vaca, Sonidos.Vaca);
     }
 
     /**
@@ -35,13 +36,4 @@ public class Vaca extends Animal{
             return false;
         }
     }
-
-    /**
-     * Funcion que permite meter sonido al animal
-     */
-    @Override
-    public void MeterSonido() {
-        System.out.println("MUUUUUUUUUUU MUUUUUUUUUUUU");
-    }
-
 }

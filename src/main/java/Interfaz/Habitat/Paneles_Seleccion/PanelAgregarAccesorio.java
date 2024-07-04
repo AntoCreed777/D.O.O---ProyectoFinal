@@ -1,7 +1,7 @@
 package Interfaz.Habitat.Paneles_Seleccion;
 
 import Interfaz.Animal_Y_Comida.AccesorioGrafico;
-import Interfaz.GeneradorImagen;
+import Interfaz.imagenes.GeneradorImagen;
 import Interfaz.Habitat.HabitatGrafico;
 
 import Logica.TipoHabitats.HabitatMarte;
@@ -32,7 +32,6 @@ public class PanelAgregarAccesorio extends JPanel {
 
         this.setBounds(50, 10, 985, 190);
         this.setBackground(habitatGrafico.getHabitat().getEditPanelColor());
-
 
 
         if(habitatGrafico.getHabitat() instanceof  HabitatTierra){
@@ -70,6 +69,7 @@ public class PanelAgregarAccesorio extends JPanel {
      * @param ancho         Ancho del boton
      * @return              Se retorna el boton que se creo
      */
+
     private JButton agregarBotonesTierra(HabitatTierra.Accesorios accesorio, int ancho){
         JButton btn = new JButton(accesorio.name());
         btn.setBackground(btnColor);
@@ -106,6 +106,7 @@ public class PanelAgregarAccesorio extends JPanel {
     }
 
     private JButton agregarBotonesMarte(HabitatMarte.Accesorios accesorio, int ancho){
+
         JButton btn = new JButton(accesorio.name());
         btn.setBackground(btnColor);
         btn.setHorizontalTextPosition(JButton.CENTER);
