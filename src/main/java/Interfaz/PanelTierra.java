@@ -21,7 +21,7 @@ public class PanelTierra extends JPanel {
 
         this.add(new BotonHabitat(178,95,198,217));
 
-        this.add(GeneradorImagen.ImageLabel("src/main/java/Interfaz/imagenes/fondo.png", 0,0,1088,632));
+        this.add(GeneradorImagen.ImageLabel("src/main/java/Interfaz/imagenes/fondo_tierra.png", 0,0,1088,632));
     }
 
     /**
