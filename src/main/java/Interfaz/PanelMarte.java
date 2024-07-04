@@ -20,7 +20,7 @@ public class PanelMarte extends JPanel {
         BotonHabitat btn1 = new BotonHabitat(this ,178,95,198,217);
         this.add(btn1);
 
-        JLabel fondo = GeneradorImagen.ImageLabel("src/main/java/Interfaz/imagenes/fondo_marte.png", 0,0,1088,632);
+        JLabel fondo = Interfaz.imagenes.GeneradorImagen.ImageLabel("src/main/java/Interfaz/imagenes/fondo_marte.png", 0,0,1088,632);
         this.add(fondo);
     }
 

@@ -32,7 +32,6 @@ public class Vaca extends Animal{
             return true;
         }
         else{
-            System.out.println("Qeu rico, aire, na mentira, esto apesta :(");
             return false;
         }
     }
