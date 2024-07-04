@@ -93,4 +93,7 @@ public class Habitat {
         temperatura[0] = minimo;
         temperatura[1] = maximo;
     }
+
+    protected enum TipoHabitat{}
+
 }

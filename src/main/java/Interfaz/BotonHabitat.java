@@ -38,7 +38,6 @@ public class BotonHabitat extends JButton implements MouseListener {
 
         if(panel instanceof PanelTierra) {
 
-
             HabitatTierra.TipoHabitat[] opciones = HabitatTierra.TipoHabitat.values();
 
             String[] opcionesStr = new String[opciones.length]; // String para elegir la opcion

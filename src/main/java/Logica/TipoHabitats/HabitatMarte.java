@@ -19,6 +19,7 @@ public class HabitatMarte extends Habitat {
         super.backgroundImg = "src/main/java/Interfaz/Imagenes/habitat_marte.png";
     }
 
+
     public enum TipoHabitat {
         CRATER(""),
         SUBTERRANEO("");
@@ -33,6 +34,8 @@ public class HabitatMarte extends Habitat {
     /**
      * Enumeracion que representa todos los tipos de Accesorios y sus respectivas imagenes
      */
+
+
     public enum Accesorios {
         ARBOL("src/main/java/Interfaz/Imagenes/Accesorios/accesorio_marte_arbol.png"),
         ROCA("src/main/java/Interfaz/Imagenes/Accesorios/accesorio_marte_roca.png"),
