@@ -1,34 +1,30 @@
 package Interfaz;
 
-import Interfaz.imagenes.GeneradorImagen;
-
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
-/**
- * Panel que permite navegar entre los zoologicos del planeta tierra
- */
-public class PanelTierra extends JPanel {
+public class PanelMarte extends JPanel {
+
     private final Ventana ventana;
 
-    public PanelTierra(Ventana ventana) {
+    public PanelMarte(Ventana ventana) {
+
         this.ventana = ventana;
         this.setLayout(null);
 
         crearBotonRetorno();
 
+        BotonHabitat btn1 = new BotonHabitat(this ,178,95,198,217);
+        this.add(btn1);
 
-        this.add(new BotonHabitat(178,95,198,217));
-
-
-        this.add(GeneradorImagen.ImageLabel("src/main/java/Interfaz/imagenes/fondo_tierra.png", 0,0,1088,632));
+        JLabel fondo = GeneradorImagen.ImageLabel("src/main/java/Interfaz/imagenes/fondo_marte.png", 0,0,1088,632);
+        this.add(fondo);
     }
 
-    /**
-     * Funcion que crea y configura el boton para regresar al menu del Espacio con los planetas
-     */
+
     public void crearBotonRetorno(){
         JButton btnRetorno = new JButton("Volver a espacio");
         btnRetorno.setBounds(20, 20, 150, 70);
@@ -38,21 +34,29 @@ public class PanelTierra extends JPanel {
         btnRetorno.addMouseListener(new MouseListener() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                ventana.mostrarPanelTierra(false);
+                ventana.mostrarPanelMarte(false);
                 ventana.mostrarPanelPrincipal(true);
             }
 
             @Override
-            public void mousePressed(MouseEvent e) {}
+            public void mousePressed(MouseEvent e) {
+
+            }
 
             @Override
-            public void mouseReleased(MouseEvent e) {}
+            public void mouseReleased(MouseEvent e) {
+
+            }
 
             @Override
-            public void mouseEntered(MouseEvent e) {}
+            public void mouseEntered(MouseEvent e) {
+
+            }
 
             @Override
-            public void mouseExited(MouseEvent e) {}
+            public void mouseExited(MouseEvent e) {
+
+            }
         });
         this.add(btnRetorno);
     }

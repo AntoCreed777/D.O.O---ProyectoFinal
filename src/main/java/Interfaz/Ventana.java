@@ -8,7 +8,7 @@ import javax.swing.*;
 public class Ventana extends JFrame{
     private final JPanel panelPrincipal = new PanelPrincipal(this);
     private final JPanel panelTierra = new PanelTierra(this);
-    private JPanel panelMarte;
+    private JPanel panelMarte = new PanelMarte(this);
 
 
     /**
@@ -19,6 +19,9 @@ public class Ventana extends JFrame{
         this.setDefaultCloseOperation(EXIT_ON_CLOSE); // cerrar la aplicacion al apretar x
         this.setSize(1100, 670); // tamaño de la ventana
         this.setResizable(false);
+
+        panelTierra.setVisible(false);
+        panelMarte.setVisible(false);
 
         this.add(panelPrincipal);
 
@@ -39,9 +42,16 @@ public class Ventana extends JFrame{
      *  @param mostrar Si se desea mostrar o no el panel de la Tierra (True or False)
      */
     public void mostrarPanelTierra(Boolean mostrar){
-        if(mostrar){this.add(panelTierra);}
-        else{this.remove(panelTierra);}
+         if(mostrar){
+            this.add(panelTierra);
+            panelTierra.setVisible(true);
+
+        } else {
+            this.remove(panelTierra);
+            panelTierra.setVisible(false);
+        }
         this.repaint();
+        panelTierra.repaint();
     }
 
     /**
@@ -49,8 +59,15 @@ public class Ventana extends JFrame{
      *  @param mostrar Si se desea mostrar o no el panel de Marte (True or False)
      */
     public void mostrarPanelMarte(Boolean mostrar){
-        if(mostrar){this.add(panelMarte);}
-        else{this.remove(panelMarte);}
+
+        if(mostrar){
+            this.add(panelMarte);
+            panelMarte.setVisible(true);
+        } else {
+            this.remove(panelMarte);
+            panelMarte.setVisible(false);
+        }
+
         this.repaint();
     }
 

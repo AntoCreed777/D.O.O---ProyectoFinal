@@ -2,7 +2,8 @@ package Interfaz.Animal_Y_Comida;
 
 import Interfaz.imagenes.GeneradorImagen;
 import Interfaz.Habitat.PanelHabitat;
-import Logica.TipoHabitats.HabitatTierra;
+
+import Logica.TipoHabitats.*;
 
 import javax.swing.*;
 import java.awt.*;
@@ -13,12 +14,14 @@ import java.awt.*;
 public class AccesorioGrafico implements GeneradorImagen, Runnable{
     private final PanelHabitat panelHabitat;
     private JLabel label;
-    private final HabitatTierra.Accesorios accesorio;
+
+    private String accesorioImg;
     private int posicionX;
     private int posicionY;
-    private final int Max = 100;
-    private final int Min = 80;
+    private int Max = 100;
+    private int Min = 80;
     private Boolean running = true;
+
 
     /**
      * Contructor en donde se inician variables
@@ -27,12 +30,29 @@ public class AccesorioGrafico implements GeneradorImagen, Runnable{
      * @param posicionY Posicion Y en donde se mostrara el accesorio
      * @param panelHabitat  Panel en donde se mostrara este accesorio
      */
-    public AccesorioGrafico(HabitatTierra.Accesorios accesorio, int posicionX, int posicionY, PanelHabitat panelHabitat){
+
+    public AccesorioGrafico(Object accesorio, int posicionX, int posicionY, PanelHabitat panelHabitat){
+      
         this.panelHabitat = panelHabitat;
-        this.accesorio = accesorio;
         this.posicionX = posicionX;
         this.posicionY = posicionY;
-        this.label = GeneradorImagen.ImageLabel(accesorio.getImagen(), posicionX, posicionY,Min,Min);
+
+        if(accesorio == HabitatTierra.Accesorios.ARBOL){
+            this.Max = 200;
+            this.Min = 180;
+        } else if(accesorio == HabitatMarte.Accesorios.ARBOL){
+            this.Max = 200;
+            this.Min = 180;
+        }
+
+
+        if(accesorio instanceof HabitatTierra.Accesorios){
+            this.accesorioImg = ((HabitatTierra.Accesorios) accesorio).getImagen();
+        } else if(accesorio instanceof HabitatMarte.Accesorios){
+            this.accesorioImg = ((HabitatMarte.Accesorios) accesorio).getImagen();
+        }
+
+        this.label = GeneradorImagen.ImageLabel(this.accesorioImg, posicionX, posicionY,Min,Min);
     }
 
     /**
@@ -76,7 +96,7 @@ public class AccesorioGrafico implements GeneradorImagen, Runnable{
             posicionX = (int)(((double) posicionX / (double) minimizado.width) * maximizado.width);
             posicionY = (int)(((double) posicionY / (double) minimizado.height) * maximizado.height);
 
-            label = GeneradorImagen.ImageLabel(accesorio.getImagen(), posicionX, posicionY,Max,Max);
+            label = GeneradorImagen.ImageLabel(accesorioImg, posicionX, posicionY,Max,Max);
 
         }
         else { // Si se minimizó
@@ -85,7 +105,7 @@ public class AccesorioGrafico implements GeneradorImagen, Runnable{
             if(posicionX + Max > minimizado.width){posicionX = minimizado.width - Max;}
             if(posicionY + Max > minimizado.height){posicionY = minimizado.height - Max;}
 
-            label = GeneradorImagen.ImageLabel(accesorio.getImagen(), posicionX, posicionY,Min,Min);
+            label = GeneradorImagen.ImageLabel(accesorioImg, posicionX, posicionY,Min,Min);
         }
         panelHabitat.add(label);
     }
@@ -108,12 +128,6 @@ public class AccesorioGrafico implements GeneradorImagen, Runnable{
      * @return  Se retorna la label que contiene la clase
      */
     public JLabel getLabel() {return this.label;}
-
-    /**
-     * Getter
-     * @return  Retorna el accesorio que contiene
-     */
-    public HabitatTierra.Accesorios  getAccesorio() {return this.accesorio;}
 
     /**
      * Getter
