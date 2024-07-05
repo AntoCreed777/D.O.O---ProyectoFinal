@@ -8,6 +8,7 @@ import java.awt.*;
  * SubClase que representa a un habitat del Planeta marte
  */
 public class HabitatMarte extends Habitat {
+
     /**
      * Constructor que configura las variables
      */
@@ -17,6 +18,7 @@ public class HabitatMarte extends Habitat {
         super.btnColor = new Color(0xFFECC4);
         super.btnMarginColor = new Color(0xC68888);
         super.backgroundImg = "src/main/java/Interfaz/Imagenes/Habitats/Marte/habitat_marte.png";
+        super.animalesPermitidos = new String[]{"AlienX", "Aracne", "AsgardianoSG1", "Goauld", "Depredador", "ReplicanteSG1"};
     }
 
 
