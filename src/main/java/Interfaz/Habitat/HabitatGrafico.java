@@ -98,8 +98,3 @@ public class HabitatGrafico extends JFrame implements GeneradorImagen {
     public PanelHabitat getPanelHabitat(){return panelHabitat;}
     public Habitat getHabitat(){return habitat;}
 }
-
-
-
-
-
