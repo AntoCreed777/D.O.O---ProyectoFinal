@@ -17,7 +17,7 @@ public abstract class Habitat {
 
     protected Color backgroundColor;
     protected Color editPanelColor;
-    protected Color btnColor ;
+    protected Color btnColor;
     protected Color btnMarginColor;
 
     protected final ArrayList<AnimalGrafico> listaAnimales;

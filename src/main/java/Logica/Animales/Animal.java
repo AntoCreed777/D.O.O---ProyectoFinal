@@ -16,8 +16,8 @@ public abstract class Animal implements Sonido {
     private final String familiaTaxonomica;
     private int posicionX;
     private int posicionY;
-    private int anchoImg;
-    private int altoImg;
+    private int anchoImg = 0;
+    private int altoImg = 0;
     private final PanelHabitat panelHabitat;      //Panel del habitat al que pertenece el animal
     private int direccion = -1; //Pueden ser 8 direcciones
     //Norte=0, NorOeste=1, Oeste=2, SurOeste=3,
@@ -56,12 +56,12 @@ public abstract class Animal implements Sonido {
         ReplicanteSG1("src/main/java/Interfaz/imagenes/Animales/Marte/ReplicanteSG1.png");
 
         private final String imagen;
-        private Imagenes(String imagen) {this.imagen = imagen;}
+        Imagenes(String imagen) {this.imagen = imagen;}
 
         public String getImagen() {return imagen;}
     }
 
-    protected enum Sonidos{
+    public enum Sonidos{
         Caballo("src/main/java/Interfaz/Sonidos/Caballo.wav"),
         Leon("src/main/java/Interfaz/Sonidos/Leon.wav"),
         Nutria("src/main/java/Interfaz/Sonidos/Nutria.wav"),
@@ -76,7 +76,7 @@ public abstract class Animal implements Sonido {
         ReplicanteSG1("");
 
         private final Clip sonido;
-        private Sonidos(String direccion) {this.sonido = Sonido.cargarSonido(direccion);}
+        Sonidos(String direccion) {this.sonido = Sonido.cargarSonido(direccion);}
 
         public Clip getSonido() {return sonido;}
     }
