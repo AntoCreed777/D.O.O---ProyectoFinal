@@ -10,22 +10,21 @@ import java.awt.*;
  * SubClase que representa a un habitat del Planeta Tierra
  */
 public class HabitatTierra extends Habitat {
-
-
     private int[] temperatura;
+
     /**
      * Constructor que configura las variables
      */
     public HabitatTierra(TipoHabitat tipoHabitat){
-
+        super(tipoHabitat,
+                new Animal.Imagenes[]{
+                    Leon, Vaca, Nutria, Caballo, Pinguino, Tigre
+                }
+        );
         super.backgroundColor = new Color(0xF6FFEC);
         super.editPanelColor = new Color(0x68B0AB);
         super.btnColor = new Color(0xFAF3DD);
         super.btnMarginColor = new Color(0xBABABA);
-        super.backgroundImg = tipoHabitat.getImagen();
-        super.animalesPermitidos = new Animal.Imagenes[]{
-                Leon, Vaca, Nutria, Caballo, Pinguino, Tigre
-        };
         temperatura = new int[]{0, 100};
     }
 
@@ -39,7 +38,7 @@ public class HabitatTierra extends Habitat {
         temperatura[1] = maximo;
     }
 
-    public enum TipoHabitat {
+    public enum TipoHabitat implements HabitatTipo {
         DESERTICO("src/main/java/Interfaz/imagenes/Habitats/Tierra/habitat_desertico_1.jpg"),
         POLAR("src/main/java/Interfaz/imagenes/Habitats/Tierra/habitat_polar_1.jpg"),
         JUNGLA("src/main/java/Interfaz/imagenes/Habitats/Tierra/habitat_jungla_1.jpg");
@@ -47,6 +46,7 @@ public class HabitatTierra extends Habitat {
         private final String imagen;
         private TipoHabitat(String imagen) {this.imagen = imagen;}
 
+        @Override
         public String getImagen(){return imagen;}
     }
 

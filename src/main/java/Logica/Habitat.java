@@ -12,27 +12,33 @@ import java.util.List;
  * Clase que representa a un habitat
  */
 public abstract class Habitat {
+    private final String backgroundImg;
+    private final Animal.Imagenes[] animalesPermitidos;
 
     protected Color backgroundColor;
     protected Color editPanelColor;
     protected Color btnColor ;
     protected Color btnMarginColor;
-    protected String backgroundImg;
 
     protected final ArrayList<AnimalGrafico> listaAnimales;
     protected final List<ComidaGrafica> listaComida;
     protected final List<AccesorioGrafico> listaAccesorios;
 
-    protected Animal.Imagenes[] animalesPermitidos;
-
     /**
      * Constructor que inicializa las listas de elementos que contiene el habitat
      */
-    public Habitat(){
+    public Habitat(HabitatTipo habitatTipo, Animal.Imagenes[] animalesPermitidos){
+        this.animalesPermitidos = animalesPermitidos;
+        this.backgroundImg = habitatTipo.getImagen();
         listaAnimales = new ArrayList<AnimalGrafico>();
         this.listaComida = Collections.synchronizedList(new ArrayList<>());
         this.listaAccesorios = Collections.synchronizedList(new ArrayList<>());
     }
+
+    /**
+     * Interfaz que usan todos los Enum que designan los tipos de habitats
+     */
+    public interface HabitatTipo {String getImagen();}
 
     /**
      * Getter
@@ -82,6 +88,9 @@ public abstract class Habitat {
      */
     public synchronized List<AccesorioGrafico> getListaAccesorios() { return listaAccesorios;}
 
-
+    /**
+     * Getter
+     * @return Retorna la lista de animales permitidos dentro del habitat
+     */
     public Animal.Imagenes[] getAnimalesPermitidos(){return animalesPermitidos;}
 }
