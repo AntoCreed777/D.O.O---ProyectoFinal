@@ -13,6 +13,7 @@ public class PanelSelecPlaneta extends JPanel {
         this.setBounds(x, y, width, height);
         this.setBackground(new Color(0x05072E));
 
+
         this.addMouseListener(new MouseListener() {
             @Override
             public void mouseClicked(MouseEvent e) {
@@ -20,7 +21,7 @@ public class PanelSelecPlaneta extends JPanel {
                     case "Tierra": ventana.mostrarPanelTierra(true); ventana.mostrarPanelPrincipal(false); break;
                     case "Marte" : ventana.mostrarPanelMarte(true); ventana.mostrarPanelPrincipal(false); break;
                     default:
-                        JOptionPane.showMessageDialog(null, "No se puede acceder a este planeta");
+                        JOptionPane.showMessageDialog(null, "Este planeta no ha sido desbloqueado");
                         ventana.mostrarPanelPrincipal(true);
                         break;
                 }
