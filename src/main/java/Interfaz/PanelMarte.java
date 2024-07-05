@@ -23,10 +23,14 @@ public class PanelMarte extends JPanel implements GeneradorImagen {
 
 
     public void crearBotonRetorno(){
-        JButton btnRetorno = new JButton("Volver a espacio");
-        btnRetorno.setBounds(20, 20, 150, 70);
+        JButton btnRetorno = new JButton();
+        btnRetorno.setBounds(31, 29, 70, 90);
         btnRetorno.setMargin(new Insets(0,0,0,0));
-        btnRetorno.setBackground(new Color(0xffffff));
+        btnRetorno.setBackground(new Color(0xff6634));
+        btnRetorno.setBorderPainted(false);
+        ImageIcon img = GeneradorImagen.scaledProducto("src/main/java/Interfaz/imagenes/Habitats/nave_espacial.png",60,90);
+        btnRetorno.setIcon(img);
+
 
         btnRetorno.addMouseListener(new MouseListener() {
             @Override

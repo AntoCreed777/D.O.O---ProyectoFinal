@@ -4,6 +4,7 @@ import Interfaz.ObjetosGraficos.AccesorioGrafico;
 import Interfaz.ObjetosGraficos.AnimalGrafico;
 import Interfaz.ObjetosGraficos.ComidaGrafica;
 
+import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -24,7 +25,7 @@ public abstract class Habitat {
     protected final List<ComidaGrafica> listaComida;
     protected final List<AccesorioGrafico> listaAccesorios;
 
-    private int[] temperatura;
+    protected String[] animalesPermitidos;
 
     /**
      * Constructor que inicializa las listas de elementos que contiene el habitat
@@ -33,7 +34,6 @@ public abstract class Habitat {
         listaAnimales = new ArrayList<AnimalGrafico>();
         this.listaComida = Collections.synchronizedList(new ArrayList<>());
         this.listaAccesorios = Collections.synchronizedList(new ArrayList<>());
-        temperatura = new int[]{0, 100};
     }
 
     /**
@@ -84,13 +84,26 @@ public abstract class Habitat {
      */
     public synchronized List<AccesorioGrafico> getListaAccesorios() { return listaAccesorios;}
 
-    /**
-     * Funcion que establece la Temperatura mminima y maxima dentro del habitat
-     * @param minimo    Temperatura minima dentro del habitat
-     * @param maximo    Temperatura maxima dentro del habitat
-     */
-    public void setTemperatura(int minimo, int maximo){
-        temperatura[0] = minimo;
-        temperatura[1] = maximo;
+
+    public String[] getAnimalesPermitidos(){
+        return animalesPermitidos;
+    }
+
+    public String getAnimalImg(String animal){
+        switch (animal) {
+            case "Vaca" : return "src/main/java/interfaz/Imagenes/Animales/Vaca.png";
+            case "Leon" : return "src/main/java/interfaz/Imagenes/Animales/Leon.png";
+            case "Pinguino" : return "src/main/java/interfaz/Imagenes/Animales/Pinguino.png";
+            case "Tigre" : return "src/main/java/interfaz/Imagenes/Animales/Tigre.png";
+            case "Nutria" : return "src/main/java/interfaz/Imagenes/Animales/Nutria.png";
+            case "Caballo" : return "src/main/java/interfaz/Imagenes/Animales/Caballo.png";
+            case "AlienX" : return "src/main/java/interfaz/Imagenes/Animales/AlienX.png";
+            case "AsgardianoSG1" : return "src/main/java/interfaz/Imagenes/Animales/AsgardianoSG1.png";
+            case "Aracne" : return "src/main/java/interfaz/Imagenes/Animales/Aracne.png";
+            case "Depredador" : return "src/main/java/interfaz/Imagenes/Animales/Depredador.png";
+            case "Goauld" : return "src/main/java/interfaz/Imagenes/Animales/Goauld.png";
+            case "ReplicanteSG1" : return "src/main/java/interfaz/Imagenes/Animales/ReplicanteSG1.png";
+            default : return "";
+        }
     }
 }

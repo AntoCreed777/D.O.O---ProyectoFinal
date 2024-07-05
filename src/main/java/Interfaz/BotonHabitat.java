@@ -57,12 +57,15 @@ public class BotonHabitat extends JButton implements MouseListener {
 
             int selectedIndex = encontrarIndex(opcionesStr, (String)strTipoHabitat);
 
-            if (panel instanceof PanelTierra) {
-                habitatEscogido = new HabitatTierra((HabitatTierra.TipoHabitat) opciones[selectedIndex]);
-            }
-            else if (panel instanceof PanelMarte) {
-                habitatEscogido = new HabitatMarte((HabitatMarte.TipoHabitat) opciones[selectedIndex]);
-            }
+            if(selectedIndex >= 0){
+
+                if (panel instanceof PanelTierra) {
+                    habitatEscogido = new HabitatTierra((HabitatTierra.TipoHabitat) opciones[selectedIndex]);
+                }
+                else if (panel instanceof PanelMarte) {
+                    habitatEscogido = new HabitatMarte((HabitatMarte.TipoHabitat) opciones[selectedIndex]);
+                }
+            } else { return null;}
         }
         return habitatEscogido;
     }
