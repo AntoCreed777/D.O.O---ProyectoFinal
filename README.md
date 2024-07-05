@@ -1,12 +1,10 @@
 # D.O.O---ProyectoFinal
 - - -
 
-**Numero de Grupo:**
--
-#17
+**Numero de Grupo:** #17
 
 **Integrantes:**
--
+
 * Antonio Benavides
 * Maria Jose San Martin
 * Valeria Quiroga
@@ -60,8 +58,8 @@ El proyecto esta dividido en 2 parte:
 |  Row 1  |               |
 |  Row 2  |               |
 
-A continuación se muestran una captura de pantalla de la interfaz gráfica del proyecto:
-
+**Interfaz Grafica**:
+-
 
 //Insertar Imagen//
 
