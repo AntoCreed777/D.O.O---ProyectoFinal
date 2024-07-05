@@ -37,18 +37,15 @@ public class AccesorioGrafico implements GeneradorImagen, Runnable{
         this.posicionX = posicionX;
         this.posicionY = posicionY;
 
-        if(accesorio == HabitatTierra.Accesorios.ARBOL){
-            this.Max = 200;
-            this.Min = 180;
-        } else if(accesorio == HabitatMarte.Accesorios.ARBOL){
+        if(accesorio == HabitatTierra.Accesorios.ARBOL || accesorio == HabitatMarte.Accesorios.ARBOL){
             this.Max = 200;
             this.Min = 180;
         }
 
-
         if(accesorio instanceof HabitatTierra.Accesorios){
             this.accesorioImg = ((HabitatTierra.Accesorios) accesorio).getImagen();
-        } else if(accesorio instanceof HabitatMarte.Accesorios){
+        }
+        else if(accesorio instanceof HabitatMarte.Accesorios){
             this.accesorioImg = ((HabitatMarte.Accesorios) accesorio).getImagen();
         }
 
@@ -63,7 +60,7 @@ public class AccesorioGrafico implements GeneradorImagen, Runnable{
         int posicionY = this.posicionY - 100;   //Lo muevo 100 pixeles arriba de donde debe aparecer
 
         while(this.posicionY > posicionY){
-            this.label.setBounds(this.posicionX, posicionY, 100, 100);
+            this.label.setBounds(this.posicionX, posicionY, Max, Max);
             panelHabitat.repaint();
             posicionY++;
 
@@ -115,11 +112,11 @@ public class AccesorioGrafico implements GeneradorImagen, Runnable{
      * se muestra
      */
     public void validarPosicion(){
-        if(posicionX + 100 > panelHabitat.getWidth()){
-            posicionX = panelHabitat.getWidth() - 100;
+        if(posicionX + Max > panelHabitat.getWidth()){
+            posicionX = panelHabitat.getWidth() - Max;
         }
         if(posicionY + 100 > panelHabitat.getHeight()){
-            posicionY = panelHabitat.getHeight() - 100;
+            posicionY = panelHabitat.getHeight() - Max;
         }
     }
 
