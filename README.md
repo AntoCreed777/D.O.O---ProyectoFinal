@@ -1,9 +1,12 @@
 # D.O.O---ProyectoFinal
+- - -
 
 **Numero de Grupo:**
+-
 #17
 
 **Integrantes:**
+-
 * Antonio Benavides
 * Maria Jose San Martin
 * Valeria Quiroga
@@ -35,13 +38,43 @@ El proyecto esta dividido en 2 parte:
     * Paneles Extras: Permiten la navegacion entre planetas.
 
 **Estructura del Proyecto**:
+-
 
 //Insertar Imagen//
 
 **Diagrama UML**:
+-
 
 //Insertar Imagen//
+
+**Diagrama de Casos de Uso**:
+-
+
+//Insertar Imagen//
+
+**Patrones utilizados**:
+-
+
+| Patron  | Justificación |
+|:-------:|:--------------|
+|  Row 1  |               |
+|  Row 2  |               |
 
 A continuación se muestran una captura de pantalla de la interfaz gráfica del proyecto:
 
+
 //Insertar Imagen//
+
+**Decisiones tomadas durante el desarrollo**:
+-
+
+* Forma en que se interactuaria con el usuario (Diagrama de Uso).
+* De que forma le mostrariamos la interfaz al usuario, con JFrames por cada interactuable o con JPanel, finalmente escogimos que la seleccion de planetas y habitats fuera en un JFrame, la vista y configuracion de ese Habitat seria en otro JFrame, lo demas va en su propio JPanel dentro de los JFrame.
+* Estetica unica de nuestro proyecto, en nuestro caso elegimos estetica marciana basandonos en un capitulo de `Rick and Morty`.
+* El orden de desarrollo del proyecto, que funcionalidades desarrollar primero o que vistas.
+
+**Problemas encontrados**:
+-
+
+* NINGUNO, SOMOS UNOS CRACKS 😎
+* Seremos ricos 🤑
