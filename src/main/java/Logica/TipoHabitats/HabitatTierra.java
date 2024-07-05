@@ -1,6 +1,8 @@
 package Logica.TipoHabitats;
 
+import Logica.Animales.Animal;
 import Logica.Habitat;
+import static Logica.Animales.Animal.Imagenes.*;
 
 import java.awt.*;
 
@@ -21,7 +23,9 @@ public class HabitatTierra extends Habitat {
         super.btnColor = new Color(0xFAF3DD);
         super.btnMarginColor = new Color(0xBABABA);
         super.backgroundImg = tipoHabitat.getImagen();
-        super.animalesPermitidos = new String[]{"Leon", "Vaca", "Nutria", "Caballo", "Pinguino", "Tigre"};
+        super.animalesPermitidos = new Animal.Imagenes[]{
+                Leon, Vaca, Nutria, Caballo, Pinguino, Tigre
+        };
         temperatura = new int[]{0, 100};
     }
 

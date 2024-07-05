@@ -1,5 +1,7 @@
 package Logica.TipoHabitats;
 
+import Logica.Animales.Animal;
+import static Logica.Animales.Animal.Imagenes.*;
 import Logica.Habitat;
 
 import java.awt.*;
@@ -18,7 +20,10 @@ public class HabitatMarte extends Habitat {
         super.btnColor = new Color(0xFFECC4);
         super.btnMarginColor = new Color(0xC68888);
         super.backgroundImg = "src/main/java/Interfaz/Imagenes/Habitats/Marte/habitat_marte.png";
-        super.animalesPermitidos = new String[]{"AlienX", "Aracne", "AsgardianoSG1", "Goauld", "Depredador", "ReplicanteSG1"};
+        super.animalesPermitidos = new Animal.Imagenes[]{
+                AlienX, Aracne, AsgardianoSG1, Goauld, Depredador, ReplicanteSG1
+        };
+
     }
 
 

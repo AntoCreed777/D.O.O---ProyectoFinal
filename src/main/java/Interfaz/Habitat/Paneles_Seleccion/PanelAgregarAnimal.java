@@ -24,6 +24,7 @@ public class PanelAgregarAnimal extends JPanel {
     private final Color btnMarginColor;
     private final HabitatGrafico habitatGrafico;
     private final PanelAgregarAnimal panelAgregarAnimal;
+    private final Animal.Imagenes[] animalesPermitidos;
 
     int i = 0;
     private JButton btn1;
@@ -45,19 +46,19 @@ public class PanelAgregarAnimal extends JPanel {
         this.setBackground(backgroundColor);
         this.setLayout(null);
 
-        String[] animalstr = habitatGrafico.getHabitat().getAnimalesPermitidos();
+        animalesPermitidos = habitatGrafico.getHabitat().getAnimalesPermitidos();
 
         int ancho = 200;
 
-        btn1 = agregarBotones(animalstr[i], ancho);
+        btn1 = agregarBotones(animalesPermitidos[i], ancho);
         btn1.setBounds(177, 10, ancho, 180);
         this.add(btn1);
 
-        btn2 = agregarBotones(animalstr[i + 1], ancho);
+        btn2 = agregarBotones(animalesPermitidos[i + 1], ancho);
         btn2.setBounds(387, 10, ancho, 180);
         this.add(btn2);
 
-        btn3 = agregarBotones(animalstr[i + 2], ancho);
+        btn3 = agregarBotones(animalesPermitidos[i + 2], ancho);
         btn3.setBounds(597, 10, ancho, 180);
         this.add(btn3);
 
@@ -103,8 +104,8 @@ public class PanelAgregarAnimal extends JPanel {
      * @param ancho  Ancho del boton
      * @return Se retorna el boton que se creo
      */
-    private JButton agregarBotones(String animal, int ancho) {
-        JButton btn = new JButton(animal);
+    private JButton agregarBotones(Animal.Imagenes animal, int ancho) {
+        JButton btn = new JButton(animal.name());
 
         btn.setBackground(btnColor);
         btn.setHorizontalTextPosition(JButton.CENTER);
@@ -112,15 +113,12 @@ public class PanelAgregarAnimal extends JPanel {
         btn.setBorder(new MatteBorder(10, 5, 10, 5, btnMarginColor));
         btn.setBorderPainted(true);
 
-        String imgStr = Animal.Imagenes.valueOf(animal).getImagen();
-
-        ImageIcon img = GeneradorImagen.scaledProducto(imgStr, ancho - 100, 100);
-        btn.setIcon(img);
+        btn.setIcon(GeneradorImagen.scaledProducto(animal.getImagen(), ancho - 100, 100));
 
         btn.addMouseListener(new MouseListener() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                AnimalGrafico animalGrafico = switch (animal) {
+                AnimalGrafico animalGrafico = switch (animal.name()) {
                     case "Pinguino" ->
                             new AnimalGrafico(new Pinguino(habitatGrafico.getPanelHabitat().clickMouse.x, habitatGrafico.getPanelHabitat().clickMouse.y, habitatGrafico.getPanelHabitat()));
                     case "Caballo" ->
@@ -171,33 +169,28 @@ public class PanelAgregarAnimal extends JPanel {
 
     public void cambiarBotones(Boolean val){
 
-        String[] animalstr = habitatGrafico.getHabitat().getAnimalesPermitidos();
-
         if(val){i++;}
         else {i--;}
 
         if(i < 0){ i++; return;}
-        else if (i > animalstr.length - 3){i--; return;}
-
+        else if (i > animalesPermitidos.length - 3){i--; return;}
 
         panelAgregarAnimal.remove(btn1);
         panelAgregarAnimal.remove(btn2);
         panelAgregarAnimal.remove(btn3);
 
-
-        btn1 = agregarBotones(animalstr[i], 200);
+        btn1 = agregarBotones(animalesPermitidos[i], 200);
         btn1.setBounds(177, 10, 200, 180);
         panelAgregarAnimal.add(btn1);
 
-        btn2 = agregarBotones(animalstr[i + 1], 200);
+        btn2 = agregarBotones(animalesPermitidos[i + 1], 200);
         btn2.setBounds(387, 10, 200, 180);
         panelAgregarAnimal.add(btn2);
 
-        btn3 = agregarBotones(animalstr[i + 2], 200);
+        btn3 = agregarBotones(animalesPermitidos[i + 2], 200);
         btn3.setBounds(597, 10, 200, 180);
         panelAgregarAnimal.add(btn3);
 
         this.repaint();
     }
-
 }

@@ -1,11 +1,8 @@
 package Logica;
 
-import Interfaz.ObjetosGraficos.AccesorioGrafico;
-import Interfaz.ObjetosGraficos.AnimalGrafico;
-import Interfaz.ObjetosGraficos.ComidaGrafica;
+import Interfaz.ObjetosGraficos.*;
 import Logica.Animales.Animal;
 
-import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -26,7 +23,7 @@ public abstract class Habitat {
     protected final List<ComidaGrafica> listaComida;
     protected final List<AccesorioGrafico> listaAccesorios;
 
-    protected String[] animalesPermitidos;
+    protected Animal.Imagenes[] animalesPermitidos;
 
     /**
      * Constructor que inicializa las listas de elementos que contiene el habitat
@@ -86,5 +83,5 @@ public abstract class Habitat {
     public synchronized List<AccesorioGrafico> getListaAccesorios() { return listaAccesorios;}
 
 
-    public String[] getAnimalesPermitidos(){return animalesPermitidos;}
+    public Animal.Imagenes[] getAnimalesPermitidos(){return animalesPermitidos;}
 }
