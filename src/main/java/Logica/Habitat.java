@@ -3,6 +3,7 @@ package Logica;
 import Interfaz.ObjetosGraficos.AccesorioGrafico;
 import Interfaz.ObjetosGraficos.AnimalGrafico;
 import Interfaz.ObjetosGraficos.ComidaGrafica;
+import Logica.Animales.Animal;
 
 import javax.swing.*;
 import java.awt.*;
@@ -85,25 +86,5 @@ public abstract class Habitat {
     public synchronized List<AccesorioGrafico> getListaAccesorios() { return listaAccesorios;}
 
 
-    public String[] getAnimalesPermitidos(){
-        return animalesPermitidos;
-    }
-
-    public String getAnimalImg(String animal){
-        switch (animal) {
-            case "Vaca" : return "src/main/java/interfaz/Imagenes/Animales/Vaca.png";
-            case "Leon" : return "src/main/java/interfaz/Imagenes/Animales/Leon.png";
-            case "Pinguino" : return "src/main/java/interfaz/Imagenes/Animales/Pinguino.png";
-            case "Tigre" : return "src/main/java/interfaz/Imagenes/Animales/Tigre.png";
-            case "Nutria" : return "src/main/java/interfaz/Imagenes/Animales/Nutria.png";
-            case "Caballo" : return "src/main/java/interfaz/Imagenes/Animales/Caballo.png";
-            case "AlienX" : return "src/main/java/interfaz/Imagenes/Animales/AlienX.png";
-            case "AsgardianoSG1" : return "src/main/java/interfaz/Imagenes/Animales/AsgardianoSG1.png";
-            case "Aracne" : return "src/main/java/interfaz/Imagenes/Animales/Aracne.png";
-            case "Depredador" : return "src/main/java/interfaz/Imagenes/Animales/Depredador.png";
-            case "Goauld" : return "src/main/java/interfaz/Imagenes/Animales/Goauld.png";
-            case "ReplicanteSG1" : return "src/main/java/interfaz/Imagenes/Animales/ReplicanteSG1.png";
-            default : return "";
-        }
-    }
+    public String[] getAnimalesPermitidos(){return animalesPermitidos;}
 }

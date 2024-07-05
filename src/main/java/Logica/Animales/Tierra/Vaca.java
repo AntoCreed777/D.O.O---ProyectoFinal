@@ -1,12 +1,13 @@
-package Logica.Animales;
+package Logica.Animales.Tierra;
 
 import Interfaz.Habitat.PanelHabitat;
+import Logica.Animales.Animal;
 import Logica.Comida;
 
 /**
  * SubClase de Animal que representa a un Vaca
  */
-public class Vaca extends Animal{
+public class Vaca extends Animal {
     public final static int temperaturaAdecuada = 24; //Grados Celcius
 
     /**
@@ -26,13 +27,5 @@ public class Vaca extends Animal{
      * @return  Retorna si logro o no comerse al comida
      */
     @Override
-    public boolean Comer(Comida comida) {
-        if(comida == Comida.Pasto){
-            System.out.println("Que rico, pasto amarillo");
-            return true;
-        }
-        else{
-            return false;
-        }
-    }
+    public boolean Comer(Comida comida) {return comida == Comida.Pasto;}
 }

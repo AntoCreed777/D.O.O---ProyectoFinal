@@ -1,12 +1,13 @@
-package Logica.Animales;
+package Logica.Animales.Tierra;
 
 import Interfaz.Habitat.PanelHabitat;
+import Logica.Animales.Animal;
 import Logica.Comida;
 
 /**
  * SubClase de Animal que representa a un Caballo
  */
-public class Caballo extends Animal{
+public class Caballo extends Animal {
     public final static int temperaturaAdecuada = 28; //Grados Celcius
 
     /**
@@ -26,22 +27,5 @@ public class Caballo extends Animal{
      * @return  Retorna si logro o no comerse al comida
      */
     @Override
-    public boolean Comer(Comida comida){
-        if(comida == Comida.Pasto){
-            System.out.println("Comiendo el pastito, YAM YAM :)");
-            return true;
-        }
-        else{
-            System.out.println("Que asco, no me gusta");
-            return false;
-        }
-    }
-
-    /**
-     * Funcion que permite meter sonido al animal
-     */
-    @Override
-    public void MeterSonido() {
-        System.out.println("El Cabaloo ***** de las montañasss");
-    }
+    public boolean Comer(Comida comida) {return comida == Comida.Pasto;}
 }

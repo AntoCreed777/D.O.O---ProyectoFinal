@@ -42,12 +42,18 @@ public abstract class Animal implements Sonido {
     }
 
     public enum Imagenes{
-        Caballo("src/main/java/Interfaz/imagenes/Animales/Caballo.png"),
-        Leon("src/main/java/Interfaz/imagenes/Animales/Leon.png"),
-        Nutria("src/main/java/Interfaz/imagenes/Animales/Nutria.png"),
-        Pinguino("src/main/java/Interfaz/imagenes/Animales/Pinguino.png"),
-        Tigre("src/main/java/Interfaz/imagenes/Animales/Tigre.png"),
-        Vaca("src/main/java/Interfaz/imagenes/Animales/Vaca.png");
+        Caballo("src/main/java/Interfaz/imagenes/Animales/Tierra/Caballo.png"),
+        Leon("src/main/java/Interfaz/imagenes/Animales/Tierra/Leon.png"),
+        Nutria("src/main/java/Interfaz/imagenes/Animales/Tierra/Nutria.png"),
+        Pinguino("src/main/java/Interfaz/imagenes/Animales/Tierra/Pinguino.png"),
+        Tigre("src/main/java/Interfaz/imagenes/Animales/Tierra/Tigre.png"),
+        Vaca("src/main/java/Interfaz/imagenes/Animales/Tierra/Vaca.png"),
+        AlienX("src/main/java/Interfaz/imagenes/Animales/Marte/AlienX.png"),
+        Aracne("src/main/java/Interfaz/imagenes/Animales/Marte/Aracne.png"),
+        AsgardianoSG1("src/main/java/Interfaz/imagenes/Animales/Marte/AsgardianoSG1.png"),
+        Depredador("src/main/java/Interfaz/imagenes/Animales/Marte/Depredador.png"),
+        Goauld("src/main/java/Interfaz/imagenes/Animales/Marte/Goauld.png"),
+        ReplicanteSG1("src/main/java/Interfaz/imagenes/Animales/Marte/ReplicanteSG1.png");
 
         private final String imagen;
         private Imagenes(String imagen) {this.imagen = imagen;}
@@ -61,7 +67,13 @@ public abstract class Animal implements Sonido {
         Nutria("src/main/java/Interfaz/Sonidos/Nutria.wav"),
         Pinguino("src/main/java/Interfaz/Sonidos/Pinguino.wav"),
         Tigre("src/main/java/Interfaz/Sonidos/Tigre.wav"),
-        Vaca("src/main/java/Interfaz/Sonidos/Vaca.wav");
+        Vaca("src/main/java/Interfaz/Sonidos/Vaca.wav"),
+        AlienX(""),
+        Aracne(""),
+        AsgardianoSG1(""),
+        Depredador(""),
+        Goauld(""),
+        ReplicanteSG1("");
 
         private final Clip sonido;
         private Sonidos(String direccion) {this.sonido = Sonido.cargarSonido(direccion);}

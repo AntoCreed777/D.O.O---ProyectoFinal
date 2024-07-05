@@ -16,7 +16,7 @@ public class AnimalGrafico implements GeneradorImagen, Runnable {
     private JLabel label;
     private final int widthMax;
     private final int heightMax;
-    private final  int widthMin;
+    private final int widthMin;
     private final int heightMin;
     private final Animal animal;
     private Boolean running = true;
@@ -29,6 +29,7 @@ public class AnimalGrafico implements GeneradorImagen, Runnable {
         this.animal = animal;
         this.imagen = animal.getImagen();
 
+        /*
         switch (animal) {
             case Leon leon -> {
                 widthMax = 100;
@@ -55,6 +56,12 @@ public class AnimalGrafico implements GeneradorImagen, Runnable {
                 heightMin = 0;
             }
         }
+         */
+
+        widthMax = 100;
+        heightMax = 100;
+        widthMin = 80;
+        heightMin = 80;
 
         label = GeneradorImagen.ImageLabel(imagen,animal.getPosicionX(),animal.getPosicionY(),
                 widthMin, heightMin);

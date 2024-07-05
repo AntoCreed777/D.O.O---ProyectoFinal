@@ -1,12 +1,13 @@
-package Logica.Animales;
+package Logica.Animales.Tierra;
 
 import Interfaz.Habitat.PanelHabitat;
+import Logica.Animales.Animal;
 import Logica.Comida;
 
 /**
  * SubClase de Animal que representa a un Leon
  */
-public class Leon extends Animal{
+public class Leon extends Animal {
     public final static int temperaturaAdecuada = 28; //Grados Celcius
 
     /**
@@ -26,14 +27,5 @@ public class Leon extends Animal{
      * @return  Retorna si logro o no comerse al comida
      */
     @Override
-    public boolean Comer(Comida comida){
-        if(comida == Comida.Carne){
-            System.out.println("Comiendo la carne, YAM YAM :)");
-            return true;
-        }
-        else{
-            System.out.println("Que asco, no me gusta");
-            return false;
-        }
-    }
+    public boolean Comer(Comida comida) {return comida == Comida.Carne;}
 }

@@ -1,12 +1,13 @@
-package Logica.Animales;
+package Logica.Animales.Tierra;
 
 import Interfaz.Habitat.PanelHabitat;
+import Logica.Animales.Animal;
 import Logica.Comida;
 
 /**
  * SubClase de Animal que representa a un Pinguino
  */
-public class Pinguino extends Animal{
+public class Pinguino extends Animal {
     public final static int temperaturaAdecuada = -5; //Grados Celcius
 
     /**
@@ -26,14 +27,5 @@ public class Pinguino extends Animal{
      * @return  Retorna si logro o no comerse al comida
      */
     @Override
-    public boolean Comer(Comida comida) {
-        if(comida == Comida.Pescado){
-            System.out.println("Comiendome mi Pescadito :)");
-            return true;
-        }
-        else{
-            System.out.println("NO ME GUSTAA");
-            return false;
-        }
-    }
+    public boolean Comer(Comida comida) {return comida == Comida.Pescado;}
 }

@@ -1,12 +1,13 @@
-package Logica.Animales;
+package Logica.Animales.Tierra;
 
 import Interfaz.Habitat.PanelHabitat;
+import Logica.Animales.Animal;
 import Logica.Comida;
 
 /**
  * SubClase de Animal que representa a un Nutria
  */
-public class Nutria extends Animal{
+public class Nutria extends Animal {
     public final static int temperaturaAdecuada = 28; //Grados Celcius
 
     /**
@@ -26,22 +27,5 @@ public class Nutria extends Animal{
      * @return  Retorna si logro o no comerse al comida
      */
     @Override
-    public boolean Comer(Comida comida){
-        if(comida == Comida.Pescado){
-            System.out.println("Comiendo a Nemo :)");
-            return true;
-        }
-        else{
-            System.out.println("Hola Dori");
-            return false;
-        }
-    }
-
-    /**
-     * Funcion que permite meter sonido al animal
-     */
-    @Override
-    public void MeterSonido() {
-        System.out.println("Pescadito sabroson");
-    }
+    public boolean Comer(Comida comida) {return comida == Comida.Pescado;}
 }
