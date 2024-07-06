@@ -10,6 +10,8 @@ import static Logica.Animales.Animal.FamiliaTaxonomica.Campo;
  */
 public class Caballo extends Animal {
     public final static int temperaturaAdecuada = 28; //Grados Celcius
+    public final static Animal.Imagenes imagen = Imagenes.Caballo;
+    public final static Comida comida = Comida.Pasto;
 
     /**
      * Constructor del Caballo

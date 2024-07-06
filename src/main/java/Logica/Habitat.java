@@ -13,8 +13,9 @@ import java.util.List;
  */
 public abstract class Habitat {
     private final String backgroundImg;
-    private final Animal.Imagenes[] animalesPermitidos;
-    private final Comida[] comidasPermitidas;
+    private final int[] temperatura;
+    private final Class<? extends Animal>[] animalesPermitidos;
+    private final ArrayList<Comida> comidasPermitidas;
 
     protected Color backgroundColor;
     protected Color editPanelColor;
@@ -28,11 +29,22 @@ public abstract class Habitat {
     /**
      * Constructor que inicializa las listas de elementos que contiene el habitat
      */
-    public Habitat(HabitatTipo habitatTipo, Animal.Imagenes[] animalesPermitidos, Comida[] comidasPermitidas){
-        this.animalesPermitidos = animalesPermitidos;
+    public Habitat(HabitatTipo habitatTipo, Class<? extends Animal>[] animalesPermitidos) throws NoSuchFieldException, IllegalAccessException {
         this.backgroundImg = habitatTipo.getImagen();
-        this.comidasPermitidas = comidasPermitidas;
-        listaAnimales = new ArrayList<AnimalGrafico>();
+        this.temperatura = habitatTipo.getTemperatura();
+
+        this.animalesPermitidos = animalesPermitidos;
+        this.comidasPermitidas = new ArrayList<>();
+
+        for(Class<? extends Animal> animal : animalesPermitidos){
+            boolean yaEsta = false;
+            for(Comida comida : comidasPermitidas){
+                if(comida == animal.getField("comida").get(null)){yaEsta = true;break;}
+            }
+            if(!yaEsta){comidasPermitidas.add((Comida)animal.getField("comida").get(null));}
+        }
+
+        listaAnimales = new ArrayList<>();
         this.listaComida = Collections.synchronizedList(new ArrayList<>());
         this.listaAccesorios = Collections.synchronizedList(new ArrayList<>());
     }
@@ -40,7 +52,10 @@ public abstract class Habitat {
     /**
      * Interfaz que usan todos los Enum que designan los tipos de habitats
      */
-    public interface HabitatTipo {String getImagen();}
+    public interface HabitatTipo {
+        String getImagen();
+        int[] getTemperatura();
+    }
 
     /**
      * Interfaz que usan todos los Enum que designan los accesorios disponibles dentro del habitat
@@ -102,11 +117,17 @@ public abstract class Habitat {
      * Getter
      * @return Retorna la lista de animales permitidos dentro del habitat
      */
-    public Animal.Imagenes[] getAnimalesPermitidos(){return animalesPermitidos;}
+    public Class<? extends Animal>[] getAnimalesPermitidos(){return animalesPermitidos;}
 
     /**
      * Getter
      * @return Retorna la lista de comidas permitidas dentro del habitat
      */
-    public Comida[] getComidasPermitidas(){return comidasPermitidas;}
+    public ArrayList<Comida> getComidasPermitidas(){return comidasPermitidas;}
+
+    /**
+     * Getter
+     * @return Retorna la temperatura minima y maxima del Habitat
+     */
+    public int[] getTemperatura() {return temperatura;}
 }

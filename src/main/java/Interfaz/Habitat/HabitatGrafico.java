@@ -21,7 +21,7 @@ public class HabitatGrafico extends JFrame implements GeneradorImagen {
     private final PanelEditar panelEditar;
     private final PanelHabitat panelHabitat;
 
-    public HabitatGrafico(Habitat habitat) {
+    public HabitatGrafico(Habitat habitat) throws NoSuchFieldException, IllegalAccessException {
         this.habitat = habitat;
 
         this.setSize(new Dimension(1100, 670));

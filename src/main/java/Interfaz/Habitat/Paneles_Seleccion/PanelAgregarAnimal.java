@@ -21,7 +21,7 @@ public class PanelAgregarAnimal extends JPanel implements Listener {
     private final Color btnMarginColor;
     private final HabitatGrafico habitatGrafico;
     private final PanelAgregarAnimal panelAgregarAnimal;
-    private final Animal.Imagenes[] animalesPermitidos;
+    private final Class<? extends Animal>[] animalesPermitidos;
 
     private final ButtonGroup grupoBotones;
     int i = 0;
@@ -29,13 +29,13 @@ public class PanelAgregarAnimal extends JPanel implements Listener {
     private JToggleButton btn2;
     private JToggleButton btn3;
 
-    private Animal.Imagenes animalSeleccionado = null;
+    private Class<? extends Animal> animalSeleccionado = null;
     /**
      * Contructor en donde se inician variables , se configura el panel y se agregan los botones
      *
      * @param habitatGrafico Habitat al que pertenece este panel y sobre el que puede actuar
      */
-    public PanelAgregarAnimal(HabitatGrafico habitatGrafico) {
+    public PanelAgregarAnimal(HabitatGrafico habitatGrafico) throws NoSuchFieldException, IllegalAccessException {
         this.habitatGrafico = habitatGrafico;
         this.btnColor = habitatGrafico.getHabitat().getBtnColor();
         this.btnMarginColor = habitatGrafico.getHabitat().getBtnMarginColor();
@@ -85,14 +85,22 @@ public class PanelAgregarAnimal extends JPanel implements Listener {
         btnRetroceder.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                cambiarBotones(false);
+                try {
+                    cambiarBotones(false);
+                } catch (NoSuchFieldException | IllegalAccessException ex) {
+                    throw new RuntimeException(ex);
+                }
             }
         });
 
         btnAvanzar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                cambiarBotones(true);
+                try {
+                    cambiarBotones(true);
+                } catch (NoSuchFieldException | IllegalAccessException ex) {
+                    throw new RuntimeException(ex);
+                }
             }
         });
 
@@ -107,8 +115,8 @@ public class PanelAgregarAnimal extends JPanel implements Listener {
      * @param ancho  Ancho del boton
      * @return Se retorna el boton que se creo
      */
-    private JToggleButton agregarBotones(Animal.Imagenes animal, int ancho) {
-        JToggleButton btn = new JToggleButton(animal.name());
+    private JToggleButton agregarBotones(Class<? extends Animal> animal, int ancho) throws NoSuchFieldException, IllegalAccessException {
+        JToggleButton btn = new JToggleButton(((Animal.Imagenes)animal.getField("imagen").get(null)).name());
 
         btn.setBackground(btnColor);
         btn.setHorizontalTextPosition(JButton.CENTER);
@@ -116,11 +124,19 @@ public class PanelAgregarAnimal extends JPanel implements Listener {
         btn.setBorder(new MatteBorder(10, 5, 10, 5, btnMarginColor));
         btn.setBorderPainted(true);
 
-        btn.setIcon(GeneradorImagen.scaledProducto(animal.getImagen(), ancho - 100, 100));
+        btn.setIcon(GeneradorImagen.scaledProducto(((Animal.Imagenes)animal.getField("imagen").get(null)).getImagen(), ancho - 100, 100));
 
         btn.addActionListener(e -> {
-            animalSeleccionado = animal;
-            habitatGrafico.getPanelHabitat().suscribirse(panelAgregarAnimal);
+            int temperaturalocal = 0;
+            try {
+                temperaturalocal = (int)animal.getField("temperaturaAdecuada").get(null);
+            } catch (IllegalAccessException | NoSuchFieldException ex) {
+                throw new RuntimeException(ex);
+            }
+            if((habitatGrafico.getHabitat().getTemperatura()[0] <= temperaturalocal) && (habitatGrafico.getHabitat().getTemperatura()[1] >= temperaturalocal)){
+                animalSeleccionado = animal;
+                habitatGrafico.getPanelHabitat().suscribirse(panelAgregarAnimal);
+            }
         });
 
         btn.addItemListener(e -> {
@@ -130,7 +146,7 @@ public class PanelAgregarAnimal extends JPanel implements Listener {
         return btn;
     }
 
-    public void cambiarBotones(Boolean val){
+    public void cambiarBotones(Boolean val) throws NoSuchFieldException, IllegalAccessException {
 
         if(val){i++;}
         else {i--;}
@@ -160,8 +176,8 @@ public class PanelAgregarAnimal extends JPanel implements Listener {
         this.repaint();
     }
 
-    private void agregarAnimal(Point point){
-        AnimalGrafico animalGrafico = switch (animalSeleccionado.name()) {
+    private void agregarAnimal(Point point) throws NoSuchFieldException, IllegalAccessException {
+        AnimalGrafico animalGrafico = switch (((Animal.Imagenes)animalSeleccionado.getField("imagen").get(null)).name()) {
             case "Pinguino" ->
                     new AnimalGrafico(new Pinguino(point.x, point.y, habitatGrafico.getPanelHabitat()));
             case "Caballo" ->
@@ -193,5 +209,8 @@ public class PanelAgregarAnimal extends JPanel implements Listener {
     }
 
     @Override
-    public void update(Point point) {agregarAnimal(point);}
+    public void update(Point point) {
+        try{agregarAnimal(point);}
+        catch (NoSuchFieldException | IllegalAccessException e) {e.printStackTrace();}
+    }
 }
