@@ -18,14 +18,6 @@ public class AsgardianoSG1 extends Animal {
      */
     public AsgardianoSG1(int posicionXinicial, int posicionYinicial, PanelHabitat panelHabitat){
         super(posicionXinicial, posicionYinicial, panelHabitat, "Campo",
-                Imagenes.AsgardianoSG1, Sonidos.AsgardianoSG1);
+                Comida.Vaca,Imagenes.AsgardianoSG1, Sonidos.AsgardianoSG1);
     }
-
-    /**
-     * Funcion que permite comer al AsgardianoSG1
-     * @param comida    Comida que trata de comer el AsgardianoSG1
-     * @return  Retorna si logro o no comerse al comida
-     */
-    @Override
-    public boolean Comer(Comida comida) {return comida == Comida.Vaca;}
 }

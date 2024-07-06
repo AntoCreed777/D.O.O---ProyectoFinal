@@ -18,14 +18,6 @@ public class Goauld extends Animal {
      */
     public Goauld(int posicionXinicial, int posicionYinicial, PanelHabitat panelHabitat){
         super(posicionXinicial, posicionYinicial, panelHabitat, "Campo",
-                Imagenes.Goauld, Sonidos.Goauld);
+                Comida.Humano,Imagenes.Goauld, Sonidos.Goauld);
     }
-
-    /**
-     * Funcion que permite comer al Goauld
-     * @param comida    Comida que trata de comer el Goauld
-     * @return  Retorna si logro o no comerse al comida
-     */
-    @Override
-    public boolean Comer(Comida comida) {return comida == Comida.Humano;}
 }

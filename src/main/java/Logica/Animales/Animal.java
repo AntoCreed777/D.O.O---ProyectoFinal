@@ -24,6 +24,7 @@ public abstract class Animal implements Sonido {
     //Sur=4, SurEste=5, Este=6, NorEste=7
     private final Clip sonido;
     private final String imagen;
+    private final Comida comida;
 
     /**
      * Constructor que inicia las variables
@@ -32,11 +33,12 @@ public abstract class Animal implements Sonido {
      * @param panelHabitat      Panel al que pertenecera el animal
      * @param familiaTaxonomica Familia taxonomica a la que pertenece el Animal
      */
-    public Animal(int posicionXinicial, int posicionYinicial, PanelHabitat panelHabitat, String familiaTaxonomica,Imagenes imagen ,Sonidos sonido) {
+    public Animal(int posicionXinicial, int posicionYinicial, PanelHabitat panelHabitat, String familiaTaxonomica, Comida comida,Imagenes imagen ,Sonidos sonido) {
         this.panelHabitat = panelHabitat;
         this.posicionX = posicionXinicial;
         this.posicionY = posicionYinicial;
         this.familiaTaxonomica = familiaTaxonomica;
+        this.comida = comida;
         this.imagen = imagen.getImagen();
         this.sonido = sonido.getSonido();
     }
@@ -243,8 +245,10 @@ public abstract class Animal implements Sonido {
 
     /**
      * Funcion que permite comer al animal
+     * @param comida    Comida que trata de comer
+     * @return  Retorna si se comio o no la comida (True or False)
      */
-    public abstract boolean Comer(Comida comida);
+    public boolean Comer(Comida comida){return comida == this.comida;}
 
     /**
      * Getter
@@ -270,5 +274,15 @@ public abstract class Animal implements Sonido {
      */
     public int getPosicionY() {return posicionY;}
 
+    /**
+     * Getter
+     * @return Retorna la imagen que representa a este animal
+     */
     public String getImagen(){return imagen;}
+
+    /**
+     * Getter
+     * @return Retorna la comida que consume este animal
+     */
+    public Comida getComida(){return comida;}
 }

@@ -18,14 +18,6 @@ public class Depredador extends Animal {
      */
     public Depredador(int posicionXinicial, int posicionYinicial, PanelHabitat panelHabitat){
         super(posicionXinicial, posicionYinicial, panelHabitat, "Campo",
-                Imagenes.Depredador, Sonidos.Depredador);
+                Comida.Vaca,Imagenes.Depredador, Sonidos.Depredador);
     }
-
-    /**
-     * Funcion que permite comer al Depredador
-     * @param comida    Comida que trata de comer el Depredador
-     * @return  Retorna si logro o no comerse al comida
-     */
-    @Override
-    public boolean Comer(Comida comida) {return comida == Comida.Vaca;}
 }

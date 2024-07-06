@@ -18,14 +18,6 @@ public class ReplicanteSG1 extends Animal {
      */
     public ReplicanteSG1(int posicionXinicial, int posicionYinicial, PanelHabitat panelHabitat){
         super(posicionXinicial, posicionYinicial, panelHabitat, "Campo",
-                Imagenes.ReplicanteSG1, Sonidos.ReplicanteSG1);
+                Comida.RobotLunar,Imagenes.ReplicanteSG1, Sonidos.ReplicanteSG1);
     }
-
-    /**
-     * Funcion que permite comer al ReplicanteSG1
-     * @param comida    Comida que trata de comer el ReplicanteSG1
-     * @return  Retorna si logro o no comerse al comida
-     */
-    @Override
-    public boolean Comer(Comida comida) {return comida == Comida.RobotLunar;}
 }

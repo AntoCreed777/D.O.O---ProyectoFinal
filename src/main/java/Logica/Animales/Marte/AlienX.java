@@ -18,14 +18,6 @@ public class AlienX extends Animal {
      */
     public AlienX(int posicionXinicial, int posicionYinicial, PanelHabitat panelHabitat){
         super(posicionXinicial, posicionYinicial, panelHabitat, "Campo",
-                Imagenes.AlienX, Sonidos.AlienX);
+                Comida.RobotLunar,Imagenes.AlienX, Sonidos.AlienX);
     }
-
-    /**
-     * Funcion que permite comer al AlienX
-     * @param comida    Comida que trata de comer el AlienX
-     * @return  Retorna si logro o no comerse al comida
-     */
-    @Override
-    public boolean Comer(Comida comida) {return comida == Comida.RobotLunar;}
 }

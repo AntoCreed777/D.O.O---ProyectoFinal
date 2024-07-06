@@ -18,14 +18,6 @@ public class Pinguino extends Animal {
      */
     public Pinguino(int posicionXinicial, int posicionYinicial, PanelHabitat panelHabitat){
         super(posicionXinicial, posicionYinicial, panelHabitat,"Acuatico",
-                Imagenes.Pinguino, Sonidos.Pinguino);
+                Comida.Pescado,Imagenes.Pinguino, Sonidos.Pinguino);
     }
-
-    /**
-     * Funcion que permite comer al Pinguino
-     * @param comida    Comida que trata de comer el Pinguino
-     * @return  Retorna si logro o no comerse al comida
-     */
-    @Override
-    public boolean Comer(Comida comida) {return comida == Comida.Pescado;}
 }

@@ -18,14 +18,6 @@ public class Leon extends Animal {
      */
     public Leon(int posicionXinicial, int posicionYinicial, PanelHabitat panelHabitat){
         super(posicionXinicial, posicionYinicial, panelHabitat, "Felino",
-                Imagenes.Leon, Sonidos.Leon);
+                Comida.Carne,Imagenes.Leon, Sonidos.Leon);
     }
-
-    /**
-     * Funcion que permite comer al Leon
-     * @param comida    Comida que trata de comer el Leon
-     * @return  Retorna si logro o no comerse al comida
-     */
-    @Override
-    public boolean Comer(Comida comida) {return comida == Comida.Carne;}
 }

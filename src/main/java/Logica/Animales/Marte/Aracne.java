@@ -18,14 +18,6 @@ public class Aracne extends Animal {
      */
     public Aracne(int posicionXinicial, int posicionYinicial, PanelHabitat panelHabitat){
         super(posicionXinicial, posicionYinicial, panelHabitat, "Campo",
-                Imagenes.Aracne, Sonidos.Aracne);
+                Comida.Humano,Imagenes.Aracne, Sonidos.Aracne);
     }
-
-    /**
-     * Funcion que permite comer al Aracne
-     * @param comida    Comida que trata de comer el Aracne
-     * @return  Retorna si logro o no comerse al comida
-     */
-    @Override
-    public boolean Comer(Comida comida) {return comida == Comida.Humano;}
 }

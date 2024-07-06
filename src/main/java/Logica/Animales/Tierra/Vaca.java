@@ -18,14 +18,6 @@ public class Vaca extends Animal {
      */
     public Vaca(int posicionXinicial, int posicionYinicial, PanelHabitat panelHabitat) {
         super(posicionXinicial, posicionYinicial, panelHabitat, "Campo",
-                Imagenes.Vaca, Sonidos.Vaca);
+                Comida.Pasto,Imagenes.Vaca, Sonidos.Vaca);
     }
-
-    /**
-     * Funcion que permite comer al Vaca
-     * @param comida    Comida que trata de comer el Vaca
-     * @return  Retorna si logro o no comerse al comida
-     */
-    @Override
-    public boolean Comer(Comida comida) {return comida == Comida.Pasto;}
 }
