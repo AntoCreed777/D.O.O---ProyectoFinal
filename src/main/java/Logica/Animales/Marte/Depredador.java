@@ -3,6 +3,7 @@ package Logica.Animales.Marte;
 import Interfaz.Habitat.PanelHabitat;
 import Logica.Animales.Animal;
 import Logica.Comida;
+import static Logica.Animales.Animal.FamiliaTaxonomica.RazaInteligente;
 
 /**
  * SubClase de Animal que representa a un Depredador
@@ -17,7 +18,7 @@ public class Depredador extends Animal {
      * @param panelHabitat      Panel al que pertenecera el Depredador
      */
     public Depredador(int posicionXinicial, int posicionYinicial, PanelHabitat panelHabitat){
-        super(posicionXinicial, posicionYinicial, panelHabitat, "Campo",
+        super(posicionXinicial, posicionYinicial, panelHabitat, RazaInteligente,
                 Comida.Vaca,Imagenes.Depredador, Sonidos.Depredador);
     }
 }

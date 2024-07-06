@@ -3,6 +3,7 @@ package Logica.Animales.Tierra;
 import Interfaz.Habitat.PanelHabitat;
 import Logica.Animales.Animal;
 import Logica.Comida;
+import static Logica.Animales.Animal.FamiliaTaxonomica.Campo;
 
 /**
  * SubClase de Animal que representa a un Caballo
@@ -17,7 +18,7 @@ public class Caballo extends Animal {
      * @param panelHabitat      Panel al que pertenecera el Caballo
      */
     public Caballo(int posicionXinicial, int posicionYinicial, PanelHabitat panelHabitat){
-        super(posicionXinicial, posicionYinicial, panelHabitat, "Campo",
+        super(posicionXinicial, posicionYinicial, panelHabitat, Campo,
                 Comida.Pasto,Imagenes.Caballo, Sonidos.Caballo);
     }
 }

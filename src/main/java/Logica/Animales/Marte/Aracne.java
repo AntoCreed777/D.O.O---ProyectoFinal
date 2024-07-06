@@ -3,6 +3,7 @@ package Logica.Animales.Marte;
 import Interfaz.Habitat.PanelHabitat;
 import Logica.Animales.Animal;
 import Logica.Comida;
+import static Logica.Animales.Animal.FamiliaTaxonomica.InsectoAnsestral;
 
 /**
  * SubClase de Animal que representa a un Aracne
@@ -17,7 +18,7 @@ public class Aracne extends Animal {
      * @param panelHabitat      Panel al que pertenecera el Aracne
      */
     public Aracne(int posicionXinicial, int posicionYinicial, PanelHabitat panelHabitat){
-        super(posicionXinicial, posicionYinicial, panelHabitat, "Campo",
+        super(posicionXinicial, posicionYinicial, panelHabitat, InsectoAnsestral,
                 Comida.Humano,Imagenes.Aracne, Sonidos.Aracne);
     }
 }

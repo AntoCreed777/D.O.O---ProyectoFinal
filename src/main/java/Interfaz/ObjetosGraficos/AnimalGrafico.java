@@ -146,7 +146,7 @@ public class AnimalGrafico implements GeneradorImagen, Runnable {
      * getter
      * @return Retorna la familia taxonomica a la que pertenece el animal
      */
-    public String getFamiliaTaxonomica(){return animal.getFamiliaTaxonomica();}
+    public Animal.FamiliaTaxonomica getFamiliaTaxonomica(){return animal.getFamiliaTaxonomica();}
 
     /**
      * Getter

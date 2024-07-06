@@ -3,6 +3,7 @@ package Logica.Animales.Marte;
 import Interfaz.Habitat.PanelHabitat;
 import Logica.Animales.Animal;
 import Logica.Comida;
+import static Logica.Animales.Animal.FamiliaTaxonomica.RazaSuperior;
 
 /**
  * SubClase de Animal que representa a un ReplicanteSG1
@@ -17,7 +18,7 @@ public class ReplicanteSG1 extends Animal {
      * @param panelHabitat      Panel al que pertenecera el ReplicanteSG1
      */
     public ReplicanteSG1(int posicionXinicial, int posicionYinicial, PanelHabitat panelHabitat){
-        super(posicionXinicial, posicionYinicial, panelHabitat, "Campo",
+        super(posicionXinicial, posicionYinicial, panelHabitat, RazaSuperior,
                 Comida.RobotLunar,Imagenes.ReplicanteSG1, Sonidos.ReplicanteSG1);
     }
 }

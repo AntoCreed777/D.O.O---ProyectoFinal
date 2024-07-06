@@ -4,6 +4,8 @@ import Interfaz.Habitat.PanelHabitat;
 import Logica.Animales.Animal;
 import Logica.Comida;
 
+import static Logica.Animales.Animal.FamiliaTaxonomica.Campo;
+
 /**
  * SubClase de Animal que representa a un Vaca
  */
@@ -17,7 +19,7 @@ public class Vaca extends Animal {
      * @param panelHabitat      Panel al que pertenecera el Vaca
      */
     public Vaca(int posicionXinicial, int posicionYinicial, PanelHabitat panelHabitat) {
-        super(posicionXinicial, posicionYinicial, panelHabitat, "Campo",
+        super(posicionXinicial, posicionYinicial, panelHabitat, Campo,
                 Comida.Pasto,Imagenes.Vaca, Sonidos.Vaca);
     }
 }

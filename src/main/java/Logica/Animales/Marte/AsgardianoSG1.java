@@ -3,6 +3,7 @@ package Logica.Animales.Marte;
 import Interfaz.Habitat.PanelHabitat;
 import Logica.Animales.Animal;
 import Logica.Comida;
+import static Logica.Animales.Animal.FamiliaTaxonomica.RazaInteligente;
 
 /**
  * SubClase de Animal que representa a un AsgardianoSG1
@@ -17,7 +18,7 @@ public class AsgardianoSG1 extends Animal {
      * @param panelHabitat      Panel al que pertenecera el AsgardianoSG1
      */
     public AsgardianoSG1(int posicionXinicial, int posicionYinicial, PanelHabitat panelHabitat){
-        super(posicionXinicial, posicionYinicial, panelHabitat, "Campo",
+        super(posicionXinicial, posicionYinicial, panelHabitat, RazaInteligente,
                 Comida.Vaca,Imagenes.AsgardianoSG1, Sonidos.AsgardianoSG1);
     }
 }

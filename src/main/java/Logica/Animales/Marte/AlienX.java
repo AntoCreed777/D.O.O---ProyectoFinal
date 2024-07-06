@@ -3,6 +3,7 @@ package Logica.Animales.Marte;
 import Interfaz.Habitat.PanelHabitat;
 import Logica.Animales.Animal;
 import Logica.Comida;
+import static Logica.Animales.Animal.FamiliaTaxonomica.RazaSuperior;
 
 /**
  * SubClase de Animal que representa a un AlienX
@@ -17,7 +18,7 @@ public class AlienX extends Animal {
      * @param panelHabitat      Panel al que pertenecera el AlienX
      */
     public AlienX(int posicionXinicial, int posicionYinicial, PanelHabitat panelHabitat){
-        super(posicionXinicial, posicionYinicial, panelHabitat, "Campo",
+        super(posicionXinicial, posicionYinicial, panelHabitat, RazaSuperior,
                 Comida.RobotLunar,Imagenes.AlienX, Sonidos.AlienX);
     }
 }

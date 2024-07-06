@@ -3,7 +3,7 @@ package Logica.Animales.Tierra;
 import Interfaz.Habitat.PanelHabitat;
 import Logica.Animales.Animal;
 import Logica.Comida;
-
+import static Logica.Animales.Animal.FamiliaTaxonomica.Acuatico;
 /**
  * SubClase de Animal que representa a un Pinguino
  */
@@ -17,7 +17,7 @@ public class Pinguino extends Animal {
      * @param panelHabitat      Panel al que pertenecera el Pinguino
      */
     public Pinguino(int posicionXinicial, int posicionYinicial, PanelHabitat panelHabitat){
-        super(posicionXinicial, posicionYinicial, panelHabitat,"Acuatico",
+        super(posicionXinicial, posicionYinicial, panelHabitat,Acuatico,
                 Comida.Pescado,Imagenes.Pinguino, Sonidos.Pinguino);
     }
 }

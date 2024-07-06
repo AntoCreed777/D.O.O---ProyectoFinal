@@ -3,6 +3,7 @@ package Logica.Animales.Marte;
 import Interfaz.Habitat.PanelHabitat;
 import Logica.Animales.Animal;
 import Logica.Comida;
+import static Logica.Animales.Animal.FamiliaTaxonomica.InsectoAnsestral;
 
 /**
  * SubClase de Animal que representa a un Goauld
@@ -17,7 +18,7 @@ public class Goauld extends Animal {
      * @param panelHabitat      Panel al que pertenecera el Goauld
      */
     public Goauld(int posicionXinicial, int posicionYinicial, PanelHabitat panelHabitat){
-        super(posicionXinicial, posicionYinicial, panelHabitat, "Campo",
+        super(posicionXinicial, posicionYinicial, panelHabitat, InsectoAnsestral,
                 Comida.Humano,Imagenes.Goauld, Sonidos.Goauld);
     }
 }

@@ -3,6 +3,7 @@ package Logica.Animales.Tierra;
 import Interfaz.Habitat.PanelHabitat;
 import Logica.Animales.Animal;
 import Logica.Comida;
+import static Logica.Animales.Animal.FamiliaTaxonomica.Felino;
 
 /**
  * SubClase de Animal que representa a un Leon
@@ -17,7 +18,7 @@ public class Leon extends Animal {
      * @param panelHabitat      Panel al que pertenecera el Leon
      */
     public Leon(int posicionXinicial, int posicionYinicial, PanelHabitat panelHabitat){
-        super(posicionXinicial, posicionYinicial, panelHabitat, "Felino",
+        super(posicionXinicial, posicionYinicial, panelHabitat, Felino,
                 Comida.Carne,Imagenes.Leon, Sonidos.Leon);
     }
 }

@@ -13,7 +13,7 @@ import javax.sound.sampled.Clip;
  * Clase que representa a un Animal
  */
 public abstract class Animal implements Sonido {
-    private final String familiaTaxonomica;
+    private final FamiliaTaxonomica familiaTaxonomica;
     private int posicionX;
     private int posicionY;
     private int anchoImg;
@@ -33,7 +33,7 @@ public abstract class Animal implements Sonido {
      * @param panelHabitat      Panel al que pertenecera el animal
      * @param familiaTaxonomica Familia taxonomica a la que pertenece el Animal
      */
-    public Animal(int posicionXinicial, int posicionYinicial, PanelHabitat panelHabitat, String familiaTaxonomica, Comida comida,Imagenes imagen ,Sonidos sonido) {
+    public Animal(int posicionXinicial, int posicionYinicial, PanelHabitat panelHabitat, FamiliaTaxonomica familiaTaxonomica, Comida comida,Imagenes imagen ,Sonidos sonido) {
         this.panelHabitat = panelHabitat;
         this.posicionX = posicionXinicial;
         this.posicionY = posicionYinicial;
@@ -83,6 +83,14 @@ public abstract class Animal implements Sonido {
         public Clip getSonido() {return sonido;}
     }
 
+    public enum FamiliaTaxonomica{
+        Campo(),
+        Felino(),
+        Acuatico(),
+        RazaSuperior(),
+        RazaInteligente(),
+        InsectoAnsestral();
+    }
     /**
      * Funcion que mueve al animal calculando la posicion en el tiempo t+1
      */
@@ -254,7 +262,7 @@ public abstract class Animal implements Sonido {
      * Getter
      * @return Retorna la familia Taxonomica a la que pertenece el Animal
      */
-    public String getFamiliaTaxonomica(){return familiaTaxonomica;}
+    public FamiliaTaxonomica getFamiliaTaxonomica(){return familiaTaxonomica;}
 
     /**
      * Getter

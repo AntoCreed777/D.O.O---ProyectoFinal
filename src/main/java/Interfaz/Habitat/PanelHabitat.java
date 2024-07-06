@@ -1,6 +1,7 @@
 package Interfaz.Habitat;
 
 import Interfaz.ObjetosGraficos.*;
+import Logica.Animales.Animal;
 import Logica.Excepciones.NoMezclarAnimales;
 import Logica.Habitat;
 
@@ -26,7 +27,7 @@ public class PanelHabitat extends JPanel implements MouseListener {
     private final Habitat habitat;
     private final Rectangle maximizado = new Rectangle(100, 0, 900, 630);
     private final Rectangle minimizado = new Rectangle(190, 0, 700,420);
-    private String familia = null;
+    private Animal.FamiliaTaxonomica familia = null;
     private Listener listener = null;
 
     /**
