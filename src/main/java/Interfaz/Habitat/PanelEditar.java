@@ -23,7 +23,7 @@ public class PanelEditar extends JPanel{
      * Contructor en donde se inician variables , se configura el panel y se agregan los elementos
      * @param habitatGrafico    Habitat al que pertenece y puede editar
      */
-    public PanelEditar(HabitatGrafico habitatGrafico) {
+    public PanelEditar(HabitatGrafico habitatGrafico) throws NoSuchFieldException, IllegalAccessException {
 
         Color backgroundColor = habitatGrafico.getHabitat().getEditPanelColor();
 

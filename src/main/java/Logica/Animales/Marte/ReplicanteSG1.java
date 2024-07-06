@@ -10,6 +10,8 @@ import static Logica.Animales.Animal.FamiliaTaxonomica.RazaSuperior;
  */
 public class ReplicanteSG1 extends Animal {
     public final static int temperaturaAdecuada = 28; //Grados Celcius
+    public final static Animal.Imagenes imagen = Imagenes.ReplicanteSG1;
+    public final static Comida comida = Comida.RobotLunar;
 
     /**
      * Constructor del ReplicanteSG1

@@ -45,7 +45,7 @@ public class BotonHabitat extends JButton implements MouseListener {
      * Método para elegir un hábitat basado en el panel actual (Tierra o Marte)
      * @return hábitat seleccionado o null
      */
-    public Habitat elegirHabitat(){
+    public Habitat elegirHabitat() throws NoSuchFieldException, IllegalAccessException {
         Habitat habitatEscogido = null;
         String[] opcionesStr;
         Enum<?>[] opciones = null;
@@ -93,9 +93,18 @@ public class BotonHabitat extends JButton implements MouseListener {
     @Override
     public void mouseClicked(MouseEvent e) {
         if(habitat == null){
-            Habitat aux = elegirHabitat();
+            Habitat aux = null;
+            try {
+                aux = elegirHabitat();
+            } catch (NoSuchFieldException | IllegalAccessException ex) {
+                throw new RuntimeException(ex);
+            }
             if(aux != null){
-                habitat = new HabitatGrafico(aux);
+                try {
+                    habitat = new HabitatGrafico(aux);
+                } catch (NoSuchFieldException | IllegalAccessException ex) {
+                    throw new RuntimeException(ex);
+                }
                 this.setIcon(GeneradorImagen.scaledProducto(aux.getBackgroundImg(),width, height));
             }
         }

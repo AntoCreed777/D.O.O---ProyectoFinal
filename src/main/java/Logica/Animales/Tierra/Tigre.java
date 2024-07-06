@@ -10,6 +10,8 @@ import static Logica.Animales.Animal.FamiliaTaxonomica.Felino;
  */
 public class Tigre extends Animal {
     public final static int temperaturaAdecuada = 28; //Grados Celcius
+    public final static Animal.Imagenes imagen = Imagenes.Tigre;
+    public final static Comida comida = Comida.Carne;
 
     /**
      * Constructor del Tigre

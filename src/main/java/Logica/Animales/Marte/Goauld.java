@@ -10,6 +10,8 @@ import static Logica.Animales.Animal.FamiliaTaxonomica.InsectoAnsestral;
  */
 public class Goauld extends Animal {
     public final static int temperaturaAdecuada = 28; //Grados Celcius
+    public final static Animal.Imagenes imagen = Imagenes.Goauld;
+    public final static Comida comida = Comida.Humano;
 
     /**
      * Constructor del Goauld

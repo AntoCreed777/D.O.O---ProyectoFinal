@@ -10,6 +10,8 @@ import static Logica.Animales.Animal.FamiliaTaxonomica.Acuatico;
  */
 public class Nutria extends Animal {
     public final static int temperaturaAdecuada = 28; //Grados Celcius
+    public final static Animal.Imagenes imagen = Imagenes.Nutria;
+    public final static Comida comida = Comida.Pescado;
 
     /**
      * Constructor del Nutria

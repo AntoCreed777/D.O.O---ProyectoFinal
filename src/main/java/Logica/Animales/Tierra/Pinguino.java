@@ -4,11 +4,14 @@ import Interfaz.Habitat.PanelHabitat;
 import Logica.Animales.Animal;
 import Logica.Comida;
 import static Logica.Animales.Animal.FamiliaTaxonomica.Acuatico;
+
 /**
  * SubClase de Animal que representa a un Pinguino
  */
 public class Pinguino extends Animal {
     public final static int temperaturaAdecuada = -5; //Grados Celcius
+    public final static Animal.Imagenes imagen = Imagenes.Pinguino;
+    public final static Comida comida = Comida.Pescado;
 
     /**
      * Constructor del Pinguino

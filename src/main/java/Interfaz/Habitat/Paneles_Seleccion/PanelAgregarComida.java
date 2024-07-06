@@ -11,6 +11,7 @@ import javax.swing.*;
 import javax.swing.border.MatteBorder;
 import java.awt.*;
 import java.awt.event.*;
+import java.util.ArrayList;
 
 /**
  * Panel que contiene los botones para seleccionar la comida a agregar dentro del habitat
@@ -20,7 +21,7 @@ public class PanelAgregarComida extends JPanel implements Listener {
     private final Color btnMarginColor;
     private final HabitatGrafico habitatGrafico;
     private final PanelAgregarComida panelAgregarComida;
-    private final Comida[] comidasPermitidas;
+    private final ArrayList<Comida> comidasPermitidas;
     private Comida comidaSeleccionada = null;
     private final ButtonGroup grupoBotones;
 
@@ -43,9 +44,9 @@ public class PanelAgregarComida extends JPanel implements Listener {
 
         int padding = 10;
         int ancho = 200;
-        int margen = (985 - (ancho + padding)*comidasPermitidas.length)/2 ;
-        for (int i = 0; i < comidasPermitidas.length; i++) {
-            JToggleButton btn = agregarBotones(comidasPermitidas[i], ancho);
+        int margen = (985 - (ancho + padding)*comidasPermitidas.size())/2 ;
+        for (int i = 0; i < comidasPermitidas.size(); i++) {
+            JToggleButton btn = agregarBotones(comidasPermitidas.get(i), ancho);
             btn.setBounds(margen + padding*i + ancho*i, 10, ancho,180);
             this.add(btn);
             grupoBotones.add(btn);
