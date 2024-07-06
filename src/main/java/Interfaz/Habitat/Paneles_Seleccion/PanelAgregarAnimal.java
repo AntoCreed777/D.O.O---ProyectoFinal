@@ -17,7 +17,6 @@ import java.awt.event.*;
  * Panel que contiene los botones para seleccionar el animal a agregar dentro del habitat
  */
 public class PanelAgregarAnimal extends JPanel implements Listener {
-    private final Color backgroundColor;
     private final Color btnColor;
     private final Color btnMarginColor;
     private final HabitatGrafico habitatGrafico;
@@ -38,13 +37,12 @@ public class PanelAgregarAnimal extends JPanel implements Listener {
      */
     public PanelAgregarAnimal(HabitatGrafico habitatGrafico) {
         this.habitatGrafico = habitatGrafico;
-        this.backgroundColor = habitatGrafico.getHabitat().getEditPanelColor();
         this.btnColor = habitatGrafico.getHabitat().getBtnColor();
         this.btnMarginColor = habitatGrafico.getHabitat().getBtnMarginColor();
         this.panelAgregarAnimal = this;
 
         this.setBounds(50, 10, 1000, 190);
-        this.setBackground(backgroundColor);
+        this.setBackground(habitatGrafico.getHabitat().getEditPanelColor());
         this.setLayout(null);
 
         this.animalesPermitidos = habitatGrafico.getHabitat().getAnimalesPermitidos();

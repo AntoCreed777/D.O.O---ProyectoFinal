@@ -14,6 +14,7 @@ import java.util.List;
 public abstract class Habitat {
     private final String backgroundImg;
     private final Animal.Imagenes[] animalesPermitidos;
+    private final Comida[] comidasPermitidas;
 
     protected Color backgroundColor;
     protected Color editPanelColor;
@@ -27,9 +28,10 @@ public abstract class Habitat {
     /**
      * Constructor que inicializa las listas de elementos que contiene el habitat
      */
-    public Habitat(HabitatTipo habitatTipo, Animal.Imagenes[] animalesPermitidos){
+    public Habitat(HabitatTipo habitatTipo, Animal.Imagenes[] animalesPermitidos, Comida[] comidasPermitidas){
         this.animalesPermitidos = animalesPermitidos;
         this.backgroundImg = habitatTipo.getImagen();
+        this.comidasPermitidas = comidasPermitidas;
         listaAnimales = new ArrayList<AnimalGrafico>();
         this.listaComida = Collections.synchronizedList(new ArrayList<>());
         this.listaAccesorios = Collections.synchronizedList(new ArrayList<>());
@@ -101,4 +103,10 @@ public abstract class Habitat {
      * @return Retorna la lista de animales permitidos dentro del habitat
      */
     public Animal.Imagenes[] getAnimalesPermitidos(){return animalesPermitidos;}
+
+    /**
+     * Getter
+     * @return Retorna la lista de comidas permitidas dentro del habitat
+     */
+    public Comida[] getComidasPermitidas(){return comidasPermitidas;}
 }

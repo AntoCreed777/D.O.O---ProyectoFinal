@@ -27,5 +27,5 @@ public class Goauld extends Animal {
      * @return  Retorna si logro o no comerse al comida
      */
     @Override
-    public boolean Comer(Comida comida) {return comida == Comida.Carne;}    //FALTA CAMBIAR
+    public boolean Comer(Comida comida) {return comida == Comida.Humano;}
 }

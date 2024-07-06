@@ -1,8 +1,11 @@
 package Logica.TipoHabitats;
 
 import Logica.Animales.Animal;
+import Logica.Comida;
 import Logica.Habitat;
+
 import static Logica.Animales.Animal.Imagenes.*;
+import static Logica.Comida.*;
 
 import java.awt.*;
 
@@ -18,8 +21,9 @@ public class HabitatTierra extends Habitat {
     public HabitatTierra(TipoHabitat tipoHabitat){
         super(tipoHabitat,
                 new Animal.Imagenes[]{
-                    Leon, Vaca, Nutria, Caballo, Pinguino, Tigre
-                }
+                    Leon, Animal.Imagenes.Vaca, Nutria, Caballo, Pinguino, Tigre
+                },
+                new Comida[]{Carne, Pasto, Pescado}
         );
         super.backgroundColor = new Color(0xF6FFEC);
         super.editPanelColor = new Color(0x68B0AB);

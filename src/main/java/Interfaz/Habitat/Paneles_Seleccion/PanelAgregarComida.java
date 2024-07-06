@@ -19,33 +19,33 @@ public class PanelAgregarComida extends JPanel implements Listener {
     private final Color btnColor;
     private final Color btnMarginColor;
     private final HabitatGrafico habitatGrafico;
+    private final PanelAgregarComida panelAgregarComida;
+    private final Comida[] comidasPermitidas;
     private Comida comidaSeleccionada = null;
     private final ButtonGroup grupoBotones;
-    private final PanelAgregarComida panelAgregarComida;
 
     /**
      * Contructor en donde se inician variables , se configura el panel y se agregan los botones
      * @param habitatGrafico    Habitat al que pertenece este panel y sobre el que puede actuar
      */
     public PanelAgregarComida(HabitatGrafico habitatGrafico) {
+        this.habitatGrafico = habitatGrafico;
         this.btnColor = habitatGrafico.getHabitat().getBtnColor();
         this.btnMarginColor = habitatGrafico.getHabitat().getBtnMarginColor();
-        this.habitatGrafico = habitatGrafico;
         this.panelAgregarComida = this;
 
         this.setBounds(50, 10, 1000, 190);
         this.setBackground(habitatGrafico.getHabitat().getEditPanelColor());
-        this.grupoBotones = new ButtonGroup();
-
-        Comida[] comidaStr = Comida.values();
-
         this.setLayout(null);
+
+        this.comidasPermitidas = habitatGrafico.getHabitat().getComidasPermitidas();
+        this.grupoBotones = new ButtonGroup();
 
         int padding = 10;
         int ancho = 200;
-        int margen = (985 - (ancho + padding)*comidaStr.length)/2 ;
-        for (int i = 0; i < comidaStr.length; i++) {
-            JToggleButton btn = agregarBotones(comidaStr[i], ancho);
+        int margen = (985 - (ancho + padding)*comidasPermitidas.length)/2 ;
+        for (int i = 0; i < comidasPermitidas.length; i++) {
+            JToggleButton btn = agregarBotones(comidasPermitidas[i], ancho);
             btn.setBounds(margen + padding*i + ancho*i, 10, ancho,180);
             this.add(btn);
             grupoBotones.add(btn);

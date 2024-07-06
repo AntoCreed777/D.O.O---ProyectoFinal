@@ -3,6 +3,7 @@ package Interfaz.ObjetosGraficos;
 import Interfaz.imagenes.GeneradorImagen;
 import Interfaz.Habitat.PanelHabitat;
 
+import Logica.Habitat;
 import Logica.TipoHabitats.*;
 
 import javax.swing.*;
@@ -31,7 +32,7 @@ public class AccesorioGrafico implements GeneradorImagen, Runnable{
      * @param panelHabitat  Panel en donde se mostrara este accesorio
      */
 
-    public AccesorioGrafico(Object accesorio, int posicionX, int posicionY, PanelHabitat panelHabitat){
+    public AccesorioGrafico(Habitat.AccesoriosTipo accesorio, int posicionX, int posicionY, PanelHabitat panelHabitat){
       
         this.panelHabitat = panelHabitat;
         this.posicionX = posicionX;
@@ -42,12 +43,7 @@ public class AccesorioGrafico implements GeneradorImagen, Runnable{
             this.Min = 180;
         }
 
-        if(accesorio instanceof HabitatTierra.Accesorios){
-            this.accesorioImg = ((HabitatTierra.Accesorios) accesorio).getImagen();
-        }
-        else if(accesorio instanceof HabitatMarte.Accesorios){
-            this.accesorioImg = ((HabitatMarte.Accesorios) accesorio).getImagen();
-        }
+        this.accesorioImg = accesorio.getImagen();
 
         this.label = GeneradorImagen.ImageLabel(this.accesorioImg, posicionX, posicionY,Min,Min);
     }
