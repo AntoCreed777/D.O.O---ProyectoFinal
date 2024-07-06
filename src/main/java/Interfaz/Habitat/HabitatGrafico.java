@@ -84,6 +84,7 @@ public class HabitatGrafico extends JFrame implements GeneradorImagen {
         }
         else {
             panelHabitat.ajustarPanel("maximizar");
+            panelHabitat.suscribirse(null);         //Evita que se sigan agregando Objetos al panel
 
             panelEditar.mostrarPanelAgregarAccesorio(false);
             panelEditar.mostrarPanelAgregarComida(false);
