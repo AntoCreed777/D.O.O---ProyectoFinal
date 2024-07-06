@@ -21,7 +21,7 @@ public class PanelAgregarAccesorio extends JPanel implements Listener {
     private final Color btnMarginColor;
     private final HabitatGrafico habitatGrafico;
     private Habitat.AccesoriosTipo accesorioSeleccionado = null;
-    private final ButtonGroup grupoBotonoes;
+    private final ButtonGroup grupoBotones;
     private final PanelAgregarAccesorio panelAgregarAccesorio;
 
     /**
@@ -36,7 +36,7 @@ public class PanelAgregarAccesorio extends JPanel implements Listener {
 
         this.setBounds(50, 10, 985, 190);
         this.setBackground(habitatGrafico.getHabitat().getEditPanelColor());
-        this.grupoBotonoes  = new ButtonGroup();
+        this.grupoBotones  = new ButtonGroup();
 
         Habitat.AccesoriosTipo[] accesorios = null;
         if(habitatGrafico.getHabitat() instanceof HabitatTierra){
@@ -52,7 +52,7 @@ public class PanelAgregarAccesorio extends JPanel implements Listener {
             JToggleButton btn = agregarBotones(accesorios[i], ancho);
             btn.setBounds(margen + padding * i + ancho * i, 10, ancho, 180);
             this.add(btn);
-            grupoBotonoes.add(btn);
+            grupoBotones.add(btn);
         }
     }
 
