@@ -55,7 +55,7 @@ El proyecto esta dividido en 2 parte:
 |      Patron      | Justificación                                                                                                                                                                                                          |
 |:----------------:|:-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 |      Bridge      | Animal es la Abstraccion y AnimalGrafico es la Implementación, uno se encarga de la logica y el otro de como se muestra al animal, de esta forma se divide una clase demaciado grande en 2 estrechamente relacionadas. |
-|     Observer     | AL colocar Objetos dentro de los habitats, los habitats informan al constructor de donde clickea el usuario para colocar al animal.                                                                                    |
+|     Observer     | AL colocar Objetos dentro de los habitats, los habitats informan a al Clase que se suscriba donde clickea el usuario para colocar el Objeto.                                                                           |
 | Template Method  | Al hacer Override a los Botones.                                                                                                                                                                                       |
 
 **Interfaz Grafica**:
@@ -74,5 +74,6 @@ El proyecto esta dividido en 2 parte:
 **Problemas encontrados**:
 -
 
+* Como colocar los animales en pantalla, lo puedimos solucionar utilizando un patron, pero esto fue practicamente al final del Desarrollo.
 * NINGUNO, SOMOS UNOS CRACKS 😎
 * Seremos ricos 🤑
