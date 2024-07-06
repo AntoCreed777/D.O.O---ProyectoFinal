@@ -1,5 +1,4 @@
 # D.O.O---ProyectoFinal
-- - -
 
 **Numero de Grupo:** #17
 
@@ -53,10 +52,11 @@ El proyecto esta dividido en 2 parte:
 **Patrones utilizados**:
 -
 
-| Patron  | Justificación |
-|:-------:|:--------------|
-|  Row 1  |               |
-|  Row 2  |               |
+|      Patron      | Justificación                                                                                                                                                                                                          |
+|:----------------:|:-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+|      Bridge      | Animal es la Abstraccion y AnimalGrafico es la Implementación, uno se encarga de la logica y el otro de como se muestra al animal, de esta forma se divide una clase demaciado grande en 2 estrechamente relacionadas. |
+|     Observer     | AL colocar Objetos dentro de los habitats, los habitats informan al constructor de donde clickea el usuario para colocar al animal.                                                                                    |
+| Template Method  | Al hacer Override a los Botones.                                                                                                                                                                                       |
 
 **Interfaz Grafica**:
 -
