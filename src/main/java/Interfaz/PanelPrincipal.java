@@ -11,15 +11,16 @@ import java.awt.*;
 public class PanelPrincipal extends JPanel{
 
     /**
-     * Constructor que carga la imagen de fondo del Panel/Zoo
+     * Constructor que nicializa el panel principal y carga la imagen de fondo del Panel/Zoo, incluyendo botones
+     * @param ventana instancia de la ventana principal
      */
-
     public PanelPrincipal(Ventana ventana) {
         this.setLayout(null);
         this.setBackground(new Color(0x05072E));
+        // Añadir imagen de fondo
         this.add(GeneradorImagen.ImageLabel("src/main/java/Interfaz/imagenes/fondo_espacio.png", 25, 25, 1035, 580));
 
-
+        // Crear y añadir botones para seleccionar planetas
         PanelSelecPlaneta btnMercurio = new PanelSelecPlaneta("Mercurio", 220, 517, 90, 80, ventana);
         PanelSelecPlaneta btnVenus = new PanelSelecPlaneta("Venus", 318, 465, 102, 96, ventana);
         PanelSelecPlaneta btnTierra = new PanelSelecPlaneta("Tierra", 375, 340, 140, 125, ventana);
@@ -29,7 +30,7 @@ public class PanelPrincipal extends JPanel{
         PanelSelecPlaneta btnNeptuno = new PanelSelecPlaneta("Urano", 918, 173, 105, 95, ventana);
         PanelSelecPlaneta btnUrano = new PanelSelecPlaneta("Neptuno", 977, 60, 82, 95, ventana);
 
-
+        // Añadir los botones al panel
         this.add(btnMercurio);
         this.add(btnVenus);
         this.add(btnTierra);

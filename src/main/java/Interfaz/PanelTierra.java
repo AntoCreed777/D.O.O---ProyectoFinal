@@ -13,6 +13,10 @@ import java.awt.event.MouseListener;
 public class PanelTierra extends JPanel {
     private final Ventana ventana;
 
+    /**
+     *  Funcion que inicializa el panel de la Tierra
+     * @param ventana La instancia de la ventana principal
+     */
     public PanelTierra(Ventana ventana) {
         this.ventana = ventana;
         this.setLayout(null);
@@ -35,8 +39,9 @@ public class PanelTierra extends JPanel {
         btnRetorno.setBackground(new Color(0xdef45f));
 
         ImageIcon img = GeneradorImagen.scaledProducto("src/main/java/Interfaz/imagenes/Habitats/nave_espacial.png",60,90);
-        btnRetorno.setIcon(img);
+        btnRetorno.setIcon(img);// Establecer el ícono del botón
 
+        // Agregar un MouseListener para manejar eventos de clic
         btnRetorno.addMouseListener(new MouseListener() {
             @Override
             public void mouseClicked(MouseEvent e) {

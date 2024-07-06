@@ -3,7 +3,8 @@ package Interfaz;
 import javax.swing.*;
 
 /**
- * JFrame principal en donde se muestra el panel donde se selecciona el planeta
+ * La clase Ventana es el JFrame principal en el que se muestra el mapa con los diferentes paneles
+ * donde se selecciona el planeta
  */
 public class Ventana extends JFrame{
     private final JPanel panelPrincipal = new PanelPrincipal(this);

@@ -11,6 +11,9 @@ import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
+/**
+ *  Botón que permite seleccionar y visualizar hábitats en los planetas
+ */
 public class BotonHabitat extends JButton implements MouseListener {
 
     private HabitatGrafico habitat = null;
@@ -18,6 +21,14 @@ public class BotonHabitat extends JButton implements MouseListener {
 
     private final int width, height;
 
+    /**
+     * inicializa el botón
+     * @param panel panel en el que se colocará el botón
+     * @param posX es la posición X del botón
+     * @param posY es la posición y del botón
+     * @param width ancho del botó
+     * @param height altura del botó
+     */
     public BotonHabitat(JPanel panel, int posX, int posY, int width, int height) {
 
         this.panel = panel;
@@ -30,6 +41,10 @@ public class BotonHabitat extends JButton implements MouseListener {
         this.addMouseListener(this);
     }
 
+    /**
+     * Método para elegir un hábitat basado en el panel actual (Tierra o Marte)
+     * @return hábitat seleccionado o null
+     */
     public Habitat elegirHabitat(){
         Habitat habitatEscogido = null;
         String[] opcionesStr;
@@ -70,6 +85,11 @@ public class BotonHabitat extends JButton implements MouseListener {
         return habitatEscogido;
     }
 
+    /**
+     * metodo para los eventos del clic en el boton, Si no hay hábitat te permite selecionar uno pero
+     * Si ya existe uno lo hace visible
+     * @param e evento de clic del mouse
+     */
     @Override
     public void mouseClicked(MouseEvent e) {
         if(habitat == null){
