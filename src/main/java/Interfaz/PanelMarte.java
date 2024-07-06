@@ -24,7 +24,14 @@ public class PanelMarte extends JPanel implements GeneradorImagen {
         crearBotonRetorno();
 
         // Añadir botón de hábitat y fondo al panel
-        this.add(new BotonHabitat(this ,178,95,198,217));
+        Color color = new Color(0xEAA38D);
+        this.add(new BotonHabitat(this ,color, 80,421,150,150));
+        this.add(new BotonHabitat(this ,color, 227,84,100,220));
+        this.add(new BotonHabitat(this ,color, 356,207,229,97));
+        this.add(new BotonHabitat(this ,color, 356,330,229,97));
+        this.add(new BotonHabitat(this ,color, 613,451,238,97));
+        this.add(new BotonHabitat(this ,color, 637,110,191,220));
+
 
         this.add(GeneradorImagen.ImageLabel("src/main/java/Interfaz/imagenes/fondo_marte.png", 0,0,1088,632));
     }

@@ -18,8 +18,9 @@ public class BotonHabitat extends JButton implements MouseListener {
 
     private HabitatGrafico habitat = null;
     private final JPanel panel;
-
+    private final BotonHabitat btn;
     private final int width, height;
+    private final Color backgroundColor;
 
     /**
      * inicializa el botón
@@ -29,14 +30,15 @@ public class BotonHabitat extends JButton implements MouseListener {
      * @param width ancho del botó
      * @param height altura del botó
      */
-    public BotonHabitat(JPanel panel, int posX, int posY, int width, int height) {
-
+    public BotonHabitat(JPanel panel, Color backgroundColor, int posX, int posY, int width, int height) {
+        this.btn = this;
         this.panel = panel;
         this.width = width;
         this.height = height;
+        this.backgroundColor = backgroundColor;
         this.setBounds(posX, posY, width, height);
         this.setBorderPainted(false);
-        this.setBackground(Color.WHITE);
+        this.setBackground(backgroundColor);
         this.setFont(new Font("monospace", Font.PLAIN, 20));
         this.addMouseListener(this);
     }
@@ -109,10 +111,10 @@ public class BotonHabitat extends JButton implements MouseListener {
     public void mouseReleased(MouseEvent e) {}
 
     @Override
-    public void mouseEntered(MouseEvent e) {}
+    public void mouseEntered(MouseEvent e) {btn.setBackground(new Color(0x8DCDF6));}
 
     @Override
-    public void mouseExited(MouseEvent e) {}
+    public void mouseExited(MouseEvent e) {btn.setBackground(backgroundColor);}
 
     public int encontrarIndex(String[] arr, String t){
         if (arr == null) {return -1;}
