@@ -1,5 +1,6 @@
 package Interfaz.Habitat.Paneles_Seleccion;
 
+import Interfaz.Habitat.Listener;
 import Interfaz.ObjetosGraficos.AnimalGrafico;
 import Interfaz.imagenes.GeneradorImagen;
 import Interfaz.Habitat.HabitatGrafico;
@@ -10,15 +11,12 @@ import Logica.Animales.Marte.*;
 import javax.swing.*;
 import javax.swing.border.MatteBorder;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
+import java.awt.event.*;
 
 /**
  * Panel que contiene los botones para seleccionar el animal a agregar dentro del habitat
  */
-public class PanelAgregarAnimal extends JPanel {
+public class PanelAgregarAnimal extends JPanel implements Listener {
     private final Color backgroundColor;
     private final Color btnColor;
     private final Color btnMarginColor;
@@ -26,10 +24,13 @@ public class PanelAgregarAnimal extends JPanel {
     private final PanelAgregarAnimal panelAgregarAnimal;
     private final Animal.Imagenes[] animalesPermitidos;
 
+    private final ButtonGroup grupoBotones;
     int i = 0;
-    private JButton btn1;
-    private JButton btn2;
-    private JButton btn3;
+    private JToggleButton btn1;
+    private JToggleButton btn2;
+    private JToggleButton btn3;
+
+    private Animal.Imagenes animalSeleccionado = null;
     /**
      * Contructor en donde se inician variables , se configura el panel y se agregan los botones
      *
@@ -46,21 +47,25 @@ public class PanelAgregarAnimal extends JPanel {
         this.setBackground(backgroundColor);
         this.setLayout(null);
 
-        animalesPermitidos = habitatGrafico.getHabitat().getAnimalesPermitidos();
+        this.animalesPermitidos = habitatGrafico.getHabitat().getAnimalesPermitidos();
+        this.grupoBotones = new ButtonGroup();
 
         int ancho = 200;
 
         btn1 = agregarBotones(animalesPermitidos[i], ancho);
         btn1.setBounds(177, 10, ancho, 180);
         this.add(btn1);
+        grupoBotones.add(btn1);
 
         btn2 = agregarBotones(animalesPermitidos[i + 1], ancho);
         btn2.setBounds(387, 10, ancho, 180);
         this.add(btn2);
+        grupoBotones.add(btn2);
 
         btn3 = agregarBotones(animalesPermitidos[i + 2], ancho);
         btn3.setBounds(597, 10, ancho, 180);
         this.add(btn3);
+        grupoBotones.add(btn3);
 
 
         JButton btnRetroceder = new JButton("<");
@@ -104,8 +109,8 @@ public class PanelAgregarAnimal extends JPanel {
      * @param ancho  Ancho del boton
      * @return Se retorna el boton que se creo
      */
-    private JButton agregarBotones(Animal.Imagenes animal, int ancho) {
-        JButton btn = new JButton(animal.name());
+    private JToggleButton agregarBotones(Animal.Imagenes animal, int ancho) {
+        JToggleButton btn = new JToggleButton(animal.name());
 
         btn.setBackground(btnColor);
         btn.setHorizontalTextPosition(JButton.CENTER);
@@ -115,53 +120,13 @@ public class PanelAgregarAnimal extends JPanel {
 
         btn.setIcon(GeneradorImagen.scaledProducto(animal.getImagen(), ancho - 100, 100));
 
-        btn.addMouseListener(new MouseListener() {
-            @Override
-            public void mouseClicked(MouseEvent e) {
-                AnimalGrafico animalGrafico = switch (animal.name()) {
-                    case "Pinguino" ->
-                            new AnimalGrafico(new Pinguino(habitatGrafico.getPanelHabitat().clickMouse.x, habitatGrafico.getPanelHabitat().clickMouse.y, habitatGrafico.getPanelHabitat()));
-                    case "Caballo" ->
-                            new AnimalGrafico(new Caballo(habitatGrafico.getPanelHabitat().clickMouse.x, habitatGrafico.getPanelHabitat().clickMouse.y, habitatGrafico.getPanelHabitat()));
-                    case "Nutria" ->
-                            new AnimalGrafico(new Nutria(habitatGrafico.getPanelHabitat().clickMouse.x, habitatGrafico.getPanelHabitat().clickMouse.y, habitatGrafico.getPanelHabitat()));
-                    case "Tigre" ->
-                            new AnimalGrafico(new Tigre(habitatGrafico.getPanelHabitat().clickMouse.x, habitatGrafico.getPanelHabitat().clickMouse.y, habitatGrafico.getPanelHabitat()));
-                    case "Leon" ->
-                            new AnimalGrafico(new Leon(habitatGrafico.getPanelHabitat().clickMouse.x, habitatGrafico.getPanelHabitat().clickMouse.y, habitatGrafico.getPanelHabitat()));
-                    case "Vaca" ->
-                            new AnimalGrafico(new Vaca(habitatGrafico.getPanelHabitat().clickMouse.x, habitatGrafico.getPanelHabitat().clickMouse.y, habitatGrafico.getPanelHabitat()));
-                    case "AlienX" ->
-                            new AnimalGrafico(new AlienX(habitatGrafico.getPanelHabitat().clickMouse.x, habitatGrafico.getPanelHabitat().clickMouse.y, habitatGrafico.getPanelHabitat()));
-                    case "Aracne" ->
-                            new AnimalGrafico(new Aracne(habitatGrafico.getPanelHabitat().clickMouse.x, habitatGrafico.getPanelHabitat().clickMouse.y, habitatGrafico.getPanelHabitat()));
-                    case "AsgardianoSG1" ->
-                            new AnimalGrafico(new AsgardianoSG1(habitatGrafico.getPanelHabitat().clickMouse.x, habitatGrafico.getPanelHabitat().clickMouse.y, habitatGrafico.getPanelHabitat()));
-                    case "Depredador" ->
-                            new AnimalGrafico(new Depredador(habitatGrafico.getPanelHabitat().clickMouse.x, habitatGrafico.getPanelHabitat().clickMouse.y, habitatGrafico.getPanelHabitat()));
-                    case "Goauld" ->
-                            new AnimalGrafico(new Goauld(habitatGrafico.getPanelHabitat().clickMouse.x, habitatGrafico.getPanelHabitat().clickMouse.y, habitatGrafico.getPanelHabitat()));
-                    case "ReplicanteSG1" ->
-                            new AnimalGrafico(new ReplicanteSG1(habitatGrafico.getPanelHabitat().clickMouse.x, habitatGrafico.getPanelHabitat().clickMouse.y, habitatGrafico.getPanelHabitat()));
-                    default -> null;
-                };
+        btn.addActionListener(e -> {
+            animalSeleccionado = animal;
+            habitatGrafico.getPanelHabitat().suscribirse(panelAgregarAnimal);
+        });
 
-                if (animalGrafico != null) {
-                    habitatGrafico.getPanelHabitat().agregarAnimal(animalGrafico);
-                }
-            }
-
-            @Override
-            public void mousePressed(MouseEvent e) {}
-
-            @Override
-            public void mouseReleased(MouseEvent e) {}
-
-            @Override
-            public void mouseEntered(MouseEvent e) {}
-
-            @Override
-            public void mouseExited(MouseEvent e) {}
+        btn.addItemListener(e -> {
+            if (e.getStateChange() == ItemEvent.DESELECTED) {animalSeleccionado = null;}
         });
 
         return btn;
@@ -182,15 +147,53 @@ public class PanelAgregarAnimal extends JPanel {
         btn1 = agregarBotones(animalesPermitidos[i], 200);
         btn1.setBounds(177, 10, 200, 180);
         panelAgregarAnimal.add(btn1);
+        grupoBotones.add(btn1);
 
         btn2 = agregarBotones(animalesPermitidos[i + 1], 200);
         btn2.setBounds(387, 10, 200, 180);
         panelAgregarAnimal.add(btn2);
+        grupoBotones.add(btn2);
 
         btn3 = agregarBotones(animalesPermitidos[i + 2], 200);
         btn3.setBounds(597, 10, 200, 180);
         panelAgregarAnimal.add(btn3);
+        grupoBotones.add(btn3);
 
         this.repaint();
     }
+
+    private void agregarAnimal(Point point){
+        AnimalGrafico animalGrafico = switch (animalSeleccionado.name()) {
+            case "Pinguino" ->
+                    new AnimalGrafico(new Pinguino(point.x, point.y, habitatGrafico.getPanelHabitat()));
+            case "Caballo" ->
+                    new AnimalGrafico(new Caballo(point.x, point.y, habitatGrafico.getPanelHabitat()));
+            case "Nutria" ->
+                    new AnimalGrafico(new Nutria(point.x, point.y, habitatGrafico.getPanelHabitat()));
+            case "Tigre" ->
+                    new AnimalGrafico(new Tigre(point.x, point.y, habitatGrafico.getPanelHabitat()));
+            case "Leon" ->
+                    new AnimalGrafico(new Leon(point.x, point.y, habitatGrafico.getPanelHabitat()));
+            case "Vaca" ->
+                    new AnimalGrafico(new Vaca(point.x, point.y, habitatGrafico.getPanelHabitat()));
+            case "AlienX" ->
+                    new AnimalGrafico(new AlienX(point.x, point.y, habitatGrafico.getPanelHabitat()));
+            case "Aracne" ->
+                    new AnimalGrafico(new Aracne(point.x, point.y, habitatGrafico.getPanelHabitat()));
+            case "AsgardianoSG1" ->
+                    new AnimalGrafico(new AsgardianoSG1(point.x, point.y, habitatGrafico.getPanelHabitat()));
+            case "Depredador" ->
+                    new AnimalGrafico(new Depredador(point.x, point.y, habitatGrafico.getPanelHabitat()));
+            case "Goauld" ->
+                    new AnimalGrafico(new Goauld(point.x, point.y, habitatGrafico.getPanelHabitat()));
+            case "ReplicanteSG1" ->
+                    new AnimalGrafico(new ReplicanteSG1(point.x, point.y, habitatGrafico.getPanelHabitat()));
+            default -> null;
+        };
+
+        if (animalGrafico != null) {habitatGrafico.getPanelHabitat().agregarAnimal(animalGrafico);}
+    }
+
+    @Override
+    public void update(Point point) {agregarAnimal(point);}
 }

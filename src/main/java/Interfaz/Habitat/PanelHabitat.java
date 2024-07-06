@@ -27,7 +27,7 @@ public class PanelHabitat extends JPanel implements MouseListener {
     private final Rectangle maximizado = new Rectangle(100, 0, 900, 630);
     private final Rectangle minimizado = new Rectangle(190, 0, 700,420);
     private String familia = null;
-    public Point clickMouse = new Point(0, 0);
+    private Listener listener = null;
 
     /**
      * Constructor que configura el panel, inicia las variables y agrega los elementos del habitat
@@ -162,11 +162,8 @@ public class PanelHabitat extends JPanel implements MouseListener {
      */
     public Habitat getHabitat(){return habitat;}
 
-
     @Override
-    public void mouseClicked(MouseEvent e) {
-        clickMouse = e.getPoint();
-    }
+    public void mouseClicked(MouseEvent e) {notificar(e.getPoint());}
 
     @Override
     public void mousePressed(MouseEvent e) {}
@@ -179,5 +176,9 @@ public class PanelHabitat extends JPanel implements MouseListener {
 
     @Override
     public void mouseExited(MouseEvent e) {}
+
+    public void suscribirse(Listener listener){this.listener = listener;}
+
+    public void notificar(Point point){if(listener != null){listener.update(point);}}
 
 }
