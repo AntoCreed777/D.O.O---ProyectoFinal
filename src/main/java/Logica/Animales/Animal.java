@@ -64,18 +64,18 @@ public abstract class Animal implements Sonido {
     }
 
     protected enum Sonidos{
-        Caballo("src/main/java/Interfaz/Sonidos/Caballo.wav"),
-        Leon("src/main/java/Interfaz/Sonidos/Leon.wav"),
-        Nutria("src/main/java/Interfaz/Sonidos/Nutria.wav"),
-        Pinguino("src/main/java/Interfaz/Sonidos/Pinguino.wav"),
-        Tigre("src/main/java/Interfaz/Sonidos/Tigre.wav"),
-        Vaca("src/main/java/Interfaz/Sonidos/Vaca.wav"),
-        AlienX(""),
-        Aracne(""),
-        AsgardianoSG1(""),
-        Depredador(""),
-        Goauld(""),
-        ReplicanteSG1("");
+        Caballo("src/main/java/Interfaz/Sonidos/Tierra/Caballo.wav"),
+        Leon("src/main/java/Interfaz/Sonidos/Tierra/Leon.wav"),
+        Nutria("src/main/java/Interfaz/Sonidos/Tierra/Nutria.wav"),
+        Pinguino("src/main/java/Interfaz/Sonidos/Tierra/Pinguino.wav"),
+        Tigre("src/main/java/Interfaz/Sonidos/Tierra/Tigre.wav"),
+        Vaca("src/main/java/Interfaz/Sonidos/Tierra/Vaca.wav"),
+        AlienX("src/main/java/Interfaz/Sonidos/Marte/AlienX.wav"),
+        Aracne("src/main/java/Interfaz/Sonidos/Marte/Aracne.wav"),
+        AsgardianoSG1("src/main/java/Interfaz/Sonidos/Marte/AsgardianoSG1.wav"),
+        Depredador("src/main/java/Interfaz/Sonidos/Marte/Depredador.wav"),
+        Goauld("src/main/java/Interfaz/Sonidos/Marte/Goauld.wav"),
+        ReplicanteSG1("src/main/java/Interfaz/Sonidos/Marte/ReplicanteSG1.wav");
 
         private final Clip sonido;
         private Sonidos(String direccion) {this.sonido = Sonido.cargarSonido(direccion);}
