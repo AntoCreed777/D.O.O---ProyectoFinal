@@ -41,6 +41,14 @@ public abstract class Habitat {
     public interface HabitatTipo {String getImagen();}
 
     /**
+     * Interfaz que usan todos los Enum que designan los accesorios disponibles dentro del habitat
+     */
+    public interface AccesoriosTipo {
+        String name();
+        String getImagen();
+    }
+
+    /**
      * Getter
      * @return Retorna el color del fondo
      */

@@ -41,7 +41,7 @@ public class HabitatMarte extends Habitat {
     /**
      * Enumeracion que representa todos los tipos de Accesorios y sus respectivas imagenes
      */
-    public enum Accesorios {
+    public enum Accesorios implements AccesoriosTipo{
         ARBOL("src/main/java/Interfaz/Imagenes/Accesorios/accesorio_marte_arbol.png"),
         ROCA("src/main/java/Interfaz/Imagenes/Accesorios/accesorio_marte_roca.png"),
         PLANTA("src/main/java/Interfaz/Imagenes/Accesorios/accesorio_marte_planta.png");
