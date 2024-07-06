@@ -22,8 +22,16 @@ public class PanelTierra extends JPanel {
         this.setLayout(null);
 
         crearBotonRetorno();
+        Color color = new Color(0xECD4CE);
 
-        this.add(new BotonHabitat(this, 178,95,198,217));
+        this.add(new BotonHabitat(this, color,178,94,199,111));
+        this.add(new BotonHabitat(this, color, 178,204,199,108));
+
+        this.add(new BotonHabitat(this, color,405, 94, 238, 96));
+        this.add(new BotonHabitat(this, color,713, 94, 236, 110));
+        this.add(new BotonHabitat(this, color,178, 339, 150, 200));
+
+        this.add(new BotonHabitat(this, color,723, 365, 150, 150));
 
         this.add(GeneradorImagen.ImageLabel("src/main/java/Interfaz/imagenes/fondo_tierra.png", 0,0,1088,632));
     }
@@ -62,5 +70,11 @@ public class PanelTierra extends JPanel {
             public void mouseExited(MouseEvent e) {}
         });
         this.add(btnRetorno);
+    }
+
+
+    public void crearBotonesHabitat(){
+
+
     }
 }
