@@ -13,13 +13,25 @@ import java.awt.event.MouseListener;
 public class PanelTierra extends JPanel {
     private final Ventana ventana;
 
+    /**
+     *  Funcion que inicializa el panel de la Tierra
+     * @param ventana La instancia de la ventana principal
+     */
     public PanelTierra(Ventana ventana) {
         this.ventana = ventana;
         this.setLayout(null);
 
         crearBotonRetorno();
+        Color color = new Color(0xECD4CE);
 
-        this.add(new BotonHabitat(this, 178,95,198,217));
+        this.add(new BotonHabitat(this, color,178,94,199,111));
+        this.add(new BotonHabitat(this, color, 178,204,199,108));
+
+        this.add(new BotonHabitat(this, color,405, 94, 238, 96));
+        this.add(new BotonHabitat(this, color,713, 94, 236, 110));
+        this.add(new BotonHabitat(this, color,178, 339, 150, 200));
+
+        this.add(new BotonHabitat(this, color,723, 365, 150, 150));
 
         this.add(GeneradorImagen.ImageLabel("src/main/java/Interfaz/imagenes/fondo_tierra.png", 0,0,1088,632));
     }
@@ -35,8 +47,9 @@ public class PanelTierra extends JPanel {
         btnRetorno.setBackground(new Color(0xdef45f));
 
         ImageIcon img = GeneradorImagen.scaledProducto("src/main/java/Interfaz/imagenes/Habitats/nave_espacial.png",60,90);
-        btnRetorno.setIcon(img);
+        btnRetorno.setIcon(img);// Establecer el ícono del botón
 
+        // Agregar un MouseListener para manejar eventos de clic
         btnRetorno.addMouseListener(new MouseListener() {
             @Override
             public void mouseClicked(MouseEvent e) {
@@ -57,5 +70,11 @@ public class PanelTierra extends JPanel {
             public void mouseExited(MouseEvent e) {}
         });
         this.add(btnRetorno);
+    }
+
+
+    public void crearBotonesHabitat(){
+
+
     }
 }

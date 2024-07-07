@@ -3,12 +3,15 @@ package Logica.Animales.Tierra;
 import Interfaz.Habitat.PanelHabitat;
 import Logica.Animales.Animal;
 import Logica.Comida;
+import static Logica.Animales.Animal.FamiliaTaxonomica.Felino;
 
 /**
  * SubClase de Animal que representa a un Tigre
  */
 public class Tigre extends Animal {
     public final static int temperaturaAdecuada = 28; //Grados Celcius
+    public final static Animal.Imagenes imagen = Imagenes.Tigre;
+    public final static Comida comida = Comida.Carne;
 
     /**
      * Constructor del Tigre
@@ -17,15 +20,7 @@ public class Tigre extends Animal {
      * @param panelHabitat      Panel al que pertenecera el Tigre
      */
     public Tigre(int posicionXinicial, int posicionYinicial, PanelHabitat panelHabitat){
-        super(posicionXinicial, posicionYinicial, panelHabitat, "Felino",
-                Imagenes.Tigre, Sonidos.Tigre);
+        super(posicionXinicial, posicionYinicial, panelHabitat, Felino,
+                Comida.Carne,Imagenes.Tigre, Sonidos.Tigre);
     }
-
-    /**
-     * Funcion que permite comer al Tigre
-     * @param comida    Comida que trata de comer el Tigre
-     * @return  Retorna si logro o no comerse al comida
-     */
-    @Override
-    public boolean Comer(Comida comida) {return comida == Comida.Carne;}
 }

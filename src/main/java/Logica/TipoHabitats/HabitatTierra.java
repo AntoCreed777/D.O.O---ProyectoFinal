@@ -1,8 +1,6 @@
 package Logica.TipoHabitats;
 
-import Logica.Animales.Animal;
 import Logica.Habitat;
-import static Logica.Animales.Animal.Imagenes.*;
 
 import java.awt.*;
 
@@ -10,51 +8,51 @@ import java.awt.*;
  * SubClase que representa a un habitat del Planeta Tierra
  */
 public class HabitatTierra extends Habitat {
-    private int[] temperatura;
-
     /**
      * Constructor que configura las variables
      */
-    public HabitatTierra(TipoHabitat tipoHabitat){
+    public HabitatTierra(TipoHabitat tipoHabitat) throws NoSuchFieldException, IllegalAccessException {
         super(tipoHabitat,
-                new Animal.Imagenes[]{
-                    Leon, Vaca, Nutria, Caballo, Pinguino, Tigre
+                new Class[]{
+                        Logica.Animales.Tierra.Leon.class,
+                        Logica.Animales.Tierra.Vaca.class,
+                        Logica.Animales.Tierra.Nutria.class,
+                        Logica.Animales.Tierra.Caballo.class,
+                        Logica.Animales.Tierra.Pinguino.class,
+                        Logica.Animales.Tierra.Tigre.class,
                 }
         );
         super.backgroundColor = new Color(0xF6FFEC);
         super.editPanelColor = new Color(0x68B0AB);
         super.btnColor = new Color(0xFAF3DD);
         super.btnMarginColor = new Color(0xBABABA);
-        temperatura = new int[]{0, 100};
-    }
-
-    /**
-     * Funcion que establece la Temperatura mminima y maxima dentro del habitat
-     * @param minimo    Temperatura minima dentro del habitat
-     * @param maximo    Temperatura maxima dentro del habitat
-     */
-    public void setTemperatura(int minimo, int maximo){
-        temperatura[0] = minimo;
-        temperatura[1] = maximo;
     }
 
     public enum TipoHabitat implements HabitatTipo {
-        DESERTICO("src/main/java/Interfaz/imagenes/Habitats/Tierra/habitat_desertico_1.jpg"),
-        POLAR("src/main/java/Interfaz/imagenes/Habitats/Tierra/habitat_polar_1.jpg"),
-        JUNGLA("src/main/java/Interfaz/imagenes/Habitats/Tierra/habitat_jungla_1.jpg");
+        DESERTICO("src/main/java/Interfaz/imagenes/Habitats/Tierra/habitat_desertico_1.jpg", 25, 30),
+        POLAR("src/main/java/Interfaz/imagenes/Habitats/Tierra/habitat_polar_1.jpg", 0,0),
+        JUNGLA("src/main/java/Interfaz/imagenes/Habitats/Tierra/habitat_jungla_1.jpg",0,0);
 
         private final String imagen;
-        private TipoHabitat(String imagen) {this.imagen = imagen;}
+        private final int[] temperatura;
+
+        private TipoHabitat(String imagen, int minimo, int maximo) {
+            this.imagen = imagen;
+            this.temperatura = new int[]{minimo, maximo};
+        }
 
         @Override
         public String getImagen(){return imagen;}
+
+        @Override
+        public int[] getTemperatura(){return temperatura;}
     }
 
 
     /**
      * Enumeracion que representa todos los tipos de Accesorios y sus respectivas imagenes
      */
-    public enum Accesorios {
+    public enum Accesorios implements AccesoriosTipo {
 
         ARBOL("src/main/java/Interfaz/Imagenes/Accesorios/accesorio_tierra_arbol.png"),
         ROCA("src/main/java/Interfaz/Imagenes/Accesorios/accesorio_tierra_roca.png"),

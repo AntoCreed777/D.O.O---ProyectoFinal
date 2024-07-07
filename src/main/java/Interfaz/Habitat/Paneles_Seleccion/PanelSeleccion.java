@@ -1,10 +1,14 @@
 package Interfaz.Habitat.Paneles_Seleccion;
 
+import Interfaz.BotonHabitat;
+import Interfaz.Habitat.HabitatGrafico;
 import Interfaz.Habitat.PanelEditar;
 import Logica.Habitat;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
@@ -14,6 +18,7 @@ import java.awt.event.MouseListener;
 public class PanelSeleccion extends JPanel {
     private final PanelEditar panelEditar;
     private final Color btnColor;
+    private final HabitatGrafico habitatGrafico;
 
     /**
      *Contructor en donde se inician variables , se configura el panel y se agregan los botones
@@ -21,13 +26,15 @@ public class PanelSeleccion extends JPanel {
      * @param habitat       Habitat al que pertenece este panel y sobre el que puede actuar
      * @param panelEditar   Panel en donde se muestran todos los demas paneles para seleccionar acciones
      */
-    public PanelSeleccion(Habitat habitat, PanelEditar panelEditar) {
+    public PanelSeleccion(HabitatGrafico habitat, PanelEditar panelEditar) {
+        this.habitatGrafico = habitat;
+
         this.setBounds(50,10,1000, 190);
-        this.setBackground(habitat.getEditPanelColor());
+        this.setBackground(habitat.getHabitat().getEditPanelColor());
         this.setLayout(new GridLayout(1, 3, 10, 0));
 
         this.panelEditar = panelEditar;
-        this.btnColor = habitat.getBtnColor();
+        this.btnColor = habitat.getHabitat().getBtnColor();
 
         this.add(btnComida());
         this.add(btnAnimal());
@@ -115,8 +122,22 @@ public class PanelSeleccion extends JPanel {
      * @return  Se retorna al boton que se creo
      */
     private JButton btnEliminar(){
-        JButton btnEliminar = new JButton("Eliminar habitat");
+
+        final Action exitAction = new AbstractAction("Exit")
+        {
+            @Override
+            public void actionPerformed(ActionEvent e){
+
+                habitatGrafico.getBotonHabitat().resetHabitat();
+                habitatGrafico.dispose();
+            }
+        };
+        JButton btnEliminar = new JButton(exitAction);
+        btnEliminar.setText("Eliminar habitat");
         btnEliminar.setBackground(this.btnColor);
+
+
+
         return btnEliminar;
     }
 }

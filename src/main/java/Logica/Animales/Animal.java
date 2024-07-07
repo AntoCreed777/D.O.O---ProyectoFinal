@@ -13,17 +13,18 @@ import javax.sound.sampled.Clip;
  * Clase que representa a un Animal
  */
 public abstract class Animal implements Sonido {
-    private final String familiaTaxonomica;
+    private final FamiliaTaxonomica familiaTaxonomica;
     private int posicionX;
     private int posicionY;
-    private int anchoImg = 0;
-    private int altoImg = 0;
+    private int anchoImg;
+    private int altoImg;
     private final PanelHabitat panelHabitat;      //Panel del habitat al que pertenece el animal
     private int direccion = -1; //Pueden ser 8 direcciones
     //Norte=0, NorOeste=1, Oeste=2, SurOeste=3,
     //Sur=4, SurEste=5, Este=6, NorEste=7
     private final Clip sonido;
     private final String imagen;
+    private final Comida comida;
 
     /**
      * Constructor que inicia las variables
@@ -32,11 +33,12 @@ public abstract class Animal implements Sonido {
      * @param panelHabitat      Panel al que pertenecera el animal
      * @param familiaTaxonomica Familia taxonomica a la que pertenece el Animal
      */
-    public Animal(int posicionXinicial, int posicionYinicial, PanelHabitat panelHabitat, String familiaTaxonomica,Imagenes imagen ,Sonidos sonido) {
+    public Animal(int posicionXinicial, int posicionYinicial, PanelHabitat panelHabitat, FamiliaTaxonomica familiaTaxonomica, Comida comida,Imagenes imagen ,Sonidos sonido) {
         this.panelHabitat = panelHabitat;
         this.posicionX = posicionXinicial;
         this.posicionY = posicionYinicial;
         this.familiaTaxonomica = familiaTaxonomica;
+        this.comida = comida;
         this.imagen = imagen.getImagen();
         this.sonido = sonido.getSonido();
     }
@@ -56,31 +58,39 @@ public abstract class Animal implements Sonido {
         ReplicanteSG1("src/main/java/Interfaz/imagenes/Animales/Marte/ReplicanteSG1.png");
 
         private final String imagen;
-        Imagenes(String imagen) {this.imagen = imagen;}
+        private Imagenes(String imagen) {this.imagen = imagen;}
 
         public String getImagen() {return imagen;}
     }
 
-    public enum Sonidos{
-        Caballo("src/main/java/Interfaz/Sonidos/Caballo.wav"),
-        Leon("src/main/java/Interfaz/Sonidos/Leon.wav"),
-        Nutria("src/main/java/Interfaz/Sonidos/Nutria.wav"),
-        Pinguino("src/main/java/Interfaz/Sonidos/Pinguino.wav"),
-        Tigre("src/main/java/Interfaz/Sonidos/Tigre.wav"),
-        Vaca("src/main/java/Interfaz/Sonidos/Vaca.wav"),
-        AlienX(""),
-        Aracne(""),
-        AsgardianoSG1(""),
-        Depredador(""),
-        Goauld(""),
-        ReplicanteSG1("");
+    protected enum Sonidos{
+        Caballo("src/main/java/Interfaz/Sonidos/Tierra/Caballo.wav"),
+        Leon("src/main/java/Interfaz/Sonidos/Tierra/Leon.wav"),
+        Nutria("src/main/java/Interfaz/Sonidos/Tierra/Nutria.wav"),
+        Pinguino("src/main/java/Interfaz/Sonidos/Tierra/Pinguino.wav"),
+        Tigre("src/main/java/Interfaz/Sonidos/Tierra/Tigre.wav"),
+        Vaca("src/main/java/Interfaz/Sonidos/Tierra/Vaca.wav"),
+        AlienX("src/main/java/Interfaz/Sonidos/Marte/AlienX.wav"),
+        Aracne("src/main/java/Interfaz/Sonidos/Marte/Aracne.wav"),
+        AsgardianoSG1("src/main/java/Interfaz/Sonidos/Marte/AsgardianoSG1.wav"),
+        Depredador("src/main/java/Interfaz/Sonidos/Marte/Depredador.wav"),
+        Goauld("src/main/java/Interfaz/Sonidos/Marte/Goauld.wav"),
+        ReplicanteSG1("src/main/java/Interfaz/Sonidos/Marte/ReplicanteSG1.wav");
 
         private final Clip sonido;
-        Sonidos(String direccion) {this.sonido = Sonido.cargarSonido(direccion);}
+        private Sonidos(String direccion) {this.sonido = Sonido.cargarSonido(direccion);}
 
         public Clip getSonido() {return sonido;}
     }
 
+    public enum FamiliaTaxonomica{
+        Campo(),
+        Felino(),
+        Acuatico(),
+        RazaSuperior(),
+        RazaInteligente(),
+        InsectoAnsestral();
+    }
     /**
      * Funcion que mueve al animal calculando la posicion en el tiempo t+1
      */
@@ -243,14 +253,16 @@ public abstract class Animal implements Sonido {
 
     /**
      * Funcion que permite comer al animal
+     * @param comida    Comida que trata de comer
+     * @return  Retorna si se comio o no la comida (True or False)
      */
-    public abstract boolean Comer(Comida comida);
+    public boolean Comer(Comida comida){return comida == this.comida;}
 
     /**
      * Getter
      * @return Retorna la familia Taxonomica a la que pertenece el Animal
      */
-    public String getFamiliaTaxonomica(){return familiaTaxonomica;}
+    public FamiliaTaxonomica getFamiliaTaxonomica(){return familiaTaxonomica;}
 
     /**
      * Getter
@@ -270,5 +282,15 @@ public abstract class Animal implements Sonido {
      */
     public int getPosicionY() {return posicionY;}
 
+    /**
+     * Getter
+     * @return Retorna la imagen que representa a este animal
+     */
     public String getImagen(){return imagen;}
+
+    /**
+     * Getter
+     * @return Retorna la comida que consume este animal
+     */
+    public Comida getComida(){return comida;}
 }

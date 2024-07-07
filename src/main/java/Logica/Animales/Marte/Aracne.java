@@ -3,12 +3,15 @@ package Logica.Animales.Marte;
 import Interfaz.Habitat.PanelHabitat;
 import Logica.Animales.Animal;
 import Logica.Comida;
+import static Logica.Animales.Animal.FamiliaTaxonomica.InsectoAnsestral;
 
 /**
  * SubClase de Animal que representa a un Aracne
  */
 public class Aracne extends Animal {
     public final static int temperaturaAdecuada = 28; //Grados Celcius
+    public final static Animal.Imagenes imagen = Imagenes.Aracne;
+    public final static Comida comida = Comida.Humano;
 
     /**
      * Constructor del Aracne
@@ -17,15 +20,7 @@ public class Aracne extends Animal {
      * @param panelHabitat      Panel al que pertenecera el Aracne
      */
     public Aracne(int posicionXinicial, int posicionYinicial, PanelHabitat panelHabitat){
-        super(posicionXinicial, posicionYinicial, panelHabitat, "Campo",
-                Imagenes.Aracne, Sonidos.Aracne);
+        super(posicionXinicial, posicionYinicial, panelHabitat, InsectoAnsestral,
+                Comida.Humano,Imagenes.Aracne, Sonidos.Aracne);
     }
-
-    /**
-     * Funcion que permite comer al Aracne
-     * @param comida    Comida que trata de comer el Aracne
-     * @return  Retorna si logro o no comerse al comida
-     */
-    @Override
-    public boolean Comer(Comida comida) {return comida == Comida.Carne;}    //FALTA CAMBIAR
 }

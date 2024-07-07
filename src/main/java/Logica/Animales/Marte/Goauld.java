@@ -3,12 +3,15 @@ package Logica.Animales.Marte;
 import Interfaz.Habitat.PanelHabitat;
 import Logica.Animales.Animal;
 import Logica.Comida;
+import static Logica.Animales.Animal.FamiliaTaxonomica.InsectoAnsestral;
 
 /**
  * SubClase de Animal que representa a un Goauld
  */
 public class Goauld extends Animal {
     public final static int temperaturaAdecuada = 28; //Grados Celcius
+    public final static Animal.Imagenes imagen = Imagenes.Goauld;
+    public final static Comida comida = Comida.Humano;
 
     /**
      * Constructor del Goauld
@@ -17,15 +20,7 @@ public class Goauld extends Animal {
      * @param panelHabitat      Panel al que pertenecera el Goauld
      */
     public Goauld(int posicionXinicial, int posicionYinicial, PanelHabitat panelHabitat){
-        super(posicionXinicial, posicionYinicial, panelHabitat, "Campo",
-                Imagenes.Goauld, Sonidos.Goauld);
+        super(posicionXinicial, posicionYinicial, panelHabitat, InsectoAnsestral,
+                Comida.Humano,Imagenes.Goauld, Sonidos.Goauld);
     }
-
-    /**
-     * Funcion que permite comer al Goauld
-     * @param comida    Comida que trata de comer el Goauld
-     * @return  Retorna si logro o no comerse al comida
-     */
-    @Override
-    public boolean Comer(Comida comida) {return comida == Comida.Carne;}    //FALTA CAMBIAR
 }

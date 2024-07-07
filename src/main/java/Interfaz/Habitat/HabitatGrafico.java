@@ -1,5 +1,6 @@
 package Interfaz.Habitat;
 
+import Interfaz.BotonHabitat;
 import Interfaz.imagenes.GeneradorImagen;
 import Logica.Habitat;
 
@@ -20,10 +21,11 @@ public class HabitatGrafico extends JFrame implements GeneradorImagen {
     private final JToggleButton editBtn;
     private final PanelEditar panelEditar;
     private final PanelHabitat panelHabitat;
+    private final BotonHabitat botonHabitat;
 
-    public HabitatGrafico(Habitat habitat) {
+    public HabitatGrafico(Habitat habitat, BotonHabitat btn) throws NoSuchFieldException, IllegalAccessException {
         this.habitat = habitat;
-
+        this.botonHabitat = btn;
         this.setSize(new Dimension(1100, 670));
         this.getContentPane().setBackground(habitat.getBackgroundColor());
         this.setLayout(null);
@@ -31,12 +33,8 @@ public class HabitatGrafico extends JFrame implements GeneradorImagen {
         this.setResizable(false);
         this.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 
-        addWindowListener(new WindowAdapter() {
-            @Override
-            public void windowClosing(WindowEvent e) {
-                setVisible(false);
-            }
-        });
+        ImageIcon iconoVentana = Interfaz.imagenes.GeneradorImagen.scaledProducto("src/main/java/Interfaz/Imagenes/icono_ventana.png", 40,40);
+        this.setIconImage(iconoVentana.getImage());
 
         panelHabitat = new PanelHabitat(habitat);
         this.add(panelHabitat);
@@ -67,6 +65,15 @@ public class HabitatGrafico extends JFrame implements GeneradorImagen {
 
         this.add(editBtn);
 
+        addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent e) {
+                editBtn.setSelected(false); // esconder panel editar al ocultar el frame
+                mostrarPanelEditar();
+                setVisible(false);
+            }
+        });
+
 
         // panel de edicion
         panelEditar = new PanelEditar(this);
@@ -84,6 +91,7 @@ public class HabitatGrafico extends JFrame implements GeneradorImagen {
         }
         else {
             panelHabitat.ajustarPanel("maximizar");
+            panelHabitat.suscribirse(null);         //Evita que se sigan agregando Objetos al panel
 
             panelEditar.mostrarPanelAgregarAccesorio(false);
             panelEditar.mostrarPanelAgregarComida(false);
@@ -97,9 +105,5 @@ public class HabitatGrafico extends JFrame implements GeneradorImagen {
 
     public PanelHabitat getPanelHabitat(){return panelHabitat;}
     public Habitat getHabitat(){return habitat;}
+    public BotonHabitat getBotonHabitat(){return botonHabitat;}
 }
-
-
-
-
-

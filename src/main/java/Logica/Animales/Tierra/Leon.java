@@ -3,12 +3,15 @@ package Logica.Animales.Tierra;
 import Interfaz.Habitat.PanelHabitat;
 import Logica.Animales.Animal;
 import Logica.Comida;
+import static Logica.Animales.Animal.FamiliaTaxonomica.Felino;
 
 /**
  * SubClase de Animal que representa a un Leon
  */
 public class Leon extends Animal {
     public final static int temperaturaAdecuada = 28; //Grados Celcius
+    public final static Animal.Imagenes imagen = Imagenes.Leon;
+    public final static Comida comida = Comida.Carne;
 
     /**
      * Constructor del Leon
@@ -17,15 +20,7 @@ public class Leon extends Animal {
      * @param panelHabitat      Panel al que pertenecera el Leon
      */
     public Leon(int posicionXinicial, int posicionYinicial, PanelHabitat panelHabitat){
-        super(posicionXinicial, posicionYinicial, panelHabitat, "Felino",
-                Imagenes.Leon, Sonidos.Leon);
+        super(posicionXinicial, posicionYinicial, panelHabitat, Felino,
+                Comida.Carne,Imagenes.Leon, Sonidos.Leon);
     }
-
-    /**
-     * Funcion que permite comer al Leon
-     * @param comida    Comida que trata de comer el Leon
-     * @return  Retorna si logro o no comerse al comida
-     */
-    @Override
-    public boolean Comer(Comida comida) {return comida == Comida.Carne;}
 }

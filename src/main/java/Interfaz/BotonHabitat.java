@@ -11,26 +11,43 @@ import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
+/**
+ *  Botón que permite seleccionar y visualizar hábitats en los planetas
+ */
 public class BotonHabitat extends JButton implements MouseListener {
 
     private HabitatGrafico habitat = null;
     private final JPanel panel;
-
+    private final BotonHabitat btn;
     private final int width, height;
+    private final Color backgroundColor;
 
-    public BotonHabitat(JPanel panel, int posX, int posY, int width, int height) {
-
+    /**
+     * inicializa el botón
+     * @param panel panel en el que se colocará el botón
+     * @param posX es la posición X del botón
+     * @param posY es la posición y del botón
+     * @param width ancho del botó
+     * @param height altura del botó
+     */
+    public BotonHabitat(JPanel panel, Color backgroundColor, int posX, int posY, int width, int height) {
+        this.btn = this;
         this.panel = panel;
         this.width = width;
         this.height = height;
+        this.backgroundColor = backgroundColor;
         this.setBounds(posX, posY, width, height);
         this.setBorderPainted(false);
-        this.setBackground(Color.WHITE);
+        this.setBackground(backgroundColor);
         this.setFont(new Font("monospace", Font.PLAIN, 20));
         this.addMouseListener(this);
     }
 
-    public Habitat elegirHabitat(){
+    /**
+     * Método para elegir un hábitat basado en el panel actual (Tierra o Marte)
+     * @return hábitat seleccionado o null
+     */
+    public Habitat elegirHabitat() throws NoSuchFieldException, IllegalAccessException {
         Habitat habitatEscogido = null;
         String[] opcionesStr;
         Enum<?>[] opciones = null;
@@ -62,7 +79,7 @@ public class BotonHabitat extends JButton implements MouseListener {
                 if (panel instanceof PanelTierra) {
                     habitatEscogido = new HabitatTierra((HabitatTierra.TipoHabitat) opciones[selectedIndex]);
                 }
-                else if (panel instanceof PanelMarte) {
+                else {
                     habitatEscogido = new HabitatMarte((HabitatMarte.TipoHabitat) opciones[selectedIndex]);
                 }
             } else { return null;}
@@ -70,12 +87,26 @@ public class BotonHabitat extends JButton implements MouseListener {
         return habitatEscogido;
     }
 
+    /**
+     * metodo para los eventos del clic en el boton, Si no hay hábitat te permite selecionar uno pero
+     * Si ya existe uno lo hace visible
+     * @param e evento de clic del mouse
+     */
     @Override
     public void mouseClicked(MouseEvent e) {
         if(habitat == null){
-            Habitat aux = elegirHabitat();
+            Habitat aux;
+            try {
+                aux = elegirHabitat();
+            } catch (NoSuchFieldException | IllegalAccessException ex) {
+                throw new RuntimeException(ex);
+            }
             if(aux != null){
-                habitat = new HabitatGrafico(aux);
+                try {
+                    habitat = new HabitatGrafico(aux, btn);
+                } catch (NoSuchFieldException | IllegalAccessException ex) {
+                    throw new RuntimeException(ex);
+                }
                 this.setIcon(GeneradorImagen.scaledProducto(aux.getBackgroundImg(),width, height));
             }
         }
@@ -89,16 +120,21 @@ public class BotonHabitat extends JButton implements MouseListener {
     public void mouseReleased(MouseEvent e) {}
 
     @Override
-    public void mouseEntered(MouseEvent e) {}
+    public void mouseEntered(MouseEvent e) {btn.setBackground(new Color(0x8DCDF6));}
 
     @Override
-    public void mouseExited(MouseEvent e) {}
+    public void mouseExited(MouseEvent e) {btn.setBackground(backgroundColor);}
 
     public int encontrarIndex(String[] arr, String t){
         if (arr == null) {return -1;}
 
-        for(int i=0;i<arr.length;i++){if (arr[i].equals(t)) {return i;}}
+        for(int i = 0; i < arr.length ; i++){ if (arr[i].equals(t)) {return i;}}
 
         return -1;
+    }
+
+    public void resetHabitat(){
+        habitat = null;
+        btn.setIcon(null);
     }
 }

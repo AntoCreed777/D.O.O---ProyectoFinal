@@ -3,12 +3,15 @@ package Logica.Animales.Tierra;
 import Interfaz.Habitat.PanelHabitat;
 import Logica.Animales.Animal;
 import Logica.Comida;
+import static Logica.Animales.Animal.FamiliaTaxonomica.Campo;
 
 /**
  * SubClase de Animal que representa a un Caballo
  */
 public class Caballo extends Animal {
     public final static int temperaturaAdecuada = 28; //Grados Celcius
+    public final static Animal.Imagenes imagen = Imagenes.Caballo;
+    public final static Comida comida = Comida.Pasto;
 
     /**
      * Constructor del Caballo
@@ -17,15 +20,7 @@ public class Caballo extends Animal {
      * @param panelHabitat      Panel al que pertenecera el Caballo
      */
     public Caballo(int posicionXinicial, int posicionYinicial, PanelHabitat panelHabitat){
-        super(posicionXinicial, posicionYinicial, panelHabitat, "Campo",
-                Imagenes.Caballo, Sonidos.Caballo);
+        super(posicionXinicial, posicionYinicial, panelHabitat, Campo,
+                Comida.Pasto,Imagenes.Caballo, Sonidos.Caballo);
     }
-
-    /**
-     * Funcion que permite comer al Caballo
-     * @param comida    Comida que trata de comer el Caballo
-     * @return  Retorna si logro o no comerse al comida
-     */
-    @Override
-    public boolean Comer(Comida comida) {return comida == Comida.Pasto;}
 }

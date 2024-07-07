@@ -1,6 +1,8 @@
 package Interfaz.Habitat;
 
 import Interfaz.ObjetosGraficos.*;
+import Logica.Animales.Animal;
+import Logica.Excepciones.DemaciadosAnimales;
 import Logica.Excepciones.NoMezclarAnimales;
 import Logica.Habitat;
 
@@ -26,8 +28,9 @@ public class PanelHabitat extends JPanel implements MouseListener {
     private final Habitat habitat;
     private final Rectangle maximizado = new Rectangle(100, 0, 900, 630);
     private final Rectangle minimizado = new Rectangle(190, 0, 700,420);
-    private String familia = null;
-    public Point clickMouse = new Point(0, 0);
+    private Animal.FamiliaTaxonomica familia = null;
+    private Listener listener = null;
+    private int contador = 0;   //Contador de cuantos animales hay dentro
 
     /**
      * Constructor que configura el panel, inicia las variables y agrega los elementos del habitat
@@ -106,6 +109,15 @@ public class PanelHabitat extends JPanel implements MouseListener {
                 comida.rePosicionarDimencionar(maximizado,minimizado);
             }
         }
+
+        List<AccesorioGrafico> accesorios = habitat.getListaAccesorios();
+        synchronized (accesorios){
+            Iterator<AccesorioGrafico> iterator = accesorios.iterator();
+            while (iterator.hasNext()){
+                AccesorioGrafico accesorio = iterator.next();
+                accesorio.rePosicionarDimencionar(maximizado,minimizado);
+            }
+        }
         this.repaint();
     }
 
@@ -114,12 +126,17 @@ public class PanelHabitat extends JPanel implements MouseListener {
      * @param animal    Animal que se desea agregar
      */
     public void agregarAnimal(AnimalGrafico animal){
-        if(familia == null || familia.equals(animal.getFamiliaTaxonomica())){
+        if (contador >= 20) {
+            Exception e = new DemaciadosAnimales();
+            JOptionPane.showMessageDialog(null, e.getMessage());
+        }
+        else if((familia == null || familia.equals(animal.getFamiliaTaxonomica()))){
             familia = animal.getFamiliaTaxonomica();
             habitat.getListaAnimales().add(animal);      //Se agrega a la lista de los animales internos
             animal.validarPosicion();       //Verifica que se encuentre dentro del panel la imagen
             this.add(animal.getLabel());    //Se agrega al Habitat (JPanel)
             new Thread(animal).start();     //Se inicia el movimiento de los animales
+            contador++;
         }
         else{
             Exception e = new NoMezclarAnimales(familia);
@@ -153,11 +170,8 @@ public class PanelHabitat extends JPanel implements MouseListener {
      */
     public Habitat getHabitat(){return habitat;}
 
-
     @Override
-    public void mouseClicked(MouseEvent e) {
-        clickMouse = e.getPoint();
-    }
+    public void mouseClicked(MouseEvent e) {notificar(e.getPoint());}
 
     @Override
     public void mousePressed(MouseEvent e) {}
@@ -170,5 +184,9 @@ public class PanelHabitat extends JPanel implements MouseListener {
 
     @Override
     public void mouseExited(MouseEvent e) {}
+
+    public void suscribirse(Listener listener){this.listener = listener;}
+
+    public void notificar(Point point){if(listener != null){listener.update(point);}}
 
 }
