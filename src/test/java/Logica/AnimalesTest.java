@@ -23,7 +23,10 @@ public class AnimalesTest {
 
     @BeforeEach
     void setUpBeforeClass(){
-        habitatTierra = new HabitatTierra(HabitatTierra.TipoHabitat.DESERTICO);
+
+        try{
+            habitatTierra = new HabitatTierra(HabitatTierra.TipoHabitat.DESERTICO);
+        }catch(Exception e){ e.printStackTrace();}
         panelHabitat = new PanelHabitat(habitatTierra);
         animal = new Leon(0,0,panelHabitat);
     }
