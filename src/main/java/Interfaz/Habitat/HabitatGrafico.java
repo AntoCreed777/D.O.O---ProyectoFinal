@@ -23,6 +23,13 @@ public class HabitatGrafico extends JFrame implements GeneradorImagen {
     private final PanelHabitat panelHabitat;
     private final BotonHabitat botonHabitat;
 
+    /**
+     * Constructor de la clase HabitatGrafico
+     * @param habitat el Habitat que representa
+     * @param btn Botón de tipo BotonHabitat para interactuar con el hábita
+     * @throws NoSuchFieldException Excepción lanzada si no se encuentra el campo
+     * @throws IllegalAccessException Excepción lanzada si se produce un acceso ilega
+     */
     public HabitatGrafico(Habitat habitat, BotonHabitat btn) throws NoSuchFieldException, IllegalAccessException {
         this.habitat = habitat;
         this.botonHabitat = btn;
@@ -84,6 +91,9 @@ public class HabitatGrafico extends JFrame implements GeneradorImagen {
         this.setVisible(true);
     }
 
+    /**
+     *  Método para mostrar u ocultar el panel de edición según el estado del botón de edición
+     */
     public void mostrarPanelEditar(){
         if(editBtn.isSelected()){
             panelHabitat.ajustarPanel("minimizar");
@@ -103,7 +113,21 @@ public class HabitatGrafico extends JFrame implements GeneradorImagen {
         this.repaint();
     }
 
+    /**
+     * getter para obtener el panel de hábitat
+     * @return Objeto PanelHabitat que representa el panel del hábitat
+     */
     public PanelHabitat getPanelHabitat(){return panelHabitat;}
+
+    /**
+     * getter para obtener el objeto de tipo Habitat.
+     * @return bjeto de tipo Habitat asociado al hábitat graficado
+     */
     public Habitat getHabitat(){return habitat;}
+
+    /**
+     * getter para obtener el botón de hábit
+     * @return Objeto de tipo BotonHabitat que representa el botón asociado al hábita
+     */
     public BotonHabitat getBotonHabitat(){return botonHabitat;}
 }
