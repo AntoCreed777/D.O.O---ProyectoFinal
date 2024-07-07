@@ -7,6 +7,7 @@ import Interfaz.Habitat.HabitatGrafico;
 import Logica.Animales.Animal;
 import Logica.Animales.Tierra.*;
 import Logica.Animales.Marte.*;
+import Logica.Excepciones.TemperaturaAnimal;
 
 import javax.swing.*;
 import javax.swing.border.MatteBorder;
@@ -127,15 +128,21 @@ public class PanelAgregarAnimal extends JPanel implements Listener {
         btn.setIcon(GeneradorImagen.scaledProducto(((Animal.Imagenes)animal.getField("imagen").get(null)).getImagen(), ancho - 100, 100));
 
         btn.addActionListener(e -> {
-            int temperaturalocal = 0;
-            try {
-                temperaturalocal = (int)animal.getField("temperaturaAdecuada").get(null);
-            } catch (IllegalAccessException | NoSuchFieldException ex) {
-                throw new RuntimeException(ex);
-            }
-            if((habitatGrafico.getHabitat().getTemperatura()[0] <= temperaturalocal) && (habitatGrafico.getHabitat().getTemperatura()[1] >= temperaturalocal)){
+            int temperatura = 0;
+            try {temperatura = (int)animal.getField("temperaturaAdecuada").get(null);}
+            catch (IllegalAccessException | NoSuchFieldException ex) {throw new RuntimeException(ex);}
+
+            if((habitatGrafico.getHabitat().getTemperatura()[0] <= temperatura) && (habitatGrafico.getHabitat().getTemperatura()[1] >= temperatura)){
                 animalSeleccionado = animal;
                 habitatGrafico.getPanelHabitat().suscribirse(panelAgregarAnimal);
+            }
+            else{
+                try {
+                    Exception ext = new TemperaturaAnimal(((Animal.Imagenes)animal.getField("imagen").get(null)).name());
+                    JOptionPane.showMessageDialog(null, ext.getMessage());
+                } catch (IllegalAccessException | NoSuchFieldException ex) {
+                    throw new RuntimeException(ex);
+                }
             }
         });
 
@@ -177,6 +184,7 @@ public class PanelAgregarAnimal extends JPanel implements Listener {
     }
 
     private void agregarAnimal(Point point) throws NoSuchFieldException, IllegalAccessException {
+        if(animalSeleccionado == null){return;}
         AnimalGrafico animalGrafico = switch (((Animal.Imagenes)animalSeleccionado.getField("imagen").get(null)).name()) {
             case "Pinguino" ->
                     new AnimalGrafico(new Pinguino(point.x, point.y, habitatGrafico.getPanelHabitat()));
