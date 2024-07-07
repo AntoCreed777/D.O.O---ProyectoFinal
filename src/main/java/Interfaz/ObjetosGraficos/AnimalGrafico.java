@@ -57,7 +57,7 @@ public class AnimalGrafico implements GeneradorImagen, Runnable {
             }
         }
          */
-
+        // Tamaños estándar del animal
         widthMax = 100;
         heightMax = 100;
         widthMin = 80;
@@ -71,7 +71,7 @@ public class AnimalGrafico implements GeneradorImagen, Runnable {
     }
 
     /**
-     * Funcion que controla el movimiento del animal y cuando come
+     * Método que controla el movimiento del animal y su interacción con la comida en el panel de hábitat
      */
     @Override
     public void run() {
@@ -143,19 +143,19 @@ public class AnimalGrafico implements GeneradorImagen, Runnable {
     public void validarPosicion(){animal.validarPosicion();}
 
     /**
-     * getter
-     * @return Retorna la familia taxonomica a la que pertenece el animal
+     * getter para obtener la familia taxonómica a la que pertenece el animal
+     * @return Retorna la familia taxonomica del animal
      */
     public Animal.FamiliaTaxonomica getFamiliaTaxonomica(){return animal.getFamiliaTaxonomica();}
 
     /**
-     * Getter
+     * Getter para obtener el JLabel que contiene la representación gráfica del animal
      * @return  Retorna la label que contiene esta clase
      */
     public JLabel getLabel(){return this.label;}
 
     /**
-     * Setter
+     * Setter establecer el estado del hilo de ejecución del animal
      * @param running   Estado que se desea implementar en el hilo
      */
     public void setRunning(Boolean running){this.running = running;}
