@@ -2,6 +2,7 @@ package Interfaz.Habitat;
 
 import Interfaz.ObjetosGraficos.*;
 import Logica.Animales.Animal;
+import Logica.Excepciones.DemaciadosAnimales;
 import Logica.Excepciones.NoMezclarAnimales;
 import Logica.Habitat;
 
@@ -29,6 +30,7 @@ public class PanelHabitat extends JPanel implements MouseListener {
     private final Rectangle minimizado = new Rectangle(190, 0, 700,420);
     private Animal.FamiliaTaxonomica familia = null;
     private Listener listener = null;
+    private int contador = 0;   //Contador de cuantos animales hay dentro
 
     /**
      * Constructor que configura el panel, inicia las variables y agrega los elementos del habitat
@@ -124,12 +126,17 @@ public class PanelHabitat extends JPanel implements MouseListener {
      * @param animal    Animal que se desea agregar
      */
     public void agregarAnimal(AnimalGrafico animal){
-        if(familia == null || familia.equals(animal.getFamiliaTaxonomica())){
+        if (contador >= 20) {
+            Exception e = new DemaciadosAnimales();
+            JOptionPane.showMessageDialog(null, e.getMessage());
+        }
+        else if((familia == null || familia.equals(animal.getFamiliaTaxonomica()))){
             familia = animal.getFamiliaTaxonomica();
             habitat.getListaAnimales().add(animal);      //Se agrega a la lista de los animales internos
             animal.validarPosicion();       //Verifica que se encuentre dentro del panel la imagen
             this.add(animal.getLabel());    //Se agrega al Habitat (JPanel)
             new Thread(animal).start();     //Se inicia el movimiento de los animales
+            contador++;
         }
         else{
             Exception e = new NoMezclarAnimales(familia);
