@@ -103,7 +103,7 @@ public class BotonHabitat extends JButton implements MouseListener {
             }
             if(aux != null){
                 try {
-                    habitat = new HabitatGrafico(aux);
+                    habitat = new HabitatGrafico(aux, btn);
                 } catch (NoSuchFieldException | IllegalAccessException ex) {
                     throw new RuntimeException(ex);
                 }
@@ -128,8 +128,13 @@ public class BotonHabitat extends JButton implements MouseListener {
     public int encontrarIndex(String[] arr, String t){
         if (arr == null) {return -1;}
 
-        for(int i=0;i<arr.length;i++){if (arr[i].equals(t)) {return i;}}
+        for(int i = 0; i < arr.length ; i++){ if (arr[i].equals(t)) {return i;}}
 
         return -1;
+    }
+
+    public void resetHabitat(){
+        habitat = null;
+        btn.setIcon(null);
     }
 }

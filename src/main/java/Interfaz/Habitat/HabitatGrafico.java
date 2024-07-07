@@ -1,5 +1,6 @@
 package Interfaz.Habitat;
 
+import Interfaz.BotonHabitat;
 import Interfaz.imagenes.GeneradorImagen;
 import Logica.Habitat;
 
@@ -20,10 +21,11 @@ public class HabitatGrafico extends JFrame implements GeneradorImagen {
     private final JToggleButton editBtn;
     private final PanelEditar panelEditar;
     private final PanelHabitat panelHabitat;
+    private final BotonHabitat botonHabitat;
 
-    public HabitatGrafico(Habitat habitat) throws NoSuchFieldException, IllegalAccessException {
+    public HabitatGrafico(Habitat habitat, BotonHabitat btn) throws NoSuchFieldException, IllegalAccessException {
         this.habitat = habitat;
-
+        this.botonHabitat = btn;
         this.setSize(new Dimension(1100, 670));
         this.getContentPane().setBackground(habitat.getBackgroundColor());
         this.setLayout(null);
@@ -98,4 +100,5 @@ public class HabitatGrafico extends JFrame implements GeneradorImagen {
 
     public PanelHabitat getPanelHabitat(){return panelHabitat;}
     public Habitat getHabitat(){return habitat;}
+    public BotonHabitat getBotonHabitat(){return botonHabitat;}
 }
