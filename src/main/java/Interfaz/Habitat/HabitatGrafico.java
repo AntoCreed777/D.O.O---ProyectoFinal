@@ -33,12 +33,8 @@ public class HabitatGrafico extends JFrame implements GeneradorImagen {
         this.setResizable(false);
         this.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 
-        addWindowListener(new WindowAdapter() {
-            @Override
-            public void windowClosing(WindowEvent e) {
-                setVisible(false);
-            }
-        });
+        ImageIcon iconoVentana = Interfaz.imagenes.GeneradorImagen.scaledProducto("src/main/java/Interfaz/Imagenes/icono_ventana.png", 40,40);
+        this.setIconImage(iconoVentana.getImage());
 
         panelHabitat = new PanelHabitat(habitat);
         this.add(panelHabitat);
@@ -68,6 +64,15 @@ public class HabitatGrafico extends JFrame implements GeneradorImagen {
         });
 
         this.add(editBtn);
+
+        addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent e) {
+                editBtn.setSelected(false); // esconder panel editar al ocultar el frame
+                mostrarPanelEditar();
+                setVisible(false);
+            }
+        });
 
 
         // panel de edicion
