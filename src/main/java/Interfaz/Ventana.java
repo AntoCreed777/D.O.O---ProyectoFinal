@@ -16,11 +16,12 @@ public class Ventana extends JFrame{
      * Constructor que configura el JFrame y agrega el PanelPrincipal
      */
     public Ventana(){
-        this.setTitle("ventana");
+        this.setTitle("Zoologico Espacial");
         this.setDefaultCloseOperation(EXIT_ON_CLOSE); // cerrar la aplicacion al apretar x
         this.setSize(1100, 670); // tamaño de la ventana
         this.setResizable(false);
-
+        ImageIcon iconoVentana = Interfaz.imagenes.GeneradorImagen.scaledProducto("src/main/java/Interfaz/Imagenes/icono_ventana.png", 40,40);
+        this.setIconImage(iconoVentana.getImage());
         this.add(panelPrincipal);
 
         this.setVisible(true);
