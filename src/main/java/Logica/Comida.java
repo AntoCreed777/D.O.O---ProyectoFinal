@@ -15,15 +15,15 @@ public enum Comida {
 
     /**
      * Constructor privado que asigna las imagenes a las Comidas
-     * @param imagen    Imagen que representa a la Comida
+     * @param imagen Imagen que representa a la Comida
      */
     private Comida(String imagen){
         this.imagen = imagen;
     }
 
     /**
-     * Getter
-     * @return  Retorna la imagen que representa a la Comida
+     * Getter de la imagen que representa a la comida
+     * @return  Retorna la imagen de la comida
      */
     public String getImagen(){return imagen;}
 }

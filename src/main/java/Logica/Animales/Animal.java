@@ -18,7 +18,7 @@ public abstract class Animal implements Sonido {
     private int posicionY;
     private int anchoImg;
     private int altoImg;
-    private final PanelHabitat panelHabitat;      //Panel del habitat al que pertenece el animal
+    private final PanelHabitat panelHabitat; //Panel del habitat al que pertenece el animal
     private int direccion = -1; //Pueden ser 8 direcciones
     //Norte=0, NorOeste=1, Oeste=2, SurOeste=3,
     //Sur=4, SurEste=5, Este=6, NorEste=7
@@ -26,12 +26,15 @@ public abstract class Animal implements Sonido {
     private final String imagen;
     private final Comida comida;
 
-    /**
+  /**
      * Constructor que inicia las variables
      * @param posicionXinicial  Posicion X en que aparecera el animal
      * @param posicionYinicial  Posicion Y en que aparecera el animal
      * @param panelHabitat      Panel al que pertenecera el animal
      * @param familiaTaxonomica Familia taxonomica a la que pertenece el Animal
+     * @param comida            Tipo de comida que consume el animal
+     * @param imagen            Imagen que representa al animal
+     * @param sonido            Sonido que emite el animal
      */
     public Animal(int posicionXinicial, int posicionYinicial, PanelHabitat panelHabitat, FamiliaTaxonomica familiaTaxonomica, Comida comida,Imagenes imagen ,Sonidos sonido) {
         this.panelHabitat = panelHabitat;
@@ -43,6 +46,9 @@ public abstract class Animal implements Sonido {
         this.sonido = sonido.getSonido();
     }
 
+    /**
+     * numeración que representa las imágenes de los animales
+     */
     public enum Imagenes{
         Caballo("src/main/java/Interfaz/imagenes/Animales/Tierra/Caballo.png"),
         Leon("src/main/java/Interfaz/imagenes/Animales/Tierra/Leon.png"),
@@ -63,6 +69,9 @@ public abstract class Animal implements Sonido {
         public String getImagen() {return imagen;}
     }
 
+    /**
+     * Enumeración que representa los sonidos de los animales
+     */
     protected enum Sonidos{
         Caballo("src/main/java/Interfaz/Sonidos/Tierra/Caballo.wav"),
         Leon("src/main/java/Interfaz/Sonidos/Tierra/Leon.wav"),
@@ -83,6 +92,9 @@ public abstract class Animal implements Sonido {
         public Clip getSonido() {return sonido;}
     }
 
+    /**
+     * Enumeración que representa las familias taxonómicas de los animales
+     */
     public enum FamiliaTaxonomica{
         Campo(),
         Felino(),
@@ -205,7 +217,7 @@ public abstract class Animal implements Sonido {
     }
 
     /**
-     * Funcion que rePosiciona al Animal dependiendo de los limites del ahbitat al que pertenece
+     * Funcion que reposiciona al Animal dependiendo de los límites del habitat al que pertenece
      * @param maximizado    Limite maximo del habitat
      * @param minimizado    Limite minimo del habitat
      */
@@ -223,14 +235,14 @@ public abstract class Animal implements Sonido {
     }
 
     /**
-     * Setter
-     * @param anchoImg  Ancho de la imagen que representa al animal
+     * Setter para el ancho de la imagen que representa al animal
+     * @param anchoImg  Ancho de la imagen
      */
     public void setAnchoImg(int anchoImg){this.anchoImg = anchoImg;}
 
     /**
-     * Setter
-     * @param altoImg  Alto de la imagen que representa al animal
+     * Setter para el alto de la imagen que representa al animal
+     * @param altoImg  Alto de la imagen
      */
     public void setAltoImg(int altoImg){this.altoImg = altoImg;}
 
@@ -252,45 +264,45 @@ public abstract class Animal implements Sonido {
     public void MeterSonido(){Sonido.reproducirSonido(sonido,() -> {});}
 
     /**
-     * Funcion que permite comer al animal
+     * Funcion que permite que el animal coma
      * @param comida    Comida que trata de comer
      * @return  Retorna si se comio o no la comida (True or False)
      */
     public boolean Comer(Comida comida){return comida == this.comida;}
 
     /**
-     * Getter
-     * @return Retorna la familia Taxonomica a la que pertenece el Animal
+     * Getter para la familia taxonómica a la que pertenece el Animal
+     * @return Retorna la familia Taxonomica
      */
     public FamiliaTaxonomica getFamiliaTaxonomica(){return familiaTaxonomica;}
 
     /**
-     * Getter
-     * @return  Retorna el panelHabitat en que se muestra al animal
+     * Getter para el panelHabitaten que se muestra al animal
+     * @return  Retorna el panelHabitat
      */
     public PanelHabitat getPanelHabitat() {return panelHabitat;}
 
     /**
-     * Getter
-     * @return  Retorna la posicion X en que se encuentra el animal
+     * Getter para la posición X en que se encuentra el animal
+     * @return  Retorna la posicion X
      */
     public int getPosicionX() {return posicionX;}
 
     /**
-     * Getter
-     * @return  Retorna la posicion Y en que se encuentra el animal
+     * Getter  para la posición y en que se encuentra el animal
+     * @return  Retorna la posicion Y
      */
     public int getPosicionY() {return posicionY;}
 
     /**
-     * Getter
-     * @return Retorna la imagen que representa a este animal
+     * Getter para la imagen que representa a este animal
+     * @return Retorna la imagen
      */
     public String getImagen(){return imagen;}
 
     /**
-     * Getter
-     * @return Retorna la comida que consume este animal
+     * Getter para la comida que consume este animal
+     * @return Retorna la comida
      */
     public Comida getComida(){return comida;}
 }
