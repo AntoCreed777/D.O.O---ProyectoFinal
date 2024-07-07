@@ -34,15 +34,9 @@ El proyecto esta dividido en 2 parte:
     * Ventana: La clase principal que inicializa la interfaz gráfica y gestiona su funcionamiento.
     * Paneles Extras: Permiten la navegacion entre planetas.
 
-**Estructura del Proyecto**:
--
-
-//Insertar Imagen//
-
 **Diagrama UML**:
 -
-
-//Insertar Imagen//
+![UML.png](UML.png)
 
 **Diagrama de Casos de Uso**:
 -
@@ -77,3 +71,9 @@ El proyecto esta dividido en 2 parte:
 * Como colocar los animales en pantalla, lo puedimos solucionar utilizando un patron, pero esto fue practicamente al final del Desarrollo.
 * NINGUNO, SOMOS UNOS CRACKS 😎
 * Seremos ricos 🤑
+
+
+**Estructura del Proyecto**:
+-
+
+![Estructura.png](Estructura.png)
