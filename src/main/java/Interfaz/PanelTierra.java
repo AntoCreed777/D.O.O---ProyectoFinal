@@ -8,7 +8,7 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
 /**
- * Panel que permite navegar entre los zoologicos del planeta tierra
+ *La clase PanelTierra representa un panel que permite navegar entre los zoológicos del planeta Tierra
  */
 public class PanelTierra extends JPanel {
     private final Ventana ventana;
@@ -21,9 +21,10 @@ public class PanelTierra extends JPanel {
         this.ventana = ventana;
         this.setLayout(null);
 
-        crearBotonRetorno();
+        crearBotonRetorno(); // Crea y configura el botón de retorno al menú principal
         Color color = new Color(0xECD4CE);
 
+        // Agrega los botones de hábitat al panel con sus respectivas posiciones y tamaños
         this.add(new BotonHabitat(this, color,178,94,199,111));
         this.add(new BotonHabitat(this, color, 178,204,199,108));
 
@@ -70,11 +71,5 @@ public class PanelTierra extends JPanel {
             public void mouseExited(MouseEvent e) {}
         });
         this.add(btnRetorno);
-    }
-
-
-    public void crearBotonesHabitat(){
-
-
     }
 }

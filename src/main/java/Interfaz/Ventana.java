@@ -5,6 +5,7 @@ import javax.swing.*;
 /**
  * La clase Ventana es el JFrame principal en el que se muestra el mapa con los diferentes paneles
  * donde se selecciona el planeta
+ * Esta clase se encarga de configurar y gestionar la ventana principal
  */
 public class Ventana extends JFrame{
     private final JPanel panelPrincipal = new PanelPrincipal(this);
@@ -13,7 +14,7 @@ public class Ventana extends JFrame{
 
 
     /**
-     * Constructor que configura el JFrame y agrega el PanelPrincipal
+     * Constructor que configura el JFrame y agrega el panel principal a la ventana
      */
     public Ventana(){
         this.setTitle("Zoologico Espacial");
@@ -22,14 +23,14 @@ public class Ventana extends JFrame{
         this.setResizable(false);
         ImageIcon iconoVentana = Interfaz.imagenes.GeneradorImagen.scaledProducto("src/main/java/Interfaz/Imagenes/icono_ventana.png", 40,40);
         this.setIconImage(iconoVentana.getImage());
-        this.add(panelPrincipal);
+        this.add(panelPrincipal); // Agrega el panel principal a la ventana
 
         this.setVisible(true);
     }
 
     /**
      * Funcion para mostrar el panel principal de la aplicacion
-     *  @param mostrar Si se desea mostrar o no el panel principal (True or False)
+     *  @param mostrar true para mostrar el panel principal, false para ocultarlo
      */
     public void mostrarPanelPrincipal(Boolean mostrar){
         panelPrincipal.setVisible(mostrar);
@@ -43,7 +44,7 @@ public class Ventana extends JFrame{
     public void mostrarPanelTierra(Boolean mostrar){
         if(mostrar){this.add(panelTierra);}
         else {this.remove(panelTierra);}
-        this.repaint();
+        this.repaint(); // Refresca la ventana para reflejar los cambios
     }
 
     /**
@@ -53,7 +54,7 @@ public class Ventana extends JFrame{
     public void mostrarPanelMarte(Boolean mostrar){
         if(mostrar){this.add(panelMarte);}
         else {this.remove(panelMarte);}
-        this.repaint();
+        this.repaint(); // Refresca la ventana para reflejar los cambios
     }
 
     /**

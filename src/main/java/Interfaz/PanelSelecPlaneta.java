@@ -6,7 +6,8 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
 /**
- *  PanelSelecPlaneta representa un botón interactivo para seleccionar un planeta
+ *  La clase PanelSelecPlaneta representa un botón interactivo para seleccionar un planet permitiendo
+ * la navegación entre los diferentes planetas.
  */
 public class PanelSelecPlaneta extends JPanel {
     private final PanelSelecPlaneta btn;
@@ -14,8 +15,8 @@ public class PanelSelecPlaneta extends JPanel {
     /**
      *  Funcion que inicializa el panel de selección de planeta
      * @param nombre el nombre del planeta vinciulado con este botón
-     * @param x es la posición x del botón en el panel
-     * @param y es la posición y del botón en el panel
+     * @param x es la posición x del botón
+     * @param y es la posición y del botón
      * @param width es el ancho del botón
      * @param height es la altura del botón
      * @param ventana instancia de la ventana principal a la que este botón está asociado
