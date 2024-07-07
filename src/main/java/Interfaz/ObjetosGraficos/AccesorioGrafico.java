@@ -26,7 +26,7 @@ public class AccesorioGrafico implements GeneradorImagen, Runnable{
 
     /**
      * Contructor en donde se inician variables
-     * @param accesorio Accesorio que representara al instanciarse
+     * @param accesorio tipo de accesorio que representara al instanciarse
      * @param posicionX Posicion X en donde se mostrara el accesorio
      * @param posicionY Posicion Y en donde se mostrara el accesorio
      * @param panelHabitat  Panel en donde se mostrara este accesorio
@@ -104,8 +104,7 @@ public class AccesorioGrafico implements GeneradorImagen, Runnable{
     }
 
     /**
-     * Funcion que valida que el accesorio se encuentre dentro de los limites del panel en que
-     * se muestra
+     * Funcion que valida que el accesorio se encuentre dentro de los limites del panel en que se muestra
      */
     public void validarPosicion(){
         if(posicionX + Max > panelHabitat.getWidth()){
@@ -117,31 +116,31 @@ public class AccesorioGrafico implements GeneradorImagen, Runnable{
     }
 
     /**
-     * Getter
+     * Getter obtener la posición X del label del accesorio
      * @return  Se retorna la label que contiene la clase
      */
     public JLabel getLabel() {return this.label;}
 
     /**
-     * Getter
+     * Getter para obtener la posición X del label del accesorio
      * @return  Retorna la Posicion X del Label
      */
     public int getPosicionX() {return this.posicionX;}
 
     /**
-     * Getter
+     * Getter obtener la posición Y del label del accesorio
      * @return  Retorna la Posicion Y del Label
      */
     public int getPosicionY() {return this.posicionY;}
 
     /**
-     * Getter
+     * Getter para obtener el panel de hábitat en el que se muestra/pertenece el accesorio
      * @return  Se retorna el panel en que se muestra/pertenece el accesorio
      */
     public PanelHabitat getPanelHabitat() {return panelHabitat;}
 
     /**
-     * Setter
+     * Setter establecer el estado del hilo de ejecución del accesorio
      * @param running   Estado que se desea implementar en el hilo
      */
     public void setRunning(Boolean running){this.running = running;}

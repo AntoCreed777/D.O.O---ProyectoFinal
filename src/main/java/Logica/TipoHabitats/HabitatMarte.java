@@ -28,7 +28,9 @@ public class HabitatMarte extends Habitat {
         super.btnMarginColor = new Color(0xC68888);
     }
 
-
+    /**
+     * Enumeración que representa los tipos de hábitat en Marte
+     */
     public enum TipoHabitat implements HabitatTipo {
         CRATER("src/main/java/Interfaz/imagenes/Habitats/Marte/habitat_marte.png",1,2),
         SUBTERRANEO("", 0,0);
@@ -59,14 +61,14 @@ public class HabitatMarte extends Habitat {
         private final String imagen;
 
         /**
-         * Constructor privado que asigna las imagenes a los Accesorios
-         * @param imagen    Imagen que representa a los Accesorios
+         * Constructor privado que asigna las imagenes a los accesorios
+         * @param imagen Imagen de los accesorios
          */
         private Accesorios(String imagen) {this.imagen = imagen;}
 
         /**
-         * Getter
-         * @return  Retorna la imagen que representa a los Accesorios
+         * Getter de la imagen que representa a los accesorios
+         * @return  Retorna la imagen de los Accesorios
          */
         public String getImagen(){return imagen;}
     }

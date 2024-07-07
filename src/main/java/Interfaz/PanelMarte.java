@@ -8,7 +8,7 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
 /**
- * el panel que muestra el planeta Marte y permite navegar y selecciónar hábitats
+ * La clase PanelMarte es el panel que muestra el planeta Marte y permite navegar y selecciónar hábitats
  */
 public class PanelMarte extends JPanel implements GeneradorImagen {
     private final Ventana ventana;
@@ -48,7 +48,7 @@ public class PanelMarte extends JPanel implements GeneradorImagen {
         ImageIcon img = GeneradorImagen.scaledProducto("src/main/java/Interfaz/imagenes/Habitats/nave_espacial.png",60,90);
         btnRetorno.setIcon(img);
 
-        // Añadir listener para gestionar la acción del botón de retorno
+        // Agrega un MouseListener para manejar los eventos de clic del botón de retorno
         btnRetorno.addMouseListener(new MouseListener() {
             @Override
             public void mouseClicked(MouseEvent e) {
@@ -68,6 +68,6 @@ public class PanelMarte extends JPanel implements GeneradorImagen {
             @Override
             public void mouseExited(MouseEvent e) {}
         });
-        this.add(btnRetorno);
+        this.add(btnRetorno);  // Agrega el botón al panel
     }
 }

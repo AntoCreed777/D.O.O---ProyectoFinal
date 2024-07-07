@@ -28,6 +28,9 @@ public class HabitatTierra extends Habitat {
         super.btnMarginColor = new Color(0xBABABA);
     }
 
+    /**
+     * Enumeración que representa los tipos de hábitat en la Tierra
+     */
     public enum TipoHabitat implements HabitatTipo {
         DESERTICO("src/main/java/Interfaz/imagenes/Habitats/Tierra/habitat_desertico_1.jpg", 25, 30),
         POLAR("src/main/java/Interfaz/imagenes/Habitats/Tierra/habitat_polar_1.jpg", 0,0),
@@ -63,13 +66,13 @@ public class HabitatTierra extends Habitat {
 
         /**
          * Constructor privado que asigna las imagenes a los Accesorios
-         * @param imagen    Imagen que representa a los Accesorios
+         * @param imagen  Imagen de los accesorios
          */
         private Accesorios(String imagen) {this.imagen = imagen;}
 
         /**
-         * Getter
-         * @return  Retorna la imagen que representa a los Accesorios
+         * Getter de la imagen que representa a los accesorios
+         * @return Retorna la imagen de los Accesorios
          */
         public String getImagen(){return imagen;}
     }

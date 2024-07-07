@@ -6,12 +6,13 @@ import javax.swing.*;
 import java.awt.*;
 
 /**
- * Panel que representa al zoologico
+ * La clase PanelPrincipal representa el panel principal del zoológico mostrando un mapa del espacio
  */
 public class PanelPrincipal extends JPanel{
 
     /**
-     * Constructor que nicializa el panel principal y carga la imagen de fondo del Panel/Zoo, incluyendo botones
+     * Constructor que inicializa el panel principal y carga la imagen de fondo del Panel/Zoo,
+     * incluyendo botones para seleccionar planetas
      * @param ventana instancia de la ventana principal
      */
     public PanelPrincipal(Ventana ventana) {

@@ -22,9 +22,9 @@ public class ComidaGrafica implements GeneradorImagen, Runnable{
 
     /**
      * Contructor en donde se inician variables
-     * @param comida    Comida que representara al instanciarse
-     * @param posicionX Posicion X en donde se mostrara el accesorio
-     * @param posicionY Posicion Y en donde se mostrara el accesorio
+     * @param comida    La comida que se va a representar gráficamente.
+     * @param posicionX es la posicion X en donde se mostrara el accesorio
+     * @param posicionY es la posicion Y en donde se mostrara el accesorio
      * @param panelHabitat  Panel en donde se mostrara este accesorio
      */
     public ComidaGrafica(Comida comida, int posicionX, int posicionY, PanelHabitat panelHabitat){
@@ -36,7 +36,7 @@ public class ComidaGrafica implements GeneradorImagen, Runnable{
     }
 
     /**
-     * Funcion que muestra la caida de la Comida y su posterior muestra estatica en el panel
+     *  Método que simula la caída de la comida y su posterior visualización estática en el panel
      */
     @Override
     public void run() {
@@ -91,8 +91,7 @@ public class ComidaGrafica implements GeneradorImagen, Runnable{
     }
 
     /**
-     * Funcion que valida que la Comida se encuentre dentro de los limites del panel en que
-     * se muestra
+     * Funcion que valida que la Comida se encuentre dentro de los limites del panel en que se muestra
      */
     public void validarPosicion(){
         if(posicionX + 100 > panelHabitat.getWidth()){
@@ -104,37 +103,37 @@ public class ComidaGrafica implements GeneradorImagen, Runnable{
     }
 
     /**
-     * Getter
+     * Getter para obtener el JLabel que contiene la comida gráfica
      * @return  Se retorna la label que contiene la clase
      */
     public JLabel getLabel() {return this.label;}
 
     /**
-     * Getter
+     * Getter para obtener la comida representada gráficamente
      * @return  Retorna la Comida que contiene
      */
     public Comida getComida() {return this.comida;}
 
     /**
-     * Getter
-     * @return  Retorna la Posicion X del Label
+     * Getter para obtener la posición X del label de la comida gráfica
+     * @return  Retorna la Posicion X
      */
     public int getPosicionX() {return this.posicionX;}
 
     /**
-     * Getter
-     * @return  Retorna la Posicion Y del Label
+     * Getter para obtener la posición Y del label de la comida gráfica
+     * @return  Retorna la Posicion Y
      */
     public int getPosicionY() {return this.posicionY;}
 
     /**
-     * Getter
+     * Getter para obtener el panel de hábitat donde se muestra/pertenece la comida gráfica
      * @return  Se retorna el panel en que se muestra/pertenece el accesorio
      */
     public PanelHabitat getPanelHabitat() {return panelHabitat;}
 
     /**
-     * Setter
+     * Setter para establecer el estado del hilo de la comida gráfica
      * @param running   Estado que se desea implementar en el hilo
      */
     public void setRunning(Boolean running){this.running = running;}

@@ -72,62 +72,62 @@ public abstract class Habitat {
     public Color getBackgroundColor() {return backgroundColor;}
 
     /**
-     * Getter
+     * Getter del color de fondo
      * @return  Retorna el color del panel de edicion
      */
     public Color getEditPanelColor(){return editPanelColor;}
 
     /**
-     * Getter
+     * Getter del color de los botones
      * @return Retorna el color de los botones
      */
     public Color getBtnColor(){return btnColor;}
 
     /**
-     * Getter
-     * @return  Retorna el Color del Borde
+     * Getter del color del borde de los botones
+     * @return  Retorna el color del borde
      */
     public Color getBtnMarginColor(){return btnMarginColor;}
 
     /**
-     * Getter
+     * Getterde la imagen de fondo
      * @return  Retorna la imagen que representa a este habitat
      */
     public String getBackgroundImg(){return backgroundImg;}
 
     /**
-     * Getter
-     * @return  Retorna la lista de animales que contiene el habitat
+     * Getter de la lista de animales que contiene el hábitat
+     * @return  Retorna la lista de animales
      */
     public List<AnimalGrafico> getListaAnimales(){return listaAnimales;}
 
     /**
-     * Getter
-     * @return  Retorna la lista de comida que contiene el habitat
+     * Getter de la lista de comida que contiene el hábitat
+     * @return  Retorna la lista de comida
      */
     public synchronized List<ComidaGrafica> getListaComida() {return listaComida;}
 
     /**
-     * Getter
-     * @return  Retorna la lista de accesorios que contiene el habitat
+     * Getter de la lista de accesorios que contiene el hábitat
+     * @return  Retorna la lista de accesorios
      */
     public synchronized List<AccesorioGrafico> getListaAccesorios() { return listaAccesorios;}
 
     /**
-     * Getter
-     * @return Retorna la lista de animales permitidos dentro del habitat
+     * Getter de la lista de animales permitidos en el hábitat
+     * @return Retorna la lista de animales permitidos
      */
     public Class<? extends Animal>[] getAnimalesPermitidos(){return animalesPermitidos;}
 
     /**
-     * Getter
-     * @return Retorna la lista de comidas permitidas dentro del habitat
+     * Getter de la lista de comidas permitidas en el hábitat
+     * @return Retorna la lista de comidas permitidas
      */
     public ArrayList<Comida> getComidasPermitidas(){return comidasPermitidas;}
 
     /**
-     * Getter
-     * @return Retorna la temperatura minima y maxima del Habitat
+     * Getter de la temperatura mínima y máxima del hábitat
+     * @return Retorna la temperatura minima y maxima
      */
     public int[] getTemperatura() {return temperatura;}
 }

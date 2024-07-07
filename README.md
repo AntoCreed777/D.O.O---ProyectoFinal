@@ -41,7 +41,7 @@ El proyecto esta dividido en 2 parte:
 **Diagrama de Casos de Uso**:
 -
 
-![img.png](img.png)
+![img_1.png](img_1.png)
 
 **Patrones utilizados**:
 -

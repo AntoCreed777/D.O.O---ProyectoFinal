@@ -20,7 +20,7 @@ import java.util.List;
 
 /**
  * Clase PanelHabitat donde se muestra el habitat en si dentro del JFrame HabitatGrafico,
- * dentro de este panel se mostrara el fondo, los animales, la comida, etc.
+ * dentro de este panel se mostrara el fondo, los animales, la comida y otros elementos gráficos
  */
 public class PanelHabitat extends JPanel implements MouseListener {
     private BufferedImage imagen;
@@ -76,7 +76,7 @@ public class PanelHabitat extends JPanel implements MouseListener {
 
     /**
      * Funcion encargada de pintar el fondo del panel
-     * @param g the <code>Graphics</code> object to protect
+     * @param g objeto Graphics para dibujar
      */
     @Override
     protected void paintComponent(Graphics g) {
@@ -87,10 +87,9 @@ public class PanelHabitat extends JPanel implements MouseListener {
     }
 
     /**
-     * Funcion que reDimensiona el panel y todos los elementos que contenga, a los cuales tambien
-     * se les adapta la posicion dentro del panel
-     * @param ajuste    Argumento para indicar que accion de debe realizar
-     *                  (maximixar o minimizar)
+     * Funcion que redimensiona el panel y todos los elementos que contenga, adaptando también
+     * sus posiciones dentro del panel según si se maximiza o minimiza
+     * @param ajuste    Argumento para indicar que accion de  debe maximizar o minimizar el panel
      */
     public void ajustarPanel(String ajuste){
         if(ajuste.equals("maximizar")){this.setBounds(maximizado);}
@@ -184,6 +183,7 @@ public class PanelHabitat extends JPanel implements MouseListener {
 
     @Override
     public void mouseExited(MouseEvent e) {}
+
 
     public void suscribirse(Listener listener){this.listener = listener;}
 

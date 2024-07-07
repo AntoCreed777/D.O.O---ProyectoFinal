@@ -12,7 +12,9 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
 /**
- *  Botón que permite seleccionar y visualizar hábitats en los planetas
+ * El botón BotonHabitat permite seleccionar y visualizar hábitats en los planetas
+ * Este botón se coloca en un panel específico (PanelTierra o PanelMarte) y permite
+ * al usuario elegir o mostrar un hábitat
  */
 public class BotonHabitat extends JButton implements MouseListener {
 
@@ -27,8 +29,8 @@ public class BotonHabitat extends JButton implements MouseListener {
      * @param panel panel en el que se colocará el botón
      * @param posX es la posición X del botón
      * @param posY es la posición y del botón
-     * @param width ancho del botó
-     * @param height altura del botó
+     * @param width ancho del botón
+     * @param height altura del botón
      */
     public BotonHabitat(JPanel panel, Color backgroundColor, int posX, int posY, int width, int height) {
         this.btn = this;
@@ -45,7 +47,9 @@ public class BotonHabitat extends JButton implements MouseListener {
 
     /**
      * Método para elegir un hábitat basado en el panel actual (Tierra o Marte)
-     * @return hábitat seleccionado o null
+     * @return El hábitat seleccionado o null si no se elige ningún hábitat
+     * @throws NoSuchFieldException Si ocurre un error al acceder a un campo inexistente
+     * @throws IllegalAccessException Si se produce un error de acceso ilegal
      */
     public Habitat elegirHabitat() throws NoSuchFieldException, IllegalAccessException {
         Habitat habitatEscogido = null;
@@ -88,8 +92,8 @@ public class BotonHabitat extends JButton implements MouseListener {
     }
 
     /**
-     * metodo para los eventos del clic en el boton, Si no hay hábitat te permite selecionar uno pero
-     * Si ya existe uno lo hace visible
+     * metodo para los eventos del clic en el boton,
+     * Si no hay hábitat te permite selecionar uno pero Si ya existe uno lo hace visible
      * @param e evento de clic del mouse
      */
     @Override
@@ -133,6 +137,9 @@ public class BotonHabitat extends JButton implements MouseListener {
         return -1;
     }
 
+    /**
+     * Método para restablecer el hábitat asociado al botón a null y eliminar la imagen del botón
+     */
     public void resetHabitat(){
         habitat = null;
         btn.setIcon(null);
