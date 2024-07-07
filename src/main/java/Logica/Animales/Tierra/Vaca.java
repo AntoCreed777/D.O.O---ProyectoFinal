@@ -10,7 +10,7 @@ import static Logica.Animales.Animal.FamiliaTaxonomica.Campo;
  * SubClase de Animal que representa a un Vaca
  */
 public class Vaca extends Animal {
-    public final static int temperaturaAdecuada = 24; //Grados Celcius
+    public final static int temperaturaAdecuada = 20; //Grados Celcius
     public final static Animal.Imagenes imagen = Imagenes.Vaca;
     public final static Comida comida = Comida.Pasto;
 

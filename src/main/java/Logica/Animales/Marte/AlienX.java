@@ -9,7 +9,7 @@ import static Logica.Animales.Animal.FamiliaTaxonomica.RazaSuperior;
  * SubClase de Animal que representa a un AlienX
  */
 public class AlienX extends Animal {
-    public final static int temperaturaAdecuada = 28; //Grados Celcius
+    public final static int temperaturaAdecuada = 20; //Grados Celcius
     public final static Animal.Imagenes imagen = Imagenes.AlienX;
     public final static Comida comida = Comida.RobotLunar;
 

@@ -101,7 +101,8 @@ public abstract class Animal implements Sonido {
         Acuatico(),
         RazaSuperior(),
         RazaInteligente(),
-        InsectoAnsestral();
+        InsectoAncestral()
+        ;
     }
     /**
      * Funcion que mueve al animal calculando la posicion en el tiempo t+1

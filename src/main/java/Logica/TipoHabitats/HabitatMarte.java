@@ -32,8 +32,8 @@ public class HabitatMarte extends Habitat {
      * Enumeración que representa los tipos de hábitat en Marte
      */
     public enum TipoHabitat implements HabitatTipo {
-        CRATER("src/main/java/Interfaz/imagenes/Habitats/Marte/habitat_marte.png",1,2),
-        SUBTERRANEO("", 0,0);
+        CRATER("src/main/java/Interfaz/imagenes/Habitats/Marte/habitat_marte.png",15,30),
+        SUBTERRANEO("", 0,15);
 
         private final String imagen;
         private final int[] temperatura;

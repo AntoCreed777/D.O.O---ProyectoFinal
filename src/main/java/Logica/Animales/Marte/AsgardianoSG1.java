@@ -9,7 +9,7 @@ import static Logica.Animales.Animal.FamiliaTaxonomica.RazaInteligente;
  * SubClase de Animal que representa a un AsgardianoSG1
  */
 public class AsgardianoSG1 extends Animal {
-    public final static int temperaturaAdecuada = 28; //Grados Celcius
+    public final static int temperaturaAdecuada = 10; //Grados Celcius
     public final static Animal.Imagenes imagen = Imagenes.AsgardianoSG1;
     public final static Comida comida = Comida.Vaca;
 

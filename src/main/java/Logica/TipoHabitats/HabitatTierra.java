@@ -32,9 +32,9 @@ public class HabitatTierra extends Habitat {
      * Enumeración que representa los tipos de hábitat en la Tierra
      */
     public enum TipoHabitat implements HabitatTipo {
-        DESERTICO("src/main/java/Interfaz/imagenes/Habitats/Tierra/habitat_desertico_1.jpg", 25, 30),
-        POLAR("src/main/java/Interfaz/imagenes/Habitats/Tierra/habitat_polar_1.jpg", 0,0),
-        JUNGLA("src/main/java/Interfaz/imagenes/Habitats/Tierra/habitat_jungla_1.jpg",0,0);
+        DESERTICO("src/main/java/Interfaz/imagenes/Habitats/Tierra/habitat_desertico_1.jpg", 24, 30),
+        POLAR("src/main/java/Interfaz/imagenes/Habitats/Tierra/habitat_polar_1.jpg", 0,10),
+        JUNGLA("src/main/java/Interfaz/imagenes/Habitats/Tierra/habitat_jungla_1.jpg",18,25);
 
         private final String imagen;
         private final int[] temperatura;

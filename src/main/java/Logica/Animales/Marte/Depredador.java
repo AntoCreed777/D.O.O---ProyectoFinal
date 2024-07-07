@@ -9,7 +9,7 @@ import static Logica.Animales.Animal.FamiliaTaxonomica.RazaInteligente;
  * SubClase de Animal que representa a un Depredador
  */
 public class Depredador extends Animal {
-    public final static int temperaturaAdecuada = 28; //Grados Celcius
+    public final static int temperaturaAdecuada = 25; //Grados Celcius
     public final static Animal.Imagenes imagen = Imagenes.Depredador;
     public final static Comida comida = Comida.Vaca;
 
