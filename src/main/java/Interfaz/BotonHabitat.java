@@ -79,7 +79,7 @@ public class BotonHabitat extends JButton implements MouseListener {
                 if (panel instanceof PanelTierra) {
                     habitatEscogido = new HabitatTierra((HabitatTierra.TipoHabitat) opciones[selectedIndex]);
                 }
-                else if (panel instanceof PanelMarte) {
+                else {
                     habitatEscogido = new HabitatMarte((HabitatMarte.TipoHabitat) opciones[selectedIndex]);
                 }
             } else { return null;}
@@ -95,7 +95,7 @@ public class BotonHabitat extends JButton implements MouseListener {
     @Override
     public void mouseClicked(MouseEvent e) {
         if(habitat == null){
-            Habitat aux = null;
+            Habitat aux;
             try {
                 aux = elegirHabitat();
             } catch (NoSuchFieldException | IllegalAccessException ex) {
