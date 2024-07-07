@@ -69,9 +69,9 @@ El proyecto esta dividido en 2 parte:
 -
 
 * Como colocar los animales en pantalla, lo puedimos solucionar utilizando un patron, pero esto fue practicamente al final del Desarrollo.
-* NINGUNO, SOMOS UNOS CRACKS 😎
-* Seremos ricos 🤑
-
+* Como crear la clase enum de HabitatTipo y Accesorios de modo que se pudiera extender dentro del HabitatTierra y HabitatMarte
+* Hacer los test, ya que la mayoria de aspectos del proyecto involucraban la validacion visual
+* Intercambiar paneles sin que surjan problemas de visibilidad y lag
 
 **Estructura del Proyecto**:
 -
