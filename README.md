@@ -45,33 +45,42 @@ El proyecto esta dividido en 2 parte:
 
 **Patrones utilizados**:
 -
-
+   
 |      Patron      | Justificación                                                                                                                                                                                                          |
 |:----------------:|:-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 |      Bridge      | Animal es la Abstraccion y AnimalGrafico es la Implementación, uno se encarga de la logica y el otro de como se muestra al animal, de esta forma se divide una clase demaciado grande en 2 estrechamente relacionadas. |
 |     Observer     | AL colocar Objetos dentro de los habitats, los habitats informan a al Clase que se suscriba donde clickea el usuario para colocar el Objeto.                                                                           |
-| Template Method  | Al hacer Override a los Botones.                                                                                                                                                                                       |
+| Template Method  | Se ocupa la clase Animal como plantilla para el resto de animales.                                                                                                                                                     |
 
 **Interfaz Grafica**:
+
+![interfaz_espacio.png](interfaz_espacio.png)
 -
 
-//Insertar Imagen//
+![img_2.png](interfaz_tierra_zoologico.png)
+
+
+![img_9.png](interfaz_tierra_animales.png)
+
+
+
 
 **Decisiones tomadas durante el desarrollo**:
 -
 
 * Forma en que se interactuaria con el usuario (Diagrama de Uso).
 * De que forma le mostrariamos la interfaz al usuario, con JFrames por cada interactuable o con JPanel, finalmente escogimos que la seleccion de planetas y habitats fuera en un JFrame, la vista y configuracion de ese Habitat seria en otro JFrame, lo demas va en su propio JPanel dentro de los JFrame.
-* Estetica unica de nuestro proyecto, en nuestro caso elegimos estetica marciana basandonos en un capitulo de `Rick and Morty`.
+* Estetica única de nuestro proyecto, en nuestro caso elegimos estética marciana basandonos en un capítulo de `Rick and Morty`.
 * El orden de desarrollo del proyecto, que funcionalidades desarrollar primero o que vistas.
 
 **Problemas encontrados**:
 -
 
-* Como colocar los animales en pantalla, lo puedimos solucionar utilizando un patron, pero esto fue practicamente al final del Desarrollo.
-* Como crear la clase enum de HabitatTipo y Accesorios de modo que se pudiera extender dentro del HabitatTierra y HabitatMarte
-* Hacer los test, ya que la mayoria de aspectos del proyecto involucraban la validacion visual
-* Intercambiar paneles sin que surjan problemas de visibilidad y lag
+* Como colocar los animales en pantalla, lo pudimos solucionar utilizando un patron, pero esto fue practicamente al final del Desarrollo.
+* Como crear la clase enum de HabitatTipo y Accesorios de modo que se pudiera extender dentro del HabitatTierra y HabitatMarte.
+* Hacer los test, ya que la mayoria de aspectos del proyecto involucraban la validacion visual.
+* Intercambiar paneles sin que surjan problemas de visibilidad y lag.
+* Encontrar imagenes del mismo estilo para el projecto, algunas estan hechas por nosotros mismos.
 
 **Estructura del Proyecto**:
 -
