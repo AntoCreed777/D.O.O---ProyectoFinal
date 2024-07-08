@@ -2,11 +2,15 @@ package Interfaz.ObjetosGraficos;
 
 import Interfaz.imagenes.GeneradorImagen;
 import Logica.Animales.*;
+import Logica.Excepciones.FaltaComidaParaAnimal;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.Iterator;
 import java.util.List;
+import java.util.TimerTask;
 
 /**
  * Clase que muestra de forma grafica un animal
@@ -20,6 +24,11 @@ public class AnimalGrafico implements GeneradorImagen, Runnable {
     private final int heightMin;
     private final Animal animal;
     private Boolean running = true;
+
+    private Timer timer;
+    private TimerTask timerTask;
+    private final int tiempoLimite = 10;
+    private int tiempoFaltante;
 
     /**
      * Constructor en donde se carga la imagen que representa al animal y se guarda al animal
@@ -68,6 +77,8 @@ public class AnimalGrafico implements GeneradorImagen, Runnable {
 
         animal.setAltoImg(heightMax);
         animal.setAnchoImg(widthMax);
+
+        startTimer();
     }
 
     /**
@@ -99,6 +110,7 @@ public class AnimalGrafico implements GeneradorImagen, Runnable {
                                 this.animal.MeterSonido();
                                 this.animal.getPanelHabitat().remove(comida.getLabel());
                                 iterator.remove();
+                                resetTimer();
                             }
                             this.animal.getPanelHabitat().repaint();
                             break;
@@ -159,4 +171,25 @@ public class AnimalGrafico implements GeneradorImagen, Runnable {
      * @param running   Estado que se desea implementar en el hilo
      */
     public void setRunning(Boolean running){this.running = running;}
+
+    private void startTimer() {
+        tiempoFaltante = tiempoLimite;
+
+        timer = new Timer(1000, e -> {
+            if (tiempoFaltante > 0) {tiempoFaltante--;}
+            else {
+                Exception exception = new FaltaComidaParaAnimal();
+                JOptionPane.showMessageDialog(null, exception.getMessage());
+                timer.stop();
+            }
+        });
+
+        timer.setInitialDelay(0);
+        timer.start();
+    }
+
+    private void resetTimer() {
+        if (timer != null && timer.isRunning()) {timer.stop();}
+        startTimer();
+    }
 }

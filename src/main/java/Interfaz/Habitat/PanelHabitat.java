@@ -2,7 +2,7 @@ package Interfaz.Habitat;
 
 import Interfaz.ObjetosGraficos.*;
 import Logica.Animales.Animal;
-import Logica.Excepciones.DemaciadosAnimales;
+import Logica.Excepciones.DemasiadosAnimales;
 import Logica.Excepciones.NoMezclarAnimales;
 import Logica.Habitat;
 
@@ -126,7 +126,7 @@ public class PanelHabitat extends JPanel implements MouseListener {
      */
     public void agregarAnimal(AnimalGrafico animal){
         if (contador >= 20) {
-            Exception e = new DemaciadosAnimales();
+            Exception e = new DemasiadosAnimales();
             JOptionPane.showMessageDialog(null, e.getMessage());
         }
         else if((familia == null || familia.equals(animal.getFamiliaTaxonomica()))){
