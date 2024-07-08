@@ -53,9 +53,10 @@ El proyecto esta dividido en 2 parte:
 | Template Method  | Se ocupa la clase Animal como plantilla para el resto de animales.                                                                                                                                                     |
 
 **Interfaz Grafica**:
+-
 
 ![interfaz_espacio.png](interfaz_espacio.png)
--
+
 
 ![img_2.png](interfaz_tierra_zoologico.png)
 
