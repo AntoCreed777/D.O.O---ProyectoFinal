@@ -33,7 +33,7 @@ public class HabitatMarte extends Habitat {
      */
     public enum TipoHabitat implements HabitatTipo {
         CRATER("src/main/java/Interfaz/imagenes/Habitats/Marte/habitat_marte.png",15,30),
-        SUBTERRANEO("", 0,15);
+        SUBTERRANEO("src/main/java/Interfaz/imagenes/Habitats/Marte/habitat_marte_SUBTERRANEO.jpg", 0,15);
 
         private final String imagen;
         private final int[] temperatura;

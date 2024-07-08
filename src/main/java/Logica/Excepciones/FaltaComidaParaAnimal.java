@@ -7,7 +7,7 @@ package Logica.Excepciones;
  */
 public class FaltaComidaParaAnimal extends Exception{
     /**
-     * Se asigna el nombre de la familia de animales que se pueden colocar en el habitat
+     * Constructor que ingresa el mensaje de error
      */
     public FaltaComidaParaAnimal(){
         super("Un animal se esta quedando sin comida");
